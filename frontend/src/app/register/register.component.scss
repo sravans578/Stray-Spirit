@@ -1,0 +1,8 @@
+.resgister_button{
+    display: block;
+    margin: 10px auto;
+    letter-spacing: 2px;
+}
+input.counter-danger ~ span.text-danger{
+    display: none !important;
+}
