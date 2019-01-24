@@ -1,0 +1,47 @@
+<div class="container">
+    <mat-tab-group  class="mt-25"> <!--https://material.angular.io/components/tabs/examples-->
+        <mat-tab label="Personal"> 
+          <div class="container">
+              <h2 class="text-center mt-25">Register as a User</h2>
+          <form name="registerForm" [formGroup]="registerForm">
+            <div class="row">
+            <div class="col-sm">
+                <div class="md-form">
+                    <input mdbInputDirective type="text" id="firstname" class="form-control" name="firstname" formControlName="firstName" [ngClass]="{'is-invalid':registerForm.get('firstName').touched && registerForm.get('firstName').invalid}">
+                    <label for="firstname" class="">Firstname *</label>
+                  <div class="invalid-feedback">
+                    <div>First Name is required</div>
+                  </div>
+                  </div>
+            </div>
+            <div class="col-sm">
+                <div class="md-form">
+                    <input mdbInputDirective type="text" id="lastname" class="form-control" name="lastname">
+                    <label for="lastname" class="">Lastname *</label>
+                  </div>
+            </div>
+          </div>
+              <div class="md-form">
+                  <input mdbInputDirective type="text" id="phone" class="form-control" name="phone">
+                  <label for="phone" class="">Phone Number *</label>
+                </div>
+              <div class="md-form">
+                  <input mdbInputDirective type="email" id="email" class="form-control" name="email">
+                  <label for="email" class="">E-mail *</label>
+                </div>
+                <div class="md-form">
+                    <input mdbInputDirective type="password" id="password" class="form-control" name="password">
+                    <label for="email" class="">Password *</label>
+                  </div>
+                  <div class="md-form">
+                      <input mdbInputDirective type="password" id="re-password" class="form-control" name="password">
+                      <label for="password" class="">Re-type Password *</label>
+                    </div>  
+            <button mdbBtn type="submit" color="indigo" mdbWavesEffect class="resgister_button">Register</button>
+          </form>
+          <p class="text-center mt-25">Already have an account? <a routerLink="/login">Login</a> here</p>
+          </div>
+        </mat-tab>
+        <mat-tab label="Organization"> Content 2 </mat-tab>
+      </mat-tab-group>
+</div>
