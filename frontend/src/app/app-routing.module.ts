@@ -4,11 +4,13 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { HomeComponent } from './home/home.component';
+import { WhyAdoptCatComponent } from './why-adopt-cat/why-adopt-cat.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path:'why-adopt-cat' ,component:WhyAdoptCatComponent},
   { path: '**', component: NotfoundComponent }
 ];
 
