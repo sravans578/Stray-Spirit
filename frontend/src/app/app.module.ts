@@ -11,6 +11,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { ReactiveFormsModule , FormsModule  } from '@angular/forms';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { HomeComponent } from './home/home.component';
+import { WhyadoptdogComponent } from './whyadoptdog/whyadoptdog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +19,8 @@ import { HomeComponent } from './home/home.component';
     LoginComponent,
     RegisterComponent,
     NotfoundComponent,
-    HomeComponent
+    HomeComponent,
+    WhyadoptdogComponent
   ],
   imports: [
     BrowserModule,
