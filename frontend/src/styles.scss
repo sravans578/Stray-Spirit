@@ -6,3 +6,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mt-25{
     margin-top: 25px;
 }
+input.counter-danger ~ span.text-danger{
+    display: none !important;
+}
+input.counter-success ~ span.text-success{
+    display: none !important;
+}
