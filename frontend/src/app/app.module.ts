@@ -12,6 +12,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { ReactiveFormsModule , FormsModule  } from '@angular/forms';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { HomeComponent } from './home/home.component';
+import { PetProfilePageComponent } from './pet-profile-page/pet-profile-page.component';
 import { WhyAdoptCatComponent } from './why-adopt-cat/why-adopt-cat.component';
 @NgModule({
   declarations: [
@@ -21,7 +22,9 @@ import { WhyAdoptCatComponent } from './why-adopt-cat/why-adopt-cat.component';
     RegisterComponent,
     NotfoundComponent,
     HomeComponent,
-    WhyAdoptCatComponent
+    PetProfilePageComponent,
+    WhyAdoptCatComponent,
+    PetProfilePageComponent
   ],
   imports: [
     BrowserModule,
