@@ -5,12 +5,14 @@ import { RegisterComponent } from './register/register.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { HomeComponent } from './home/home.component';
 import { PetProfilePageComponent } from './pet-profile-page/pet-profile-page.component';
+import { WhyAdoptCatComponent } from './why-adopt-cat/why-adopt-cat.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'pet-profile-page',component: PetProfilePageComponent},
+  { path:'why-adopt-cat' ,component:WhyAdoptCatComponent},
   { path: '**', component: NotfoundComponent }
 ];
 
