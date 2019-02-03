@@ -13,6 +13,7 @@ import { ReactiveFormsModule , FormsModule  } from '@angular/forms';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { HomeComponent } from './home/home.component';
 import { WhyAdoptCatComponent } from './why-adopt-cat/why-adopt-cat.component';
+import { ProfileHomeComponent } from './profile-home/profile-home.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +22,8 @@ import { WhyAdoptCatComponent } from './why-adopt-cat/why-adopt-cat.component';
     RegisterComponent,
     NotfoundComponent,
     HomeComponent,
-    WhyAdoptCatComponent
+    WhyAdoptCatComponent,
+    ProfileHomeComponent
   ],
   imports: [
     BrowserModule,
