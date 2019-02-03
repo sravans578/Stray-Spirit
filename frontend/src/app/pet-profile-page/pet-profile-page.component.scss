@@ -1,7 +1,8 @@
 #MainDiv{
-  background-color: #ebebeb;
-  height: auto;
+  background-color: #000000;
+  height:auto;
   width: 100%;
+  padding-bottom: 20px;
 }
 
 #Div1{
@@ -9,7 +10,7 @@
 }
 
 #row1{
- // margin: 10px;
+  margin: 10px;
 
 }
 
@@ -26,19 +27,11 @@ h2{
 #Div2 #row1 div{
   border:#e0dede 1px;
   border-style: solid;
-  background-color: white;
+  background-color:#fff1f1;
   border-radius: 20px; 
-  margin-top: 10px;
+  margin: 20px;
   padding: 10px;
-}
-
-#row1Col1{
-  float: left;
-  margin-right: 45px;
-}
-
-#row1Col3{
-  float: left;
+  
 }
 
 img{
@@ -50,6 +43,11 @@ img{
 
 #pet-about{
   font-size: 20px;
+  font-weight: bold;
+}
+
+.agency-info span{
+  font-size:20px;
   font-weight: bold;
 }
 
@@ -76,6 +74,11 @@ img{
     font-weight: bold;
   }
 
+  .agency-info span{
+    font-size:15px;
+    font-weight: bold;
+  }
+
 }  
 
 @media (min-width:451px) and (max-width:990px){
@@ -91,6 +94,11 @@ img{
   
   #pet-about{
     font-size: 15px;
+    font-weight: bold;
+  }
+
+  .agency-info span{
+    font-size:15px;
     font-weight: bold;
   }
 }
