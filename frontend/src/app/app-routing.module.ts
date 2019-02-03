@@ -4,12 +4,14 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { HomeComponent } from './home/home.component';
+import { WhyAdoptCatComponent } from './why-adopt-cat/why-adopt-cat.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent, data: { title: 'StraySpirit - Home' } },
-  { path: 'login', component: LoginComponent, data: { title: 'Login to StraySpirit' }  },
-  { path: 'register', component: RegisterComponent, data: { title: 'Register on StraySpirit' }  },
-  { path: '**', component: NotfoundComponent, data: { title: 'No Page Found' }  }
+  { path: '', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path:'why-adopt-cat' ,component:WhyAdoptCatComponent},
+  { path: '**', component: NotfoundComponent }
 ];
 
 @NgModule({
