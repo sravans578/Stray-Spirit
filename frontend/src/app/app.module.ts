@@ -18,7 +18,7 @@ import { HomeComponent } from './home/home.component';
     LoginComponent,
     RegisterComponent,
     NotfoundComponent,
-    HomeComponent
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
