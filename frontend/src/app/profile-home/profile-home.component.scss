@@ -1,0 +1,33 @@
+
+
+mdb-badge ,td {
+    font-size: 20px;
+}
+.fa-pencil-alt{
+    opacity: 0;
+    margin-left: 10px;
+    transition: all 0.2s ease;
+}
+td:hover .fa-pencil-alt{
+    opacity: 1;
+}
+.fa-times-circle{
+    cursor: pointer;
+}
+.md-form{
+    margin: 0;
+}
+.badge{
+    padding: 0.45em 0.6em;
+}
+.md-form input[type=text], .md-form input[type=password], .md-form input[type=email], .md-form input[type=url], .md-form input[type=time], .md-form input[type=date], .md-form input[type=datetime-local], .md-form input[type=tel], .md-form input[type=number], .md-form input[type=search-md], .md-form input[type=search], .md-form textarea.md-textarea{
+    font-size: 20px;
+}
+@media screen and (max-width:499px){
+    .md-form input[type=text], .md-form input[type=password], .md-form input[type=email], .md-form input[type=url], .md-form input[type=time], .md-form input[type=date], .md-form input[type=datetime-local], .md-form input[type=tel], .md-form input[type=number], .md-form input[type=search-md], .md-form input[type=search], .md-form textarea.md-textarea{
+        font-size: 13px;
+    }
+    mdb-badge ,td{
+        font-size: 13px;
+    }
+}

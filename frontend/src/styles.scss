@@ -2,6 +2,9 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body::-webkit-scrollbar { width: 15px; 	}
+body::-webkit-scrollbar-thumb { background-color: #191c22; opacity: 0.2; border-radius: 30px; }
+
 
 .mt-25{
     margin-top: 25px;
@@ -12,8 +15,8 @@ input.counter-danger ~ span.text-danger{
 input.counter-success ~ span.text-success{
     display: none !important;
 }
-.mt-75{
-    margin-top: 75px;
+.mt-85{
+    margin-top: 85px;
 }
 .responsive-image-80{
     display: block;

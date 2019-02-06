@@ -7,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileHomeComponent implements OnInit {
 
+  userData: any =[];
+  editField: boolean = false;
+  editRowID: any ='';
   constructor() { }
 
   ngOnInit() {
+    this.userData = [
+      { id:1, firstName: 'Aadesh', lastName: 'Shah', email:'shahaadesh5@gmail.com', phone:'9876543210', address:'1333 South Park St, Halifax, NS', pincode: 'B3J2K9'  }
+    ];
   }
 
+  Edit(val){
+    this.editRowID = val; 
+  }
 }
