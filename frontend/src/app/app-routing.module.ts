@@ -5,12 +5,23 @@ import { RegisterComponent } from './register/register.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { HomeComponent } from './home/home.component';
 import { WhyAdoptCatComponent } from './why-adopt-cat/why-adopt-cat.component';
+import { ProfileHomeComponent } from './profile-home/profile-home.component';
+import { ProfileInventoryComponent } from './profile-inventory/profile-inventory.component';
+import { ProfileNavComponent } from './profile-nav/profile-nav.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path:'why-adopt-cat' ,component:WhyAdoptCatComponent},
+  // Implemented nested routes https://angular-2-training-book.rangle.io/handout/routing/child_routes.html
+  { path:'profile', 
+    component:ProfileNavComponent,
+    children: [
+      { path: '', component: ProfileHomeComponent },
+      { path: 'inventory', component: ProfileInventoryComponent }
+    ]
+  },
   { path: '**', component: NotfoundComponent }
 ];
 

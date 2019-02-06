@@ -9,11 +9,18 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatToolbarModule} from '@angular/material/toolbar';
 import { ReactiveFormsModule , FormsModule  } from '@angular/forms';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { HomeComponent } from './home/home.component';
 import { WhyAdoptCatComponent } from './why-adopt-cat/why-adopt-cat.component';
 import { ProfileHomeComponent } from './profile-home/profile-home.component';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
+import { ProfileNavComponent } from './profile-nav/profile-nav.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatButtonModule, MatIconModule } from '@angular/material';
+import { ProfileInventoryComponent } from './profile-inventory/profile-inventory.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +30,9 @@ import { ProfileHomeComponent } from './profile-home/profile-home.component';
     NotfoundComponent,
     HomeComponent,
     WhyAdoptCatComponent,
-    ProfileHomeComponent
+    ProfileHomeComponent,
+    ProfileNavComponent,
+    ProfileInventoryComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +41,13 @@ import { ProfileHomeComponent } from './profile-home/profile-home.component';
     BrowserAnimationsModule,
     MatTabsModule,
     ReactiveFormsModule,
-    FormsModule 
+    FormsModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatListModule,
+    LayoutModule,
+    MatButtonModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
