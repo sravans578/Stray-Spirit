@@ -13,10 +13,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { ReactiveFormsModule , FormsModule  } from '@angular/forms';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { HomeComponent } from './home/home.component';
-<<<<<<< HEAD
 import { PetlistingComponent } from './petlisting/petlisting.component';
 import { ProductlistingComponent } from './productlisting/productlisting.component';
-=======
 import { PetProfilePageComponent } from './pet-profile-page/pet-profile-page.component';
 import { WhyAdoptCatComponent } from './why-adopt-cat/why-adopt-cat.component';
 import { WhyadoptdogComponent } from './whyadoptdog/whyadoptdog.component';
@@ -29,7 +27,6 @@ import { MatButtonModule, MatIconModule } from '@angular/material';
 import { ProfileInventoryComponent } from './profile-inventory/profile-inventory.component';
 import { ProductDetailPageComponent } from './product-detail-page/product-detail-page.component';
 // import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap'
->>>>>>> b6d25899748e34f52002b66007d984968fdc8c03
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,10 +35,8 @@ import { ProductDetailPageComponent } from './product-detail-page/product-detail
     RegisterComponent,
     NotfoundComponent,
     HomeComponent,
-<<<<<<< HEAD
     PetlistingComponent,
-    ProductlistingComponent
-=======
+    ProductlistingComponent,
     WhyAdoptCatComponent,
     ProfileHomeComponent,
     ProfileNavComponent,
@@ -50,7 +45,6 @@ import { ProductDetailPageComponent } from './product-detail-page/product-detail
     WhyadoptdogComponent,
     PetProfilePageComponent,
     ProductDetailPageComponent
->>>>>>> b6d25899748e34f52002b66007d984968fdc8c03
   ],
   imports: [
     BrowserModule,
