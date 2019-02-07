@@ -1,14 +1,15 @@
 
 
-mdb-badge ,td {
+mdb-badge ,.user-info {
     font-size: 20px;
 }
 .fa-pencil-alt{
-    opacity: 0;
+    opacity: 0.5;
     margin-left: 10px;
     transition: all 0.2s ease;
+    cursor: pointer;
 }
-td:hover .fa-pencil-alt{
+.fa-pencil-alt:hover {
     opacity: 1;
 }
 .fa-times-circle{
@@ -19,15 +20,21 @@ td:hover .fa-pencil-alt{
 }
 .badge{
     padding: 0.45em 0.6em;
+    float: right;
 }
 .md-form input[type=text], .md-form input[type=password], .md-form input[type=email], .md-form input[type=url], .md-form input[type=time], .md-form input[type=date], .md-form input[type=datetime-local], .md-form input[type=tel], .md-form input[type=number], .md-form input[type=search-md], .md-form input[type=search], .md-form textarea.md-textarea{
     font-size: 20px;
 }
-@media screen and (max-width:499px){
+    .col-sm-6{
+        flex: 0 0 50%;
+    max-width: 50%
+    }
+
+@media screen and (max-width:576px){
     .md-form input[type=text], .md-form input[type=password], .md-form input[type=email], .md-form input[type=url], .md-form input[type=time], .md-form input[type=date], .md-form input[type=datetime-local], .md-form input[type=tel], .md-form input[type=number], .md-form input[type=search-md], .md-form input[type=search], .md-form textarea.md-textarea{
         font-size: 13px;
     }
-    mdb-badge ,td{
+    mdb-badge ,.user-info{
         font-size: 13px;
     }
 }

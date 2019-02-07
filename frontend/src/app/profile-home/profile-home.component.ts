@@ -14,7 +14,8 @@ export class ProfileHomeComponent implements OnInit {
 
   ngOnInit() {
     this.userData = [
-      { id:1, firstName: 'Aadesh', lastName: 'Shah', email:'shahaadesh5@gmail.com', phone:'9876543210', address:'1333 South Park St, Halifax, NS', pincode: 'B3J2K9'  }
+      { id:1, firstName: 'Aadesh', lastName: 'Shah', email:'shahaadesh5@gmail.com', phone:'9876543210', address:'1333 South Park St, Halifax, NS', pincode: 'B3J2K9', dob: '05-11-1995'  }
+    
     ];
   }
 
