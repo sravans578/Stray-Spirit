@@ -15,6 +15,7 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { HomeComponent } from './home/home.component';
 import { PetProfilePageComponent } from './pet-profile-page/pet-profile-page.component';
 import { WhyAdoptCatComponent } from './why-adopt-cat/why-adopt-cat.component';
+import { WhyadoptdogComponent } from './whyadoptdog/whyadoptdog.component';
 import { ProfileHomeComponent } from './profile-home/profile-home.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
@@ -37,7 +38,7 @@ import { ProductDetailPageComponent } from './product-detail-page/product-detail
     ProfileNavComponent,
     ProfileInventoryComponent,
     PetProfilePageComponent,
-    WhyAdoptCatComponent,
+    WhyadoptdogComponent,
     PetProfilePageComponent,
     ProductDetailPageComponent
   ],

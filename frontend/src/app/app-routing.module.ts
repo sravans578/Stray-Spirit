@@ -10,6 +10,7 @@ import { ProfileHomeComponent } from './profile-home/profile-home.component';
 import { ProfileInventoryComponent } from './profile-inventory/profile-inventory.component';
 import { ProfileNavComponent } from './profile-nav/profile-nav.component';
 import {ProductDetailPageComponent} from './product-detail-page/product-detail-page.component';
+import { WhyadoptdogComponent } from './whyadoptdog/whyadoptdog.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'pet-profile-page',component: PetProfilePageComponent},
   { path:'why-adopt-cat' ,component:WhyAdoptCatComponent},
+  { path: 'why-adopt-dog',component:WhyadoptdogComponent},
   // Implemented nested routes https://angular-2-training-book.rangle.io/handout/routing/child_routes.html
   { path:'profile', 
     component:ProfileNavComponent,
