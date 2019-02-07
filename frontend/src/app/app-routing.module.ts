@@ -6,6 +6,7 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { HomeComponent } from './home/home.component';
 import { PetProfilePageComponent } from './pet-profile-page/pet-profile-page.component';
 import { WhyAdoptCatComponent } from './why-adopt-cat/why-adopt-cat.component';
+import {ProductDetailPageComponent} from './product-detail-page/product-detail-page.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'pet-profile-page',component: PetProfilePageComponent},
   { path:'why-adopt-cat' ,component:WhyAdoptCatComponent},
+  {path:'product-detail-page',component:ProductDetailPageComponent},
   { path: '**', component: NotfoundComponent }
 ];
 

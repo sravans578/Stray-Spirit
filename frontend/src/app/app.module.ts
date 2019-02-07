@@ -14,6 +14,7 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { HomeComponent } from './home/home.component';
 import { PetProfilePageComponent } from './pet-profile-page/pet-profile-page.component';
 import { WhyAdoptCatComponent } from './why-adopt-cat/why-adopt-cat.component';
+import { ProductDetailPageComponent } from './product-detail-page/product-detail-page.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +25,8 @@ import { WhyAdoptCatComponent } from './why-adopt-cat/why-adopt-cat.component';
     HomeComponent,
     PetProfilePageComponent,
     WhyAdoptCatComponent,
-    PetProfilePageComponent
+    PetProfilePageComponent,
+    ProductDetailPageComponent
   ],
   imports: [
     BrowserModule,
