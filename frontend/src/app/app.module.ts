@@ -13,8 +13,11 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { ReactiveFormsModule , FormsModule  } from '@angular/forms';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { HomeComponent } from './home/home.component';
+import { PetlistingComponent } from './petlisting/petlisting.component';
+import { ProductlistingComponent } from './productlisting/productlisting.component';
 import { PetProfilePageComponent } from './pet-profile-page/pet-profile-page.component';
 import { WhyAdoptCatComponent } from './why-adopt-cat/why-adopt-cat.component';
+import { WhyadoptdogComponent } from './whyadoptdog/whyadoptdog.component';
 import { ProfileHomeComponent } from './profile-home/profile-home.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
@@ -32,12 +35,14 @@ import { ProductDetailPageComponent } from './product-detail-page/product-detail
     RegisterComponent,
     NotfoundComponent,
     HomeComponent,
+    PetlistingComponent,
+    ProductlistingComponent,
     WhyAdoptCatComponent,
     ProfileHomeComponent,
     ProfileNavComponent,
     ProfileInventoryComponent,
     PetProfilePageComponent,
-    WhyAdoptCatComponent,
+    WhyadoptdogComponent,
     PetProfilePageComponent,
     ProductDetailPageComponent
   ],
