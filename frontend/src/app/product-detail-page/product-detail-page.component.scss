@@ -1,6 +1,7 @@
+
 #MainDiv{
-background-color: #000000;
-padding: 10px;
+ background-color: #000000;
+ padding: 80px;
 color: white;
 }
 
@@ -20,8 +21,8 @@ h3{
     font-weight: 500;
     
 }
-#Row1{
-    margin-top: 0px;
+#Row1Col1{
+    margin-top: 10px;
 }
 
 img{
@@ -57,23 +58,42 @@ span{
 }
 
 @media(max-width:570px){
+    #MainDiv{
+        background-color: #000000;
+        padding: 20px;
+       color: white;
+       }
+
     h2{
         font-weight: bold;
-        font-size:40px;
+        font-size:32px;
         font-family: 'simplificasimplifica';
     }
     
     h3{
         font-weight: 400;
-        font-size:10px;
+        font-size:15px;
     }
 
     button{
         
         padding: 10px 20px;
-        font-size: 9px;
-        border-radius: 10px;
-        width:40%; 
+        font-size: 12px;
+        border-radius: 3px;
+        width:100%;
+        float: left; 
+        
+    }
+
+    span{
+    
+        font-size: 25px;
+       margin-bottom: 15px;
+     
+    }
+
+    .product_details{
+        font-size:15px;
     }
 }
 
@@ -113,13 +133,19 @@ span{
       
         font-size:10px;
     }
+
+    #MainDiv{
+        background-color: #000000;
+        padding: 5px;
+       color: white;
+       }
     
 }
 
 @media (min-width:737px) and (max-width:985px){
     h2{
         font-weight: bold;
-        font-size:80px;
+        font-size:70px;
         font-family: 'simplificasimplifica';
     }
     
@@ -127,5 +153,6 @@ span{
         font-weight: 400;
         font-size:30px;
     }
+    
     
 }
