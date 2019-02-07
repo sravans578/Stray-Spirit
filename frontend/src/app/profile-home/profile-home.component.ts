@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Title} from "@angular/platform-browser";
+
 
 @Component({
   selector: 'app-profile-home',
@@ -10,7 +12,9 @@ export class ProfileHomeComponent implements OnInit {
   userData: any =[];
   editField: boolean = false;
   editRowID: any ='';
-  constructor() { }
+  constructor(private titleService:Title) { 
+    this.titleService.setTitle("Dashboard - StraySpirit");
+   }
 
   ngOnInit() {
     this.userData = [
