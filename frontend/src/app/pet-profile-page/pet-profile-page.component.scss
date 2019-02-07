@@ -1,0 +1,104 @@
+#MainDiv{
+  background-color: #000000;
+  height:auto;
+  width: 100%;
+  padding-bottom: 20px;
+}
+
+#Div1{
+  background-color:#000000;
+}
+
+#row1{
+  margin: 10px;
+
+}
+
+h2{
+  font-size: 30px;
+  font-weight: bold;
+}
+
+ .pet-info{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#Div2 #row1 div{
+  border:#e0dede 1px;
+  border-style: solid;
+  background-color:#fff1f1;
+  border-radius: 20px; 
+  margin: 20px;
+  padding: 10px;
+  
+}
+
+img{
+  height: 500px;
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#pet-about{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.agency-info span{
+  font-size:20px;
+  font-weight: bold;
+}
+
+@media (max-width:450px){
+  img{
+    height: 300px;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  h2{
+    font-size: 25px;
+    font-weight: bold;
+  }
+  
+   .pet-info{
+    font-size: 15px;
+    font-weight: bold;
+  }
+
+  #pet-about{
+    font-size: 15px;
+    font-weight: bold;
+  }
+
+  .agency-info span{
+    font-size:15px;
+    font-weight: bold;
+  }
+
+}  
+
+@media (min-width:451px) and (max-width:990px){
+  h2{
+    font-size: 25px;
+    font-weight: bold;
+  }
+  
+   .pet-info{
+    font-size: 15px;
+    font-weight: bold;
+  }
+  
+  #pet-about{
+    font-size: 15px;
+    font-weight: bold;
+  }
+
+  .agency-info span{
+    font-size:15px;
+    font-weight: bold;
+  }
+}

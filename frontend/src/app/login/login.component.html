@@ -1,20 +1,29 @@
-<div class="container">
+<div class="container mt-85">
   <div class="jumbotron jumbotron-fluid">
     <div class="container">
       <h2 class="text-center">Sign-in</h2>
       <div class="container">
-        <form action="" method="POST">
+        <form action="" method="POST" name="loginForm" [formGroup]="loginForm">
           <div class="md-form">
-            <input mdbInputDirective type="text" id="username" class="form-control" name="username">
-            <label for="username" class="">Username</label>
+            <input mdbInputDirective type="email" id="email" class="form-control" name="email" formControlName="emailLogin"
+              [ngClass]="{'is-invalid':loginForm.get('emailLogin').touched && loginForm.get('emailLogin').invalid}">
+            <label for="email" class="">Email</label>
+            <div *ngIf="loginForm.get('emailLogin').touched && loginForm.get('emailLogin').invalid" class="invalid-feedback">
+              <div *ngIf="loginForm.get('emailLogin').errors.required">Email is required</div>
+              <div *ngIf="loginForm.get('emailLogin').errors.email">Email should be valid</div>
+            </div>
           </div>
           <div class="md-form">
-              <input mdbInputDirective type="password" id="password" class="form-control" name="password">
-              <label for="password" class="">Password</label>
+            <input mdbInputDirective type="password" id="password" class="form-control" name="password" formControlName="passwordLogin"
+              [ngClass]="{'is-invalid':loginForm.get('passwordLogin').touched && loginForm.get('passwordLogin').invalid}">
+            <label for="password" class="">Password</label>
+            <div class="invalid-feedback">
+              <div>Password is required</div>
             </div>
-            <button mdbBtn type="submit" color="indigo" mdbWavesEffect class="sign-in_button">Sign-in</button>
+          </div>
+          <button mdbBtn type="submit" color="indigo" mdbWavesEffect class="sign-in_button" [disabled]="!loginForm.valid">Sign-in</button>
         </form>
-        <p class="text-center"><a>Forgot password?</a></p>
+        <p class="text-center"><a routerLink="/forgot-password">Forgot password?</a></p>
         <p class="text-center">Don't have an account? <a routerLink="/register">Register</a> here</p>
       </div>
     </div>
