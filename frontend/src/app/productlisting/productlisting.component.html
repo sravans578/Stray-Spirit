@@ -1,0 +1,74 @@
+<div class="container-fluid mt-85">
+  <h1 class="product-list-header">Pet Products</h1>
+  <div class="mb-4">
+      <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+    </div>
+
+  <div class="col-md">
+    <!-- Product Grid 1-->
+    <div class="pet-list-1">
+      <!--Help for the  logic of breaking up the rows is taken from https://stackblitz.com/edit/angular-uxm5fs?file=src%2Fapp%2Fapp.component.html-->
+      <div>
+        <div class="row">
+          <div class="col-md-4" *ngFor="let p of products; let i = index">
+            <div class="petimage1">
+              <!-- <img src="../assets/images/{{product.productImage}}" alt="{{product.productName}}" class="img-fluid"> -->
+              <img src="../assets/images/{{products[i].productImage}}" alt="{{products[i].productName}}" class="img-fluid">
+
+              <h6 class="name">
+                <a href="#">
+                  <span>{{products[i].productName}}</span>
+                </a>
+              </h6>
+              <p class="price-container">
+                <span>${{products[i].productPrice}}</span>
+              </p>
+              <p>Lorem ipsum </p>
+              <a href="javascript:void(0);" class="btn btn-info">More info</a>
+            </div>
+          </div>
+
+          <!-- <div class="col-md">
+            <div class="petimage1"> -->
+          <!-- <img src="../assets/images/{{product.productImage}}" alt="{{product.productName}}" class="img-fluid"> -->
+          <!-- <img src="../assets/images/{{products[i+1].productImage}}" alt="{{products[i+1].productName}}" class="img-fluid">
+              
+              <h6 class="name">
+                <a href="#">
+                  <span>{{products[i+1].productName}}</span>
+                </a>
+              </h6>
+              <p class="price-container">
+                <span>${{products[i+1].productPrice}}</span>
+              </p>
+              <p>Lorem ipsum </p>
+              <a href="javascript:void(0);" class="btn btn-info">More info</a>
+            </div>
+          </div>
+
+          <div class="col-md">
+              <div class="petimage1">
+                
+                <img src="../assets/images/{{products[i+2].productImage}}" alt="{{products[i+2].productName}}" class="img-fluid">
+                
+                <h6 class="name">
+                  <a href="#">
+                    <span>{{products[i+2].productName}}</span>
+                  </a>
+                </h6>
+                <p class="price-container">
+                  <span>${{products[i+2].productPrice}}</span>
+                </p>
+                <p>Lorem ipsum </p>
+                <a href="javascript:void(0);" class="btn btn-info">More info</a>
+              </div>
+            </div>
+      </div>
+    </div>
+    </div>
+  </div>  -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
