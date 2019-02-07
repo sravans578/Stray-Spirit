@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import {Title} from "@angular/platform-browser";
 @Component({
   selector: 'app-why-adopt-cat',
   templateUrl: './why-adopt-cat.component.html',
@@ -7,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WhyAdoptCatComponent implements OnInit {
 
-  constructor() { }
+  constructor(private titleService:Title) {
+    this.titleService.setTitle("Why adopt a cat?");
+   }
 
   ngOnInit() {
   }

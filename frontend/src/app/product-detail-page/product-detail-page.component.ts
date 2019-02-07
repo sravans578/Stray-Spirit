@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import {Title} from "@angular/platform-browser";
 @Component({
   selector: 'app-product-detail-page',
   templateUrl: './product-detail-page.component.html',
@@ -7,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductDetailPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private titleService:Title) {
+    this.titleService.setTitle("Product detail");
+   }
 
   ngOnInit() {
   }
