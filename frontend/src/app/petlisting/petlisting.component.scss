@@ -6,17 +6,37 @@
     position:relative;
  
 }
-.product-list-header
+.pet-list-header
 {
     text-align: center;
-    font-family: 'Courier New', Courier, monospace;
-    font-weight: 900;
-    font-size: 80px;
-    color: #6c757d;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 200;
+    font-size: 60px;
+    color: black;
 }
 
-img
+.container-fluid
 {
-    width: 300px;
-    height: 300px;
+   background-color:  #FFFAFA;
+}
+
+.img
+{
+ width: 300px;
+ height: 300px;
+  opacity: 1;
+  display: block;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.mb-4 input[type=text]:focus:not([readonly]) 
+{
+    border: 1px solid black;
+    box-shadow: 0 0 0 1px black;
+    
+}
+.mb-4
+{
+    margin: 40px;
 }
