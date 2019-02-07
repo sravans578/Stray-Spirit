@@ -1,7 +1,7 @@
 
 #MainDiv{
  background-color: #000000;
- padding: 80px;
+ padding: 80px 0 150px;
 color: white;
 }
 
@@ -117,7 +117,7 @@ span{
     
 }
 
-@media (min-width:672px) and (max-width:736px){
+@media (max-width:600px){
     h2{
         font-weight: bold;
         font-size:60px;

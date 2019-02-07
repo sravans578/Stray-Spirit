@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap'
 import {Title} from "@angular/platform-browser";
+
 @Component({
   selector: 'app-pet-profile-page',
   templateUrl: './pet-profile-page.component.html',

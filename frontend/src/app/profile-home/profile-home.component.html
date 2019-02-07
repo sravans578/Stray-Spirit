@@ -1,0 +1,195 @@
+<div class="jumbotron jumbotron-fluid container">
+  <div class="container ">
+    <h2 class="text-center">Account Detail</h2>
+    <h3 class="text-center mt-25">Here are your details</h3>
+    <div class="table-responsive mt-25">
+      <!-- <table class="table" *ngFor="let user of userData">
+                <tbody>
+                  <tr>
+                    <th scope="row">
+                      <mdb-badge color="elegant-color-dark">First Name</mdb-badge>
+                    </th>
+                    <td *ngIf="user.id === editRowID">
+                        <div class="md-form">
+                            <input mdbInputDirective type="text" id="firstName" class="form-control" name="firstName"
+                              [(ngModel)]="user.firstName" value="{{user.firstName}}"><i class="fas fa-times-circle fa-lg" (click)="Edit(user.id+1)"></i>
+                        </div>
+                        
+                    </td>
+                    <td *ngIf="user.id !== editRowID" (click)="Edit(user.id)">{{ user.firstName }} <i class="fas fa-pencil-alt"></i></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">
+                      <mdb-badge color="purple darken-4">Last Name</mdb-badge>
+                    </th>
+                    <td *ngIf="user.id === editRowID">
+                        <div class="md-form">
+                            <input mdbInputDirective type="text" id="lastName" class="form-control" name="lastName"
+                              [(ngModel)]="user.lastName" value="{{user.lastName}}"><i class="fas fa-times-circle fa-lg" (click)="Edit(user.id+1)"></i>
+                        </div>
+                        
+                    </td>
+                    <td *ngIf="user.id !== editRowID" (click)="Edit(user.id)">{{ user.lastName }} <i class="fas fa-pencil-alt"></i></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">
+                        <mdb-badge color="purple lighten-4">Email address</mdb-badge>
+                    </th>
+                    <td *ngIf="user.id === editRowID">
+                        <div class="md-form">
+                            <input mdbInputDirective type="email" id="email" class="form-control" name="email"
+                              [(ngModel)]="user.email" value="{{user.email}}"><i class="fas fa-times-circle fa-lg" (click)="Edit(user.id+1)"></i>
+                        </div>
+                        
+                    </td>
+                    <td *ngIf="user.id !== editRowID" (click)="Edit(user.id)">{{ user.email }} <i class="fas fa-pencil-alt"></i></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">
+                        <mdb-badge color="red">Phone number</mdb-badge>
+                    </th>
+                    <td *ngIf="user.id === editRowID">
+                        <div class="md-form">
+                            <input mdbInputDirective type="number" id="phone" class="form-control" name="phone"
+                              [(ngModel)]="user.phone" value="{{user.phone}}"><i class="fas fa-times-circle fa-lg" (click)="Edit(user.id+1)"></i>
+                        </div>
+                        
+                    </td>
+                    <td *ngIf="user.id !== editRowID" (click)="Edit(user.id)">{{ user.phone }} <i class="fas fa-pencil-alt"></i></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">
+                        <mdb-badge color="orange darken-1">Address</mdb-badge>
+                    </th>
+                    <td *ngIf="user.id === editRowID">
+                        <div class="md-form">
+                            <input mdbInputDirective type="text" id="address" class="form-control" name="address"
+                              [(ngModel)]="user.address" value="{{user.address}}"><i class="fas fa-times-circle fa-lg" (click)="Edit(user.id+1)"></i>
+                        </div>
+                        
+                    </td>
+                    <td *ngIf="user.id !== editRowID" (click)="Edit(user.id)">{{ user.address }} <i class="fas fa-pencil-alt"></i></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">
+                        <mdb-badge color="amber">Pincode</mdb-badge>
+                    </th>
+                    <td *ngIf="user.id === editRowID">
+                        <div class="md-form">
+                            <input mdbInputDirective type="text" id="pincode" class="form-control" name="pincode"
+                              [(ngModel)]="user.pincode" value="{{user.pincode}}"><i class="fas fa-times-circle fa-lg" (click)="Edit(user.id+1)"></i>
+                        </div>
+                        
+                    </td>
+                    <td *ngIf="user.id !== editRowID" (click)="Edit(user.id)">{{ user.pincode }} <i class="fas fa-pencil-alt"></i></td>
+                  </tr>
+                </tbody>
+              </table> -->
+    </div>
+    <div class="container" *ngFor="let user of userData">
+      <form method="POST" action="" >
+      <div class="row">
+        <div class="col-sm-6">
+          <mdb-badge color="elegant-color-dark">First Name</mdb-badge>
+        </div>
+        <div class="col-sm-6">
+            <div class="md-form" *ngIf="user.id === editRowID">
+                <input mdbInputDirective type="text" id="firstName" class="form-control" name="firstName"
+                  [(ngModel)]="user.firstName" value="{{user.firstName}}" required><i class="fas fa-times-circle fa-lg" (click)="Edit(user.id+1)"></i>
+            </div>
+          <div  *ngIf="user.id !== editRowID">
+            <span class="user-info"> {{ user.firstName }} </span> <i class="fas fa-pencil-alt" (click)="Edit(user.id)"></i> 
+        </div>
+        </div>
+      </div>
+      <div class="row mt-25">
+        <div class="col-sm-6">
+          <mdb-badge color="purple darken-4">Last Name</mdb-badge>
+        </div>
+        <div class="col-sm-6">
+            <div class="md-form" *ngIf="user.id === editRowID">
+                <input mdbInputDirective type="text" id="lastName" class="form-control" name="lastName"
+                  [(ngModel)]="user.lastName" value="{{user.lastName}}" required><i class="fas fa-times-circle fa-lg" (click)="Edit(user.id+1)"></i>
+            </div>
+          <div  *ngIf="user.id !== editRowID">
+            <span class="user-info"> {{ user.lastName }} </span> <i class="fas fa-pencil-alt" (click)="Edit(user.id)"></i> 
+        </div>
+        </div>
+      </div>
+      <div class="row mt-25">
+        <div class="col-sm-6">
+            <mdb-badge color="purple lighten-4">Email address</mdb-badge>
+        </div>
+        <div class="col-sm-6">
+            <div class="md-form" *ngIf="user.id === editRowID">
+                <input mdbInputDirective type="email" id="email" class="form-control" name="email"
+                  [(ngModel)]="user.email" value="{{user.email}}" required><i class="fas fa-times-circle fa-lg" (click)="Edit(user.id+1)"></i>
+            </div>
+          <div  *ngIf="user.id !== editRowID">
+            <span class="user-info"> {{ user.email }} </span> <i class="fas fa-pencil-alt" (click)="Edit(user.id)"></i> 
+        </div>
+        </div>
+      </div>
+      <div class="row mt-25">
+        <div class="col-sm-6">
+            <mdb-badge color="red">Phone number</mdb-badge>
+        </div>
+        <div class="col-sm-6">
+            <div class="md-form" *ngIf="user.id === editRowID">
+                <input mdbInputDirective type="number" id="phone" class="form-control" name="phone"
+                  [(ngModel)]="user.phone" value="{{user.phone}}" required><i class="fas fa-times-circle fa-lg" (click)="Edit(user.id+1)"></i>
+            </div>
+          <div  *ngIf="user.id !== editRowID">
+            <span class="user-info"> {{ user.phone }} </span> <i class="fas fa-pencil-alt" (click)="Edit(user.id)"></i> 
+        </div>
+        </div>
+      </div>
+      <div class="row mt-25">
+        <div class="col-sm-6">
+            <mdb-badge color="orange darken-1">Address</mdb-badge>
+        </div>
+        <div class="col-sm-6">
+            <div class="md-form" *ngIf="user.id === editRowID">
+                <input mdbInputDirective type="text" id="address" class="form-control" name="address"
+                  [(ngModel)]="user.address" value="{{user.address}}" required><i class="fas fa-times-circle fa-lg" (click)="Edit(user.id+1)"></i>
+            </div>
+          <div  *ngIf="user.id !== editRowID">
+            <span class="user-info"> {{ user.address }} </span> <i class="fas fa-pencil-alt" (click)="Edit(user.id)"></i> 
+        </div>
+        </div>
+      </div>
+      <div class="row mt-25">
+        <div class="col-sm-6">
+            <mdb-badge color="amber">Pincode</mdb-badge>
+        </div>
+        <div class="col-sm-6">
+            <div class="md-form" *ngIf="user.id === editRowID">
+                <input mdbInputDirective type="text" id="pincode" class="form-control" name="pincode"
+                  [(ngModel)]="user.pincode" value="{{user.pincode}}"><i class="fas fa-times-circle fa-lg" (click)="Edit(user.id+1)"></i>
+            </div>
+          <div  *ngIf="user.id !== editRowID">
+            <span class="user-info"> {{ user.pincode }} </span> <i class="fas fa-pencil-alt" (click)="Edit(user.id)"></i> 
+        </div>
+        </div>
+      </div>
+      <div class="row mt-25">
+        <div class="col-sm-6">
+          <mdb-badge color="amber">Birth-date</mdb-badge>
+        </div>
+        <div class="col-sm-6">
+            <div class="md-form" *ngIf="user.id === editRowID">
+                <input type="date" required class="form-control" name="dob" [(ngModel)]="user.dob" value="{{user.dob}}"><i class="fas fa-times-circle fa-lg" (click)="Edit(user.id+1)"></i>    
+            </div>
+          
+          <div  *ngIf="user.id !== editRowID">
+              <span class="user-info"> {{ user.dob }} </span> <i class="fas fa-pencil-alt" (click)="Edit(user.id)"></i> 
+          </div>
+        </div>
+
+      </div>
+      <div class="mt-25 text-center">
+          <button mdbBtn type="submit" color="indigo" mdbWavesEffect class="sign-in_button" *ngIf="user.id === editRowID">Update</button>
+      </div>
+      </form>
+    </div>
+  </div>

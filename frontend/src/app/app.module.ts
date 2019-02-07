@@ -9,12 +9,21 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatToolbarModule} from '@angular/material/toolbar';
 import { ReactiveFormsModule , FormsModule  } from '@angular/forms';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { HomeComponent } from './home/home.component';
 import { PetProfilePageComponent } from './pet-profile-page/pet-profile-page.component';
 import { WhyAdoptCatComponent } from './why-adopt-cat/why-adopt-cat.component';
+import { ProfileHomeComponent } from './profile-home/profile-home.component';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
+import { ProfileNavComponent } from './profile-nav/profile-nav.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatButtonModule, MatIconModule } from '@angular/material';
+import { ProfileInventoryComponent } from './profile-inventory/profile-inventory.component';
 import { ProductDetailPageComponent } from './product-detail-page/product-detail-page.component';
+// import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap'
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,6 +32,10 @@ import { ProductDetailPageComponent } from './product-detail-page/product-detail
     RegisterComponent,
     NotfoundComponent,
     HomeComponent,
+    WhyAdoptCatComponent,
+    ProfileHomeComponent,
+    ProfileNavComponent,
+    ProfileInventoryComponent,
     PetProfilePageComponent,
     WhyAdoptCatComponent,
     PetProfilePageComponent,
@@ -35,7 +48,13 @@ import { ProductDetailPageComponent } from './product-detail-page/product-detail
     BrowserAnimationsModule,
     MatTabsModule,
     ReactiveFormsModule,
-    FormsModule 
+    FormsModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatListModule,
+    LayoutModule,
+    MatButtonModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
