@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {Title} from "@angular/platform-browser";
+import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 
 @Component({
   selector: 'app-profile-inventory',
@@ -8,9 +9,15 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProfileInventoryComponent implements OnInit {
 
-  
-  constructor() {
 
+  
+  addProductForm = new FormGroup({
+    productName: new FormControl('', Validators.required),
+    productPrice: new FormControl('', [ Validators.required , Validators.pattern('^[0-9]*$') ])
+  })
+
+  constructor(private titleService:Title) { 
+    this.titleService.setTitle("My Inventory - StraySpirit");
    }
 
   ngOnInit() {
