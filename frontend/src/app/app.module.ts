@@ -27,6 +27,7 @@ import { MatButtonModule, MatIconModule } from '@angular/material';
 import { ProfileInventoryComponent } from './profile-inventory/profile-inventory.component';
 import { ProductDetailPageComponent } from './product-detail-page/product-detail-page.component';
 import { RegistrationAdityaComponent } from './registration-aditya/registration-aditya.component';
+import { FooterComponent } from './footer/footer.component';
 
 // import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap'
 @NgModule({
@@ -47,7 +48,8 @@ import { RegistrationAdityaComponent } from './registration-aditya/registration-
     WhyadoptdogComponent,
     PetProfilePageComponent,
     ProductDetailPageComponent,
-    RegistrationAdityaComponent
+    RegistrationAdityaComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
