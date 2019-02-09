@@ -13,9 +13,11 @@
                                         <input mdbInputDirective type="text" id="firstName" class="form-control" name="firstName"
                                             formControlName="firstName" [ngClass]="{'is-invalid':registerForm.get('firstName').touched && registerForm.get('firstName').invalid}">
                                         <label for="firstName" class="">Firstname *</label>
-                                        <div class="invalid-feedback">
-                                            <div>First Name is required</div>
-                                        </div>
+                                        <div *ngIf="registerForm.get('firstName').touched && registerForm.get('firstName').invalid"
+                                    class="invalid-feedback">
+                                    <div *ngIf="registerForm.get('firstName').errors.required">First Name is required</div>
+                                    <div *ngIf="registerForm.get('firstName').errors.pattern">Invalid Value (No spaces or special characters allowed!)</div>
+                                </div>
                                     </div>
                                 </div>
                                 <div class="col-sm">
@@ -23,18 +25,22 @@
                                         <input mdbInputDirective type="text" id="lastname" class="form-control" name="lastname"
                                             formControlName="lastName" [ngClass]="{'is-invalid':registerForm.get('lastName').touched && registerForm.get('lastName').invalid}">
                                         <label for="lastname" class="">Lastname *</label>
-                                        <div class="invalid-feedback">
-                                            <div>Last Name is required</div>
-                                        </div>
+                                        <div *ngIf="registerForm.get('lastName').touched && registerForm.get('lastName').invalid"
+                                    class="invalid-feedback">
+                                    <div *ngIf="registerForm.get('lastName').errors.required">Last Name is required</div>
+                                    <div *ngIf="registerForm.get('lastName').errors.pattern">Invalid Value (No spaces or special characters allowed!)</div>
+                                </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="md-form">
-                                <input mdbInputDirective type="number" id="phone" class="form-control" name="phone"
+                                <input mdbInputDirective type="text" id="phone" class="form-control" name="phone"
                                     formControlName="number" [ngClass]="{'is-invalid':registerForm.get('number').touched && registerForm.get('number').invalid}">
                                 <label for="phone" class="">Phone Number *</label>
-                                <div class="invalid-feedback">
-                                    <div >Number is Required</div>
+                                <div *ngIf="registerForm.get('number').touched && registerForm.get('number').invalid"
+                                    class="invalid-feedback">
+                                    <div *ngIf="registerForm.get('number').errors.required">Phone Number is required</div>
+                                    <div *ngIf="registerForm.get('number').errors.pattern">Phone Number should be valid (XXXXXXXXXX,XXX-XXX-XXXX,(XXX)-(XXX)-(XXXX))</div>
                                 </div>
                             </div>
                             <div class="md-form">
@@ -44,7 +50,7 @@
                                 <div *ngIf="registerForm.get('email').touched && registerForm.get('email').invalid"
                                     class="invalid-feedback">
                                     <div *ngIf="registerForm.get('email').errors.required">Email is required</div>
-                                    <div *ngIf="registerForm.get('email').errors.email">Email should be valid</div>
+                                    <div *ngIf="registerForm.get('email').errors.email || registerForm.get('email').errors.pattern">Email should be valid</div>
                                 </div>
                             </div>
                             <div class="md-form">
@@ -69,8 +75,11 @@
                                         least 8 characters</div>
                                 </div>
                             </div>
-                            <button mdbBtn type="submit" color="indigo" mdbWavesEffect class="resgister_button" [disabled]="!registerForm.valid">Register</button>
+                            <button mdbBtn type="submit" color="indigo" mdbWavesEffect class="resgister_button" [disabled]="!registerForm.valid"  (click)="userRegisterSubmit()">Register</button>
                         </form>
+                        <div class="alert alert-success mt-25" role="alert" *ngIf=submitted >
+                                Profile Created! (Just a UI!)
+                              </div>
                         <p class="text-center mt-25">Already have an account? <a routerLink="/login">Login</a> here</p>
                     </div>
                 </mat-tab>
@@ -82,8 +91,10 @@
                                 <input mdbInputDirective type="text" id="orgName" class="form-control" name="orgName"
                                     formControlName="orgName" [ngClass]="{'is-invalid':orgRegisterForm.get('orgName').touched && orgRegisterForm.get('orgName').invalid}">
                                 <label for="orgName" class="">Organization Name *</label>
-                                <div class="invalid-feedback">
-                                    <div>Organization Name is Required</div>
+                                <div *ngIf="orgRegisterForm.get('orgName').touched && orgRegisterForm.get('orgName').invalid"
+                                    class="invalid-feedback">
+                                    <div *ngIf="orgRegisterForm.get('orgName').errors.required">Organization Name is required</div>
+                                    <div *ngIf="orgRegisterForm.get('orgName').errors.pattern">Invalid Value (No spaces or special characters allowed!)</div>
                                 </div>
                             </div>
                             <div class="md-form">
@@ -93,26 +104,26 @@
                                 <div *ngIf="orgRegisterForm.get('orgEmail').touched && orgRegisterForm.get('orgEmail').invalid"
                                     class="invalid-feedback">
                                     <div *ngIf="orgRegisterForm.get('orgEmail').errors.required">Email is required</div>
-                                    <div *ngIf="orgRegisterForm.get('orgEmail').errors.email">Email should be valid</div>
+                                    <div *ngIf="orgRegisterForm.get('orgEmail').errors.email || orgRegisterForm.get('orgEmail').errors.pattern">Email should be valid</div>
                                 </div>
                             </div>
 
                             <div class="md-form">
-                                <input mdbInputDirective type="number" id="orgPhone" class="form-control" name="orgPhone"
+                                <input mdbInputDirective type="text" id="orgPhone" class="form-control" name="orgPhone"
                                     formControlName="orgPhone" [ngClass]="{'is-invalid':orgRegisterForm.get('orgPhone').touched && orgRegisterForm.get('orgPhone').invalid}">
                                 <label for="orgPhone" class="">Phone Number *</label>
-                                <div class="invalid-feedback">
-                                    <div>Number is Required</div>
-                                    <!-- <div *ngIf="registerForm.get('number').errors.minlength">Enter a 10 digit Number</div>
-                        <div>Enter a valid Number</div> -->
+                                <div *ngIf="orgRegisterForm.get('orgPhone').touched && orgRegisterForm.get('orgPhone').invalid"
+                                    class="invalid-feedback">
+                                    <div *ngIf="orgRegisterForm.get('orgPhone').errors.required">Phone Number is required</div>
+                                    <div *ngIf="orgRegisterForm.get('orgPhone').errors.pattern">Phone Number should be valid (XXXXXXXXXX,XXX-XXX-XXXX,(XXX)-(XXX)-(XXXX))</div>
                                 </div>
                             </div>
                             <div class="md-form">
                                 <input mdbInputDirective type="text" id="orgRegNo" class="form-control" name="orgRegNo"
                                     formControlName="orgRegNo" [ngClass]="{'is-invalid':orgRegisterForm.get('orgRegNo').touched && orgRegisterForm.get('orgRegNo').invalid}">
-                                <label for="orgRegNo" class="">Registeration Number *</label>
+                                <label for="orgRegNo" class="">Registration Number *</label>
                                 <div class="invalid-feedback">
-                                    <div>Registeration Number
+                                    <div>Registration Number
                                         is Required</div>
                                 </div>
                             </div>
@@ -145,7 +156,10 @@
                                         have at least 8 characters</div>
                                     </div>
                             </div>
-                            <button mdbBtn type="submit" color="indigo" mdbWavesEffect class="resgister_button" [disabled]="!orgRegisterForm.valid">Register</button>
+                            <button mdbBtn type="submit" color="indigo" mdbWavesEffect class="resgister_button" [disabled]="!orgRegisterForm.valid" (click)="userRegisterSubmit()">Register</button>
+                            <div class="alert alert-success mt-25" role="alert" *ngIf=submitted >
+                                    Profile Created! (Just a UI!)
+                                  </div>
                             <p class="text-center mt-25">Already have an account? <a routerLink="/login">Login</a> here</p>
                         </form>
                     </div>
