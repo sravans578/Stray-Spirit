@@ -1,0 +1,56 @@
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-light white">
+  <mdb-navbar-brand>
+    <a class="navbar-brand" routerLink="/">
+        <img src="../assets/images/StraySpiritLogo.PNG" height="45" alt="">
+    </a>
+</mdb-navbar-brand>
+  <links> 
+      <ul class="navbar-nav mr-auto">
+          <li class="nav-item dropdown">
+              <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>Find a Pet<span class="caret"></span></a>
+              <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
+                <a class="dropdown-item waves-light" mdbWavesEffect routerLink="/login">Dog Breeds</a>
+                <div class="divider dropdown-divider"></div>
+                <a class="dropdown-item waves-light" mdbWavesEffect routerLink="/register">Cat Breeds</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown" dropdown>
+            <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+                Resources<span class="caret"></span></a>
+            <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
+                <a class="dropdown-item waves-light" mdbWavesEffect routerLink="/login">Why Adopt a Cat?</a>
+                <div class="divider dropdown-divider"></div>
+                <a class="dropdown-item waves-light" mdbWavesEffect routerLink="/register">Why Adopt a Dog?</a>
+                <div class="divider dropdown-divider"></div>
+                <a class="dropdown-item waves-light" mdbWavesEffect routerLink="/rescue">Why Rescue?</a>
+            </div>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link waves-light" mdbWavesEffect routerLink="/inventory">Shop</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link waves-light" mdbWavesEffect routerLink="/about">About</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link waves-light" mdbWavesEffect routerLink="/contact">Contact Us</a>
+          </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link waves-light" mdWavesEffect>
+            <i class="fas fa-cart-arrow-down fa-lg"></i>
+        </a>
+      </li>
+      <li class="nav-item dropdown" dropdown>
+        <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+            <i class="fas fa-user fa-lg"></i></a>
+        <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
+            <a class="dropdown-item waves-light" mdbWavesEffect routerLink="/login">Login</a>
+            <div class="divider dropdown-divider"></div>
+            <a class="dropdown-item waves-light" mdbWavesEffect routerLink="/register">Register</a>
+        </div>
+    </li>
+  </ul>
+  </links>
+</mdb-navbar>
+<router-outlet></router-outlet>

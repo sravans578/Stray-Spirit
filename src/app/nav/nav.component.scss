@@ -1,0 +1,15 @@
+.dropdown-menu{
+    min-width: 9rem;
+}
+.dropdown-menu dropdown dropdown-primary{
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-menu dropdown dropdown-primary a:hover {background-color: #ddd;}
+
+.nav-item dropdown:hover .dropdown-menu dropdown dropdown-primary {display: block;}

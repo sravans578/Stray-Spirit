@@ -1,0 +1,151 @@
+<div class="container">
+    <mat-tab-group  class="mt-25"> <!--https://material.angular.io/components/tabs/examples-->
+        <mat-tab label="Personal">
+          <div class="container">
+              <h2 class="text-center mt-25">Register as a user</h2>
+          <form name="registerForm" [formGroup]="registerForm">
+            <div class="row">
+            <div class="col-sm">
+              <div class="md-form">
+                    <input mdbInputDirective type="text" id="firstName" class="form-control" name="firstName" formControlName="firstName" [ngClass]="{'is-invalid':registerForm.get('firstName').touched && registerForm.get('firstName').invalid}">
+                    <label for="firstName">First Name *</label>
+                  <div class="invalid-feedback">
+                    <div class="errorMessage">Enter a valid name</div>
+                  </div>
+                  </div>
+            </div> 
+            <div class="col-sm">
+              <div class="md-form">
+          <input mdbInputDirective type="text" id="lastName" class="form-control" name="lastName" formControlName="lastName" [ngClass]="{'is-invalid':registerForm.get('lastName').touched && registerForm.get('lastName').invalid}">
+                    <label for="lastName">Last Name *</label>
+                  <div class="invalid-feedback">
+                    <div class="errorMessage">Enter a valid name</div>
+                  </div>
+                  </div>
+              
+            </div>
+            </div>
+                <div class="md-form">
+                  <input mdbInputDirective type="number" id="phone" class="form-control" name="phone" formControlName="phoneNumber" [ngClass]="{'is-invalid':registerForm.get('phoneNumber').touched && registerForm.get('phoneNumber').invalid}">
+                  <label for="phone" >Phone Number *</label>
+                  <div class="invalid-feedback">
+                    <div class="errorMessage">Number invalid</div>
+                  </div>
+                </div>
+              <div class="md-form">
+                  <input mdbInputDirective type="email" id="email" class="form-control" name="email" formControlName="email" [ngClass]="{'is-invalid':registerForm.get('email').touched && registerForm.get('email').invalid}">
+                  <label for="email">E-mail *</label>
+                  <div class="invalid-feedback">
+                    <div class="errorMessage">Enter a valid E-mail</div>
+                  </div>
+                </div>
+              <div class="md-form">
+          <input mdbInputDirective type="password" id="password" class="form-control" name="password" formControlName="password" [ngClass]="{'is-invalid':registerForm.get('password').touched && registerForm.get('password').invalid}">
+                    <label for="password">Password *</label>
+                    <div *ngIf="registerForm.get('password').touched && registerForm.get('password').invalid"class="invalid-feedback">
+                    <div *ngIf="registerForm.get('password').errors.required">Password is required</div>
+                    <div *ngIf="registerForm.get('password').errors.minlength">Password should have at
+                    least 8 characters</div>
+                  </div>
+                  </div>
+                  <div class="md-form">
+           <input mdbInputDirective type="password" id="repassword" class="form-control" name="repassword" formControlName="repassword" [ngClass]="{'is-invalid':registerForm.get('repassword').touched && registerForm.get('repassword').invalid}">
+                      <label for="re-password">Re-type Password *</label>
+            <div *ngIf="registerForm.get('repassword').touched && registerForm.get('repassword').invalid"class="invalid-feedback">
+                    <div *ngIf="registerForm.get('repassword').errors.required">Password is required</div>
+                    <div *ngIf="registerForm.get('repassword').errors.minlength">Password should have at
+                    least 8 characters</div>
+                  </div>
+                  </div>  
+            <button mdbBtn type="submit" color="default" mdbWavesEffect class="resgister_button">Register</button>
+          </form>
+          <p class="text-center mt-25">Already have an account? <a routerLink="/login">Login</a> here</p>
+          </div>
+<!-- End of Personal registeration-->
+        </mat-tab>
+        <mat-tab label="Organization">
+          <div class="container">
+              <h2 class="text-center mt-25">Register as an Organisation</h2>
+          <form name="registerForm" [formGroup]="registerForm">
+                <div class="md-form">
+                    <input mdbInputDirective type="text" id="firstName" class="form-control" name="firstName" formControlName="firstName" [ngClass]="{'is-invalid':registerForm.get('firstName').touched && registerForm.get('firstName').invalid}">
+                    <label for="firstName">Organisation Name *</label>
+                  <div class="invalid-feedback">
+                    <div class="errorMessage">Enter a valid name</div>
+                  </div>
+                  </div>
+                <div class="md-form">
+                  <input mdbInputDirective type="number" id="phone" class="form-control" name="phone" formControlName="phoneNumber" [ngClass]="{'is-invalid':registerForm.get('phoneNumber').touched && registerForm.get('phoneNumber').invalid}">
+                  <label for="phone" >Phone Number *</label>
+                  <div class="invalid-feedback">
+                    <div class="errorMessage">Number invalid</div>
+                  </div>
+                </div>
+              <div class="md-form">
+                  <input mdbInputDirective type="email" id="email" class="form-control" name="email" formControlName="email" [ngClass]="{'is-invalid':registerForm.get('email').touched && registerForm.get('email').invalid}">
+                  <label for="email">E-mail *</label>
+                  <div class="invalid-feedback">
+                    <div class="errorMessage">Enter a valid E-mail</div>
+                  </div>
+                </div>
+          <div class="row">
+            <div class="col-sm">
+                <div class="md-form">
+                    <input mdbInputDirective type="text" id="address" class="form-control" name="address"> 
+                    <label for="address">Address Line 1 *</label>
+                  </div>
+            </div>
+            <div class="col-sm">
+                <div class="md-form">
+                    <input mdbInputDirective type="text" id="address" class="form-control" name="address">
+                    <label for="address">Address Line 2 *</label>
+                  </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm">
+                <div class="md-form">
+                    <input mdbInputDirective type="text" id="address" class="form-control" name="address">
+                    <label for="address">City *</label>
+                  </div>
+            </div>
+            <div class="col-sm">
+                <div class="md-form">
+                    <input mdbInputDirective type="text" id="address" class="form-control" name="address">
+                    <label for="address">Province *</label>
+                  </div>
+            </div>
+            <div class="col-sm">
+                <div class="md-form">
+                    <input mdbInputDirective type="text" id="address" class="form-control" name="address">
+                    <label for="address" class="">Pin Code *</label>
+                  </div>
+            </div>
+          </div>
+              <div class="md-form">
+          <input mdbInputDirective type="password" id="password" class="form-control" name="password" formControlName="password" [ngClass]="{'is-invalid':registerForm.get('password').touched && registerForm.get('password').invalid}">
+                    <label for="password">Password *</label>
+                    <div *ngIf="registerForm.get('password').touched && registerForm.get('password').invalid"class="invalid-feedback">
+                    <div *ngIf="registerForm.get('password').errors.required">Password is required</div>
+                    <div *ngIf="registerForm.get('password').errors.minlength">Password should have at
+                    least 8 characters</div>
+                  </div>
+                  </div>
+                  <div class="md-form">
+           <input mdbInputDirective type="password" id="repassword" class="form-control" name="repassword" formControlName="repassword" [ngClass]="{'is-invalid':registerForm.get('repassword').touched && registerForm.get('repassword').invalid}">
+                      <label for="re-password">Re-type Password *</label>
+            <div *ngIf="registerForm.get('repassword').touched && registerForm.get('repassword').invalid"class="invalid-feedback">
+                    <div *ngIf="registerForm.get('repassword').errors.required">Password is required</div>
+                    <div *ngIf="registerForm.get('repassword').errors.minlength">Password should have at
+                    least 8 characters</div>
+                    <div *ngIf="registerForm.get('repassword').errors.maxlength">Password should not exceed
+                   12 characters</div>
+                  </div>
+                  </div>  
+            <button mdbBtn type="submit" color="default" mdbWavesEffect class="resgister_button">Register</button>
+          </form>
+          <p class="text-center mt-25">Already have an account? <a routerLink="/login">Login</a> here</p>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+</div>

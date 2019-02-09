@@ -1,0 +1,20 @@
+button {
+  width: 10%;
+  background-color: DodgerBlue;
+  border: none;
+  color: white;
+  padding: 0px 15px;
+  text-align: center;
+  font-size: 16px;
+  margin: 4px 2px;
+  border-radius: 12px;
+}
+
+input.counter-danger ~ span.text-danger{
+    display: none !important;
+}
+
+input.counter-success ~ span.text-success{
+  display: none !important;
+}
+
