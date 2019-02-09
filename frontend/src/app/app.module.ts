@@ -27,9 +27,13 @@ import { MatButtonModule, MatIconModule } from '@angular/material';
 import { ProfileInventoryComponent } from './profile-inventory/profile-inventory.component';
 import { ProductDetailPageComponent } from './product-detail-page/product-detail-page.component';
 
+import { LoginDheerajComponent } from './login-dheeraj/login-dheeraj.component';
+
+
 import { ForgotComponent } from './forgot-pwd/forgot.component';
 
 import { RegistrationAdityaComponent } from './registration-aditya/registration-aditya.component';
+
 
 
 // import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap'
@@ -51,8 +55,12 @@ import { RegistrationAdityaComponent } from './registration-aditya/registration-
     WhyadoptdogComponent,
     PetProfilePageComponent,
     ProductDetailPageComponent,
+
+    LoginDheerajComponent,
+
     ForgotComponent,
     RegistrationAdityaComponent
+
 
   ],
   imports: [

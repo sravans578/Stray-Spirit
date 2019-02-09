@@ -1,6 +1,6 @@
-.pet-list-1
+.product-list-1
 {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     text-align:center;
     padding:0 0 72px;
     position:relative;
@@ -9,8 +9,7 @@
 .product-list-header
 {
     text-align: center;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-weight: 900;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 60px;
     color: black;
 }
@@ -29,13 +28,7 @@ img
     margin-bottom: 30px;
 }
 
-// @media (max-width: 768px)
-// {.search_box
-//      {
-//     width: 95%;
-// }
 
-// }
 
 .mb-4 input[type=text]:focus:not([readonly]) 
 {
@@ -46,4 +39,20 @@ img
 .mb-4
 {
     margin: 40px;
+}
+
+// media query for responsiveness
+@media (max-width: 714px)
+{
+    .product-list-header
+    {
+        font-size: 20px;
+    }
+}
+@media (min-width: 715px) and (max-width: 1050px)
+{
+    .product-list-header
+    {
+        font-size: 40px;
+    }
 }
