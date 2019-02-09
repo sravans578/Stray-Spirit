@@ -26,6 +26,8 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MatButtonModule, MatIconModule } from '@angular/material';
 import { ProfileInventoryComponent } from './profile-inventory/profile-inventory.component';
 import { ProductDetailPageComponent } from './product-detail-page/product-detail-page.component';
+import { RegistrationAdityaComponent } from './registration-aditya/registration-aditya.component';
+
 // import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap'
 @NgModule({
   declarations: [
@@ -44,7 +46,8 @@ import { ProductDetailPageComponent } from './product-detail-page/product-detail
     PetProfilePageComponent,
     WhyadoptdogComponent,
     PetProfilePageComponent,
-    ProductDetailPageComponent
+    ProductDetailPageComponent,
+    RegistrationAdityaComponent
   ],
   imports: [
     BrowserModule,
@@ -60,6 +63,7 @@ import { ProductDetailPageComponent } from './product-detail-page/product-detail
     LayoutModule,
     MatButtonModule,
     MatIconModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
