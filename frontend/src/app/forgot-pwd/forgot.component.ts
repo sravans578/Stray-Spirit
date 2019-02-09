@@ -7,9 +7,9 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./forgot.component.scss']
 })
 export class ForgotComponent implements OnInit {
-    
+   /**Created boolean variable */ 
   submitted:boolean = false;
-  pwdForgotForm = new FormGroup({
+    pwdForgotForm = new FormGroup({
     email: new FormControl('',[Validators.required,Validators.email])
     
   })
@@ -18,7 +18,7 @@ export class ForgotComponent implements OnInit {
 
   ngOnInit() {
   }
-    
+    /** Function will be triggered onclick */
     pwdForgotbtn()
     {
       this.submitted=true;
