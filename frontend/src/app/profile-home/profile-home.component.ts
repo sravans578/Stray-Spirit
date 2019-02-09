@@ -19,7 +19,7 @@ export class ProfileHomeComponent implements OnInit {
 
   namePattern: string = '^([a-zA-Z_\-]*)$';
   emailPattern: string = '^[a-zA-Z0-9*_.-]+@[a-zA-Z]+[.][a-zA-Z]{2,3}$';
-  phoneNumberPattern: string = '[0-9]{3}-[0-9]{3}-[0-9]{4}|[0-9]{10}';
+  phoneNumberPattern: string = '^[\(][0-9]{3}[\)][\-][\(][0-9]{3}[\)][\-][\(][0-9]{4}[\)]$|[0-9]{10}|[0-9]{3}-[0-9]{3}-[0-9]{4}';
   datePattern: string = '^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$';
 
   updateProfileForm = new FormGroup({
