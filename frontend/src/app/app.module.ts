@@ -26,7 +26,12 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MatButtonModule, MatIconModule } from '@angular/material';
 import { ProfileInventoryComponent } from './profile-inventory/profile-inventory.component';
 import { ProductDetailPageComponent } from './product-detail-page/product-detail-page.component';
+<<<<<<< HEAD
 import { ForgotComponent } from './forgot-pwd/forgot.component';
+=======
+import { RegistrationAdityaComponent } from './registration-aditya/registration-aditya.component';
+
+>>>>>>> cdc0e3f3d5add57e0af7f9a0dafe9634f6f4a79d
 // import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap'
 @NgModule({
   declarations: [
@@ -46,7 +51,11 @@ import { ForgotComponent } from './forgot-pwd/forgot.component';
     WhyadoptdogComponent,
     PetProfilePageComponent,
     ProductDetailPageComponent,
+<<<<<<< HEAD
     ForgotComponent
+=======
+    RegistrationAdityaComponent
+>>>>>>> cdc0e3f3d5add57e0af7f9a0dafe9634f6f4a79d
   ],
   imports: [
     BrowserModule,
@@ -62,6 +71,7 @@ import { ForgotComponent } from './forgot-pwd/forgot.component';
     LayoutModule,
     MatButtonModule,
     MatIconModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
