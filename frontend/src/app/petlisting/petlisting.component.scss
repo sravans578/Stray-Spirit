@@ -1,6 +1,6 @@
-.pet-list-1
+.pet-lists
 {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     text-align:center;
     padding:0 0 72px;
     position:relative;
@@ -39,4 +39,20 @@
 .mb-4
 {
     margin: 40px;
+}
+
+// media query for responsiveness
+@media (max-width: 714px)
+{
+    .pet-list-header
+    {
+        font-size: 20px;
+    }
+}
+@media (min-width: 715px) and (max-width: 1050px)
+{
+    .pet-list-header
+    {
+        font-size: 40px;
+    }
 }
