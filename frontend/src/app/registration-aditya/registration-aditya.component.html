@@ -10,7 +10,7 @@
         &nbsp;                       
       </div>
       <div class="col-lg-6 col-md-6 col-sm-6 center" id="Row2Col2">
-         <div class="error" id="errorDiv">Please resolve the errors first..!!!</div>
+        &nbsp;
         </div>
         <div class="col-lg-3 col-md-3 col-sm-3" id="Row2Col3">
             &nbsp;
@@ -54,7 +54,7 @@
                 <span class="input-group-text"><i class="fa fa-phone"></i></span>
               </div>
               <input type="text" class="form-control" formControlName="numberInput" id="numberInput" placeholder="Enter your phone number" [ngClass]="{'is-invalid':
-              userForm.get('numberInput').touched && userForm.get('numberInput').invalid}" maxlength="10">
+              userForm.get('numberInput').touched && userForm.get('numberInput').invalid}" maxlength="15">
               <div class="invalid-feedback">
                 <div *ngIf="userForm.get('numberInput').errors.required">Number is required to be entered...!!</div>
                 <div *ngIf="userForm.get('numberInput').errors.pattern">Entered number is invalid:<ul><li>Please enter a 10 digit number.</li><li>Please enter a number without any alphabets and special characters.</li><li>Valid numbers: 9024033410 , 902-403-3410, (902)-(403)-(3410)</li> </ul></div>
@@ -106,7 +106,7 @@
             </div>
           </div>
           
-          <button  class="btn btn-primary btn-lg" (click)="onSubmit()">Register</button>
+          <button class="btn btn-primary">Register</button>
        
            
           </form>

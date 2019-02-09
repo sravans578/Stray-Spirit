@@ -18,7 +18,7 @@
     margin-top:25px;
 }
 .btn{
-    width: 33%;
+    
     font-size: 16px;
     font-weight: 500;
     color: #000000;
@@ -31,45 +31,68 @@
     padding: 20px;
 }
 
+label{
+    font-weight: 400;
+    font-size:20px;
+}
+
+.invalid-feedback{
+    font-size: 15px;
+    font-weight: 400;
+}
+
 .center{
     text-align: center;
     
 }
 
 h2{
-    margin-top:15px;
+    margin-top:10px;
     font-weight: bold;
     font-size: 80px;
     font-family: 'simplificasimplifica'; 
 }
 
-.error{
-    border-width: 1px;
-    border-color: #FF0000;
-    border-radius: 8px;
-    border-style: solid;
-    padding: 10px;
-    font-weight: 400;
-    font-size: 20px;
-    color:#FF0000;
-    display: none;
+
+
+@media(max-width:369px){
+    h2{
+        margin-top:10px;
+        font-weight: bold;
+        font-size: 40px;
+        font-family: 'simplificasimplifica'; 
+    }
+
+    .invalid-feedback{
+        font-size: 10px;
+        font-weight: 400;
+    }
+    label{
+        font-weight: 400;
+        font-size:15px;
+    }
+    #Row3{
+        margin-top:0px;
+    }
+}
+
+@media(min-width:370px) and (max-width:499px){
+    h2{
+        margin-top:10px;
+        font-weight: bold;
+        font-size: 50px;
+        font-family: 'simplificasimplifica'; 
+    }
 }
 
 
-
-@media (min-width:767) and (max-width:1067){
-    .btn{
-        width: 20%;
-        font-size: 10px;
-        font-weight: 500;
-        color: #000000;
-        padding: 5px;
-    }
-
+@media(min-width:500px) and (max-width:570px){
     h2{
-        margin-top:15px;
+        margin-top:10px;
         font-weight: bold;
-        font-size: 80px;
+        font-size: 70px;
         font-family: 'simplificasimplifica'; 
     }
+    
+   
 }
