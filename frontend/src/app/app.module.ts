@@ -33,6 +33,7 @@ import { LoginDheerajComponent } from './login-dheeraj/login-dheeraj.component';
 import { ForgotComponent } from './forgot-pwd/forgot.component';
 
 import { RegistrationAdityaComponent } from './registration-aditya/registration-aditya.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 
@@ -55,13 +56,10 @@ import { RegistrationAdityaComponent } from './registration-aditya/registration-
     WhyadoptdogComponent,
     PetProfilePageComponent,
     ProductDetailPageComponent,
-
+    RegistrationAdityaComponent,
+    FooterComponent,
     LoginDheerajComponent,
-
-    ForgotComponent,
-    RegistrationAdityaComponent
-
-
+    ForgotComponent
   ],
   imports: [
     BrowserModule,
