@@ -27,11 +27,20 @@ import { MatButtonModule, MatIconModule } from '@angular/material';
 import { ProfileInventoryComponent } from './profile-inventory/profile-inventory.component';
 import { ProductDetailPageComponent } from './product-detail-page/product-detail-page.component';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { ForgotComponent } from './forgot-pwd/forgot.component';
 =======
 import { RegistrationAdityaComponent } from './registration-aditya/registration-aditya.component';
 
 >>>>>>> cdc0e3f3d5add57e0af7f9a0dafe9634f6f4a79d
+=======
+
+import { ForgotComponent } from './forgot-pwd/forgot.component';
+
+import { RegistrationAdityaComponent } from './registration-aditya/registration-aditya.component';
+
+
+>>>>>>> 89bfa5e7ea1070153a1f039100f33098568e3c6a
 // import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap'
 @NgModule({
   declarations: [
@@ -52,10 +61,16 @@ import { RegistrationAdityaComponent } from './registration-aditya/registration-
     PetProfilePageComponent,
     ProductDetailPageComponent,
 <<<<<<< HEAD
+<<<<<<< HEAD
     ForgotComponent
 =======
     RegistrationAdityaComponent
 >>>>>>> cdc0e3f3d5add57e0af7f9a0dafe9634f6f4a79d
+=======
+    ForgotComponent,
+    RegistrationAdityaComponent
+
+>>>>>>> 89bfa5e7ea1070153a1f039100f33098568e3c6a
   ],
   imports: [
     BrowserModule,
