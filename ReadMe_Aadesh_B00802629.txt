@@ -1,11 +1,15 @@
 Readme file for the Work done by Aadesh Shah (B00802629) for Assignment 2:
 
+Note: Since we are using Angular 7 and Material design for it, W3 validations won't be possible by just copy-pasting the HTML and CSS source code as Angular and Material design provides a lot of different selectors and dependencies on HTML structure. We have ensured that we have followed the W3 standards for creating web pages
+
 Pages Developed by Me - 
 
 Login Page (path - http://localhost:4200/login),
 Register Page (path - http://localhost:4200/register),
 Profile Page (path - http://localhost:4200/profile),
 Profile Inventory Page (path - http://localhost:4200/profile/inventory)
+
+Please check the Installation_steps.pdf file provided in the zip and on Git to compile and Run my application
 
 Login Page - 
 
@@ -38,5 +42,6 @@ User can edit the profile by clicking on edit icon and also update the profile p
 Profile Inventory Page -
 
 The profile inventory page has two functionalities - to view my inventory and to add a product to the inventory and ultimately on the shop page. Thus again used the angular material tab.
+
 
 Also, I am responsible to create the Navigation bar for the website, the footer and Not Found Page. The Logo used is the work in progress logo for the application provided by the agency with whom I'm working.
