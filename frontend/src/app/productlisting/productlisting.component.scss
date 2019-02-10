@@ -1,0 +1,63 @@
+/**Developer - Dheeraj Varshney B00808467 dh301823@dal.ca */
+.product-list-1
+{
+    font-family: Arial, Helvetica, sans-serif;
+    text-align:center;
+    padding:0 0 72px;
+    position:relative;
+ 
+}
+.product-list-header
+{
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 60px;
+    color: black;
+}
+
+img
+{
+    width: 200px;
+    height: 200px;
+}
+
+.search-box
+{
+    margin-left: 100px;;
+    margin-right: 100px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+
+
+.mb-4 input[type=text]:focus:not([readonly]) 
+{
+    border: 1px solid black;
+    box-shadow: 0 0 0 1px black;
+    
+}
+.mb-4
+{
+    margin: 40px;
+}
+
+img:hover{
+    cursor:pointer;
+}
+
+// media query for responsiveness
+@media (max-width: 714px)
+{
+    .product-list-header
+    {
+        font-size: 20px;
+    }
+}
+@media (min-width: 715px) and (max-width: 1050px)
+{
+    .product-list-header
+    {
+        font-size: 40px;
+    }
+}

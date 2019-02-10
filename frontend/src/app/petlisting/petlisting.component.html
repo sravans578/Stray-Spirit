@@ -1,0 +1,40 @@
+<!--Developer - Dheeraj Varshney B00808467 dh301823@dal.ca-->
+<!DOCTYPE html>
+<head>
+    <title>Pets Listing Page</title>
+  </head>
+<div class="container-fluid mt-85">
+  <h2 class="pet-list-header">Pets Available For Adoption Near You</h2>
+  <!-- Creating Search box -->
+  <div class="mb-4">
+    <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+  </div>
+
+  <div class="col-md">
+    <!-- Creating Pets Grid-->
+    <div class="pet-lists">
+
+
+      <div class="row">
+        <div class="col-md-4" *ngFor="let p of pets; let i = index">
+          <div class="petimage1">
+            <!-- Using index of images to display -->
+            <!-- https://angular.io/guide/displaying-data -->
+            <img src="../assets/images/{{pets[i].petImage}}" alt="{{pets[i].petName}}" class="img-fluid" (click)="onClick()">
+
+            <h6 class="name">
+              <a href="#">
+                <span>{{pets[i].petName}}</span>
+              </a>
+            </h6>
+            <p class="price-container">
+              <span>${{pets[i].petPrice}}</span>
+            </p>
+            <p>Lorem ipsum </p>
+            <a href="javascript:void(0);" class="btn btn-info" (click)="onClick()">More info</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
