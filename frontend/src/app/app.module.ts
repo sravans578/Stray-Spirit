@@ -38,6 +38,9 @@ import { RegistrationAdityaComponent } from './registration-aditya/registration-
 
 
 
+
+
+
 // import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap'
 @NgModule({
   declarations: [
@@ -60,7 +63,8 @@ import { RegistrationAdityaComponent } from './registration-aditya/registration-
     ForgotComponent,
     RegistrationAdityaComponent
 
-],
+
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -16,7 +16,6 @@ import {ProductDetailPageComponent} from './product-detail-page/product-detail-p
 import { WhyadoptdogComponent } from './whyadoptdog/whyadoptdog.component';
 
 import { ForgotComponent} from './forgot-pwd/forgot.component';
-
 import {RegistrationAdityaComponent} from './registration-aditya/registration-aditya.component';
 
 
@@ -35,16 +34,10 @@ const routes: Routes = [
   {path:'registration-aditya',component:RegistrationAdityaComponent},
 
 
-  {path: 'forgot-pwd',component:ForgotComponent},
-
-  {path:'registration-aditya',component:RegistrationAdityaComponent},
+  
 
 
-
-  {path: 'forgot-pwd',component:ForgotComponent},
-
-  {path:'registration-aditya',component:RegistrationAdityaComponent},
-
+  
 
   // Implemented nested routes https://angular-2-training-book.rangle.io/handout/routing/child_routes.html
   { path:'profile', 
