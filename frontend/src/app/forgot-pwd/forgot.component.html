@@ -1,7 +1,7 @@
 <!--Developer - Dheeraj Varshney B00808467 dh301823@dal.ca-->
 <div class="container-fluid mt-85">
   
-  <h2 class = "header2 mt-25" >Forgot Password</h2>
+  <h2 class = "header2" >Forgot Password</h2>
     <form class="text-center border border-light p-5" name = "form" [formGroup]="pwdForgotForm">
   
     
@@ -12,7 +12,7 @@
         <div *ngIf = "pwdForgotForm.get('email').errors.email ">Email should be a valid address</div>
       </div>
     </div>
-      <button mdbBtn color="info"  class="submitbtn" (click)="pwdForgotbtn()" [disabled]="!pwdForgotForm.valid" type="submit">Submit</button>
+      <button mdbBtn color="info" class="submitbtn" (click)="pwdForgotbtn()" [disabled]="!pwdForgotForm.valid" type="submit">Submit</button>
       <div class="alert alert-success" role="alert" *ngIf=submitted >
           A activation link has been set on your email.
         </div>

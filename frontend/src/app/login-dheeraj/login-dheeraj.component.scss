@@ -8,7 +8,7 @@ padding: 20px;
 
 .form-control,.my 
 {
-    width: 50%;
+    
  margin: auto;
  
     
@@ -26,6 +26,15 @@ padding: 20px;
     text-align: center;
     margin-top: 30px;
 
+}
+
+// media query for responsiveness
+@media (max-width: 714px)
+{
+    #Password,#Email,.header2
+    {
+        font-size: 20px;
+    }
 }
 
 
