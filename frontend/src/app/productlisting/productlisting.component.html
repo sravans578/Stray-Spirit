@@ -19,7 +19,7 @@
         <div class="col-md-4" *ngFor="let p of products; let i = index">
           <div class="petimage1">
             
-            <img src="../assets/images/Productspetimages/{{products[i].productImage}}" alt="{{products[i].productName}}" class="img-fluid">
+            <img src="../assets/images/Productspetimages/{{products[i].productImage}}" alt="{{products[i].productName}}" class="img-fluid" (click)="onClick()">
 
             <h6 class="name">
               <a href="#">

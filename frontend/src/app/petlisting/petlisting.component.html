@@ -19,7 +19,7 @@
           <div class="petimage1">
             <!-- Using index of images to display -->
             <!-- https://angular.io/guide/displaying-data -->
-            <img src="../assets/images/{{pets[i].petImage}}" alt="{{pets[i].petName}}" class="img-fluid">
+            <img src="../assets/images/{{pets[i].petImage}}" alt="{{pets[i].petName}}" class="img-fluid" (click)="onClick()">
 
             <h6 class="name">
               <a href="#">

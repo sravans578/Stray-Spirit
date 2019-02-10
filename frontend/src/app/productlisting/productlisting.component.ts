@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import {Router} from "@angular/router";
 @Component({
   selector: 'app-productlisting',
   templateUrl: './productlisting.component.html',
@@ -50,6 +50,11 @@ export class ProductlistingComponent implements OnInit {
       }
 
     ];
+  }
+
+  onClick(){
+    window.location.href = '/product-detail-page';
+    // this.router.navigate(['']);
   }
 
 }

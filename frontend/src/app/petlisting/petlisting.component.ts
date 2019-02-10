@@ -51,6 +51,10 @@ export class PetlistingComponent implements OnInit {
 
   ];
 }
+
+onClick(){
+  window.location.href = '/pet-profile-page';
+}
 }
 
 
