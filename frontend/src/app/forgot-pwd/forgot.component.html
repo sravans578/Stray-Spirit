@@ -2,14 +2,14 @@
 <div class="container-fluid mt-85">
   
   <h2 class = "header2 mt-25" >Forgot Password</h2>
-    <form class="text-center border border-light p-5" name = "form" [formGroup]="form">
+    <form class="text-center border border-light p-5" name = "form" [formGroup]="pwdForgotForm">
   
     
       <div class = "form group" >
-      <input type="email" id="Email" class="form-control md" placeholder="Email" formControlName = "email" [ngClass] = "{'is-invalid': form.get('email').touched && form.get('email').invalid}"/>
-      <div *ngIf = "form.get('email').touched && form.get('email').invalid" class="invalid-feedback">
-        <div *ngIf = "form.get('email').errors.required">Email name is required</div>
-        <div *ngIf = "form.get('email').errors.email ">Email should be a valid address</div>
+      <input type="email" id="Email" class="form-control md" placeholder="Email" formControlName = "email" [ngClass] = "{'is-invalid': pwdForgotForm.get('email').touched && pwdForgotForm.get('email').invalid}"/>
+      <div *ngIf = "pwdForgotForm.get('email').touched && pwdForgotForm.get('email').invalid" class="invalid-feedback">
+        <div *ngIf = "pwdForgotForm.get('email').errors.required">Email name is required</div>
+        <div *ngIf = "pwdForgotForm.get('email').errors.email ">Email should be a valid address</div>
       </div>
     </div>
       <button mdbBtn color="info"  class="submitbtn" (click)="pwdForgotbtn()" type="submit">Submit</button>

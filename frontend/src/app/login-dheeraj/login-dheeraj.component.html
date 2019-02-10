@@ -1,5 +1,6 @@
 <!-- Default form login -->
 <div class="container-fluid mt-85">
+  <h2 class = "header2">Sign In </h2>
   <form class="text-center border border-light p-5" name = "form" [formGroup]="form">
 
    <!-- Email -->
@@ -20,12 +21,12 @@
   </div>
       <div class = "forgotmargin">
         <!-- Forgot password -->
-        <a routerLink = "/forgotDheeraj">Forgot password?</a>
+        <a routerLink = "/forgot-pwd">Forgot password?</a>
       </div>
    
 
     <!-- Sign in button -->
-    <button mdbBtn color="info"  class="my" type="submit">Login</button>
+    <button mdbBtn color="info"  class="my" type="submit" [disabled]="!form.valid" (click)="onClick()" >Login</button>
 
     <!-- Register -->
     <div class = "register">
