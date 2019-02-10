@@ -1,0 +1,40 @@
+<!--Developer - Dheeraj Varshney B00808467 dh301823@dal.ca-->
+<!DOCTYPE html>
+
+<head>
+  <title>Pet products Listing Page</title>
+</head>
+<div class="container-fluid mt-85">
+  <h2 class="product-list-header">Pet Products</h2>
+  <div class="mb-4">
+    <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+  </div>
+
+  <div class="col-md">
+    <!-- Product Grid 1-->
+    <div class="product-list-1">
+
+      <!-- Using index of images to display -->
+      <!-- https://angular.io/guide/displaying-data -->
+      <div class="row">
+        <div class="col-md-4" *ngFor="let p of products; let i = index">
+          <div class="petimage1">
+            
+            <img src="../assets/images/Productspetimages/{{products[i].productImage}}" alt="{{products[i].productName}}" class="img-fluid" >
+
+            <h6 class="name">
+              <a href="#">
+                <span>{{products[i].productName}}</span>
+              </a>
+            </h6>
+            <p class="price-container">
+              <span>${{products[i].productPrice}}</span>
+            </p>
+            <p>Lorem ipsum </p>
+            <a href="javascript:void(0);" class="btn btn-info" (click)="onClick()">More info</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
