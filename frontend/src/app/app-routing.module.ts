@@ -14,12 +14,16 @@ import { ProfileInventoryComponent } from './profile-inventory/profile-inventory
 import { ProfileNavComponent } from './profile-nav/profile-nav.component';
 import {ProductDetailPageComponent} from './product-detail-page/product-detail-page.component';
 import { WhyadoptdogComponent } from './whyadoptdog/whyadoptdog.component';
+import { ContactComponent } from './contact/contact.component';
+
 
 import { LoginDheerajComponent } from './login-dheeraj/login-dheeraj.component';
 
 
 import { ForgotComponent} from './forgot-pwd/forgot.component';
 import {RegistrationAdityaComponent} from './registration-aditya/registration-aditya.component';
+import { RegisterAparnaComponent } from './register_aparna/register_aparna.component';
+import { RescueComponent } from './rescue/rescue.component'; 
 
 
 const routes: Routes = [
@@ -31,8 +35,11 @@ const routes: Routes = [
   { path: 'pet-profile-page',component: PetProfilePageComponent},
   { path:'why-adopt-cat' ,component:WhyAdoptCatComponent},
   { path: 'why-adopt-dog',component:WhyadoptdogComponent},
+  { path: 'contact', component: ContactComponent },
+  { path: 'register-aparna', component: RegisterAparnaComponent },
 
   { path: 'login-Dheeraj',component:LoginDheerajComponent},
+  { path: 'rescue', component: RescueComponent },
 
 
   {path: 'forgot-pwd',component:ForgotComponent},
