@@ -1,5 +1,8 @@
 // Developer - Dheeraj Varshney B00808467 dh301823@dal.ca
 import { Component, OnInit } from '@angular/core';
+// Using IPAPI to get users current location, available at - https://ipapi.co/
+import { LocationService } from '../location.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-petlisting',
@@ -8,10 +11,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PetlistingComponent implements OnInit {
   pets: any = [];
-  constructor() { }
+  region: string = '';
+  city: string = '';
+  location: Object;
+  constructor(private loc: LocationService) { }
 
   ngOnInit() {
   
+    this.loc.getLocation().subscribe(data =>{
+      console.log(data);
+      this.city = data.city;
+      this.region = data.region;
+    })
+
   this.pets =
   
   [

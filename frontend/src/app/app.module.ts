@@ -39,6 +39,8 @@ import { ContactComponent } from './contact/contact.component';
 import { RegisterAparnaComponent } from './register_aparna/register_aparna.component';
 import { RescueComponent } from './rescue/rescue.component';
 
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 // import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap'
@@ -82,7 +84,8 @@ import { RescueComponent } from './rescue/rescue.component';
     LayoutModule,
     MatButtonModule,
     MatIconModule,
-    MatCardModule
+    MatCardModule,
+    HttpClientModule
     
   ],
   providers: [],
