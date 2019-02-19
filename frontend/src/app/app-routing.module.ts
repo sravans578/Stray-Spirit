@@ -31,7 +31,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'petlisting', component:  PetlistingComponent },
-  { path: 'productlisting', component: ProductlistingComponent},
+  { path: 'shop', component: ProductlistingComponent},
   { path: 'pet-profile-page',component: PetProfilePageComponent},
   { path:'why-adopt-cat' ,component:WhyAdoptCatComponent},
   { path: 'why-adopt-dog',component:WhyadoptdogComponent},
@@ -55,7 +55,7 @@ const routes: Routes = [
       { path: 'inventory', component: ProfileInventoryComponent }
     ]
   },
-  {path:'product-detail-page',component:ProductDetailPageComponent},
+  {path:'product-detail',component:ProductDetailPageComponent},
   { path: '**', component: NotfoundComponent }
 ];
 
