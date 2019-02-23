@@ -30,7 +30,7 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'petlisting', component:  PetlistingComponent },
+  { path: 'pets', component:  PetlistingComponent },
   { path: 'shop', component: ProductlistingComponent},
   { path: 'pet-profile-page',component: PetProfilePageComponent},
   { path:'why-adopt-cat' ,component:WhyAdoptCatComponent},

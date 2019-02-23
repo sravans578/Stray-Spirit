@@ -110,12 +110,6 @@ img:hover{
 mdb-card{
     margin-bottom: 20px;
 }
-mdb-card-img{
-    height: 200px;
-    overflow: hidden;
-    cursor: pointer;
-    display: block;
-}
 .card{
     transition: 0.2s all ease;
 }
@@ -140,6 +134,17 @@ mdb-card-img{
 .share_button:hover{
     color: #ebc137;
 }
+mdb-card-img{
+    height: 200px;
+    overflow: hidden;
+    cursor: pointer;
+    display: block;
+}
+.pagination_wrapper{
+    min-width: 275px;
+    margin: 20px auto;
+}
+
 @media screen and (max-width:900px){
     mdb-card-img{
         height: 150px;

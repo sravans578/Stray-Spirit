@@ -27,6 +27,8 @@ import { MatButtonModule, MatIconModule } from '@angular/material';
 import { ProfileInventoryComponent } from './profile-inventory/profile-inventory.component';
 import { ProductDetailPageComponent } from './product-detail-page/product-detail-page.component';
 import {MatCardModule} from '@angular/material/card';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 import { LoginDheerajComponent } from './login-dheeraj/login-dheeraj.component';
 
@@ -40,6 +42,7 @@ import { RegisterAparnaComponent } from './register_aparna/register_aparna.compo
 import { RescueComponent } from './rescue/rescue.component';
 
 import { HttpClientModule } from '@angular/common/http';
+import {MatSelectModule} from '@angular/material/select';
 
 
 
@@ -85,7 +88,10 @@ import { HttpClientModule } from '@angular/common/http';
     MatButtonModule,
     MatIconModule,
     MatCardModule,
-    HttpClientModule
+    HttpClientModule,
+    MatAutocompleteModule,
+    NgxPaginationModule,
+    MatSelectModule
     
   ],
   providers: [],
