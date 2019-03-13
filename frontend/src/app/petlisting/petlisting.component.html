@@ -25,31 +25,31 @@
           <div class="row">
              <div class="col-md-3 col-sm-6 col-sm-6">
                <p class="filter_class">Category</p>
-            <mat-select placeholder="Any"  multiple>
-                <mat-option [value]="category_filter">Felines</mat-option>
-                <mat-option [value]="category_filter">Canines</mat-option>
+            <mat-select placeholder="Any"  multiple >
+                <mat-option value="category_filter">Felines</mat-option>
+                <mat-option value="category_filter">Canines</mat-option>
               </mat-select>
             </div>
             <div class="col-md-3 col-sm-6">
                 <p class="filter_class">Age</p>
                 <mat-select placeholder="Any"  multiple>
-                    <mat-option [value]="age_filter">Young</mat-option>
-                    <mat-option [value]="age_filter">Adult</mat-option>
-                    <mat-option [value]="age_filter">Senior</mat-option>
+                    <mat-option value="age_filter">Young</mat-option>
+                    <mat-option value="age_filter">Adult</mat-option>
+                    <mat-option value="age_filter">Senior</mat-option>
                   </mat-select>
                 </div>
                 <div class="col-md-3 col-sm-6">
                     <p class="filter_class">Gender</p>
                     <mat-select placeholder="Any"  multiple>
-                        <mat-option [value]="gender_filter">Male</mat-option>
-                        <mat-option [value]="gender_filter">Female</mat-option>
+                        <mat-option value="gender_filter">Male</mat-option>
+                        <mat-option value="gender_filter">Female</mat-option>
                       </mat-select>
                     </div>
                     <div class="col-md-3 col-sm-6">
                         <p class="filter_class">Vaccination Status</p>
                         <mat-select placeholder="Any"  multiple>
-                            <mat-option [value]="vaccination_filter">Vaccinated</mat-option>
-                            <mat-option [value]="vaccination_filter">Not Vaccinated</mat-option>
+                            <mat-option value="vaccination_filter">Vaccinated</mat-option>
+                            <mat-option value="vaccination_filter">Not Vaccinated</mat-option>
                           </mat-select>
                         </div>
             </div>
@@ -60,30 +60,30 @@
        <div class="col-md-3 col-sm-6 col-sm-6">
          <p class="filter_class">Category</p>
       <mat-select placeholder="Any"  multiple>
-          <mat-option [value]="category_filter">Felines</mat-option>
-          <mat-option [value]="category_filter">Canines</mat-option>
+          <mat-option value="category_filter">Felines</mat-option>
+          <mat-option value="category_filter">Canines</mat-option>
         </mat-select>
       </div>
       <div class="col-md-3 col-sm-6">
           <p class="filter_class">Age</p>
           <mat-select placeholder="Any"  multiple>
-              <mat-option [value]="age_filter">Young</mat-option>
-              <mat-option [value]="age_filter">Adult</mat-option>
-              <mat-option [value]="age_filter">Senior</mat-option>
+              <mat-option value="age_filter">Young</mat-option>
+              <mat-option value="age_filter">Adult</mat-option>
+              <mat-option value="age_filter">Senior</mat-option>
             </mat-select>
           </div>
           <div class="col-md-3 col-sm-6">
               <p class="filter_class">Gender</p>
               <mat-select placeholder="Any"  multiple>
-                  <mat-option [value]="gender_filter">Male</mat-option>
-                  <mat-option [value]="gender_filter">Female</mat-option>
+                  <mat-option value="gender_filter">Male</mat-option>
+                  <mat-option value="gender_filter">Female</mat-option>
                 </mat-select>
               </div>
               <div class="col-md-3 col-sm-6">
                   <p class="filter_class">Vaccination Status</p>
                   <mat-select placeholder="Any"  multiple>
-                      <mat-option [value]="vaccination_filter">Vaccinated</mat-option>
-                      <mat-option [value]="vaccination_filter">Not Vaccinated</mat-option>
+                      <mat-option value="vaccination_filter">Vaccinated</mat-option>
+                      <mat-option value="vaccination_filter">Not Vaccinated</mat-option>
                     </mat-select>
                   </div>
       </div>
@@ -134,5 +134,11 @@
   </div>
 
 </div>
+    </div>
+</div>
+
+<div class="new_data container">
+    <div class="" *ngFor="let pet_new of pet_newData">
+      {{pet_new.petName}}
     </div>
 </div>

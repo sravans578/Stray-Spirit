@@ -43,6 +43,7 @@ import { RescueComponent } from './rescue/rescue.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import {MatSelectModule} from '@angular/material/select';
+import { ProfilePetAdsComponent } from './profile-pet-ads/profile-pet-ads.component';
 
 
 
@@ -71,7 +72,8 @@ import {MatSelectModule} from '@angular/material/select';
     ForgotComponent,
     ContactComponent,
     RegisterAparnaComponent,
-    RescueComponent
+    RescueComponent,
+    ProfilePetAdsComponent
   ],
   imports: [
     BrowserModule,
@@ -92,7 +94,6 @@ import {MatSelectModule} from '@angular/material/select';
     MatAutocompleteModule,
     NgxPaginationModule,
     MatSelectModule
-    
   ],
   providers: [],
   bootstrap: [AppComponent]

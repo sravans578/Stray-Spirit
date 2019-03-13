@@ -24,6 +24,7 @@ import { ForgotComponent} from './forgot-pwd/forgot.component';
 import {RegistrationAdityaComponent} from './registration-aditya/registration-aditya.component';
 import { RegisterAparnaComponent } from './register_aparna/register_aparna.component';
 import { RescueComponent } from './rescue/rescue.component'; 
+import { ProfilePetAdsComponent } from './profile-pet-ads/profile-pet-ads.component';
 
 
 const routes: Routes = [
@@ -52,7 +53,8 @@ const routes: Routes = [
     component:ProfileNavComponent,
     children: [
       { path: '', component: ProfileHomeComponent },
-      { path: 'inventory', component: ProfileInventoryComponent }
+      { path: 'inventory', component: ProfileInventoryComponent },
+      { path: 'my-pet-ads', component: ProfilePetAdsComponent }
     ]
   },
   {path:'product-detail',component:ProductDetailPageComponent},
