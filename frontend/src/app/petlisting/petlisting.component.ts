@@ -14,6 +14,7 @@ export class PetlistingComponent implements OnInit {
   pets: any = [];
 
   api_location: any;
+  pet_newData: any;
   current_location: any;
   comma: string =', ';
   label_value: any;
@@ -24,6 +25,7 @@ export class PetlistingComponent implements OnInit {
   inputLocation: string;
   searchLocation = new FormControl();
   mobile:boolean =false;
+  
   constructor(private loc: LocationService) { }
 
   ngOnInit() {
@@ -38,7 +40,11 @@ export class PetlistingComponent implements OnInit {
       this.inputLocation = this.currentCity+this.comma+this.currentState+this.comma+this.currentCountry;
       this.searchLocation.patchValue(this.inputLocation);
     })
-    
+
+    this.loc.getPets().subscribe(petData =>{
+      console.log(petData);
+      this.pet_newData=petData;
+    })
   this.pets =
   
   [

@@ -23,7 +23,21 @@ router.post('/', (req, res, next) => {
     const pets = new Pet({
         _id: new mongoose.Types.ObjectId(),
         petName: req.body.petName,
-        petCategory: req.body.petCategory
+        petCategory: req.body.petCategory,
+        petAge: req.body.petAge,
+        petGender: req.body.petGender,
+        petHealth: req.body.petHealth,
+        petDescription: req.body.petDescription,
+        petUploader: {
+            firstName: req.body.petUploader.firstName,
+            lastName: req.body.petUploader.lastName
+        },
+        petLocation:{
+            petCity: req.body.petLocation.petCity,
+            petState: req.body.petLocation.petState,
+            petCountry: req.body.petLocation.petCountry
+        },
+        adoptionStatus: req.body.adoptionStatus
     });
     pets.save().then(result =>{
         console.log(result);
