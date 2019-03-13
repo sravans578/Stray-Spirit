@@ -27,6 +27,8 @@ import { MatButtonModule, MatIconModule } from '@angular/material';
 import { ProfileInventoryComponent } from './profile-inventory/profile-inventory.component';
 import { ProductDetailPageComponent } from './product-detail-page/product-detail-page.component';
 import {MatCardModule} from '@angular/material/card';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 import { LoginDheerajComponent } from './login-dheeraj/login-dheeraj.component';
 
@@ -38,6 +40,10 @@ import { FooterComponent } from './footer/footer.component';
 import { ContactComponent } from './contact/contact.component';
 import { RegisterAparnaComponent } from './register_aparna/register_aparna.component';
 import { RescueComponent } from './rescue/rescue.component';
+
+import { HttpClientModule } from '@angular/common/http';
+import {MatSelectModule} from '@angular/material/select';
+import { ProfilePetAdsComponent } from './profile-pet-ads/profile-pet-ads.component';
 
 
 
@@ -66,7 +72,8 @@ import { RescueComponent } from './rescue/rescue.component';
     ForgotComponent,
     ContactComponent,
     RegisterAparnaComponent,
-    RescueComponent
+    RescueComponent,
+    ProfilePetAdsComponent
   ],
   imports: [
     BrowserModule,
@@ -82,8 +89,11 @@ import { RescueComponent } from './rescue/rescue.component';
     LayoutModule,
     MatButtonModule,
     MatIconModule,
-    MatCardModule
-    
+    MatCardModule,
+    HttpClientModule,
+    MatAutocompleteModule,
+    NgxPaginationModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

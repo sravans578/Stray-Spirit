@@ -24,14 +24,15 @@ import { ForgotComponent} from './forgot-pwd/forgot.component';
 import {RegistrationAdityaComponent} from './registration-aditya/registration-aditya.component';
 import { RegisterAparnaComponent } from './register_aparna/register_aparna.component';
 import { RescueComponent } from './rescue/rescue.component'; 
+import { ProfilePetAdsComponent } from './profile-pet-ads/profile-pet-ads.component';
 
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'petlisting', component:  PetlistingComponent },
-  { path: 'productlisting', component: ProductlistingComponent},
+  { path: 'pets', component:  PetlistingComponent },
+  { path: 'shop', component: ProductlistingComponent},
   { path: 'pet-profile-page',component: PetProfilePageComponent},
   { path:'why-adopt-cat' ,component:WhyAdoptCatComponent},
   { path: 'why-adopt-dog',component:WhyadoptdogComponent},
@@ -52,10 +53,11 @@ const routes: Routes = [
     component:ProfileNavComponent,
     children: [
       { path: '', component: ProfileHomeComponent },
-      { path: 'inventory', component: ProfileInventoryComponent }
+      { path: 'inventory', component: ProfileInventoryComponent },
+      { path: 'my-pet-ads', component: ProfilePetAdsComponent }
     ]
   },
-  {path:'product-detail-page',component:ProductDetailPageComponent},
+  {path:'product-detail',component:ProductDetailPageComponent},
   { path: '**', component: NotfoundComponent }
 ];
 
