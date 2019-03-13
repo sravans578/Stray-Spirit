@@ -7,7 +7,7 @@
                 <mat-tab label="Personal">
                     <div class="container">
                         <h2 class="text-center mt-25">Register for Personal Account</h2>
-                        <form name="registerForm" [formGroup]="registerForm">
+                        <form name="registerForm" [formGroup]="registerForm" (submit)="onUserSignup(registerForm)">
                             <div class="row">
                                 <div class="col-sm">
                                     <div class="md-form">
@@ -87,7 +87,7 @@
                 <mat-tab label="Organization">
                     <div class="container">
                         <h2 class="text-center mt-25">Register for Organization Account</h2>
-                        <form name="orgRegisterForm" [formGroup]="orgRegisterForm">
+                        <form name="orgRegisterForm" [formGroup]="orgRegisterForm" (submit)=onOrgSignup(orgRegisterForm)>
                             <div class="md-form">
                                 <input mdbInputDirective type="text" id="orgName" class="form-control" name="orgName"
                                     formControlName="orgName" [ngClass]="{'is-invalid':orgRegisterForm.get('orgName').touched && orgRegisterForm.get('orgName').invalid}">

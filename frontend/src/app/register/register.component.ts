@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
+import { NgForm }   from '@angular/forms';
   import {Title} from "@angular/platform-browser";
   import {Router} from "@angular/router"
+import { AuthService } from '../auth.sevice';
 
 
 @Component({
@@ -41,9 +43,11 @@ export class RegisterComponent implements OnInit {
     orgPassword: new FormControl('', [Validators.required, Validators.minLength(8)]),
     orgRePassword: new FormControl('', [Validators.required, Validators.minLength(8)])
   })
-  constructor(private titleService:Title,private router: Router) { 
+  constructor(private titleService:Title,private router: Router,public authService:AuthService) { 
     this.titleService.setTitle("Register on StraySpirit");
    }
+
+
 
   ngOnInit() {
   }
@@ -54,6 +58,36 @@ export class RegisterComponent implements OnInit {
  }, 3000);
  setTimeout(()=>{  
   this.router.navigate(['/login']);
-}, 3000);
+}, 2000);
   }
+
+  onUserSignup(form : NgForm){
+    this.authService.createUser(
+      form.value.firstName,
+      form.value.lastName,
+      form.value.phone,
+      form.value.email,
+      form.value.password,
+      null,
+      null,
+      null,
+      null,
+      null);
+  }
+
+  onOrgSignup(form:NgForm){
+    this.authService.createOrganizationUser(
+      null,
+      null,
+      null,
+      null,
+      null,
+      form.value.orgName,
+      form.value.orgEmail,
+      form.value.orgPhone,
+      form.value.orgRegNo,
+      form.value.orgPassword
+    )
+  }
+  
 }
