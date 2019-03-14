@@ -5,6 +5,7 @@ const User=require("../models/user");
 const Organization=require("../models/organizations");
 const bcrypt=require("bcrypt");
 const mongoose=require("mongoose");
+const jwt=require("jsonwebtoken");
 const router = express.Router();
 
 router.post("/signup_user", (req,res,next)=>{
@@ -37,14 +38,14 @@ router.post("/signup_user", (req,res,next)=>{
 });
 
 router.post("/signup_org", (req,res,next)=>{
-    bcrypt.hash(req.body.org_password,11)
+    bcrypt.hash(req.body.password,11)
     .then(hash=>{
         const organization=new Organization({
             _id:new mongoose.Types.ObjectId(),
-            organizationtName:req.body.org_name,
-            email:req.body.org_email,
-            phoneNumber:req.body.org_phoneNumber,
-            registrationNumber:req.body.registrationNumber,
+            organizationtName:req.body.orgName,
+            email:req.body.email,
+            phoneNumber:req.body.orgPhone,
+            registrationNumber:req.body.orgRegNo,
             password:hash,
             user_type:"Organization",
             user_creation_date:Date()
@@ -65,8 +66,72 @@ router.post("/signup_org", (req,res,next)=>{
     
 });
 
-router.post("/login")
+router.post('/login', (req, res, next) => {
+    let fetchedUser;
+    User.findOne({email:req.body.email}).then(user=>{
+        if(!user)
+        {
+            return res.status(401).json({
+                message:"Auth failed"
+            });
+        }
+         fetchedUser= user;
+        return bcrypt.compare(req.body.password,user.password);
+    })
+    .then(result => {
+        if(!result){
+            return res.status(401).json({
+                message:"Auth failed"
+            });
+        }
+        const token=jwt.sign(
+            {email:fetchedUser.email,userId:fetchedUser._id},
+            "secret_secret_secret_secret_secret",
+            {expiresIn:"1h"}
+            );
+        res.status(200).json({
+            token:token
+        });
+    })
+    .catch(err=>{
+         return res.status(401).json({
+             message:"Auth failed"
+        })  
+    });
+  });
 
-
+  router.post('/orgLogin', (req, res, next) => {
+   let fetchedOrg;
+    Organization.findOne({email:req.body.email}).then(user=>{
+        if(!user)
+        {
+            return res.status(401).json({
+                message:"Auth failed"
+            });
+        }
+         fetchedOrg= user;
+        return bcrypt.compare(req.body.password,user.password);
+    })
+    .then(result => {
+        if(!result){
+            return res.status(401).json({
+                message:"Auth failed"
+            });
+        }
+        const token=jwt.sign(
+            {email:fetchedOrg.email,userId:fetchedOrg._id},
+            "secret_secret_secret_secret_secret",
+            {expiresIn:"1h"}
+            );
+        res.status(200).json({
+            token:token
+        });
+    })
+    .catch(err=>{
+         return res.status(401).json({
+             message:"Auth failed"
+        })  
+    });
+  });
 
 module.exports = router;

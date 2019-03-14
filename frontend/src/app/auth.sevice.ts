@@ -1,67 +1,63 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { AuthData } from './auth-data.model';
+import {Router} from "@angular/router"
 
 @Injectable({providedIn:"root"})
 export class AuthService{
+    private token:string;
+    constructor(private http:HttpClient,private router: Router){}
     
-    constructor(private http:HttpClient){}
-    
-    createUser( firstName:string,
-        lastName:string,
-        phoneNumber: number,
-        email: string,
-        password: string,
-         org_name:string,
-         org_email:string,
-         org_phoneNumber:number,
-         registrationNumber:string,
-         org_password:string
-        ){
-         const authData:AuthData={ firstName:firstName,
-             lastName:lastName,
-             phoneNumber: phoneNumber,
-            email: email,
-             password: password,
-             org_name:org_name,
-             org_email:org_email,
-             org_phoneNumber:org_phoneNumber,
-             registrationNumber:registrationNumber,
-             org_password:org_password};
+    getToken(){
+       
+        return this.token;
+    }
 
-        //var userData=[firstName,lastName,phoneNumber,email,password];
-
-        this.http.post("http://localhost:3000/user/signup_user",authData)
+     createUser( userData:any ){
+        this.http.post("http://localhost:3000/user/signup_user",userData)
         .subscribe(response=>{
             console.log(response);
         });
     }
 
-    createOrganizationUser( firstName:string,
-        lastName:string,
-        phoneNumber: number,
-        email: string,
-        password: string,
-        org_name:string,
-        org_email:string,
-        org_phoneNumber:number,
-        registrationNumber:string,
-        org_password:string){
-        const authData:AuthData={ firstName:firstName,
-            lastName:lastName,
-            phoneNumber: phoneNumber,
-            email: email,
-            password: password,
-            org_name:org_name,
-            org_email:org_email,
-            org_phoneNumber:org_phoneNumber,
-            registrationNumber:registrationNumber,
-            org_password:org_password};
-        this.http.post("http://localhost:3000/user/signup_org",authData)
+     createOrganizationUser( 
+         orgData:any
+    ){
+        this.http.post("http://localhost:3000/user/signup_org",orgData)
         .subscribe(response=>{
             console.log(response);
         });
     }
 
+    userLogin(loginData:any)
+    {
+        
+        this.http.post<{token:string}>("http://localhost:3000/user/login",loginData)
+        .subscribe(response =>
+            {
+                const token=response.token;
+                this.token=token;
+                console.log(this.token);
+                setTimeout(()=>{  
+                    this.router.navigate(['/profile']);
+                  }, 1000);
+            }
+        )
+    }
+
+    orgLogin(orgLoginData:any)
+    {
+        
+        this.http.post<{token:string}>("http://localhost:3000/user/orgLogin",orgLoginData)
+        .subscribe(response =>
+            {
+                const token=response.token;
+                this.token=token;
+                console.log(this.token);
+                setTimeout(()=>{  
+                    this.router.navigate(['/profile']);
+                  }, 1000);
+            }
+        )
+    }
     
 }

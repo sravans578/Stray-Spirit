@@ -21,7 +21,9 @@ export class RegisterComponent implements OnInit {
   
   submitted: boolean = false;
   
-  
+  public usersData:any ={}
+  public orgData:any={}
+
   registerForm = new FormGroup({
     firstName: new FormControl('', [Validators.required,Validators.pattern(this.namePattern)]),
     lastName: new FormControl('', [Validators.required,Validators.pattern(this.namePattern)]),
@@ -61,32 +63,28 @@ export class RegisterComponent implements OnInit {
 }, 2000);
   }
 
-  onUserSignup(form : NgForm){
-    this.authService.createUser(
-      form.value.firstName,
-      form.value.lastName,
-      form.value.phone,
-      form.value.email,
-      form.value.password,
-      null,
-      null,
-      null,
-      null,
-      null);
+  onUserSignup(){
+    this.usersData={
+      firstName:this.registerForm.get('firstName').value,
+      lastName:this.registerForm.get('lastName').value,
+      phone:this.registerForm.get('number').value,
+      email:this.registerForm.get('email').value,
+      password:this.registerForm.get('password').value
+    }
+    this.authService.createUser(this.usersData);
   }
 
   onOrgSignup(form:NgForm){
+    this.orgData={
+      orgName:this.orgRegisterForm.get('orgName').value,
+      email:this.orgRegisterForm.get('orgEmail').value,
+      orgPhone:this.orgRegisterForm.get('orgPhone').value,
+      orgRegNo:this.orgRegisterForm.get('orgRegNo').value,
+      password:this.orgRegisterForm.get('orgPassword').value
+
+    }
     this.authService.createOrganizationUser(
-      null,
-      null,
-      null,
-      null,
-      null,
-      form.value.orgName,
-      form.value.orgEmail,
-      form.value.orgPhone,
-      form.value.orgRegNo,
-      form.value.orgPassword
+      this.orgData
     )
   }
   
