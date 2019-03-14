@@ -48,20 +48,37 @@ export class ProfilePetAdsComponent implements OnInit {
       console.log(petData);
     })
   }
-  onImagePicked(event: Event){
-    const file = (event.target as HTMLInputElement).files[0];
-    this.addPetsForm.patchValue({petPic: file});
-    this.addPetsForm.get('petPic').updateValueAndValidity();
-    console.log(file);
-    const reader = new FileReader();
-    reader.onload = () => {
-      this.imagePreview = reader.result;
-    };
-    reader.readAsDataURL(file);
+  // onImagePicked(event: Event){
+  //   const file = (event.target as HTMLInputElement).files[0];
+  //   this.addPetsForm.patchValue({petPic: file});
+  //   this.addPetsForm.get('petPic').updateValueAndValidity();
+  //   console.log(file);
+  //   const reader = new FileReader();
+  //   reader.onload = () => {
+  //     this.imagePreview = reader.result;
+  //   };
+  //   reader.readAsDataURL(file);
 
+  // }
+  private imageSrc: string = '';
+
+  handleInputChange(e) {
+    var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
+    var pattern = /image-*/;
+    var reader = new FileReader();
+    if (!file.type.match(pattern)) {
+      alert('invalid format');
+      return;
+    }
+    reader.onload = this._handleReaderLoaded.bind(this);
+    reader.readAsDataURL(file);
+  }
+  _handleReaderLoaded(e) {
+    let reader = e.target;
+    this.imageSrc = reader.result;
+    console.log(this.imageSrc);
   }
   addPet(){
-    console.log("Hi");
      this.petData = {
       petNameModel: this.addPetsForm.get('petName').value,
       petCategoryModel: this.addPetsForm.get('petCategory').value,
@@ -73,7 +90,8 @@ export class ProfilePetAdsComponent implements OnInit {
       petStateModel: this.addPetsForm.get('petState').value,
       petCountryModel: this.addPetsForm.get('petCountry').value
       },
-      petDescriptionModel: this.addPetsForm.get('petDescription').value
+      petDescriptionModel: this.addPetsForm.get('petDescription').value,
+      petPicModel: this.imageSrc
     }
     console.log(this.petData);
     this.pets.newPets(this.petData);

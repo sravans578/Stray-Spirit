@@ -3,24 +3,7 @@ const router = express.Router();
 const mongoose = require('mongoose');
 
 const Pet = require('../models/pets');
-const multer = require('multer');
 
-const MIME_TYPE_MAP = {
-    'image/png': 'png',
-    'image/jpeg': 'jpg',
-    'image/jpg': 'jpg'
-};
-
-const storeage = multer.diskStorage({
-    destination: (req, file , cb) => {
-        cb(null, "backend/uploads");
-    },
-    filename: (req, file, cb) => {
-        const name = file.originalname.toLowerCase().split(' ').join('-');
-        const ext = MIME_TYPE_MAP[file.mimetype];
-        cb(null,name + '-' + Date.now() + '.' + ext);
-    }
-});
 
 router.get('/', (req, res, next) => {
     Pet.find()
@@ -56,7 +39,8 @@ router.post('/', (req, res, next) => {
             petState: req.body.petLocationModel.petStateModel,
             petCountry: req.body.petLocationModel.petCountryModel
         },
-        adoptionStatus: 'Not Adopted'
+        adoptionStatus: 'Not Adopted',
+        petPic: req.body.petPicModel
     });
     pets.save().then(result =>{
         console.log(result);

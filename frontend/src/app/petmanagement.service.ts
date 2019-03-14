@@ -15,7 +15,7 @@ export class PetmanagementService {
     return this.http.get('http://localhost:3000/pets/');
   }
   newPets(petModel:any){
-    console.log(petModel);
+    console.log(petModel.petNameModel);
     this.http.post('http://localhost:3000/pets/',petModel)
     .subscribe(responseData => {
       console.log("Pet added!");
