@@ -7,7 +7,7 @@ import { Subject } from 'rxjs';
 export class AuthService{
     private token:string;
     private isAuthenticated=false;
-    private authStatusListener=new Subject<boolean>();
+   private authStatusListener=new Subject<boolean>();
     constructor(private http:HttpClient,private router: Router){}
     
     getToken(){
@@ -19,6 +19,7 @@ export class AuthService{
        return this.isAuthenticated;
     }
 
+
     getAuthStatusListener(){
         return this.authStatusListener.asObservable();
     }
@@ -27,6 +28,7 @@ export class AuthService{
         this.http.post("http://localhost:3000/user/signup_user",userData)
         .subscribe(response=>{
             console.log(response);
+            this.router.navigate(['/login']);
         });
     }
 
@@ -36,6 +38,7 @@ export class AuthService{
         this.http.post("http://localhost:3000/user/signup_org",orgData)
         .subscribe(response=>{
             console.log(response);
+            this.router.navigate(['/login']);
         });
     }
 
@@ -47,11 +50,10 @@ export class AuthService{
             {
                 const token=response.token;
                 this.token=token;
-
                 if(token !== null && token !== ''){
                     this.isAuthenticated=true;
-                this.authStatusListener.next(true);
-                this.router.navigate(['/profile']);
+                    this.authStatusListener.next(true);
+                    this.router.navigate(['/profile']);
                 }
                 console.log(this.token);
                 
@@ -68,7 +70,7 @@ export class AuthService{
                 const token=response.token;
                 this.token=token;
                 if(token !== null && token !== ''){
-                    this.isAuthenticated=true;
+                this.isAuthenticated=true;
                 this.authStatusListener.next(true);
                 this.router.navigate(['/profile']);
                 }
@@ -79,11 +81,41 @@ export class AuthService{
         )
     }
 
+    autoAuthUser(){
+        const authInformation=this.getAuthData();
+        this.token=authInformation.token;
+        this.isAuthenticated=true;
+        this.authStatusListener.next(true);
+    }
+
     logout(){
         this.token=null;
         this.isAuthenticated=false;
         this.authStatusListener.next(false);
+        this.clearAuthData();
         this.router.navigate(['/']);
+        
+    }
+
+    private saveAuthData(token:string){
+        localStorage.setItem("token",token);
+        
+
+    }
+
+    private getAuthData(){
+        const token=localStorage.getItem("token");
+        if(!token){
+            return;
+        }
+        return{
+            token:token,
+            
+        }
     }
     
+    private clearAuthData(){
+        localStorage.removeItem("token");
+        
+    }
 }
