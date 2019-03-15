@@ -106,8 +106,8 @@ router.post('/login', (req, res, next) => {
         if(!user)
         {
             return res.status(401).json({
-                message:"Auth failed"
-            });
+                 message:"Auth failed"
+             });
         }
          fetchedOrg= user;
         return bcrypt.compare(req.body.password,user.password);
@@ -115,8 +115,10 @@ router.post('/login', (req, res, next) => {
     .then(result => {
         if(!result){
             return res.status(401).json({
-                message:"Auth failed"
+                message:"Auth failed",
+                
             });
+           
         }
         const token=jwt.sign(
             {email:fetchedOrg.email,userId:fetchedOrg._id},
