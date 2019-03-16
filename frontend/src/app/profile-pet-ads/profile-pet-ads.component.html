@@ -120,9 +120,9 @@
                         <textarea type="text" id="petDescription" class="md-textarea form-control" mdbInputDirective formControlName="petDescription" ></textarea>
                         <label for="petDescription">Pet Description</label>
                       </div>
-            <button mdbBtn type="submit" color="indigo" mdbWavesEffect class="sign-in_button" >Add</button>
+            <button mdbBtn type="submit" color="indigo" mdbWavesEffect class="sign-in_button" [disabled]="!addPetsForm.valid" >Add</button>
              </form>
-          </div>
+            </div>
           </mat-tab>
           </mat-tab-group>
           </div>

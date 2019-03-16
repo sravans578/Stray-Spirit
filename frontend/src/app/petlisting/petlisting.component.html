@@ -1,4 +1,4 @@
-<!--Developer - Dheeraj Varshney B00808467 dh301823@dal.ca-->
+
 <div class="container-fluid mt-85">
   <!-- Creating Search box -->
   <div class="container">
@@ -95,31 +95,31 @@
     <div class="pet-lists">
 <div class="container">
 <div class="row">
-  <div class="col-lg-3 col-sm-4" *ngFor="let pet of pets | paginate: { itemsPerPage: 12, currentPage: page }">
+  <div class="col-lg-3 col-sm-4" *ngFor="let pet_new of pet_newData | paginate: { itemsPerPage: 12, currentPage: page }">
     <div class="pets_list">
       <a routerLink="/pet-profile-page">
       <mdb-card>
         <div class="pets_card">
           <!--Card image-->
           <div class="card_img_wrapper">
-          <img src="../assets/images/{{pet.petImage}}" alt="{{pet.petName}}" class="img-fluid">
+          <img [src]="pet_new.petPic" alt="{{pet_new.petName}}" class="img-fluid">
           </div>
           <!--Card content-->
           <mdb-card-body>
             <!--Title-->
             <mdb-card-title>
               <h4>
-                  <span>{{pet.petName}}</span>
+                  <span>{{pet_new.petName}}</span>
               </h4>
             </mdb-card-title>
           </mdb-card-body>
           <div class="pet_card_overlay">
               <div class="pet_card_overlay_image">
-                  <img src="../assets/images/{{pet.petImage}}" alt="{{pet.petName}}" class="img-fluid">
+                  <img [src]="pet_new.petPic" alt="{{pet_new.petName}}" class="img-fluid">
               </div>
               <div class="pet_card_overlay_detail">
-                <h4>{{pet.petName}}</h4>
-                <p>{{pet.petDesc}}</p>
+                <h4>{{pet_new.petName}}</h4>
+                <p>{{pet_new.petAge}} | {{pet_new.petGender}}</p>
               </div>
             </div>
           </div>
@@ -134,11 +134,5 @@
   </div>
 
 </div>
-    </div>
-</div>
-
-<div class="new_data container">
-    <div class="" *ngFor="let pet_new of pet_newData">
-      {{pet_new.petName}}
     </div>
 </div>
