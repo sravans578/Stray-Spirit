@@ -45,7 +45,7 @@ import { HttpClientModule } from '@angular/common/http';
 import {MatSelectModule} from '@angular/material/select';
 import { ProfilePetAdsComponent } from './profile-pet-ads/profile-pet-ads.component';
 
-
+import { ToastrModule } from 'ngx-toastr';
 
 // import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap'
 @NgModule({
@@ -93,7 +93,8 @@ import { ProfilePetAdsComponent } from './profile-pet-ads/profile-pet-ads.compon
     HttpClientModule,
     MatAutocompleteModule,
     NgxPaginationModule,
-    MatSelectModule
+    MatSelectModule,
+    ToastrModule.forRoot() 
   ],
   providers: [],
   bootstrap: [AppComponent]

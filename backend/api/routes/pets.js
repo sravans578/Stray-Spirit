@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 
 const Pet = require('../models/pets');
 
+
 router.get('/', (req, res, next) => {
     Pet.find()
     .exec()
@@ -20,24 +21,26 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
+    console.log(req.file);
     const pets = new Pet({
         _id: new mongoose.Types.ObjectId(),
-        petName: req.body.petName,
-        petCategory: req.body.petCategory,
-        petAge: req.body.petAge,
-        petGender: req.body.petGender,
-        petHealth: req.body.petHealth,
-        petDescription: req.body.petDescription,
+        petName: req.body.petNameModel,
+        petCategory: req.body.petCategoryModel,
+        petAge: req.body.petAgeModel,
+        petGender: req.body.petGenderModel,
+        petHealth: req.body.petHealthModel,
+        petDescription: req.body.petDescriptionModel,
         petUploader: {
-            firstName: req.body.petUploader.firstName,
-            lastName: req.body.petUploader.lastName
+            firstName: 'Aadesh',
+            lastName: 'Shah'
         },
         petLocation:{
-            petCity: req.body.petLocation.petCity,
-            petState: req.body.petLocation.petState,
-            petCountry: req.body.petLocation.petCountry
+            petCity: req.body.petLocationModel.petCityModel,
+            petState: req.body.petLocationModel.petStateModel,
+            petCountry: req.body.petLocationModel.petCountryModel
         },
-        adoptionStatus: req.body.adoptionStatus
+        adoptionStatus: 'Not Adopted',
+        petPic: req.body.petPicModel
     });
     pets.save().then(result =>{
         console.log(result);
