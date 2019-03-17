@@ -24,7 +24,7 @@ app.use((req, res, next) => {
       }
       next();
 });
-
+app.use('/pets', petsRoutes);
 app.use('/products', productsRoutes);
 
 mongoose.connect('mongodb+srv://strayspirit:' + process.env.MONGO_ATLAS_PW + '@strayspirit-bsghz.mongodb.net/test?retryWrites=true', { useNewUrlParser: true });

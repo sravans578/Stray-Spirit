@@ -25,6 +25,7 @@ import {RegistrationAdityaComponent} from './registration-aditya/registration-ad
 import { RegisterAparnaComponent } from './register_aparna/register_aparna.component';
 import { RescueComponent } from './rescue/rescue.component'; 
 import { ProfilePetAdsComponent } from './profile-pet-ads/profile-pet-ads.component';
+//import { AddProductComponent } from './add-product/add-product.component';
 
 
 const routes: Routes = [
@@ -38,6 +39,7 @@ const routes: Routes = [
   { path: 'why-adopt-dog',component:WhyadoptdogComponent},
   { path: 'contact', component: ContactComponent },
   { path: 'register-aparna', component: RegisterAparnaComponent },
+  //{ path: 'add-product', component: AddProductComponent},
 
   { path: 'login-Dheeraj',component:LoginDheerajComponent},
   { path: 'rescue', component: RescueComponent },
@@ -54,6 +56,7 @@ const routes: Routes = [
     children: [
       { path: '', component: ProfileHomeComponent },
       { path: 'inventory', component: ProfileInventoryComponent },
+     //{ path: 'products', component: ProfileInventoryComponent},
       { path: 'my-pet-ads', component: ProfilePetAdsComponent }
     ]
   },

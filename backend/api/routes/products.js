@@ -21,28 +21,21 @@ router.post('/', (req, res, next) => {
     const products = new Product({
         _id: new mongoose.Types.ObjectId(),
         productName: req.body.productName,
-        // productCategory: req.body.petCategory,
-        // petAge: req.body.petAge,
-        // petGender: req.body.petGender,
-        // petHealth: req.body.petHealth,
+        productPrice: req.body.productPrice,
         productDescription: req.body.productDescription,
+        productPic: req.body.productPic,
         productUploader: {
-            firstName: req.body.productUploader.firstName,
-            lastName: req.body.productUploader.lastName
+            firstName: 'Aadesh',
+            lastName: 'Shah'
         },
-        // petLocation:{
-        //     petCity: req.body.petLocation.petCity,
-        //     petState: req.body.petLocation.petState,
-        //     petCountry: req.body.petLocation.petCountry
-        // },
-        // adoptionStatus: req.body.adoptionStatus
+        
+        
     });
     products.save().then(result =>{
-        // console.log(result);
-    })
+       })
     .catch(err => console.log(err));
     res.status(201).json({
-        message: 'Handling POST requests to /products',
+        message: 'Handling POST requests to /inventory',
         createdProduct: products
     });
 });

@@ -4,6 +4,19 @@
 .inventory_product_name , .inventory_product_price , .inventory_product_qty , .edit_button , .delete_button{
     padding-top: 35px;
 }
+
+.md-form .form-control{
+    border: none;
+    border-bottom: 1px solid #ced4da;
+}
+
+.mat-select{
+    height: 40px;
+    background: #fff;
+    padding: 10px;
+    color: #000;
+    border-bottom: 1px solid #ced4da;
+}
 .inventory_product_name{
     text-align: left;
     font-size: 17px;

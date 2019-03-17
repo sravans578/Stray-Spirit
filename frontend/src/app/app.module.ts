@@ -46,6 +46,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { ProfilePetAdsComponent } from './profile-pet-ads/profile-pet-ads.component';
 
 import { ToastrModule } from 'ngx-toastr';
+//import { AddProductComponent } from './add-product/add-product.component';
 
 // import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap'
 @NgModule({
@@ -73,7 +74,8 @@ import { ToastrModule } from 'ngx-toastr';
     ContactComponent,
     RegisterAparnaComponent,
     RescueComponent,
-    ProfilePetAdsComponent
+    ProfilePetAdsComponent,
+    //AddProductComponent
   ],
   imports: [
     BrowserModule,
