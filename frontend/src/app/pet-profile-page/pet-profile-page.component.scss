@@ -1,108 +1,39 @@
-// Developer: Aditya Gadhvi (B00809664) (ad742065@dal.ca)
-
-// https://getbootstrap.com/docs/4.2/layout/overview/ I have used bootstrap media-queries for responsiveness
-
-#MainDiv{
-  background-color: #000000;
-  height:auto;
-  width: 100%;
-  padding-bottom: 20px;
+.bg{
+  background:  #FFFAFA;
 }
-
-#Div1{
-  background-color:#000000;
+.pet_container{
+  background: #fff;
+  overflow: hidden;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 }
-
-#row1{
-  margin: 10px;
-
+.pet_profile_pic{
+  padding: 100px;
 }
-
-h2{
-  font-size: 30px;
-  font-weight: bold;
+.pet_content{
+  padding: 100px 25px 40px;
 }
-
- .pet-info{
-  font-size: 20px;
-  font-weight: bold;
+.sep{
+  height: 1px;
+  width: 50%;
+  background: #e38c2d;
 }
-
-#Div2 #row1 div{
-  border:#e0dede 1px;
-  border-style: solid;
-  background-color:#fff1f1;
-  border-radius: 20px; 
-  margin: 20px;
-  padding: 10px;
-  
+.pet_description{
+  padding: 0 100px 50px;
 }
-
-img{
-  height: 500px;
-  width: 500px;
-  margin-left: auto;
-  margin-right: auto;
+.pet_content p{
+  margin: 30px 0;
+  font-size: 18px;
+  line-height: 25px;
 }
-
-#pet-about{
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.agency-info span{
-  font-size:20px;
-  font-weight: bold;
-}
-
-@media (max-width:450px){
-  img{
-    height: 300px;
-    width: 300px;
-    margin-left: auto;
-    margin-right: auto;
+@media screen and (max-width:650px){
+  .pet_profile_pic{
+    padding: 25px;
+  }
+  .pet_content{
+    padding: 10px 20px 10px;
+  }
+  .pet_description{
+    padding: 0 20px 50px;
   }
 
-  h2{
-    font-size: 25px;
-    font-weight: bold;
-  }
-  
-   .pet-info{
-    font-size: 15px;
-    font-weight: bold;
-  }
-
-  #pet-about{
-    font-size: 15px;
-    font-weight: bold;
-  }
-
-  .agency-info span{
-    font-size:15px;
-    font-weight: bold;
-  }
-
-}  
-
-@media (min-width:451px) and (max-width:990px){
-  h2{
-    font-size: 25px;
-    font-weight: bold;
-  }
-  
-   .pet-info{
-    font-size: 15px;
-    font-weight: bold;
-  }
-  
-  #pet-about{
-    font-size: 15px;
-    font-weight: bold;
-  }
-
-  .agency-info span{
-    font-size:15px;
-    font-weight: bold;
-  }
 }
