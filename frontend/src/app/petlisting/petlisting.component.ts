@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 // Using IPAPI to get users current location, available at - https://ipapi.co/
 import { LocationService } from '../location.service';
 import { HttpClient } from '@angular/common/http';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { PetmanagementService } from '../petmanagement.service';
 
 @Component({
@@ -26,7 +26,14 @@ export class PetlistingComponent implements OnInit {
   inputLocation: string;
   searchLocation = new FormControl();
   mobile:boolean =false;
+  filteredLocation: any;
+  searchLocationTerm: any;
   
+  filterPetsForm = new FormGroup({
+    searchLocation: new FormControl(''),
+    testSearch: new FormControl('') 
+  });
+
   constructor(private loc: LocationService, private petService: PetmanagementService) { }
 
   ngOnInit() {
@@ -48,6 +55,31 @@ export class PetlistingComponent implements OnInit {
     })
   
 }
+filterPet(searchTerm){
+  console.log(searchTerm);
+  this.searchLocationTerm = searchTerm.split(',');
+  this.searchLocationTerm[0] =this.searchLocationTerm[0].replace(/\s/g, "");
+  this.searchLocationTerm[1] =this.searchLocationTerm[1].replace(/\s/g, "");
+  this.searchLocationTerm[2] =this.searchLocationTerm[2].replace(/\s/g, "");
+  console.log(this.searchLocationTerm);
+  // var i;
+  // for(i=0;i<this.pet_newData.length;i++){
+  //   if(this.pet_newData[i].petLocation.petCity===searchLocationTerm[0]){
+  //     this.filteredLocation=this.pet_newData;
+  //     console.log("City Match found!");
+  //     break;
+  //   }
+  //   else{
+  //     console.log("No matching city!");
+  //   }
+  // }
+}
+onSearch(){
+  this.pet_newData = this.pet_newData.filter(filterPets =>{
+    return filterPets.petLocation.petCity.includes(this.searchLocationTerm[0]) && filterPets.petLocation.petState.includes(this.searchLocationTerm[1]) && filterPets.petLocation.petCountry.includes(this.searchLocationTerm[2]);
+  })
+  console.log("Pet data after filter",this.pet_newData);
+}
 onKeydown(event:any) {
     this.city=event.target.value;
     if(this.city.length>2){
@@ -63,10 +95,10 @@ onKeydown(event:any) {
   }
 
 }
-
-onClick(){
-  window.location.href = '/pet-profile-page';
+reloadPage(){
+  window.location.reload();
 }
+
 }
 
 

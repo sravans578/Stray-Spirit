@@ -28,8 +28,7 @@ export class LoginComponent implements OnInit {
   }
   loginSubmit() {
     
-    this.loginForm.reset();
-    //this.router.navigate(['/profile']);
+    this.router.navigate(['/profile']);
     
   }
 }
