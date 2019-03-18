@@ -1,4 +1,3 @@
-
 <div class="container-fluid mt-85">
   <!-- Creating Search box -->
   <div class="container">
@@ -6,16 +5,16 @@
   </div>
 <div class="container">
   <div class="search_wrapper">
-    <input class="form-control search_box" type="search" placeholder="Enter your City" aria-label="Search" [matAutocomplete]="auto"
-      [formControl]="searchLocation" (keydown)="onKeydown($event)">
-    <mat-autocomplete #auto="matAutocomplete">
+    <input class="form-control search_box" type="text" placeholder="Enter your City" aria-label="Search" [matAutocomplete]="auto"
+      [formControl]="searchLocation"  (keydown)="onKeydown($event)">
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)='filterPet($event.option.value)'>
       <ng-container *ngFor="let location_value of api_location?.suggestions">
         <mat-option [value]="location_value.address.city+comma+ location_value.address.state+comma+ location_value.address.country" *ngIf="location_value.address.city && location_value.address.state && location_value.address.country">
           <span>{{location_value.address.city}}, {{location_value.address.state}}, {{location_value.address.country}}</span>
         </mat-option>
       </ng-container>
     </mat-autocomplete>
-    <button class="search_button"><i class="fas fa-search"></i></button>
+    <button class="search_button" (click)="onSearch()"><i class="fas fa-search"></i></button>
   </div>
   <div class="toggle_wrapper">
       <button mdbBtn color="primary" class="waves-light toggle_button" type="button" (click)="test.toggle()" mdbWavesEffect>
@@ -89,11 +88,17 @@
       </div>
   </div>
   </div>
-  <p class="pet-list-header mt-25">Pets Available For Adoption</p>
-
+  <div  class="pet-list-header mt-25">
+  <p *ngIf="pet_newData?.length > 0">Pets Available For Adoption</p>
+  <div *ngIf="!pet_newData?.length > 0">
+    <p class="error_no_pets">No Pets Available in this area!</p>
+    <button mdbBtn color="primary" class="waves-light toggle_button" type="button" mdbWavesEffect (click)="reloadPage()">Show in your Current Location</button>
+  </div>
+</div> 
     <!-- Creating Pets Grid-->
     <div class="pet-lists">
 <div class="container">
+    <div *ngIf="pet_newData">
 <div class="row">
   <div class="col-lg-3 col-sm-4" *ngFor="let pet_new of pet_newData | paginate: { itemsPerPage: 12, currentPage: page }">
     <div class="pets_list">
@@ -127,6 +132,8 @@
         </a>
         </div>
   </div>
+</div>
+  
   </div>
   <div class="clearfix"></div>
   <div class="pagination_wrapper mt-25">

@@ -119,6 +119,9 @@ mdb-card{
 .toggle_wrapper{
     display: none;
 }
+p.error_no_pets{
+    color: red;
+}
 @media screen and (max-width:900px){
     .search_button{
         width: 85px;

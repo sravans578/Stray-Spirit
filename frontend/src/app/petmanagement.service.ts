@@ -11,7 +11,7 @@ export class PetmanagementService {
    }
    
   getPets(){
-    console.log("Inside getPets");
+    //console.log("Inside getPets");
     return this.http.get('http://localhost:3000/pets/');
   }
   newPets(petModel:any){
