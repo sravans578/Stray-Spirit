@@ -1,4 +1,3 @@
-
 <div class="container-fluid mt-85">
   <!-- Creating Search box -->
   <div class="container">
@@ -89,8 +88,13 @@
       </div>
   </div>
   </div>
-  <p class="pet-list-header mt-25">Pets Available For Adoption</p>
-
+  <div  class="pet-list-header mt-25">
+  <p *ngIf="pet_newData?.length > 0">Pets Available For Adoption</p>
+  <div *ngIf="!pet_newData?.length > 0">
+    <p class="error_no_pets">No Pets Available in this area!</p>
+    <button mdbBtn color="primary" class="waves-light toggle_button" type="button" mdbWavesEffect (click)="reloadPage()">Show in your Current Location</button>
+  </div>
+</div> 
     <!-- Creating Pets Grid-->
     <div class="pet-lists">
 <div class="container">
@@ -128,10 +132,6 @@
         </a>
         </div>
   </div>
-</div>
-<div *ngIf="!pet_newData.length > 0">
-  <p class="error_no_pets">No Pets Available in this area!</p>
-  <button mdbBtn color="primary" class="waves-light toggle_button" type="button" mdbWavesEffect (click)="reloadPage()">Show in your Current Location</button>
 </div>
   
   </div>
