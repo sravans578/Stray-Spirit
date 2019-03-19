@@ -18,6 +18,7 @@ export class ProfilePetAdsComponent implements OnInit {
   current_location: string;
   imagePreview: any;
   namePattern: string = '^([a-zA-Z_\-]*)$';
+  petListing: any;
 
   public petData: any = {}
 
@@ -56,6 +57,7 @@ export class ProfilePetAdsComponent implements OnInit {
     
     this.pets.getPets().subscribe(petData =>{
       console.log(petData);
+      this.petListing= petData;
     })
   }
   
