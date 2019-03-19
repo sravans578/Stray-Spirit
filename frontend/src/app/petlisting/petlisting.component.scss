@@ -51,6 +51,7 @@
 }
 .card_img_wrapper{
     height: 200px;
+    max-height: 200px;
     overflow: hidden;
     cursor: pointer;
     display: block;
@@ -126,9 +127,6 @@ p.error_no_pets{
     .search_button{
         width: 85px;
     }
-    .card_img_wrapper{
-        height: 150px;
-    }
 }
 @media screen and (max-width:765px){
     .toggle_wrapper{
@@ -148,7 +146,8 @@ p.error_no_pets{
         margin: auto;
     }
     .card_img_wrapper{
-        max-height: 350px;
+        height: auto;
+        max-height: 450px;
     }
     .desktop_visible{
         display: none;

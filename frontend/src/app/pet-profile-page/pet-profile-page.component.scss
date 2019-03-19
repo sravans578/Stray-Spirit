@@ -37,6 +37,7 @@
 }
 .card_img_wrapper{
     height: 200px;
+    max-height: 200px;
     overflow: hidden;
     cursor: pointer;
     display: block;
@@ -87,6 +88,10 @@ mdb-card{
     transform: scale(1);
 }
 @media screen and (max-width:650px){
+  .more_pets_container h3{
+    font-size: 20px;
+    line-height: 25px;
+  }
   .pet_profile_pic{
     padding: 25px;
   }
@@ -104,7 +109,8 @@ mdb-card{
       margin: auto;
   }
   .card_img_wrapper{
-      max-height: 320px;
+      max-height: 450px;
+      height: auto;
   }
   .pets_card:hover .pet_card_overlay{
       -webkit-transform: scale(0);
