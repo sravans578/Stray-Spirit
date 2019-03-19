@@ -102,7 +102,7 @@
 <div class="row">
   <div class="col-lg-3 col-sm-4" *ngFor="let pet_new of pet_newData | paginate: { itemsPerPage: 12, currentPage: page }">
     <div class="pets_list">
-      <a routerLink="/pet-profile">
+      <a routerLink="/pet-profile/{{pet_new._id}}">
       <mdb-card>
         <div class="pets_card">
           <!--Card image-->
