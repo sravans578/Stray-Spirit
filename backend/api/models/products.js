@@ -2,7 +2,8 @@ const mongoose = require('mongoose');
 
 var productUploaderSchema = {
     firstName: { type:String , required:true },
-    lastName: { type:String , required:true }
+    lastName: { type:String , required:true },
+    uId:{type: String, required:true}
 };
 
 

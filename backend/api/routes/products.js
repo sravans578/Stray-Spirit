@@ -26,8 +26,10 @@ router.post('/', (req, res, next) => {
         productDescription: req.body.productDescription,
         productPic: req.body.productPic,
         productUploader: {
-            firstName: 'Dheeraj',
-            lastName: 'Varshney'
+            firstName: req.body.productUploader.firstName,
+            lastName:req.body.productUploader.lastName,
+            uId: req.body.productUploader.uId
+            
         },
         
         
@@ -41,11 +43,27 @@ router.post('/', (req, res, next) => {
     });
 });
 
-router.get('/:productId', (req, res, next) => {
+router.get('/singleproduct/:productId', (req, res, next) => {
     const id = req.params.productId;
     Product.findById(id)
     .exec()
     .then(doc =>{
+        res.status(200).json(doc);
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json({error:err});
+    });
+});
+
+router.get('/uploader/:userId', (req, res, next) => {
+    const id = req.params.userId;
+    Product.find({
+        'productUploader.uId':id
+    })
+    .exec()
+    .then(doc =>{
+        console.log(doc);
         res.status(200).json(doc);
     })
     .catch(err => {

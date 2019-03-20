@@ -3,6 +3,7 @@ import {Title} from "@angular/platform-browser";
 import { ProductmanagementService } from '../productmanagement.service';
 import { ToastrService } from 'ngx-toastr';
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
+import { AuthService } from '../auth.sevice';
 
 @Component({
   selector: 'app-profile-inventory',
@@ -14,6 +15,10 @@ export class ProfileInventoryComponent implements OnInit {
   namePattern: string = '^([a-zA-Z_\-]*)$';
 
   public productData: any = {}
+  product_newData: any;
+  current_User:any;
+  userId: string;
+  currentuserData: any;
 
 
   
@@ -30,18 +35,33 @@ export class ProfileInventoryComponent implements OnInit {
   
     private products: ProductmanagementService,
     private toastr: ToastrService,
-    private titleService: Title
+    private titleService: Title,
+    private authService: AuthService
+
   ) { 
     this.titleService.setTitle("My Inventory - StraySpirit");
    }
 
   ngOnInit() {
+    
+    this.userId = this.authService.getUserId();
+    this.authService.getUserById(this.userId).subscribe(currentUser=>{
+      this.current_User = currentUser;
 
-    this.products.getProducts().subscribe(productData =>{
-      console.log(productData);
-  })
+    })
+    // this.products.getProducts().subscribe(productData =>{
+    //   console.log(productData);
+    // this.product_newData=productData;
+    //   console.log(this.product_newData);
+    //        })
+           this.products.getproductsUser(this.userId).subscribe(currentProductUser=>
+            {
+              this.product_newData = currentProductUser;
+            })
 
-}
+    }
+
+
 
 private imageSrc: string = '';
 //Image conversion to base64:  https://stackoverflow.com/questions/48216410/angular-4-base64-upload-component
@@ -67,7 +87,12 @@ private imageSrc: string = '';
       productPrice: this.addProductForm.get('productPrice').value,
       productQuantity: this.addProductForm.get('productQuantity').value,
       productDescription: this.addProductForm.get('productDescription').value,
-      productPic: this.imageSrc
+      productPic: this.imageSrc,
+      productUploader: {
+        uId: this.userId,
+        firstName: this.current_User["firstName"],
+        lastName: this.current_User["lastName"]
+      }
     }
     console.log(this.productData);
     this.products.newProducts(this.productData);
@@ -77,9 +102,9 @@ private imageSrc: string = '';
   showSuccess() {
     console.log("Toast0");
     this.toastr.success('Good Job!', 'Product Added!', {
-      timeOut: 5500,
-      closeButton: true,
-      progressBar: true
+      // timeOut: 5500,
+      // closeButton: true,
+      // progressBar: true
     });
   }
 }

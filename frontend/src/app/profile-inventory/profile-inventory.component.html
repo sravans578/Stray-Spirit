@@ -5,7 +5,8 @@
       <mat-tab label="My Inventory">
         <div class="container inventory_content">
           <h2 class="text-center mt-25">My Inventory</h2>
-          <div class="row mt-25 row_head">
+          <div class = "noproduct" *ngIf="!productFound">No products added by you!</div>
+          <div class="row mt-25 row_head" *ngIf="productFound" >
             <div class="col-md-2">
               Image
             </div>
@@ -22,100 +23,28 @@
               Action
             </div>
           </div>
-          <mdb-card>
+          <mdb-card *ngFor="let p of product_newData">
             <div class="row text-center">
               <div class="col-md-2 col-sm-4">
                 <div class="inventory_image">
-                  <img src="../assets/images/petproduct1.jpg" class="img-fluid">
+                  <img [src]="p.productPic" class="img-fluid">
                 </div>
               </div>
               <div class="col-md-4 col-sm-8 inventory_product_name_wrapper">
-                <p class="inventory_product_name">Trying to add a Very Very Long Product Name</p>
+                <p class="inventory_product_name">{{p.productName}}</p>
                 <div class="mobile_price_qty">
-                  <span class="mobile_price"><i class="fas fa-dollar-sign"></i> $200</span>
-                  <span class="mobile_qty"><i class="fas fa-sort-amount-up"></i> 5</span>
+                  <span class="mobile_price"><i class="fas fa-dollar-sign"></i>{{p.productPrice}}</span>
+                  <span class="mobile_qty"><i class="fas fa-sort-amount-up"></i>{{p.productQuantity}}</span>
                 </div>
               </div>
               <div class="col-md-1 desktop_price_qty">
                 <p class="inventory_product_price">
-                  $200
+                  ${{p.productPrice}}
                 </p>
               </div>
               <div class="col-md-1 desktop_price_qty">
                 <p class="inventory_product_qty">
-                  5
-                </p>
-              </div>
-              <div class="col-md-2 col-sm-6">
-                <div class="edit_button">
-                  <i class="fas fa-pencil-alt"></i> <span>Edit</span>
-                </div>
-              </div>
-              <div class="col-md-2 col-sm-6">
-                <div class="delete_button">
-                  <i class="fas fa-trash-alt"></i> <span>Delete</span>
-                </div>
-              </div>
-            </div>
-          </mdb-card>
-          <mdb-card>
-            <div class="row text-center">
-              <div class="col-md-2 col-sm-4">
-                <div class="inventory_image">
-                  <img src="../assets/images/petproduct1.jpg" class="img-fluid">
-                </div>
-              </div>
-              <div class="col-md-4 col-sm-8 inventory_product_name_wrapper">
-                <p class="inventory_product_name">Trying to add a Very Very Long Product Name</p>
-                <div class="mobile_price_qty">
-                  <span class="mobile_price"><i class="fas fa-dollar-sign"></i> $200</span>
-                  <span class="mobile_qty"><i class="fas fa-sort-amount-up"></i> 5</span>
-                </div>
-              </div>
-              <div class="col-md-1 desktop_price_qty">
-                <p class="inventory_product_price">
-                  $200
-                </p>
-              </div>
-              <div class="col-md-1 desktop_price_qty">
-                <p class="inventory_product_qty">
-                  5
-                </p>
-              </div>
-              <div class="col-md-2 col-sm-6">
-                <div class="edit_button">
-                  <i class="fas fa-pencil-alt"></i> <span>Edit</span>
-                </div>
-              </div>
-              <div class="col-md-2 col-sm-6">
-                <div class="delete_button">
-                  <i class="fas fa-trash-alt"></i> <span>Delete</span>
-                </div>
-              </div>
-            </div>
-          </mdb-card>
-          <mdb-card>
-            <div class="row text-center">
-              <div class="col-md-2 col-sm-4">
-                <div class="inventory_image">
-                  <img src="../assets/images/petproduct1.jpg" class="img-fluid">
-                </div>
-              </div>
-              <div class="col-md-4 col-sm-8 inventory_product_name_wrapper">
-                <p class="inventory_product_name">Trying to add a Very Very Long Product Name</p>
-                <div class="mobile_price_qty">
-                  <span class="mobile_price"><i class="fas fa-dollar-sign"></i> $200</span>
-                  <span class="mobile_qty"><i class="fas fa-sort-amount-up"></i> 5</span>
-                </div>
-              </div>
-              <div class="col-md-1 desktop_price_qty">
-                <p class="inventory_product_price">
-                  $200
-                </p>
-              </div>
-              <div class="col-md-1 desktop_price_qty">
-                <p class="inventory_product_qty">
-                  5
+                  {{p.productQuantity}}
                 </p>
               </div>
               <div class="col-md-2 col-sm-6">
