@@ -8,7 +8,7 @@ export class AuthService{
     private token:string;
     private isAuthenticated=false;
     private userId:string;
-   private authStatusListener=new Subject<boolean>();
+    private authStatusListener=new Subject<boolean>();
     constructor(private http:HttpClient,private router: Router){}
     
     getToken(){
@@ -56,13 +56,16 @@ export class AuthService{
                 const token=response.token;
                 this.token=token;
                 if(token !== null && token !== ''){
-                    this.isAuthenticated=true;
+                    
                     this.userId=response.userId;
+                   this.saveAuthData(token,this.userId);
+                    this.isAuthenticated = true;
                     this.authStatusListener.next(true);
-                    this.saveAuthData(token,this.userId);
                     this.router.navigate(['/profile']);
+                    console.log(this.token);
+                    return token;
                 }
-                console.log(this.token);
+                
                 
             }
         )
@@ -79,30 +82,29 @@ export class AuthService{
                 if(token !== null && token !== ''){
                 this.isAuthenticated=true;
                 this.userId=response.userId;
-                this.authStatusListener.next(true);
                 this.saveAuthData(token,this.userId);
+                this.authStatusListener.next(true);
                 this.router.navigate(['/profile']);
+                return token;
                 }
-                
-                console.log(this.token);
-               
             }
         )
     }
 
+
     autoAuthUser(){
         const authInformation=this.getAuthData();
-        if(this.token){
-            this.token=authInformation.token;
+        if(authInformation.token){
+            this.isAuthenticated=true;
+            this.authStatusListener.next(true);
         }
         else{
             return null;
         }
-        this.isAuthenticated=true;
-        this.userId=authInformation.userId;
-        this.authStatusListener.next(true);
+        
+       
     }
-
+    
     logout(){
         this.token=null;
         this.isAuthenticated=false;
@@ -113,16 +115,14 @@ export class AuthService{
         
     }
 
-    getUserById(loggedInUser:any){
-        return this.http.get("http://localhost:3000/user/"+loggedInUser);
+    // getUserById(loggedInUser:any){
+    //     return this.http.get("http://localhost:3000/user/"+loggedInUser);
        
-    }
+    // }
 
     private saveAuthData(token:string,userId:string){
         localStorage.setItem("token",token);
         localStorage.setItem("userId",userId);
-        
-
     }
 
     private getAuthData(){
@@ -133,7 +133,7 @@ export class AuthService{
         }
         return{
             token:token,
-            userId:userId
+            userId:userId 
         }
     }
     

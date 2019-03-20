@@ -54,26 +54,27 @@ export class ProfileHomeComponent implements OnInit {
    }
 
   ngOnInit() {
-    var userId=this.authService.getUserId();
-    this.authService.getUserById(userId).subscribe(user=>{
-      this.userData=user;
+    // var userId=this.authService.getUserId();
+    // this.authService.getUserById(userId).subscribe(user=>{
+    //   this.userData=user;
       
       
-    console.log(this.userData);
-    this.userData["address"]="";
-        this.userData["pincode"]="";
-        this.userData["dob"]="";
+    // console.log(this.userData);
+    // this.userData["address"]="";
+    //     this.userData["pincode"]="";
+    //     this.userData["dob"]="";
         
-    console.log(this.userData);
+    // console.log(this.userData);
     
-    this.updateProfileForm.controls.firstName.patchValue(this.userData["firstName"]);
-    this.updateProfileForm.controls.lastName.patchValue(this.userData["lastName"]);
-    this.updateProfileForm.controls.email.patchValue(this.userData["email"]);
-    this.updateProfileForm.controls.phone.patchValue(this.userData["phoneNumber"]);
-    this.updateProfileForm.controls.address.patchValue(this.userData["address"]);
-    this.updateProfileForm.controls.pincode.patchValue(this.userData["pincode"]);
-    this.updateProfileForm.controls.dob.patchValue(this.userData["dob"]);
-    });
+    // this.updateProfileForm.controls.firstName.patchValue(this.userData["firstName"]);
+    // this.updateProfileForm.controls.lastName.patchValue(this.userData["lastName"]);
+    // this.updateProfileForm.controls.email.patchValue(this.userData["email"]);
+    // this.updateProfileForm.controls.phone.patchValue(this.userData["phoneNumber"]);
+    // this.updateProfileForm.controls.address.patchValue(this.userData["address"]);
+    // this.updateProfileForm.controls.pincode.patchValue(this.userData["pincode"]);
+    // this.updateProfileForm.controls.dob.patchValue(this.userData["dob"]);
+    // });
+    
     // this.userData = [
     //   { id:1, firstName: 'Aadesh', lastName: 'Shah', email:'shahaadesh5@gmail.com', phone:'9876543210', address:'1333 South Park St, Halifax, NS', pincode: 'B3J2K9', dob: '1995-11-05'  }
     // ];

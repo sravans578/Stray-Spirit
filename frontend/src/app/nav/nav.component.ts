@@ -17,26 +17,43 @@ export class NavComponent implements OnInit,OnDestroy {
    }
 
   ngOnInit() {
-    this.rsub = this.router.events.subscribe(()=>
+  //  this.rsub = this.router.events.subscribe(()=>{
+  //   this.isUserAuthenticated = this.authService.getIsAuth();
+  //  })
+  //   this.authListenerSubs=this.authService.getAuthStatusListener()
+  //   .subscribe(isAuthenticated=>
+  //     {
+  //       console.log(isAuthenticated);
+  //     this.isUserAuthenticated=isAuthenticated;
+  //   }
+  //   );
+    this.isUserAuthenticated=this.authService.getIsAuth();
+  // this.rsub = this.router.events.subscribe(()=>
+  //   {
+  //     this.isUserAuthenticated=this.authService.getIsAuth();
+  //   }
+  // );
+
+  
+  this.authListenerSubs=this.authService.getAuthStatusListener()
+  .subscribe(isAuthenticated=>
     {
-      this.isUserAuthenticated=this.authService.getIsAuth();
-    }
-    )
-    this.authListenerSubs=this.authService.getAuthStatusListener()
-    .subscribe(isAuthenticated=>
-      {
-        console.log(isAuthenticated);
-      this.isUserAuthenticated=isAuthenticated;
-    }
-    );
+      console.log(isAuthenticated);
+    this.isUserAuthenticated=isAuthenticated;
   }
-  ngOnDestroy(){
-    this.authListenerSubs.unsubscribe();
+  );
+  
+   
+
   }
+  
 
   onLogout(){
     console.log("reached");
     this.authService.logout();
+  }
+  ngOnDestroy(){
+    this.authListenerSubs.unsubscribe();
   }
 
 }
