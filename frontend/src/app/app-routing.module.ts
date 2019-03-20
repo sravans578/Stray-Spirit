@@ -24,7 +24,7 @@ import { ForgotComponent} from './forgot-pwd/forgot.component';
 import {RegistrationAdityaComponent} from './registration-aditya/registration-aditya.component';
 import { RegisterAparnaComponent } from './register_aparna/register_aparna.component';
 import { RescueComponent } from './rescue/rescue.component'; 
-import { ProfilePetAdsComponent } from './profile-pet-ads/profile-pet-ads.component';
+import { AuthGuard } from './auth.guard';
 
 
 const routes: Routes = [
@@ -51,6 +51,7 @@ const routes: Routes = [
   // Implemented nested routes https://angular-2-training-book.rangle.io/handout/routing/child_routes.html
   { path:'profile', 
     component:ProfileNavComponent,
+     canActivate:[AuthGuard],
     children: [
       { path: '', component: ProfileHomeComponent },
       { path: 'inventory', component: ProfileInventoryComponent },
@@ -63,6 +64,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers:[AuthGuard]
 })
 export class AppRoutingModule { }

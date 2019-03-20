@@ -7,7 +7,7 @@
                 <mat-tab label="Personal">
                     <div class="container">
                         <h2 class="text-center mt-25">Register for Personal Account</h2>
-                        <form name="registerForm" [formGroup]="registerForm">
+                        <form name="registerForm" [formGroup]="registerForm" (submit)="onUserSignup()">
                             <div class="row">
                                 <div class="col-sm">
                                     <div class="md-form">
@@ -76,7 +76,7 @@
                                         least 8 characters</div>
                                 </div>
                             </div>
-                            <button mdbBtn type="submit" color="indigo" mdbWavesEffect class="resgister_button" [disabled]="!registerForm.valid"  (click)="userRegisterSubmit()">Register</button>
+                            <button mdbBtn type="submit" color="indigo" mdbWavesEffect class="resgister_button" [disabled]="!registerForm.valid" >Register</button>
                         </form>
                         <div class="alert alert-success mt-25" role="alert" *ngIf=submitted >
                                 Profile Created! (Just a UI!)
@@ -87,7 +87,7 @@
                 <mat-tab label="Organization">
                     <div class="container">
                         <h2 class="text-center mt-25">Register for Organization Account</h2>
-                        <form name="orgRegisterForm" [formGroup]="orgRegisterForm">
+                        <form name="orgRegisterForm" [formGroup]="orgRegisterForm" (submit)=onOrgSignup(orgRegisterForm)>
                             <div class="md-form">
                                 <input mdbInputDirective type="text" id="orgName" class="form-control" name="orgName"
                                     formControlName="orgName" [ngClass]="{'is-invalid':orgRegisterForm.get('orgName').touched && orgRegisterForm.get('orgName').invalid}">

@@ -3,8 +3,13 @@ const app = express();
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const passport = require('passport');
+const session = require('express-session');
+// Passport Config
+require('./passport')(passport);
 
 const petsRoutes = require('./api/routes/pets');
+const userRoutes = require('./api/routes/user');
 
 app.use(morgan('dev'));
 app.use(bodyParser.json({limit: '50mb'}));
@@ -25,6 +30,7 @@ app.use((req, res, next) => {
 });
 
 app.use('/pets', petsRoutes);
+app.use('/user', userRoutes);
 
 mongoose.connect('mongodb+srv://strayspirit:' + process.env.MONGO_ATLAS_PW + '@strayspirit-bsghz.mongodb.net/test?retryWrites=true', { useNewUrlParser: true });
 
@@ -33,6 +39,19 @@ app.use((req, res, next) =>{
     error.statud = 404;
     next(error);
 })
+
+// Express session
+app.use(
+    session({
+      secret: 'secret',
+      resave: true,
+      saveUninitialized: true
+    })
+  );
+  
+  // Passport middleware
+  app.use(passport.initialize());
+  app.use(passport.session());
 
 app.use((error, req, res, next) =>{
     res.status(error.status || 500);

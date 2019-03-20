@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
-  import {Title} from "@angular/platform-browser";
-  import {Router} from "@angular/router"
+import { NgForm }   from '@angular/forms';
+import {Title} from "@angular/platform-browser";
+import {Router} from "@angular/router"
+import { AuthService } from '../auth.sevice';
 
 
 @Component({
@@ -19,7 +21,9 @@ export class RegisterComponent implements OnInit {
   
   submitted: boolean = false;
   
-  
+  public usersData:any ={}
+  public orgData:any={}
+
   registerForm = new FormGroup({
     firstName: new FormControl('', [Validators.required,Validators.pattern(this.namePattern)]),
     lastName: new FormControl('', [Validators.required,Validators.pattern(this.namePattern)]),
@@ -41,19 +45,57 @@ export class RegisterComponent implements OnInit {
     orgPassword: new FormControl('', [Validators.required, Validators.minLength(8)]),
     orgRePassword: new FormControl('', [Validators.required, Validators.minLength(8)])
   })
-  constructor(private titleService:Title,private router: Router) { 
+  constructor(private titleService:Title,private router: Router,public authService:AuthService) { 
     this.titleService.setTitle("Register on StraySpirit");
    }
 
+
+
   ngOnInit() {
   }
-  userRegisterSubmit(){
-    this.submitted=true;
-    setTimeout(()=>{  
-      this.submitted = false;
- }, 3000);
- setTimeout(()=>{  
-  this.router.navigate(['/login']);
-}, 3000);
+//   userRegisterSubmit(){
+//     this.submitted=true;
+//     setTimeout(()=>{  
+//       this.submitted = false;
+//  }, 3000);
+//  setTimeout(()=>{  
+//   this.router.navigate(['/login']);
+// }, 2000);
+//   }
+
+  onUserSignup(){
+    var pwd=this.registerForm.get('password').value;
+    var repwd=this.registerForm.get('repassword').value;
+    if(pwd!==repwd)
+    {
+      
+      console.log('password do not match');
+    }
+    else{
+      this.usersData={
+        firstName:this.registerForm.get('firstName').value,
+        lastName:this.registerForm.get('lastName').value,
+        phone:this.registerForm.get('number').value,
+        email:this.registerForm.get('email').value,
+        password:this.registerForm.get('password').value
+      }
+      // console.log(this.usersData);
+      this.authService.createUser(this.usersData);
+    }
   }
+
+  onOrgSignup(form:NgForm){
+    this.orgData={
+      orgName:this.orgRegisterForm.get('orgName').value,
+      email:this.orgRegisterForm.get('orgEmail').value,
+      orgPhone:this.orgRegisterForm.get('orgPhone').value,
+      orgRegNo:this.orgRegisterForm.get('orgRegNo').value,
+      password:this.orgRegisterForm.get('orgPassword').value
+
+    }
+    this.authService.createOrganizationUser(
+      this.orgData
+    )
+  }
+  
 }
