@@ -53,25 +53,35 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
   }
-  userRegisterSubmit(){
-    this.submitted=true;
-    setTimeout(()=>{  
-      this.submitted = false;
- }, 3000);
- setTimeout(()=>{  
-  this.router.navigate(['/login']);
-}, 2000);
-  }
+//   userRegisterSubmit(){
+//     this.submitted=true;
+//     setTimeout(()=>{  
+//       this.submitted = false;
+//  }, 3000);
+//  setTimeout(()=>{  
+//   this.router.navigate(['/login']);
+// }, 2000);
+//   }
 
   onUserSignup(){
-    this.usersData={
-      firstName:this.registerForm.get('firstName').value,
-      lastName:this.registerForm.get('lastName').value,
-      phone:this.registerForm.get('number').value,
-      email:this.registerForm.get('email').value,
-      password:this.registerForm.get('password').value
+    var pwd=this.registerForm.get('password').value;
+    var repwd=this.registerForm.get('repassword').value;
+    if(pwd!==repwd)
+    {
+      
+      console.log('password do not match');
     }
-    this.authService.createUser(this.usersData);
+    else{
+      this.usersData={
+        firstName:this.registerForm.get('firstName').value,
+        lastName:this.registerForm.get('lastName').value,
+        phone:this.registerForm.get('number').value,
+        email:this.registerForm.get('email').value,
+        password:this.registerForm.get('password').value
+      }
+      // console.log(this.usersData);
+      this.authService.createUser(this.usersData);
+    }
   }
 
   onOrgSignup(form:NgForm){

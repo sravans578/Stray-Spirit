@@ -113,6 +113,11 @@ export class AuthService{
         
     }
 
+    getUserById(loggedInUser:any){
+        return this.http.get("http://localhost:3000/user/"+loggedInUser);
+       
+    }
+
     private saveAuthData(token:string,userId:string){
         localStorage.setItem("token",token);
         localStorage.setItem("userId",userId);

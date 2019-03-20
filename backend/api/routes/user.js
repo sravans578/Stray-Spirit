@@ -15,7 +15,7 @@ router.post("/signup_user", (req,res,next)=>{
             _id:new mongoose.Types.ObjectId(),
             firstName: req.body.firstName,
             lastName: req.body.lastName,
-            phoneNumber: req.body.phoneNumber,
+            phoneNumber: req.body.phone,
             email:req.body.email,
             password: hash,
             user_type:"personal",
@@ -139,5 +139,20 @@ router.post('/login', (req, res, next) => {
         })  
     });
   });
+
+  router.get('/:userId', (req, res, next) => {
+    const id = req.params.userId;
+    User.findById(id)
+    .exec()
+    .then(doc =>{
+        console.log(doc);
+        res.status(200).json(doc);
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json({error:err});
+    });
+});
+
 
 module.exports = router;
