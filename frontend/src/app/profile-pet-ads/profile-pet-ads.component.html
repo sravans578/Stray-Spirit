@@ -128,7 +128,7 @@
             <div class="container my_ads_listings">
                 <h2 class="text-center mt-25">My current pet listings</h2>
                 <!-- Using angular material expansion panel. Available at https://material.angular.io/components/expansion/overview -->
-                
+                <div class="error_div" *ngIf="!petFound">No pets added by you!</div>
                   <div class="mt-25"  *ngFor="let petListings of petListing">
                   <mat-expansion-panel >
                       <mat-expansion-panel-header>

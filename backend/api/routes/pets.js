@@ -31,8 +31,9 @@ router.post('/', (req, res, next) => {
         petHealth: req.body.petHealthModel,
         petDescription: req.body.petDescriptionModel,
         petUploader: {
-            firstName: 'Aadesh',
-            lastName: 'Shah'
+            userId: req.body.petUploaderModel.petUploaderId,
+            firstName: req.body.petUploaderModel.petUploaderfirstName,
+            lastName: req.body.petUploaderModel.petUploaderlastName
         },
         petLocation:{
             petCity: req.body.petLocationModel.petCityModel,
@@ -52,9 +53,24 @@ router.post('/', (req, res, next) => {
     });
 });
 
-router.get('/:petId', (req, res, next) => {
+router.get('/singlepet/:petId', (req, res, next) => {
     const id = req.params.petId;
     Pet.findById(id)
+    .exec()
+    .then(doc =>{
+        console.log(doc);
+        res.status(200).json(doc);
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json({error:err});
+    });
+});
+router.get('/uploader/:userId', (req, res, next) => {
+    const id = req.params.userId;
+    Pet.find({
+        'petUploader.userId':id
+    })
     .exec()
     .then(doc =>{
         console.log(doc);

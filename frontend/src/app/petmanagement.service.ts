@@ -15,7 +15,7 @@ export class PetmanagementService {
     return this.http.get('http://localhost:3000/pets/');
   }
   getPetById(id:any){
-    return this.http.get('http://localhost:3000/pets/'+id);
+    return this.http.get('http://localhost:3000/pets/singlepet/'+id);
   }
   newPets(petModel:any){
     console.log(petModel.petNameModel);
@@ -23,5 +23,8 @@ export class PetmanagementService {
     .subscribe(responseData => {
       console.log("Pet added!");
     });
+  }
+  petUser(userId:any){
+    return this.http.get('http://localhost:3000/pets/uploader/'+userId);
   }
 }
