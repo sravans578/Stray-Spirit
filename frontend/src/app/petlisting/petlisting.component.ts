@@ -1,4 +1,4 @@
-// Developer - Dheeraj Varshney B00808467 dh301823@dal.ca
+
 import { Component, OnInit } from '@angular/core';
 // Using IPAPI to get users current location, available at - https://ipapi.co/
 import { LocationService } from '../location.service';

@@ -25,8 +25,8 @@ router.post('/', (req, res, next) => {
         productDescription: req.body.productDescription,
         productPic: req.body.productPic,
         productUploader: {
-            firstName: 'Aadesh',
-            lastName: 'Shah'
+            firstName: 'Dheeraj',
+            lastName: 'Varshney'
         },
         
         

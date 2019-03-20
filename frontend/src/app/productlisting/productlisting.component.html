@@ -5,8 +5,8 @@
     <div class="row">
       <div class="col-md-3 category_col">
         <div class="mt-85">
-        <p class="category_title text-center">Category</p>
-        <mdb-card>
+          <p class="category_title text-center">Category</p>
+          <mdb-card>
             <mdb-card-header>Featured</mdb-card-header>
             <ul class="list-group list-group-flush">
               <li class="list-group-item">Category 1</li>
@@ -14,25 +14,25 @@
               <li class="list-group-item">Category 3</li>
             </ul>
           </mdb-card>
-      </div>
+        </div>
       </div>
       <div class="col-md-9">
         <div class="mt-25">
           <div class="product_page_heading">
-        <h2>Here are our listings for Products</h2>
-        <select class="browser-default custom-select">
-            <option selected class="inactive">Sort By</option>
-            <option value="1">Price - Low to High</option>
-            <option value="2">Price - High to Low</option>
-            <option value="3">New Products</option>
-          </select>
-        </div>
-        <div class="container mt-25 products_listing">
+            <h2>Here are our listings for Products</h2>
+            <select class="browser-default custom-select">
+              <option selected class="inactive">Sort By</option>
+              <option value="1">Price - Low to High</option>
+              <option value="2">Price - High to Low</option>
+              <option value="3">New Products</option>
+            </select>
+          </div>
+          <div class="container mt-25 products_listing">
           <div class="row">
-            <div class="col-lg-4 col-md-6" *ngFor="let p of products | paginate: { itemsPerPage: 6, currentPage: page }">
+            <div class="col-lg-4 col-md-6" *ngFor="let p of product_newData | paginate: { itemsPerPage: 6, currentPage: page }">
                 <mdb-card>
                   <a routerLink="/product-detail">  
-                  <mdb-card-img mdbWavesEffect src="../assets/images/Productspetimages/{{p.productImage}}" alt="{{p.productName}}"></mdb-card-img>
+                  <mdb-card-img mdbWavesEffect [src]="p.productPic" [alt]="p.productName"></mdb-card-img>
                   </a>  
                   <mdb-card-body>
                       <mdb-card-title>
@@ -66,8 +66,7 @@
           <pagination-controls (pageChange)="page=$event"></pagination-controls>
           </div>
         </div>
-      </div>
-      </div>
-    </div>
+
+         
   </div>
 </div>
