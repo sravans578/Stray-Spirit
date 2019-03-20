@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { LocationService } from './location.service';
+import { EventsService } from './events/events.service';
 import { HttpClient } from '@angular/common/http';
+
 
 
 @Component({

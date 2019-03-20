@@ -6,7 +6,7 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { HomeComponent } from './home/home.component';
 import { PetlistingComponent } from './petlisting/petlisting.component';
 import { ProductlistingComponent } from './productlisting/productlisting.component';
-
+import { EventsComponent } from './events/events.component';
 import { PetProfilePageComponent } from './pet-profile-page/pet-profile-page.component';
 import { WhyAdoptCatComponent } from './why-adopt-cat/why-adopt-cat.component';
 import { ProfileHomeComponent } from './profile-home/profile-home.component';
@@ -38,6 +38,7 @@ const routes: Routes = [
   { path: 'why-adopt-dog',component:WhyadoptdogComponent},
   { path: 'contact', component: ContactComponent },
   { path: 'register-aparna', component: RegisterAparnaComponent },
+  { path: 'events', component: EventsComponent },
 
   { path: 'login-Dheeraj',component:LoginDheerajComponent},
   { path: 'rescue', component: RescueComponent },

@@ -4,7 +4,10 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
+const eventsRoutes = require('./api/routes/event');
+
 const petsRoutes = require('./api/routes/pets');
+
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: false}));
@@ -24,8 +27,15 @@ app.use((req, res, next) => {
 });
 
 app.use('/pets', petsRoutes);
+app.use('/events', eventsRoutes);
 
-mongoose.connect('mongodb+srv://strayspirit:' + process.env.MONGO_ATLAS_PW + '@strayspirit-bsghz.mongodb.net/test?retryWrites=true', { useNewUrlParser: true });
+mongoose.connect('mongodb+srv://strayspirit:strayspirit123@strayspirit-bsghz.mongodb.net/test?retryWrites=true', { useNewUrlParser: true })
+   .then(() => {
+       console.log('Connected to DB!');
+   })
+   .catch(() => {
+       console.log('Not Connected??');
+   });
 
 app.use((req, res, next) =>{
     const error = new Error('Not Found');
@@ -39,7 +49,10 @@ app.use((error, req, res, next) =>{
         error: {
             message: error.message
         }
+        
     })
-})
+}) 
 
+
+ 
 module.exports = app;

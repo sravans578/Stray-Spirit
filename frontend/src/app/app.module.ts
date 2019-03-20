@@ -29,7 +29,6 @@ import { ProductDetailPageComponent } from './product-detail-page/product-detail
 import {MatCardModule} from '@angular/material/card';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {NgxPaginationModule} from 'ngx-pagination';
-
 import { LoginDheerajComponent } from './login-dheeraj/login-dheeraj.component';
 
 
@@ -44,6 +43,9 @@ import { RescueComponent } from './rescue/rescue.component';
 import { HttpClientModule } from '@angular/common/http';
 import {MatSelectModule} from '@angular/material/select';
 import { ProfilePetAdsComponent } from './profile-pet-ads/profile-pet-ads.component';
+import { EventsComponent } from './events/events.component';
+
+
 
 
 
@@ -73,7 +75,8 @@ import { ProfilePetAdsComponent } from './profile-pet-ads/profile-pet-ads.compon
     ContactComponent,
     RegisterAparnaComponent,
     RescueComponent,
-    ProfilePetAdsComponent
+    ProfilePetAdsComponent,
+    EventsComponent
   ],
   imports: [
     BrowserModule,
