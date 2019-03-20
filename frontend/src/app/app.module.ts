@@ -72,8 +72,8 @@ import { ToastrModule } from 'ngx-toastr';
     ForgotComponent,
     ContactComponent,
     RegisterAparnaComponent,
-    RescueComponent,
-    ProfilePetAdsComponent
+    RescueComponent
+    
   ],
   imports: [
     BrowserModule,

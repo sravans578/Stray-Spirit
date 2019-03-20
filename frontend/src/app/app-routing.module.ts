@@ -54,8 +54,8 @@ const routes: Routes = [
      canActivate:[AuthGuard],
     children: [
       { path: '', component: ProfileHomeComponent },
-      { path: 'inventory', component: ProfileInventoryComponent },
-      { path: 'my-pet-ads', component: ProfilePetAdsComponent }
+      { path: 'inventory', component: ProfileInventoryComponent }
+      
     ]
   },
   {path:'product-detail',component:ProductDetailPageComponent},
