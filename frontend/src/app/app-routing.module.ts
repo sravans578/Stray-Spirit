@@ -59,7 +59,7 @@ const routes: Routes = [
       { path: 'my-pet-ads', component: ProfilePetAdsComponent }
     ]
   },
-  {path:'product-detail',component:ProductDetailPageComponent},
+  {path:'product/:id',component:ProductDetailPageComponent},
   { path: '**', component: NotfoundComponent }
 ];
 

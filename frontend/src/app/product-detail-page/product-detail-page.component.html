@@ -9,12 +9,12 @@
       <div class="col-lg-6 col-md-6 col-sm-6" id="Row1Col1">
         <!-- The image has been take from this website:  
         https://timesofindia.indiatimes.com/best-products/pets/dogs/these-dry-dog-food-packs-are-healthy-wont-leave-the-floors-messy/articleshow/67366466.cms -->
-        <img class="img-fluid" src="../assets/images/PetProductImages/petproduct.jpg"> 
+        <img class="img-fluid" src={{product_data?.productPic}}> 
       </div>
 
       <div class="col-lg-6 col-md-6 col-sm-6" id="Row1Col2">
-        <h2>Product Name</h2>
-        <h3>$142.00</h3>
+        <h2>{{product_data?.productName}}</h2>
+        <h3>{{product_data?.productPrice}}</h3>
         <!-- All the icons have been used from this website:
               https://fontawesome.com/icons -->
         <span class="fa fa-star checked"></span>
