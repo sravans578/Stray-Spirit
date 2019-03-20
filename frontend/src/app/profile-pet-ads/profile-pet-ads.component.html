@@ -124,6 +124,36 @@
              </form>
             </div>
           </mat-tab>
+          <mat-tab label="My listings">
+            <div class="container my_ads_listings">
+                <h2 class="text-center mt-25">My current pet listings</h2>
+                <!-- Using angular material expansion panel. Available at https://material.angular.io/components/expansion/overview -->
+                
+                  <div class="mt-25"  *ngFor="let petListings of petListing">
+                  <mat-expansion-panel >
+                      <mat-expansion-panel-header>
+                        <span class="img-circle">
+                          <img [src]="petListings?.petPic" [alt]="petListings?.petName" class="pet-listing-image img-fluid">
+                        </span>
+                        <span class="header_title">
+                            <mdb-badge color="purple darken-4">{{petListings?.petName}}</mdb-badge>
+                        </span>
+                      </mat-expansion-panel-header>
+                      <p><mdb-badge color="indigo lighten-1">Gender</mdb-badge> {{petListings?.petGender}}</p>
+                      <p><mdb-badge color="indigo lighten-1">Category</mdb-badge>  {{petListings?.petCategory}}</p>
+                      <p><mdb-badge color="indigo lighten-1">Vaccination Status</mdb-badge>  {{petListings?.petHealth}}</p>
+                      <p><mdb-badge color="indigo lighten-1">About Pet</mdb-badge></p>
+                      <div class="">
+                        <p> {{petListings?.petDescription}}</p>
+                      </div>
+                      <mat-action-row>
+                          <button type="button" mdbBtn color="warning" mdbWavesEffect>Edit</button>
+                          <button type="button" mdbBtn color="danger" mdbWavesEffect>Delete</button>
+                      </mat-action-row>
+                    </mat-expansion-panel>
+                  </div>
+            </div>
+          </mat-tab>
           </mat-tab-group>
           </div>
           </div>

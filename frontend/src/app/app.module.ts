@@ -46,6 +46,8 @@ import {MatSelectModule} from '@angular/material/select';
 import { ProfilePetAdsComponent } from './profile-pet-ads/profile-pet-ads.component';
 
 import { ToastrModule } from 'ngx-toastr';
+import {MatExpansionModule} from '@angular/material/expansion';
+
 
 // import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap'
 @NgModule({
@@ -94,7 +96,8 @@ import { ToastrModule } from 'ngx-toastr';
     MatAutocompleteModule,
     NgxPaginationModule,
     MatSelectModule,
-    ToastrModule.forRoot() 
+    ToastrModule.forRoot(),
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]
