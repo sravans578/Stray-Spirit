@@ -19,7 +19,7 @@ export class ProfileInventoryComponent implements OnInit {
   
   addProductForm = new FormGroup({
     productName: new FormControl('', [Validators.required,Validators.pattern(this.namePattern)]),
-    //productName: new FormControl('', Validators.required),
+    productQuantity: new FormControl('', [ Validators.required , Validators.pattern('^[0-9]*$') ]),
     productPrice: new FormControl('', [ Validators.required , Validators.pattern('^[0-9]*$') ]),
     productDescription: new FormControl('', Validators.required),
     productPic: new FormControl('')
@@ -65,6 +65,7 @@ private imageSrc: string = '';
      this.productData = {
       productName: this.addProductForm.get('productName').value,
       productPrice: this.addProductForm.get('productPrice').value,
+      productQuantity: this.addProductForm.get('productQuantity').value,
       productDescription: this.addProductForm.get('productDescription').value,
       productPic: this.imageSrc
     }

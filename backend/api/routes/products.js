@@ -22,6 +22,7 @@ router.post('/', (req, res, next) => {
         _id: new mongoose.Types.ObjectId(),
         productName: req.body.productName,
         productPrice: req.body.productPrice,
+        productQuantity:req.body.productQuantity,
         productDescription: req.body.productDescription,
         productPic: req.body.productPic,
         productUploader: {
