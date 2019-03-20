@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {Router} from "@angular/router"
 import { Subject } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({providedIn:"root"})
 export class AuthService{
@@ -9,7 +10,7 @@ export class AuthService{
     private isAuthenticated=false;
     private userId:string;
    private authStatusListener=new Subject<boolean>();
-    constructor(private http:HttpClient,private router: Router){}
+    constructor(private http:HttpClient,private router: Router,private toaster:ToastrService){}
     
     getToken(){
        
@@ -33,8 +34,17 @@ export class AuthService{
         this.http.post("http://localhost:3000/user/signup_user",userData)
         .subscribe(response=>{
             console.log(response);
-            this.router.navigate(['/login']);
+           
+            this.toaster.success('Profile created!!!', 'SUCCESS!', {
+                timeOut: 5500,
+                closeButton: true,
+                progressBar: true
+              });
+              setTimeout(()=>{  
+                this.router.navigate(['/login']);
+                 }, 3000);
         });
+       
     }
 
      createOrganizationUser( 
@@ -43,7 +53,15 @@ export class AuthService{
         this.http.post("http://localhost:3000/user/signup_org",orgData)
         .subscribe(response=>{
             console.log(response);
-            this.router.navigate(['/login']);
+            this.toaster.success('Profile created!!!', 'SUCCESS!', {
+                timeOut: 5500,
+                closeButton: true,
+                progressBar: true
+              });
+              setTimeout(()=>{  
+                this.router.navigate(['/login']);
+                 }, 3000);
+            
         });
     }
 
@@ -61,9 +79,18 @@ export class AuthService{
                     this.authStatusListener.next(true);
                     this.saveAuthData(token,this.userId);
                     this.router.navigate(['/profile']);
+                    
+
                 }
                 console.log(this.token);
                 
+            },error=>{
+                this.toaster.error('Invalid credentials!!!', 'ERROR!', {
+                    timeOut: 5500,
+                    closeButton: true,
+                    progressBar: true
+                  });
+                  
             }
         )
     }
@@ -86,7 +113,13 @@ export class AuthService{
                 
                 console.log(this.token);
                
-            }
+            },error=>{
+                this.toaster.error('Invalid credentials!!!', 'ERROR!', {
+                    timeOut: 5500,
+                    closeButton: true,
+                    progressBar: true
+                  });
+                }
         )
     }
 
