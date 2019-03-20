@@ -4,6 +4,7 @@ import { LocationService } from '../location.service';
 import { PetmanagementService } from '../petmanagement.service';
 import { ToastrService } from 'ngx-toastr';
 import { Title } from "@angular/platform-browser";
+import { AuthService } from '../auth.sevice';
 
 @Component({
   selector: 'app-profile-pet-ads',
@@ -19,6 +20,9 @@ export class ProfilePetAdsComponent implements OnInit {
   imagePreview: any;
   namePattern: string = '^([a-zA-Z_\-]*)$';
   petListing: any;
+  currentUserId: string;
+  currentUser: any;
+  petFound: boolean =true;
 
   public petData: any = {}
 
@@ -26,7 +30,8 @@ export class ProfilePetAdsComponent implements OnInit {
     private loc: LocationService, 
     private pets: PetmanagementService,
     private toastr: ToastrService,
-    private titleService: Title
+    private titleService: Title,
+    private authService: AuthService
     ){  
       this.titleService.setTitle("My Ads - StraySpirit");
     }
@@ -44,6 +49,12 @@ export class ProfilePetAdsComponent implements OnInit {
     petPic: new FormControl('')
   })
   ngOnInit() {
+    this.currentUserId=this.authService.getUserId();
+    console.log("This id has logged in: ",this.currentUserId);
+    this.authService.getUserById(this.currentUserId).subscribe(currentUserData =>{
+      this.currentUser=currentUserData;
+      console.log("Logged in user details:",this.currentUser);
+    })
     this.loc.getCurrentLocation().subscribe(currentData =>{
       console.log(currentData);
       this.currentCity=currentData.city;
@@ -55,9 +66,16 @@ export class ProfilePetAdsComponent implements OnInit {
       this.addPetsForm.controls.petCountry.patchValue(this.currentCountry);
     })
     
-    this.pets.getPets().subscribe(petData =>{
+    this.pets.petUser(this.currentUserId).subscribe(petData =>{
       console.log(petData);
       this.petListing= petData;
+      console.log("Pets for this user: ",this.petListing);
+      if(this.petListing.length===0){
+        this.petFound=false;
+      }
+    },error =>{
+      console.log("Uploader not found!");
+      this.petFound=false;
     })
   }
   
@@ -92,7 +110,12 @@ export class ProfilePetAdsComponent implements OnInit {
       petCountryModel: this.addPetsForm.get('petCountry').value
       },
       petDescriptionModel: this.addPetsForm.get('petDescription').value,
-      petPicModel: this.imageSrc
+      petPicModel: this.imageSrc,
+      petUploaderModel: {
+        petUploaderId: this.currentUserId,
+        petUploaderfirstName: this.currentUser["firstName"],
+        petUploaderlastName: this.currentUser["lastName"]
+        }
     }
     console.log(this.petData);
     this.pets.newPets(this.petData);
