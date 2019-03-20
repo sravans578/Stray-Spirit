@@ -41,9 +41,9 @@ import { ContactComponent } from './contact/contact.component';
 import { RegisterAparnaComponent } from './register_aparna/register_aparna.component';
 import { RescueComponent } from './rescue/rescue.component';
 
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import {MatSelectModule} from '@angular/material/select';
-import { AuthInterceptor } from './auth-interceptor';
+import { ProfilePetAdsComponent } from './profile-pet-ads/profile-pet-ads.component';
 
 import { ToastrModule } from 'ngx-toastr';
 
@@ -96,7 +96,7 @@ import { ToastrModule } from 'ngx-toastr';
     MatSelectModule,
     ToastrModule.forRoot() 
   ],
-  providers: [{provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true}],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -25,6 +25,7 @@ import {RegistrationAdityaComponent} from './registration-aditya/registration-ad
 import { RegisterAparnaComponent } from './register_aparna/register_aparna.component';
 import { RescueComponent } from './rescue/rescue.component'; 
 import { AuthGuard } from './auth.guard';
+import { ProfilePetAdsComponent } from './profile-pet-ads/profile-pet-ads.component';
 
 
 const routes: Routes = [
