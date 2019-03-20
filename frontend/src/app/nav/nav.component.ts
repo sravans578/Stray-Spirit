@@ -17,11 +17,12 @@ export class NavComponent implements OnInit,OnDestroy {
    }
 
   ngOnInit() {
-    this.rsub = this.router.events.subscribe(()=>
-    {
-      this.isUserAuthenticated=this.authService.getIsAuth();
-    }
-    )
+    this.isUserAuthenticated=this.authService.getIsAuth();
+    // this.rsub = this.router.events.subscribe(()=>
+    // {
+    //   this.isUserAuthenticated=this.authService.getIsAuth();
+    // }
+    // );
     this.authListenerSubs=this.authService.getAuthStatusListener()
     .subscribe(isAuthenticated=>
       {
@@ -29,6 +30,18 @@ export class NavComponent implements OnInit,OnDestroy {
       this.isUserAuthenticated=isAuthenticated;
     }
     );
+  //   this.isUserAuthenticated=this.authService.getIsAuth();
+
+  //   this.authListenerSubs=this.authService.getAuthStatusListener()
+  // .subscribe(isAuthenticated=>
+  //   {
+  //     console.log(isAuthenticated);
+  //   this.isUserAuthenticated=isAuthenticated;
+  // }
+  // );
+
+
+
   }
   ngOnDestroy(){
     this.authListenerSubs.unsubscribe();
