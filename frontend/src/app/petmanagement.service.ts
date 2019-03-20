@@ -14,6 +14,9 @@ export class PetmanagementService {
     //console.log("Inside getPets");
     return this.http.get('http://localhost:3000/pets/');
   }
+  getPetById(id:any){
+    return this.http.get('http://localhost:3000/pets/'+id);
+  }
   newPets(petModel:any){
     console.log(petModel.petNameModel);
     this.http.post('http://localhost:3000/pets/',petModel)

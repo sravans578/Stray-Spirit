@@ -80,6 +80,9 @@ mat-sidenav-content{
 .button_text{
   margin-left: 5px;
 }
+.profile_footer{
+  display: none !important;
+}
 @media screen and (max-width:599px){
   .modal-header img{
     width: 50%;

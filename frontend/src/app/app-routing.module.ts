@@ -34,7 +34,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'pets', component:  PetlistingComponent },
   { path: 'shop', component: ProductlistingComponent},
-  { path: 'pet-profile-page',component: PetProfilePageComponent},
+  { path: 'pet-profile/:id',component: PetProfilePageComponent},
   { path:'why-adopt-cat' ,component:WhyAdoptCatComponent},
   { path: 'why-adopt-dog',component:WhyadoptdogComponent},
   { path: 'contact', component: ContactComponent },

@@ -1,6 +1,7 @@
 import { Component,OnInit } from '@angular/core';
 import { LocationService } from './location.service';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 import { AuthService } from './auth.sevice';
 
 

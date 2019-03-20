@@ -1,10 +1,19 @@
 /* Global Stylesheet for all components */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; height: 100%; }
+.body_wrapper{
+    min-height: 100%;
+    margin-bottom: -50px;
+}
+.push{
+    height: 50px;
+}
+footer{
+    height: 50px;
+}
 body::-webkit-scrollbar { width: 15px; 	}
 body::-webkit-scrollbar-thumb { background-color: #191c22; opacity: 0.2; border-radius: 30px; }
-
 
 .mt-25{
     margin-top: 25px;
