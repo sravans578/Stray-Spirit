@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Title} from "@angular/platform-browser";
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
+import { AuthService } from '../auth.sevice';
+import { empty } from 'rxjs';
 
 
 
@@ -11,7 +13,18 @@ import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/fo
 })
 export class ProfileHomeComponent implements OnInit {
 
-  userData: any =[];
+  userData: {
+//     email: string,
+// firstName: string,
+// lastName: string,
+// password: string,
+// user_creation_date: string,
+// user_type: string,
+// _id: string,
+// address: string,
+// pincode: string,
+// dob: string
+  };
   editField: boolean = false;
   editRowID: any ='';
   editRowValue: any ='';
@@ -33,22 +46,44 @@ export class ProfileHomeComponent implements OnInit {
   })
 
 
-  constructor(private titleService:Title) { 
+  constructor(
+    private titleService:Title,
+    private authService:AuthService
+    ){ 
     this.titleService.setTitle("Dashboard - StraySpirit");
    }
 
   ngOnInit() {
-    this.userData = [
-      { id:1, firstName: 'Aadesh', lastName: 'Shah', email:'shahaadesh5@gmail.com', phone:'9876543210', address:'1333 South Park St, Halifax, NS', pincode: 'B3J2K9', dob: '1995-11-05'  }
-    ];
-    this.updateProfileForm.controls.firstName.patchValue(this.userData[0].firstName);
-    this.updateProfileForm.controls.lastName.patchValue(this.userData[0].lastName);
-    this.updateProfileForm.controls.email.patchValue(this.userData[0].email);
-    this.updateProfileForm.controls.phone.patchValue(this.userData[0].phone);
-    this.updateProfileForm.controls.address.patchValue(this.userData[0].address);
-    this.updateProfileForm.controls.pincode.patchValue(this.userData[0].pincode);
-    this.updateProfileForm.controls.dob.patchValue(this.userData[0].dob);
-  }
+    var userId=this.authService.getUserId();
+    this.authService.getUserById(userId).subscribe(user=>{
+      this.userData=user;
+      
+      
+    console.log(this.userData);
+    this.userData["address"]="";
+        this.userData["pincode"]="";
+        this.userData["dob"]="";
+        
+    console.log(this.userData);
+    
+    this.updateProfileForm.controls.firstName.patchValue(this.userData["firstName"]);
+    this.updateProfileForm.controls.lastName.patchValue(this.userData["lastName"]);
+    this.updateProfileForm.controls.email.patchValue(this.userData["email"]);
+    this.updateProfileForm.controls.phone.patchValue(this.userData["phoneNumber"]);
+    this.updateProfileForm.controls.address.patchValue(this.userData["address"]);
+    this.updateProfileForm.controls.pincode.patchValue(this.userData["pincode"]);
+    this.updateProfileForm.controls.dob.patchValue(this.userData["dob"]);
+    });
+    // this.userData = [
+    //   { id:1, firstName: 'Aadesh', lastName: 'Shah', email:'shahaadesh5@gmail.com', phone:'9876543210', address:'1333 South Park St, Halifax, NS', pincode: 'B3J2K9', dob: '1995-11-05'  }
+    // ];
+    //   this.userData["address"]="";
+    //     this.userData["pincode"]="";
+    //     this.userData["dob"]="";
+      
+    // console.log(this.userData);
+    }
+    
 
   updateSubmit(){
     this.submitted=true;

@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { LocationService } from './location.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { AuthService } from './auth.sevice';
 
 
 @Component({
@@ -9,8 +10,14 @@ import { Router } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+
   title = 'StraySpirit';
-  constructor(){
-}
+
+  constructor(private authService:AuthService){}
+
+  ngOnInit(){
+    this.authService.autoAuthUser();
+    
+  }
 }

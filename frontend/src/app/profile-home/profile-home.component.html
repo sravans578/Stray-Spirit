@@ -5,25 +5,25 @@
     <h3 class="text-center mt-25">Here are your details</h3>
     <div class="table-responsive mt-25">
     </div>
-    <div class="container" *ngFor="let user of userData">
+    <div class="container" >
       <form method="POST" action="" name="updateProfileForm" [formGroup]="updateProfileForm">
         <div class="row">
           <div class="col-sm-4">
             <span class="user_label">First Name :</span>
           </div>
           <div class="col-sm-8">
-            <div class="md-form" *ngIf="user.id === editRowID && user.firstName === editRowValue">
+            <div class="md-form" *ngIf="userData?._id === editRowID && userData?.firstName === editRowValue">
               <input mdbInputDirective type="text" id="firstName" class="form-control" required name="firstName"
                 formControlName="firstName" [ngClass]="{'is-invalid':updateProfileForm.get('firstName').touched && updateProfileForm.get('firstName').invalid}">
-              <i class="fas fa-times-circle fa-lg" (click)="Edit(user.id+1)"></i>
+              <i class="fas fa-times-circle fa-lg" (click)="Edit(userData?._id+1)"></i>
               <div *ngIf="updateProfileForm.get('firstName').touched && updateProfileForm.get('firstName').invalid"
                 class="invalid-feedback">
                 <div *ngIf="updateProfileForm.get('firstName').errors.required">First Name is required</div>
                 <div *ngIf="updateProfileForm.get('firstName').errors.pattern">Invalid Value (No spaces or special characters allowed!)</div>
               </div>
             </div>
-            <div *ngIf="user.firstName !== editRowValue">
-              <span class="user-info"> {{ user.firstName }} </span> <i class="fas fa-pencil-alt" (click)="Edit(user.id,user.firstName)"></i>
+            <div *ngIf="userData?.firstName !== editRowValue">
+              <span class="user-info"> {{ userData?.firstName }} </span> <i class="fas fa-pencil-alt" (click)="Edit(userData?._id,userData?.firstName)"></i>
             </div>
           </div>
         </div>
@@ -32,18 +32,18 @@
             <span class="user_label">Last Name :</span>
           </div>
           <div class="col-sm-8">
-            <div class="md-form" *ngIf="user.id === editRowID  && user.lastName === editRowValue && editField">
+            <div class="md-form" *ngIf="userData?._id === editRowID  && userData?.lastName === editRowValue && editField">
               <input mdbInputDirective type="text" id="lastName" class="form-control" name="lastName" formControlName="lastName"
                 [ngClass]="{'is-invalid':updateProfileForm.get('lastName').touched && updateProfileForm.get('lastName').invalid}"
                 required>
-              <i class="fas fa-times-circle fa-lg" (click)="Edit(user.id+1)"></i>
+              <i class="fas fa-times-circle fa-lg" (click)="Edit(userData?._id+1)"></i>
               <div *ngIf="updateProfileForm.get('lastName').touched && updateProfileForm.get('lastName').invalid" class="invalid-feedback">
                 <div *ngIf="updateProfileForm.get('lastName').errors.required">Last Name is required</div>
                 <div *ngIf="updateProfileForm.get('lastName').errors.pattern">Invalid Value (No spaces or special characters allowed!)</div>
               </div>
             </div>
-            <div *ngIf="user.lastName !== editRowValue">
-              <span class="user-info"> {{ user.lastName }} </span> <i class="fas fa-pencil-alt" (click)="Edit(user.id,user.lastName)"></i>
+            <div *ngIf="userData?.lastName !== editRowValue">
+              <span class="user-info"> {{ userData?.lastName }} </span> <i class="fas fa-pencil-alt" (click)="Edit(userData?._id,userData?.lastName)"></i>
             </div>
           </div>
         </div>
@@ -52,20 +52,20 @@
             <span class="user_label">Email address :</span>
           </div>
           <div class="col-sm-8">
-            <div class="md-form" *ngIf="user.id === editRowID  && user.email === editRowValue">
+            <div class="md-form" *ngIf="userData?._id === editRowID  && userData?.email === editRowValue">
               <input mdbInputDirective type="email" id="email" class="form-control" name="email" formControlName="email"
                 [ngClass]="{'is-invalid':updateProfileForm.get('email').touched && updateProfileForm.get('email').invalid}"
                 [ngClass]="{'is-invalid':updateProfileForm.get('email').touched && updateProfileForm.get('email').invalid}"
                 required>
-              <i class="fas fa-times-circle fa-lg" (click)="Edit(user.id+1)"></i>
+              <i class="fas fa-times-circle fa-lg" (click)="Edit(userData?._id+1)"></i>
               <div *ngIf="updateProfileForm.get('email').touched && updateProfileForm.get('email').invalid" class="invalid-feedback">
                 <div *ngIf="updateProfileForm.get('email').errors.required">Email is required</div>
                 <div *ngIf="updateProfileForm.get('email').errors.email || updateProfileForm.get('email').errors.pattern">Email
                   should be valid</div>
               </div>
             </div>
-            <div *ngIf="user.email !== editRowValue">
-              <span class="user-info"> {{ user.email }} </span> <i class="fas fa-pencil-alt" (click)="Edit(user.id,user.email)"></i>
+            <div *ngIf="userData?.email !== editRowValue">
+              <span class="user-info"> {{ userData?.email }} </span> <i class="fas fa-pencil-alt" (click)="Edit(userData?._id,userData?.email)"></i>
             </div>
           </div>
         </div>
@@ -74,19 +74,19 @@
             <span class="user_label"> Phone number : </span>
           </div>
           <div class="col-sm-8">
-            <div class="md-form" *ngIf="user.id === editRowID  && user.phone === editRowValue">
+            <div class="md-form" *ngIf="userData?._id === editRowID  && userData?.phoneNumber === editRowValue">
               <input mdbInputDirective type="text" id="phone" class="form-control" name="phone" formControlName="phone"
                 [ngClass]="{'is-invalid':updateProfileForm.get('phone').touched && updateProfileForm.get('phone').invalid}"
                 [ngClass]="{'is-invalid':updateProfileForm.get('phone').touched && updateProfileForm.get('phone').invalid}"
                 required>
-              <i class="fas fa-times-circle fa-lg" (click)="Edit(user.id+1)"></i>
+              <i class="fas fa-times-circle fa-lg" (click)="Edit(userData?._id+1)"></i>
               <div *ngIf="updateProfileForm.get('phone').touched && updateProfileForm.get('phone').invalid" class="invalid-feedback">
                 <div *ngIf="updateProfileForm.get('phone').errors.required">Phone Number is required</div>
                 <div *ngIf="updateProfileForm.get('phone').errors.pattern">Phone Number should be valid</div>
               </div>
             </div>
-            <div *ngIf="user.phone !== editRowValue">
-              <span class="user-info"> {{ user.phone }} </span> <i class="fas fa-pencil-alt" (click)="Edit(user.id,user.phone)"></i>
+            <div *ngIf="userData?.phoneNumber !== editRowValue">
+              <span class="user-info"> {{ userData?.phoneNumber }} </span> <i class="fas fa-pencil-alt" (click)="Edit(userData?._id,userData?.phoneNumber)"></i>
             </div>
           </div>
         </div>
@@ -95,18 +95,18 @@
             <span class="user_label"> Address : </span>
           </div>
           <div class="col-sm-8">
-            <div class="md-form" *ngIf="user.id === editRowID  && user.address === editRowValue">
+            <div class="md-form" *ngIf="userData?._id === editRowID  && userData?.address === editRowValue">
               <input mdbInputDirective type="text" id="address" class="form-control" name="address" formControlName="address"
                 [ngClass]="{'is-invalid':updateProfileForm.get('address').touched && updateProfileForm.get('address').invalid}"
                 [ngClass]="{'is-invalid':updateProfileForm.get('address').touched && updateProfileForm.get('address').invalid}"
                 required>
-              <i class="fas fa-times-circle fa-lg" (click)="Edit(user.id+1)"></i>
+              <i class="fas fa-times-circle fa-lg" (click)="Edit(userData?._id+1)"></i>
               <div *ngIf="updateProfileForm.get('address').touched && updateProfileForm.get('address').invalid" class="invalid-feedback">
                 <div *ngIf="updateProfileForm.get('address').errors.required">Address is required</div>
               </div>
             </div>
-            <div *ngIf="user.address !== editRowValue">
-              <span class="user-info"> {{ user.address }} </span> <i class="fas fa-pencil-alt" (click)="Edit(user.id,user.address)"></i>
+            <div *ngIf="userData?.address !== editRowValue">
+              <span class="user-info"> {{ userData?.address }} </span> <i class="fas fa-pencil-alt" (click)="Edit(userData?._id,userData?.address)"></i>
             </div>
           </div>
         </div>
@@ -115,17 +115,17 @@
             <span class="user_label"> Pincode : </span>
           </div>
           <div class="col-sm-8">
-            <div class="md-form" *ngIf="user.id === editRowID  && user.pincode === editRowValue">
+            <div class="md-form" *ngIf="userData?._id === editRowID  && userData?.pincode === editRowValue">
               <input mdbInputDirective type="text" id="pincode" class="form-control" name="pincode" formControlName="pincode"
                 [ngClass]="{'is-invalid':updateProfileForm.get('pincode').touched && updateProfileForm.get('pincode').invalid}"
                 [ngClass]="{'is-invalid':updateProfileForm.get('pincode').touched && updateProfileForm.get('pincode').invalid}">
-              <i class="fas fa-times-circle fa-lg" (click)="Edit(user.id+1)"></i>
+              <i class="fas fa-times-circle fa-lg" (click)="Edit(userData?._id+1)"></i>
               <div *ngIf="updateProfileForm.get('pincode').touched && updateProfileForm.get('pincode').invalid" class="invalid-feedback">
                 <div *ngIf="updateProfileForm.get('pincode').errors.required">Pincode is required</div>
               </div>
             </div>
-            <div *ngIf="user.pincode !== editRowValue">
-              <span class="user-info"> {{ user.pincode }} </span> <i class="fas fa-pencil-alt" (click)="Edit(user.id,user.pincode)"></i>
+            <div *ngIf="userData?.pincode !== editRowValue">
+              <span class="user-info"> {{ userData?.pincode }} </span> <i class="fas fa-pencil-alt" (click)="Edit(userData?._id,userData?.pincode)"></i>
             </div>
           </div>
         </div>
@@ -134,24 +134,24 @@
             <span class="user_label"> Birth-date : </span>
           </div>
           <div class="col-sm-8">
-            <div class="md-form" *ngIf="user.id === editRowID  && user.dob === editRowValue">
+            <div class="md-form" *ngIf="userData?._id === editRowID  && userData?.dob === editRowValue">
               <input type="date" required class="form-control" name="dob" formControlName="dob" [ngClass]="{'is-invalid':updateProfileForm.get('dob').touched && updateProfileForm.get('dob').invalid}"
                 [ngClass]="{'is-invalid':updateProfileForm.get('dob').touched && updateProfileForm.get('dob').invalid}"><i
-                class="fas fa-times-circle fa-lg" (click)="Edit(user.id+1)"></i>
+                class="fas fa-times-circle fa-lg" (click)="Edit(userData?._id+1)"></i>
               <div *ngIf="updateProfileForm.get('dob').touched && updateProfileForm.get('dob').invalid" class="invalid-feedback">
                 <div *ngIf="updateProfileForm.get('dob').errors.required">Date of Birth is required</div>
               </div>
             </div>
 
-            <div *ngIf="user.dob !== editRowValue">
-              <span class="user-info"> {{ user.dob }} </span> <i class="fas fa-pencil-alt" (click)="Edit(user.id,user.dob)"></i>
+            <div *ngIf="userData?.dob !== editRowValue">
+              <span class="user-info"> {{ userData?.dob }} </span> <i class="fas fa-pencil-alt" (click)="Edit(userData?._id,userData?.dob)"></i>
             </div>
           </div>
 
         </div>
         <div class="mt-25 text-center">
           <button mdbBtn type="submit" color="indigo" mdbWavesEffect class="sign-in_button" [disabled]="!updateProfileForm.valid"
-            *ngIf="user.id === editRowID" (click)="updateSubmit()">Update</button>
+            *ngIf="userData?._id === editRowID" (click)="updateSubmit()">Update</button>
             <div class="alert alert-success mt-25" role="alert" *ngIf=submitted >
                 Profile Edited! (Just a UI!)
               </div>
