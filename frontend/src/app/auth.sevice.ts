@@ -12,8 +12,13 @@ export class AuthService{
     constructor(private http:HttpClient,private router: Router){}
     
     getToken(){
-       
+       if(this.token){
         return this.token;
+       }
+       else{
+           return null;
+       }
+        
     }
 
     getIsAuth(){
