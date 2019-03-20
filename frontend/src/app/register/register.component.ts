@@ -6,6 +6,7 @@ import { NgForm }   from '@angular/forms';
 import {Title} from "@angular/platform-browser";
 import {Router} from "@angular/router"
 import { AuthService } from '../auth.sevice';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -45,7 +46,7 @@ export class RegisterComponent implements OnInit {
     orgPassword: new FormControl('', [Validators.required, Validators.minLength(8)]),
     orgRePassword: new FormControl('', [Validators.required, Validators.minLength(8)])
   })
-  constructor(private titleService:Title,private router: Router,public authService:AuthService) { 
+  constructor(private titleService:Title,private router: Router,public authService:AuthService,private toastr: ToastrService) { 
     this.titleService.setTitle("Register on StraySpirit");
    }
 
@@ -68,8 +69,12 @@ export class RegisterComponent implements OnInit {
     var repwd=this.registerForm.get('repassword').value;
     if(pwd!==repwd)
     {
-      
-      console.log('password do not match');
+      this.toastr.error('Password mismatch', 'ERROR!', {
+        timeOut: 5500,
+        closeButton: true,
+        progressBar: true
+      });
+      //console.log('password do not match');
     }
     else{
       this.usersData={
@@ -85,6 +90,18 @@ export class RegisterComponent implements OnInit {
   }
 
   onOrgSignup(form:NgForm){
+    var org_pwd=this.orgRegisterForm.get('orgPassword').value;
+    var org_repwd=this.orgRegisterForm.get('orgRePassword').value;
+
+    if(org_pwd!==org_repwd){
+      this.toastr.error('Password mismatch', 'ERROR!', {
+        timeOut: 5500,
+        closeButton: true,
+        progressBar: true
+      });
+      console.log('org password do not match');
+    }
+    else{
     this.orgData={
       orgName:this.orgRegisterForm.get('orgName').value,
       email:this.orgRegisterForm.get('orgEmail').value,
@@ -97,5 +114,6 @@ export class RegisterComponent implements OnInit {
       this.orgData
     )
   }
+}
   
 }
