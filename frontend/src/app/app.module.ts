@@ -45,7 +45,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {MatSelectModule} from '@angular/material/select';
 import { AuthInterceptor } from './auth-interceptor';
 
-
+import { ToastrModule } from 'ngx-toastr';
 
 // import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap'
 @NgModule({
@@ -72,7 +72,8 @@ import { AuthInterceptor } from './auth-interceptor';
     ForgotComponent,
     ContactComponent,
     RegisterAparnaComponent,
-    RescueComponent
+    RescueComponent,
+    ProfilePetAdsComponent
   ],
   imports: [
     BrowserModule,
@@ -92,8 +93,8 @@ import { AuthInterceptor } from './auth-interceptor';
     HttpClientModule,
     MatAutocompleteModule,
     NgxPaginationModule,
-    MatSelectModule
-    
+    MatSelectModule,
+    ToastrModule.forRoot() 
   ],
   providers: [{provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true}],
   bootstrap: [AppComponent]
