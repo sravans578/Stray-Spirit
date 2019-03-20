@@ -25,4 +25,7 @@ export class LocationService {
   getCurrentLocation(){
     return this.http.get<CurrentLocation>('https://ipapi.co/json/')
   }
+  getPets(){
+    return this.http.get('http://localhost:3000/pets/')
+  }
 }

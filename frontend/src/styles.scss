@@ -32,3 +32,8 @@ input.counter-success ~ span.text-success{
 button[type="submit"]{
     cursor: pointer;
 }
+
+input[type="file"]{
+    border-bottom: 1px solid;
+    padding-bottom: 5px;
+  }
