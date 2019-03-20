@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProfileInventoryComponent } from './profile-inventory.component';
 
+
 describe('ProfileInventoryComponent', () => {
   let component: ProfileInventoryComponent;
   let fixture: ComponentFixture<ProfileInventoryComponent>;
