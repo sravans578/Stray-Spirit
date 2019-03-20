@@ -91,16 +91,28 @@ export class AuthService{
     }
 
     autoAuthUser(){
+        // const authInformation=this.getAuthData();
+        // if(this.token){
+        //     //this.token=authInformation.token;
+        //     this.isAuthenticated=true;
+        // this.userId=authInformation.userId;
+        // this.authStatusListener.next(true);
+        // }
+        // else{
+        //     return null;
+        // }
+
         const authInformation=this.getAuthData();
-        if(this.token){
+        if(authInformation.token){
             this.token=authInformation.token;
+            this.isAuthenticated=true;
+        this.userId=authInformation.userId;
+        this.authStatusListener.next(true);
         }
         else{
             return null;
         }
-        this.isAuthenticated=true;
-        this.userId=authInformation.userId;
-        this.authStatusListener.next(true);
+        
     }
 
     logout(){
@@ -128,7 +140,7 @@ export class AuthService{
     private getAuthData(){
         const token=localStorage.getItem("token");
         const userId=localStorage.getItem("userId");
-        if(!token){
+        if(token==="" && token===null){
             return;
         }
         return{
