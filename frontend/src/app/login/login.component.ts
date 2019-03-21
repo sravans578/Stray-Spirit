@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from "@angular/platform-browser";
-import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators, AbstractControl, NgForm } from '@angular/forms';
 import { Router } from "@angular/router"
-
+import { HttpClient } from '@angular/common/http';
+import { AuthService } from '../auth.sevice';
 
 @Component({
   selector: 'app-login',
@@ -15,19 +16,46 @@ export class LoginComponent implements OnInit {
 
   submitted: boolean = false;
 
-  loginForm = new FormGroup({
-    emailLogin: new FormControl('', [Validators.required, Validators.email, Validators.pattern(this.emailPattern)]),
-    passwordLogin: new FormControl('', Validators.required)
-  })
+ public userLoginData:any={} 
+ public orgLoginData:any={} 
 
-  constructor(private titleService: Title, private router: Router) {
+
+   userLoginForm = new FormGroup({
+    emailLogin: new FormControl('', [Validators.required, Validators.email, Validators.pattern(this.emailPattern)]),
+     passwordLogin: new FormControl('', Validators.required)
+   })
+
+   orgLoginForm = new FormGroup({
+     emailLogin: new FormControl('', [Validators.required, Validators.email, Validators.pattern(this.emailPattern)]),
+     passwordLogin: new FormControl('', Validators.required)
+   })
+
+  constructor(private titleService: Title, private router: Router,public authService:AuthService) {
     this.titleService.setTitle("Login to StraySpirit");
   }
 
   ngOnInit() {
   }
-  loginSubmit() {
-    this.router.navigate(['/profile']);
-    
+  
+  loginUserSubmit(form:NgForm) {
+    this.userLoginData={
+      email:this.userLoginForm.get('emailLogin').value,
+      password:this.userLoginForm.get('passwordLogin').value
+    }
+    this.authService.userLogin(
+     this.userLoginData
+    )
   }
-}
+
+  loginOrgSubmit(form:NgForm) {
+    this.orgLoginData={
+      email:this.orgLoginForm.get('emailLogin').value,
+      password:this.orgLoginForm.get('passwordLogin').value
+    }
+    this.authService.orgLogin(
+     this.orgLoginData
+    )
+  }
+
+  }
+

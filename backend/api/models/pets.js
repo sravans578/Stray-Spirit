@@ -1,13 +1,14 @@
 const mongoose = require('mongoose');
 
 var petUploaderSchema = {
+    userId: { type:String , required:true },
     firstName: { type:String , required:true },
     lastName: { type:String , required:true }
 };
 var petLocationSchema = {
-    petCity: { type:String , required:true },
-    petState: { type:String , required:true },
-    petCountry: { type:String , required:true }
+    petCity: { type:String  },
+    petState: { type:String  },
+    petCountry: { type:String  }
 };
 
 const petSchema = mongoose.Schema({
@@ -20,7 +21,8 @@ const petSchema = mongoose.Schema({
     petDescription: { type:String , required:true },
     petUploader: petUploaderSchema,
     petLocation: petLocationSchema,
-    adoptionStatus: { type:String, required:true }
+    adoptionStatus: { type:String, required:true },
+    petPic: { type:String , required:true }
 });
 
 module.exports = mongoose.model('Pet', petSchema);

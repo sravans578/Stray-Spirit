@@ -45,7 +45,10 @@ import { HttpClientModule } from '@angular/common/http';
 import {MatSelectModule} from '@angular/material/select';
 import { ProfilePetAdsComponent } from './profile-pet-ads/profile-pet-ads.component';
 
-
+import { ToastrModule } from 'ngx-toastr';
+import {MatExpansionModule} from '@angular/material/expansion';
+import { EventDetailComponent } from './event-detail/event-detail.component';
+import { ProfileEventComponent } from './profile-event/profile-event.component';
 
 // import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap'
 @NgModule({
@@ -73,7 +76,9 @@ import { ProfilePetAdsComponent } from './profile-pet-ads/profile-pet-ads.compon
     ContactComponent,
     RegisterAparnaComponent,
     RescueComponent,
-    ProfilePetAdsComponent
+    ProfilePetAdsComponent,
+    EventDetailComponent,
+    ProfileEventComponent
   ],
   imports: [
     BrowserModule,
@@ -93,7 +98,9 @@ import { ProfilePetAdsComponent } from './profile-pet-ads/profile-pet-ads.compon
     HttpClientModule,
     MatAutocompleteModule,
     NgxPaginationModule,
-    MatSelectModule
+    MatSelectModule,
+    ToastrModule.forRoot(),
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

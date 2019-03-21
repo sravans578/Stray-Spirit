@@ -24,7 +24,10 @@ import { ForgotComponent} from './forgot-pwd/forgot.component';
 import {RegistrationAdityaComponent} from './registration-aditya/registration-aditya.component';
 import { RegisterAparnaComponent } from './register_aparna/register_aparna.component';
 import { RescueComponent } from './rescue/rescue.component'; 
+import { AuthGuard } from './auth.guard';
 import { ProfilePetAdsComponent } from './profile-pet-ads/profile-pet-ads.component';
+import { EventDetailComponent } from './event-detail/event-detail.component';
+import { ProfileEventComponent } from './profile-event/profile-event.component';
 
 
 const routes: Routes = [
@@ -33,7 +36,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'pets', component:  PetlistingComponent },
   { path: 'shop', component: ProductlistingComponent},
-  { path: 'pet-profile-page',component: PetProfilePageComponent},
+  { path: 'pet-profile/:id',component: PetProfilePageComponent},
   { path:'why-adopt-cat' ,component:WhyAdoptCatComponent},
   { path: 'why-adopt-dog',component:WhyadoptdogComponent},
   { path: 'contact', component: ContactComponent },
@@ -46,23 +49,27 @@ const routes: Routes = [
   {path: 'forgot-pwd',component:ForgotComponent},
 
   {path:'registration-aditya',component:RegistrationAdityaComponent},
+  {path:'event-detail/:id',component:EventDetailComponent},
 
 
   // Implemented nested routes https://angular-2-training-book.rangle.io/handout/routing/child_routes.html
   { path:'profile', 
     component:ProfileNavComponent,
+     canActivate:[AuthGuard],
     children: [
       { path: '', component: ProfileHomeComponent },
       { path: 'inventory', component: ProfileInventoryComponent },
-      { path: 'my-pet-ads', component: ProfilePetAdsComponent }
+      { path: 'my-pet-ads', component: ProfilePetAdsComponent },
+      { path: 'my-events', component: ProfileEventComponent }
     ]
   },
-  {path:'product-detail',component:ProductDetailPageComponent},
+  {path:'product/:id',component:ProductDetailPageComponent},
   { path: '**', component: NotfoundComponent }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers:[AuthGuard]
 })
 export class AppRoutingModule { }

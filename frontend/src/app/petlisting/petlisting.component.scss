@@ -51,6 +51,7 @@
 }
 .card_img_wrapper{
     height: 200px;
+    max-height: 200px;
     overflow: hidden;
     cursor: pointer;
     display: block;
@@ -119,12 +120,12 @@ mdb-card{
 .toggle_wrapper{
     display: none;
 }
+p.error_no_pets{
+    color: red;
+}
 @media screen and (max-width:900px){
     .search_button{
         width: 85px;
-    }
-    .card_img_wrapper{
-        height: 150px;
     }
 }
 @media screen and (max-width:765px){
@@ -145,7 +146,8 @@ mdb-card{
         margin: auto;
     }
     .card_img_wrapper{
-        height: 170px;
+        height: auto;
+        max-height: 450px;
     }
     .desktop_visible{
         display: none;

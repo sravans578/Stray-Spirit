@@ -19,7 +19,8 @@
       <a mat-list-item routerLink="/profile/">My Profile</a>
       <a mat-list-item routerLink="/profile/inventory">My Inventory</a>
       <a mat-list-item routerLink="/profile/my-pet-ads">My Ads</a>
-      <a mat-list-item routerLink="">My Orders</a>
+      <!-- <a mat-list-item routerLink="">My Orders</a> -->
+      <a mat-list-item routerLink="/profile/my-events">My Events</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -32,6 +33,7 @@
     </mat-toolbar>
     <!-- Add Content Here -->
     <router-outlet></router-outlet>
+    <app-footer></app-footer>
   </mat-sidenav-content>
 </mat-sidenav-container>
 <div mdbModal #updateProfilePic="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myupdateProfilePicLabel"
