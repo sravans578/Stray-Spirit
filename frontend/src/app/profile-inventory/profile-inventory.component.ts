@@ -19,6 +19,9 @@ export class ProfileInventoryComponent implements OnInit {
   current_User:any;
   userId: string;
   currentuserData: any;
+  productFind: boolean= true;
+  productListing:any;
+  currentUserId: any;
 
 
   
@@ -54,9 +57,23 @@ export class ProfileInventoryComponent implements OnInit {
     // this.product_newData=productData;
     //   console.log(this.product_newData);
     //        })
+
+    this.products.getproductsUser(this.currentUserId).subscribe(productData =>{
+      console.log(productData);
+      this.productListing= productData;
+      console.log("Products for this user: ",this.productListing);
+      if(this.productListing.length===0){
+        this.productFind=false;
+      }
+    },error =>{
+      console.log("Uploader not found!");
+      this.productFind=false;
+    })
+  
            this.products.getproductsUser(this.userId).subscribe(currentProductUser=>
             {
               this.product_newData = currentProductUser;
+              
             })
 
     }
@@ -101,10 +118,10 @@ private imageSrc: string = '';
   
   showSuccess() {
     console.log("Toast0");
-    this.toastr.success('Good Job!', 'Product Added!', {
-      // timeOut: 5500,
-      // closeButton: true,
-      // progressBar: true
+    this.toastr.success('Success!!', 'Product is Added! View it on Shop page', {
+      timeOut: 5500,
+      closeButton: true,
+      progressBar: true
     });
   }
 }
