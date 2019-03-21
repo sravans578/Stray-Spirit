@@ -47,6 +47,7 @@ import { ProfilePetAdsComponent } from './profile-pet-ads/profile-pet-ads.compon
 
 import { ToastrModule } from 'ngx-toastr';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { EventDetailComponent } from './event-detail/event-detail.component';
 import { ProfileEventComponent } from './profile-event/profile-event.component';
 
 // import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap'
@@ -76,7 +77,11 @@ import { ProfileEventComponent } from './profile-event/profile-event.component';
     RegisterAparnaComponent,
     RescueComponent,
     ProfilePetAdsComponent,
+<<<<<<< frontend/src/app/app.module.ts
+    EventDetailComponent
+=======
     ProfileEventComponent
+>>>>>>> frontend/src/app/app.module.ts
   ],
   imports: [
     BrowserModule,

@@ -26,6 +26,7 @@ import { RegisterAparnaComponent } from './register_aparna/register_aparna.compo
 import { RescueComponent } from './rescue/rescue.component'; 
 import { AuthGuard } from './auth.guard';
 import { ProfilePetAdsComponent } from './profile-pet-ads/profile-pet-ads.component';
+import { EventDetailComponent } from './event-detail/event-detail.component';
 import { ProfileEventComponent } from './profile-event/profile-event.component';
 
 
@@ -48,6 +49,7 @@ const routes: Routes = [
   {path: 'forgot-pwd',component:ForgotComponent},
 
   {path:'registration-aditya',component:RegistrationAdityaComponent},
+  {path:'event-detail/:id',component:EventDetailComponent},
 
 
   // Implemented nested routes https://angular-2-training-book.rangle.io/handout/routing/child_routes.html
