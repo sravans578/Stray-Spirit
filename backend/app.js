@@ -11,6 +11,7 @@ require('./passport')(passport);
 const petsRoutes = require('./api/routes/pets');
 const userRoutes = require('./api/routes/user');
 const productsRoutes = require('./api/routes/products');
+const EventsRoutes = require('./api/routes/event');
 
 app.use(morgan('dev'));
 app.use(bodyParser.json({limit: '50mb'}));
@@ -33,6 +34,8 @@ app.use((req, res, next) => {
 app.use('/pets', petsRoutes);
 app.use('/user', userRoutes);
 app.use('/products', productsRoutes);
+
+app.use('/event', EventsRoutes);
 
 mongoose.connect('mongodb+srv://strayspirit:' + process.env.MONGO_ATLAS_PW + '@strayspirit-bsghz.mongodb.net/test?retryWrites=true', { useNewUrlParser: true });
 
