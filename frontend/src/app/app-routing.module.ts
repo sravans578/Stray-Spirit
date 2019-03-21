@@ -27,6 +27,7 @@ import { RescueComponent } from './rescue/rescue.component';
 import { AuthGuard } from './auth.guard';
 import { ProfilePetAdsComponent } from './profile-pet-ads/profile-pet-ads.component';
 import { EventDetailComponent } from './event-detail/event-detail.component';
+import { ProfileEventComponent } from './profile-event/profile-event.component';
 
 
 const routes: Routes = [
@@ -58,7 +59,8 @@ const routes: Routes = [
     children: [
       { path: '', component: ProfileHomeComponent },
       { path: 'inventory', component: ProfileInventoryComponent },
-      { path: 'my-pet-ads', component: ProfilePetAdsComponent }
+      { path: 'my-pet-ads', component: ProfilePetAdsComponent },
+      { path: 'my-events', component: ProfileEventComponent }
     ]
   },
   {path:'product/:id',component:ProductDetailPageComponent},
