@@ -22,4 +22,9 @@ export class EventManagementService {
   getEvents(){
     return this.http.get('http://localhost:3000/event/');
   }
+
+  getsingleEvent( id: string){
+      return this.http.get('http://localhost:3000/event/singleevent/' + id);
+  }
 }
+

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { EventManagementService } from '../event-management.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-event-detail',
@@ -8,11 +10,22 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class EventDetailComponent implements OnInit {
 
+  sub:any;
+  event_id:string;
+  singleEvent:any;
+
   constructor(
-    private toastr: ToastrService
+    private toastr: ToastrService, private eventdetail: EventManagementService,private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
+    this.sub = this.route.params.subscribe(params => {
+      this.event_id = params['id']; 
+      console.log(this.event_id);});
+this.eventdetail.getsingleEvent(this.event_id).subscribe( singleModel =>{
+ this.singleEvent = singleModel;
+});
   }
   eventRegister(){
     this.toastr.success('You are registered for the event', 'SUCCESS!', {
@@ -21,4 +34,5 @@ export class EventDetailComponent implements OnInit {
       progressBar: true
     });
   }
+
 }
