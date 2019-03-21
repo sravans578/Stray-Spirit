@@ -1,5 +1,9 @@
 export interface Events {
-    title: string;
-    content: string; 
+    id: string;
+    name: string;
+    eventdesc: string;
+    uploader: string;
+    location: string;
+    created: string;
 }
 

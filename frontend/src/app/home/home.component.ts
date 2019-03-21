@@ -12,16 +12,13 @@ export class HomeComponent implements OnInit{
     { title: "Event One", content: "This is my first Event"},
     { title: "Event Two", content: "This is my Second Event"},
     { title: "Event Three", content: "This is my Third Event"},
-    
+    ];
 
-  
-  ];
+  @Input() event: Events[] = []; 
 
-  /*@Input() events: Events[] = []; 
-
-  constructor(public eventsService: EventsService) {}*/
+  constructor(public eventsService: EventsService) {}
 
   ngOnInit(){
-    //this.events = this.eventsService.getEvents();
+    
   }
 }
