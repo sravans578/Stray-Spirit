@@ -49,89 +49,24 @@
     </div>
     <h4><strong>Top Events List</strong></h4>
      <div id= "root" class="row">
-  <div class="col-md-4">
+  <div class="col-md-4" *ngFor = "let event of allevents">
     <mdb-card class= "cards" narrower ="true">
       <div class="view view-cascade overlay waves-light" mdbWavesEffect>
-        <mdb-card-img src="https://rainbowanimalrescue.org/images/sign960.jpg"></mdb-card-img>
+        <mdb-card-img [src]= "event.eventPic" [alt] = "event.eventName"></mdb-card-img>
         <a>
           <div class="mask rgba-white-slight"></div>
         </a>
       </div>
       <mdb-card-body cascade="true" class="text-center">
         <h3 class="card-title">
-          <strong>Animal Shelter, a youth campaign </strong>
+          <strong> {{event.eventName}}</strong>
         </h3>
       <!-- sample paragraph from loremipsum.com-->
         <mdb-card-text>
-          Sed ut perspiciatis unde omnis iste natus sit voluptatem accusantium doloremque laudantium, totam rem
-          aperiam.<a href="https://www.humanesociety.org/resources/top-reasons-adopt-pet">Read more..</a>
+          {{event.eventDescription}}<a href="https://www.humanesociety.org/resources/top-reasons-adopt-pet">Read more..</a>
         </mdb-card-text>
-        <a routerLink="/rescue" mdbBtn color="info" mdbWavesEffect> Register</a>
-        <a routerLink="/rescue" mdbBtn color="success" mdbWavesEffect>Share</a>
-      </mdb-card-body>
-      <!--/.Card content-->
-
-    </mdb-card>
-    <!--/.Card-->
-  </div>
-
-  <div class="col-md-4">
-    <!--Card-->
-    <mdb-card cascade="true" narrower="true">
-
-      <!--Card image-->
-      <div class="view view-cascade overlay waves-light" mdbWavesEffect>
-        <mdb-card-img src="http://bdcwire.com/wp-content/uploads/2014/10/catsinspace.gif"></mdb-card-img>
-        <a>
-          <div class="mask rgba-white-slight"></div>
-        </a>
-      </div>
-      <!--/Card image-->
-
-      <mdb-card-body cascade="true" class="text-center">
-        <!--Card content-->
-        <h3 class="card-title">
-          <strong>Food Festival - For cats</strong>
-        </h3>
-        <!-- sample paragraph from loremipsum.com-->
-        <mdb-card-text>
-          Sed ut perspiciatis unde omnis iste natus sit voluptatem accusantium doloremque laudantium, totam rem
-          aperiam.<a href="https://www.humanesociety.org/resources/top-reasons-adopt-pet">Read more..</a>
-        </mdb-card-text>
-        <a routerLink="/rescue" mdbBtn color="info" mdbWavesEffect> Register</a>
-        <a routerLink="/rescue" mdbBtn color="success" mdbWavesEffect>Share</a>
-      </mdb-card-body>
-      <!--/.Card content-->
-
-    </mdb-card>
-    <!--/.Card-->
-  </div>
-
-  <div class="col-md-4">
-    <!--Card-->
-    <mdb-card cascade="true" narrower="true">
-
-      <!--Card image-->
-      <div class="view view-cascade overlay waves-light" mdbWavesEffect>
-        <mdb-card-img src="https://cdn1-www.momtastic.com/assets/uploads/2016/07/GamesKidsPlayDogs_sized.jpg"></mdb-card-img>
-        <a>
-          <div class="mask rgba-white-slight"></div>
-        </a>
-      </div>
-      <!--/Card image-->
-
-      <mdb-card-body cascade="true" class="text-center">
-        <!--Card content-->
-        <h3 class="card-title">
-          <strong>Fun-nanza, for your playful dog</strong>
-        </h3>
-        <!-- sample paragraph from loremipsum.com-->
-        <mdb-card-text>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<a href="https://www.humanesociety.org/resources/top-reasons-adopt-pet">Read more..</a></p>
-        </mdb-card-text>
-        <a routerLink="/rescue" mdbBtn color="info" mdbWavesEffect> Register</a>
-        <a routerLink="/rescue" mdbBtn color="success" mdbWavesEffect>Share</a>
-
+        <a (click) = "register()" mdbBtn color="info" mdbWavesEffect> Register</a>
+        <a (click) = "share()"  mdbBtn color="success" mdbWavesEffect>Share</a>
       </mdb-card-body>
       <!--/.Card content-->
 
