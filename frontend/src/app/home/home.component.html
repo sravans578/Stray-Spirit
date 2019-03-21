@@ -63,7 +63,7 @@
         </h3>
       <!-- sample paragraph from loremipsum.com-->
         <mdb-card-text>
-          {{event.eventDescription}}<a href="https://www.humanesociety.org/resources/top-reasons-adopt-pet">Read more..</a>
+          {{event.eventDescription}}<a routerLink = "/event-detail/{{event._id}}">Read more..</a>
         </mdb-card-text>
         <a (click) = "register()" mdbBtn color="info" mdbWavesEffect> Register</a>
         <a (click) = "share()"  mdbBtn color="success" mdbWavesEffect>Share</a>

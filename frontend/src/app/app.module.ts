@@ -77,11 +77,8 @@ import { ProfileEventComponent } from './profile-event/profile-event.component';
     RegisterAparnaComponent,
     RescueComponent,
     ProfilePetAdsComponent,
-<<<<<<< frontend/src/app/app.module.ts
-    EventDetailComponent
-=======
+    EventDetailComponent,
     ProfileEventComponent
->>>>>>> frontend/src/app/app.module.ts
   ],
   imports: [
     BrowserModule,

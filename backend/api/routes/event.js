@@ -63,4 +63,18 @@ router.post('/', (req, res, next) => {
     });
 });
 
+router.get('/singleevent/:eventId', (req, res, next) => {
+    const id = req.params.eventId;
+    Event.findById(id)
+    .exec()
+    .then(doc =>{
+        console.log(doc);
+        res.status(200).json(doc);
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json({error:err});
+    });
+});
+
 module.exports = router; 
