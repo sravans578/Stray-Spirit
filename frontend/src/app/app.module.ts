@@ -49,6 +49,7 @@ import { ToastrModule } from 'ngx-toastr';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { EventDetailComponent } from './event-detail/event-detail.component';
 import { ProfileEventComponent } from './profile-event/profile-event.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 // import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap'
 @NgModule({
@@ -100,7 +101,8 @@ import { ProfileEventComponent } from './profile-event/profile-event.component';
     NgxPaginationModule,
     MatSelectModule,
     ToastrModule.forRoot(),
-    MatExpansionModule
+    MatExpansionModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
