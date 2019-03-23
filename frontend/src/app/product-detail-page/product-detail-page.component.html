@@ -1,4 +1,6 @@
-<!-- Developer: Aditya Gadhvi (B00809664) (ad742065@dal.ca)  -->
+
+<!--Updated by : Dheeraj Varshney (B00808467) (dh301823@dal.ca) -->
+
 
 <!-- https://getbootstrap.com/  I have used bootstrap classes container, col-, row etc. -->
 
@@ -26,11 +28,11 @@
         <p class="product_details">
           <!-- Random text has been generated using website:
 				https://loremipsum.io/generator/?n=5&t=p -->
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ornare quam viverra orci sagittis. Vestibulum sed arcu non odio. Sit amet nisl purus in mollis nunc sed id. Nibh venenatis cras sed felis eget velit aliquet sagittis. Nec feugiat in fermentum posuere urna nec tincidunt praesent.m ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempom ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempom ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo. 
+        {{product_data?.productDescription}}
         </p>
         <!-- Bootstrap buttons have been used through btn class :https://getbootstrap.com/docs/4.0/components/buttons/ -->
-        <button class="btn btn-primary">Add to cart</button>
-        <button class="btn btn-primary">Learn more</button>
+        <button class="btn btn-primary" (click)= "addToCart()">Add to cart</button>
+        <button class="btn btn-primary" (click)= "moreInfo()">Learn more</button>
       </div>
     </div>
     

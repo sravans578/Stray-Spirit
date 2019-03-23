@@ -49,11 +49,7 @@ export class ProfileInventoryComponent implements OnInit {
       this.current_User = currentUser;
 
     })
-    // this.products.getProducts().subscribe(productData =>{
-    //   console.log(productData);
-    // this.product_newData=productData;
-    //   console.log(this.product_newData);
-    //        })
+    
            this.products.getproductsUser(this.userId).subscribe(currentProductUser=>
             {
               this.product_newData = currentProductUser;
@@ -64,7 +60,7 @@ export class ProfileInventoryComponent implements OnInit {
 
 
 private imageSrc: string = '';
-//Image conversion to base64:  https://stackoverflow.com/questions/48216410/angular-4-base64-upload-component
+//Image conversion to base64:  https://stackoverflow.com/questions/48216410/angular-4-base64-upload-component--this is used to convert image to base 64 which is the format 
   handleInputChange(e) {
     var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
     var pattern = /image-*/;
@@ -79,7 +75,7 @@ private imageSrc: string = '';
   _handleReaderLoaded(e) {
     let reader = e.target;
     this.imageSrc = reader.result;
-    console.log(this.imageSrc);
+    
   }
   addProduct(){
      this.productData = {
@@ -94,17 +90,18 @@ private imageSrc: string = '';
         lastName: this.current_User["lastName"]
       }
     }
-    console.log(this.productData);
+    
     this.products.newProducts(this.productData);
     this.showSuccess();
   }
   
+  //Toast taken from https://www.npmjs.com/package/ngx-toastr
   showSuccess() {
-    console.log("Toast0");
-    this.toastr.success('Good Job!', 'Product Added!', {
-      // timeOut: 5500,
-      // closeButton: true,
-      // progressBar: true
+  
+    this.toastr.success('Product can be viewed on Shop page','Product is added', {
+      timeOut: 5000,
+      closeButton: true,
+      progressBar: true
     });
   }
 }
