@@ -32,23 +32,7 @@ img
     position: relative;
 }
 
-// .product_card_overlay_image{
-//     width: 150px;
-//     height: 150px;
-//     border-radius: 50%;
-//     margin: 10px auto 0;
-//     overflow: hidden;
-//     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-// }
-// .product_card_overlay_detail{
-//     margin-top: 15px;
-//     color: #000;
-// }
-// .products_card:hover .product_card_overlay{
-//     -webkit-transform: scale(1);
-//     -ms-transform: scale(1);
-//     transform: scale(1);
-// }
+
 
 
 
@@ -87,7 +71,10 @@ img:hover{
 
 .banner_image{
     height: 400px;
-    background: grey;
+    background: url("https://www.intheblack.com/~/media/intheblack/allimages/magazine-2016/04-april/pet-shop-feature.jpg");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 .parallax{
     background-attachment: fixed;
@@ -171,11 +158,7 @@ mdb-card-img{
         font-size: 30px;
 
     }
-    // .products_card:hover .product_card_overlay{
-    //     -webkit-transform: scale(0);
-    //     -ms-transform: scale(0);
-    //     transform: scale(0);
-    // }
+    
 
 }
 
