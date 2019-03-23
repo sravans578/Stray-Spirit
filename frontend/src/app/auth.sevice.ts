@@ -86,7 +86,7 @@ export class AuthService{
                     this.userId=response.userId;
                     this.userType=response.userType;
                     this.authStatusListener.next(true);
-                    this.saveAuthData(token,this.userId);
+                    this.saveAuthData(token,this.userId,this.userType);
                     this.router.navigate(['/profile']);
                 }
                 
@@ -115,7 +115,7 @@ export class AuthService{
                 this.userId=response.userId;
                 this.userType=response.userType;
                 this.authStatusListener.next(true);
-                this.saveAuthData(token,this.userId);
+                this.saveAuthData(token,this.userId,this.userType);
                 this.router.navigate(['/profile']);
                 }
  
@@ -136,6 +136,7 @@ export class AuthService{
             this.token=authInformation.token;
             this.isAuthenticated=true;
             this.userId=authInformation.userId;
+            this.userType=authInformation.userType;
             this.authStatusListener.next(true);
         }
         else{
@@ -149,6 +150,7 @@ export class AuthService{
         this.token=null;
         this.isAuthenticated=false;
         this.userId=null;
+        this.userType=null;
         this.authStatusListener.next(false);
         this.clearAuthData();
         this.router.navigate(['/']);
@@ -162,21 +164,24 @@ export class AuthService{
     }
     
     //This method will save the token and user_Id of the logged in user in the local storage of the web browser.
-    private saveAuthData(token:string,userId:string){
+    private saveAuthData(token:string,userId:string,userType){
         localStorage.setItem("token",token);
         localStorage.setItem("userId",userId);
+        localStorage.setItem("userType",userType);
     }
 
     //This method will return the data such as token, user_Id of the logged in user. Basically it returns the authentication information of the logged in user.
     private getAuthData(){
         const token=localStorage.getItem("token");
         const userId=localStorage.getItem("userId");
+        const userType=localStorage.getItem("userType");
         if(token==="" && token===null){
             return;
         }
         return{
             token:token,
-            userId:userId
+            userId:userId,
+            userType:userType
         }
     }
     
@@ -184,5 +189,6 @@ export class AuthService{
     private clearAuthData(){
         localStorage.removeItem("token");
         localStorage.removeItem("userId");
+        localStorage.removeItem("userType");
     }
 }
