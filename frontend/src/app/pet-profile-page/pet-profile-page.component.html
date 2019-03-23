@@ -1,7 +1,8 @@
 <div class="bg">
 <div class="container mt-85">
   <div class="pet_container mt-25">
-    <div class="" >
+      <mat-spinner *ngIf="isLoading"></mat-spinner>
+    <div class="" *ngIf="!isLoading">
     <div class="row">
       <div class="col-sm-6">
         <div class="pet_profile_pic">
@@ -19,7 +20,7 @@
         </div>
         <div class="mt-25">
           <p class="pet_uploader">Rescued by: {{petDetails?.petUploader.firstName}} {{petDetails?.petUploader.lastName}}</p>
-          <button mdbBtn color="primary" class="waves-light toggle_button" type="button" mdbWavesEffect >Adopt Me!</button>
+          <button mdbBtn color="primary" class="waves-light toggle_button" type="button" mdbWavesEffect (click)="adopt()">Adopt Me!</button>
         </div>
       </div>
       </div>
@@ -31,7 +32,8 @@
   </div>
   <div class="more_pets_container">
     <h3 class="text-center">More Pets available near You</h3>
-    <div class="container">
+    <mat-spinner *ngIf="isPetsLoading"></mat-spinner>
+    <div class="container" *ngIf="!isPetsLoading">
     <div class="row">
     <div class="col-lg-3 col-sm-4" *ngFor="let pet_new of pet_newData ; let i=index">
         <div class="pet-lists" *ngIf="i<4">

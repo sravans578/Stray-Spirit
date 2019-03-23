@@ -1,0 +1,44 @@
+<div class="container mt-85" >
+
+  <form method="POST" name="addEventsForm" [formGroup]="addEventsForm"   enctype="multipart/form-data" (submit)= "addEvent()">
+    <div class="md-form">
+      <input mdbInputDirective type="name" id="eventName" class="form-control" name="eventName" formControlName="eventName">
+      <label for="eventName" class="">Event Name</label>
+    </div>
+    
+    <div class="md-form">
+      <i class="fas fa-pencil-alt prefix"></i>
+      <textarea type="text" id="eventDescription" class="md-textarea form-control" mdbInputDirective formControlName="eventDescription" ></textarea>
+      <label for="eventDescription">Event Description</label>
+    </div>
+        <div class="md-form">
+            <input mdbInputDirective type="name" id="location" class="form-control" name="location" formControlName="location"
+              >
+            <label for="location" class="">Enter the event location</label>
+            
+          </div>
+          <p>Enter the Event Date </p>
+          <div class="md-form">
+            <input  type="date" class="form-control" name="eventDate" formControlName="eventDate"
+            >
+          </div>
+        
+         
+          
+          <div class="md-form">
+            <input mdbInputDirective type="name" id="pincode" class="form-control" name="pincode" formControlName="pincode"
+              >
+            <label for="pincode" class="">Pincode</label>
+            
+          </div>
+          <div class="md-form">
+            <!-- <input type="file" required name="uploadPic" value="Select Picture" (change)="onImagePicked($event)" > -->
+            <input name="imageUrl" type="file" accept="image/*" (change)="handleInputChange($event)" />
+          </div>
+            <!-- <img [src]="imageSrc" style="max-width:300px;max-height:300px"/>
+            <div class="image_preview" *ngIf="imagePreview !== '' && imagePreview">
+              <img [src]="imagePreview" [alt]="addPetsForm.petName" class="img-fluid">
+            </div> -->
+  <button mdbBtn type="submit" color="indigo" mdbWavesEffect class="sign-in_button"  >Add</button>
+   </form>
+</div>

@@ -31,6 +31,7 @@ export class PetlistingComponent implements OnInit {
   mobile:boolean =false;
   filteredLocation: any;
   searchLocationTerm: any;
+  isLoading: boolean = false;
   
   filterPetsForm = new FormGroup({
     searchLocation: new FormControl(''),
@@ -57,10 +58,11 @@ export class PetlistingComponent implements OnInit {
       this.inputLocation = this.currentCity+this.comma+this.currentState+this.comma+this.currentCountry;
       this.searchLocation.patchValue(this.inputLocation);
     })
-
+    this.isLoading = true;
     this.petService.getPets().subscribe(petData =>{
       //console.log(petData);
-      this.all_Pets=petData
+      this.isLoading=false;
+      this.all_Pets=petData;
       this.pet_newData=this.all_Pets.filter(filterPets =>{
         return filterPets.petLocation.petCity.includes(this.currentCity) && filterPets.petLocation.petState.includes(this.currentState) && filterPets.petLocation.petCountry.includes(this.currentCountry);
       });
@@ -87,7 +89,12 @@ onSearch(){
     });
   }
   else{
+    this.isLoading=true;
+    setTimeout(()=>{  
+      this.isLoading=false;
+       }, 2000);
     this.pet_newData = this.all_Pets.filter(filterPets =>{
+      
       return filterPets.petLocation.petCity.includes(this.searchLocationTerm[0]) && filterPets.petLocation.petState.includes(this.searchLocationTerm[1]) && filterPets.petLocation.petCountry.includes(this.searchLocationTerm[2]);
     })
   }
