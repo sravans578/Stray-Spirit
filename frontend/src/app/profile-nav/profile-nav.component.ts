@@ -19,12 +19,17 @@ export class ProfileNavComponent implements OnInit {
 
 currentUserId: string;
 userDetail: any;
+isOrgLoggedIn=false;
 
   constructor(
     private breakpointObserver: BreakpointObserver,
     private authServ: AuthService
     ) {}
     ngOnInit() {
+      var userType=this.authServ.getUserType();
+      if(userType==="Organization"){
+        this.isOrgLoggedIn=true;
+      }
       this.currentUserId=this.authServ.getUserId();
       this.authServ.getUserById(this.currentUserId).subscribe(userData=>{
         this.userDetail=userData;

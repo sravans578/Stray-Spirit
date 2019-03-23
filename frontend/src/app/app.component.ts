@@ -14,10 +14,10 @@ export class AppComponent implements OnInit {
 
   title = 'StraySpirit';
   routeUrl: string;
-
   constructor(
     private authService:AuthService,
-    private _router: Router
+    private _router: Router,
+
     ){
       this._router.events.subscribe(() => this.routeUrl = this._router.url ); 
     }

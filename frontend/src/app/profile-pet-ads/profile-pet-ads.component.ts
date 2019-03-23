@@ -18,7 +18,7 @@ export class ProfilePetAdsComponent implements OnInit {
   currentCountry: string;
   current_location: string;
   imagePreview: any;
-  namePattern: string = '^([a-zA-Z_\-]*)$';
+  namePattern: string = '^([a-zA-Z_\ -]*)$';
   petListing: any;
   currentUserId: string;
   currentUser: any;
@@ -121,10 +121,22 @@ export class ProfilePetAdsComponent implements OnInit {
     this.pets.newPets(this.petData);
     this.showSuccess();
   }
+
+  deletePet(delete_id:any){
+    console.log(delete_id);
+    this.pets.deletePet(delete_id);
+    this.toastr.warning('Pet profile deleted!', 'SUCCESS!', {
+      timeOut: 5500,
+      closeButton: true,
+      progressBar: true
+    });
+    setTimeout(()=>{  
+      window.location.reload();
+       }, 2000);
+  }
   
   showSuccess() {
-    console.log("Toast0");
-    this.toastr.success('Good Job!', 'Pet Added!', {
+    this.toastr.success('Pet profile added!', 'SUCCESS!', {
       timeOut: 5500,
       closeButton: true,
       progressBar: true
