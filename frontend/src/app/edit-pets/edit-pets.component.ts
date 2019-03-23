@@ -120,5 +120,14 @@ export class EditPetsComponent implements OnInit {
    }
    console.log(this.petData);
    this.petService.updatePets(this.petId,this.petData);
+   this.toastr.success('Pet Profile Edited!', 'SUCCESS!', {
+    timeOut: 5500,
+    closeButton: true,
+    progressBar: true
+  });
+  setTimeout(()=>{  
+    this.router.navigate(['/profile/my-pet-ads']);
+     }, 2000);
+  
  }
 }
