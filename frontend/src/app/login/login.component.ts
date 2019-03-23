@@ -1,3 +1,5 @@
+// Developer : Aditya Gadhvi (B00809664)
+
 import { Component, OnInit } from '@angular/core';
 import { Title } from "@angular/platform-browser";
 import { FormGroup, FormControl, Validators, AbstractControl, NgForm } from '@angular/forms';
@@ -37,6 +39,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
   
+  //This method will be executed when the user clicks on Sign in button located on the user login tab on the login page.
   loginUserSubmit(form:NgForm) {
     this.userLoginData={
       email:this.userLoginForm.get('emailLogin').value,
@@ -47,6 +50,7 @@ export class LoginComponent implements OnInit {
     )
   }
 
+  //This method will be executed when the user clicks on Sign in button located on the organization login tab on the login page.
   loginOrgSubmit(form:NgForm) {
     this.orgLoginData={
       email:this.orgLoginForm.get('emailLogin').value,

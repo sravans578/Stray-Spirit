@@ -8,6 +8,7 @@ const mongoose=require("mongoose");
 const jwt=require("jsonwebtoken");
 const router = express.Router();
 
+//The following code will save the personal users details and register them and store these details into the database.  
 router.post("/signup_user", (req,res,next)=>{
     bcrypt.hash(req.body.password,10)
     .then(hash=>{
@@ -37,6 +38,7 @@ router.post("/signup_user", (req,res,next)=>{
     
 });
 
+//The following code will save the organization users details and register them and store these details into the database.
 router.post("/signup_org", (req,res,next)=>{
     bcrypt.hash(req.body.password,11)
     .then(hash=>{
@@ -66,6 +68,7 @@ router.post("/signup_org", (req,res,next)=>{
     
 });
 
+//The following code will authenticate the users by getting the data of the users from the database according to the entered email. If data is returned, the user is an authorized user, otherwise not.
 router.post('/login', (req, res, next) => {
     let fetchedUser;
     User.findOne({email:req.body.email}).then(user=>{
@@ -102,6 +105,7 @@ router.post('/login', (req, res, next) => {
     });
   });
 
+  //The following code will authenticate the organizations by getting the data of the organizations from the database according to the entered email. If data is returned, the organization is an authorized user, otherwise not.
   router.post('/orgLogin', (req, res, next) => {
    let fetchedOrg;
     Organization.findOne({email:req.body.email}).then(user=>{
@@ -140,6 +144,7 @@ router.post('/login', (req, res, next) => {
     });
   });
 
+  //The following code will return all the user data of the user whose userId is passed.
   router.get('/:userId', (req, res, next) => {
     const id = req.params.userId;
     User.findById(id)
