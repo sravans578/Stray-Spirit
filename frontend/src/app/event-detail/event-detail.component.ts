@@ -1,4 +1,3 @@
-//Authored by Aparna Sridhar [B00799570]
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { EventManagementService } from '../event-management.service';
@@ -28,7 +27,6 @@ this.eventdetail.getsingleEvent(this.event_id).subscribe( singleModel =>{
  this.singleEvent = singleModel;
 });
   }
-  //Event registeration toast message
   eventRegister(){
     this.toastr.success('You are registered for the event', 'SUCCESS!', {
       timeOut: 5500,

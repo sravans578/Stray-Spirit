@@ -1,4 +1,3 @@
-// Event routes for all the HTTP methods 
 const express = require('express');
 const mongoose = require('mongoose');
 
@@ -6,7 +5,23 @@ const router = express.Router();
 
 const Event = require('../models/event');
 
-//Get method to retrive all the events from the database
+// router.get("/events", (req, res, next) => {
+//     console.log("i am here");
+//     Event.find()
+//     .then(docs => {
+//         res.send(docs);
+//         // res.status(200).json({
+//         //     message:'This is me from the server???',
+//         //     events:docs   
+//     }).catch(err =>{
+//         console.log(err);
+//         res.status(500).json({
+//             error:err
+//         })
+//     });
+// });
+// });
+
 router.get('/', (req, res, next) => {
     Event.find()
     .exec()
@@ -22,8 +37,7 @@ router.get('/', (req, res, next) => {
     });
 });
 
-// Post method to store all the event information onto the database
-// Body-parser is used to collect the body/content of the post request
+
 router.post('/', (req, res, next) => {
     const events = new Event({
         _id: new mongoose.Types.ObjectId(),
@@ -49,7 +63,6 @@ router.post('/', (req, res, next) => {
     });
 });
 
-// Get method to find an event by Event ID
 router.get('/singleevent/:eventId', (req, res, next) => {
     const id = req.params.eventId;
     Event.findById(id)

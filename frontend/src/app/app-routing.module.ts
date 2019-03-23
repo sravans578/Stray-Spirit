@@ -15,7 +15,6 @@ import { ProfileNavComponent } from './profile-nav/profile-nav.component';
 import {ProductDetailPageComponent} from './product-detail-page/product-detail-page.component';
 import { WhyadoptdogComponent } from './whyadoptdog/whyadoptdog.component';
 import { ContactComponent } from './contact/contact.component';
-import { EventListComponent } from './event-list/event-list.component';
 
 
 import { LoginDheerajComponent } from './login-dheeraj/login-dheeraj.component';
@@ -43,7 +42,6 @@ const routes: Routes = [
   { path: 'why-adopt-dog',component:WhyadoptdogComponent},
   { path: 'contact', component: ContactComponent },
   { path: 'register-aparna', component: RegisterAparnaComponent },
-  { path: 'event-list' ,component: EventListComponent},
 
   { path: 'login-Dheeraj',component:LoginDheerajComponent},
   { path: 'rescue', component: RescueComponent },
