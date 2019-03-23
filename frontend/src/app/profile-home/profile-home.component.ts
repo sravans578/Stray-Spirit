@@ -47,6 +47,7 @@ export class ProfileHomeComponent implements OnInit {
    }
 
   ngOnInit() {
+    
     //The following code will get the userId of the logged in user and then it will retrieve all the data of the logged in user and then display it on the profile page.
     var userId=this.authService.getUserId();
     this.authService.getUserById(userId).subscribe(user=>{

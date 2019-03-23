@@ -11,12 +11,17 @@ export class AuthService{
     private token:string;
     private isAuthenticated=false;
     private userId:string;
+    private userType:string;
     private authStatusListener=new Subject<boolean>();
     constructor(private http:HttpClient,private router: Router,private toaster:ToastrService){}
     
     //This method will return the token to the location where it gets called. 
     getToken(){
        return this.token;
+    }
+
+    getUserType(){
+        return this.userType;
     }
 
     //This method will return a boolean variable called "isAuthenticated". If user is logged in it will be set to true, otherwise it will be set to false.
@@ -71,7 +76,7 @@ export class AuthService{
     userLogin(loginData:any)
     {
         
-        this.http.post<{token:string;userId:string}>("http://localhost:3000/user/login",loginData)
+        this.http.post<{token:string;userId:string;userType:string}>("http://localhost:3000/user/login",loginData)
         .subscribe(response =>
             {
                 const token=response.token;
@@ -79,6 +84,7 @@ export class AuthService{
                 if(token !== null && token !== ''){
                     this.isAuthenticated=true;
                     this.userId=response.userId;
+                    this.userType=response.userType;
                     this.authStatusListener.next(true);
                     this.saveAuthData(token,this.userId);
                     this.router.navigate(['/profile']);
@@ -99,7 +105,7 @@ export class AuthService{
     orgLogin(orgLoginData:any)
     {
         
-        this.http.post<{token:string;userId:string}>("http://localhost:3000/user/orgLogin",orgLoginData)
+        this.http.post<{token:string;userId:string;userType:string}>("http://localhost:3000/user/orgLogin",orgLoginData)
         .subscribe(response =>
             {
                 const token=response.token;
@@ -107,6 +113,7 @@ export class AuthService{
                 if(token !== null && token !== ''){
                 this.isAuthenticated=true;
                 this.userId=response.userId;
+                this.userType=response.userType;
                 this.authStatusListener.next(true);
                 this.saveAuthData(token,this.userId);
                 this.router.navigate(['/profile']);

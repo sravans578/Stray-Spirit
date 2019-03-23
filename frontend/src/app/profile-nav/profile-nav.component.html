@@ -20,7 +20,7 @@
       <a mat-list-item routerLink="/profile/inventory">My Inventory</a>
       <a mat-list-item routerLink="/profile/my-pet-ads">My Ads</a>
       <!-- <a mat-list-item routerLink="">My Orders</a> -->
-      <a mat-list-item routerLink="/profile/my-events">My Events</a>
+      <a mat-list-item routerLink="/profile/my-events" *ngIf="isOrgLoggedIn">My Events</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

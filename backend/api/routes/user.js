@@ -94,7 +94,8 @@ router.post('/login', (req, res, next) => {
             );
         res.status(200).json({
             token:token,
-            userId:fetchedUser._id
+            userId:fetchedUser._id,
+            userType:fetchedUser.user_type
         });
     })
     .catch(err=>{
@@ -133,7 +134,8 @@ router.post('/login', (req, res, next) => {
             );
         res.status(200).json({
             token:token,
-            userId:fetchedOrg._id
+            userId:fetchedOrg._id,
+            userType:fetchedOrg.user_type
         });
     })
     .catch(err=>{
