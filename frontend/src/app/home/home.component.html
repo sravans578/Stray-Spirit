@@ -49,8 +49,8 @@
     </div>
     <h4><strong>Top Events List</strong></h4>
      <div id= "root" class="row">
-  <div class="col-md-4" *ngFor = "let event of allevents">
-    <mdb-card class= "cards" narrower ="true">
+  <div class="col-md-4" *ngFor = "let event of allevents; let i=index">
+    <mdb-card class= "cards" narrower ="true" *ngIf = "i < 3">
       <div class="view view-cascade overlay waves-light" mdbWavesEffect>
         <mdb-card-img [src]= "event.eventPic" [alt] = "event.eventName"></mdb-card-img>
         <a>
@@ -65,14 +65,16 @@
         <mdb-card-text>
           {{event.eventDescription}}<a routerLink = "/event-detail/{{event._id}}">Read more..</a>
         </mdb-card-text>
-        <a (click) = "register()" mdbBtn color="info" mdbWavesEffect> Register</a>
+        <a (click) = "register()" mdbBtn color="info" mdbWavesEffect *ngIf="!isloggedin"> Register</a>
         <a (click) = "share()"  mdbBtn color="success" mdbWavesEffect>Share</a>
       </mdb-card-body>
       <!--/.Card content-->
 
     </mdb-card>
     <!--/.Card-->
+    
   </div>
+  <a routerLink="/event-list">Click here for more events..</a>
 </div>
     <br> <h4><strong> Featured Dog Breeds </strong> </h4>
     <!--examples from material.angular.io-->

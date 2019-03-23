@@ -5,6 +5,7 @@ import {Title} from "@angular/platform-browser";
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { AuthService } from '../auth.sevice';
 import { empty } from 'rxjs';
+import { EventManagementService } from '../event-management.service';
 
 
 
@@ -17,7 +18,6 @@ import { empty } from 'rxjs';
 export class ProfileHomeComponent implements OnInit {
 
   userData: {  };
-
   editField: boolean = false;
   editRowID: any ='';
   editRowValue: any ='';
