@@ -52,6 +52,8 @@ import { ProfileEventComponent } from './profile-event/profile-event.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { EditPetsComponent } from './edit-pets/edit-pets.component';
 
+import { EditinventoryComponent } from './editinventory/editinventory.component';
+
 // import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap'
 @NgModule({
   declarations: [
@@ -81,7 +83,9 @@ import { EditPetsComponent } from './edit-pets/edit-pets.component';
     ProfilePetAdsComponent,
     EventDetailComponent,
     ProfileEventComponent,
-    EditPetsComponent
+    EditPetsComponent,
+    
+    EditinventoryComponent
   ],
   imports: [
     BrowserModule,

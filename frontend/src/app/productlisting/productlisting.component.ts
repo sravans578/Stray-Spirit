@@ -2,6 +2,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import { FormControl } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+
 import { ProductmanagementService } from '../productmanagement.service'
 @Component({
   selector: 'app-productlisting',
@@ -12,7 +14,8 @@ export class ProductlistingComponent implements OnInit {
   products: any = [];
   product_newData: any;
   
-  constructor(private productService: ProductmanagementService) { }
+  
+  constructor(private toastr: ToastrService, private productService: ProductmanagementService) { }
 
  
   ngOnInit() {
@@ -71,6 +74,23 @@ export class ProductlistingComponent implements OnInit {
   {
     window.location.href = '/product-detail-page';
     // this.router.navigate(['']);
+  }
+  addToCart()
+  {
+    this.toastr.error('Message For Assignment 4 UI', 'Coming Soon', {
+      timeOut: 5000,
+      closeButton: true,
+      progressBar: true
+    });
+  }
+
+  share()
+  {
+    this.toastr.error('Message For Assignment 4 UI', 'Coming Soon', {
+      timeOut: 5000,
+      closeButton: true,
+      progressBar: true
+    });
   }
 }
 
