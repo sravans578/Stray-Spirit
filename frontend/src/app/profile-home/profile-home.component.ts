@@ -3,6 +3,7 @@ import {Title} from "@angular/platform-browser";
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { AuthService } from '../auth.sevice';
 import { empty } from 'rxjs';
+import { EventManagementService } from '../event-management.service';
 
 
 
@@ -25,6 +26,7 @@ export class ProfileHomeComponent implements OnInit {
 // pincode: string,
 // dob: string
   };
+  allevents:{};
   editField: boolean = false;
   editRowID: any ='';
   editRowValue: any ='';
@@ -57,6 +59,7 @@ export class ProfileHomeComponent implements OnInit {
     var userId=this.authService.getUserId();
     this.authService.getUserById(userId).subscribe(user=>{
       this.userData=user;
+      console.log("FFFirst name",this.userData["firstName"]);
       
       
     console.log(this.userData);
