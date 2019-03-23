@@ -44,6 +44,7 @@ import { RescueComponent } from './rescue/rescue.component';
 import { HttpClientModule } from '@angular/common/http';
 import {MatSelectModule} from '@angular/material/select';
 import { ProfilePetAdsComponent } from './profile-pet-ads/profile-pet-ads.component';
+import { EventListComponent } from './event-list/event-list.component';
 
 import { ToastrModule } from 'ngx-toastr';
 import {MatExpansionModule} from '@angular/material/expansion';
@@ -75,6 +76,7 @@ import { EditPetsComponent } from './edit-pets/edit-pets.component';
     FooterComponent,
     LoginDheerajComponent,
     ForgotComponent,
+    EventListComponent,
     ContactComponent,
     RegisterAparnaComponent,
     RescueComponent,

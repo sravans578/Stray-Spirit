@@ -4,34 +4,30 @@ import { EventManagementService } from '../event-management.service';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../auth.sevice';
 
-
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'app-event-list',
+  templateUrl: './event-list.component.html',
+  styleUrls: ['./event-list.component.scss']
 })
-export class HomeComponent implements OnInit {
-allevents:{};
+export class EventListComponent implements OnInit {
+  allevents:{};
 user:string;
 temp:any;
 user_id: string;
 isloggedin:boolean = false;
-  constructor( 
-    private eventser: EventManagementService, private toaster: ToastrService, private authser: AuthService
-  ) {}
+
+  constructor( private eventser: EventManagementService, private toaster: ToastrService, private authser: AuthService) { }
 
   ngOnInit() {
     this.eventser.getEvents().subscribe(events => {
       var i;
        this.allevents = events;
        console.log(this.allevents);
-// Locks the register button for the eventuploader
+       // Locks register button for event uploaders
        for(i in this.allevents){
-        
         this.user= this.authser.getToken();
         if (this.user){
         this.user_id = this.authser.getUserId();
-    
         if (this.user_id === this.allevents[i]["eventUploader"]["userId"]){
           this.isloggedin = true;
           console.log("Match found!");
@@ -42,9 +38,10 @@ isloggedin:boolean = false;
         }
       }
     })
-}
 
-//Toast alert for registeration
+
+  }
+// Toast alert for registeration
   register(){
     
     this.toaster.success('Your registeration was successful', 'Success', {
@@ -53,8 +50,7 @@ isloggedin:boolean = false;
       progressBar: true
     });
   }
-
-//Toast alert for sharing
+// Toast alert for sharing
   share(){
     this.toaster.success('Event shared!!!', 'Success', {
       timeOut: 5500,
@@ -62,5 +58,6 @@ isloggedin:boolean = false;
       progressBar: true
     });
   }
+
 
 }

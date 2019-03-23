@@ -1,5 +1,6 @@
+//Authored by Aparna Sridhar [B00799570]
 const mongoose = require('mongoose');
-
+// Schema to store the data model in the database
 const eventSchema = mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
     eventName: { type:String , required:true },
