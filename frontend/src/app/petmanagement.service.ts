@@ -27,4 +27,11 @@ export class PetmanagementService {
   petUser(userId:any){
     return this.http.get('http://localhost:3000/pets/uploader/'+userId);
   }
+  updatePets(petId:any, petData:any){
+    console.log("From service",petData);
+    this.http.put('http://localhost:3000/pets/update/'+petId,petData)
+    .subscribe(response=>{
+      console.log(response);
+    });
+  }
 }
