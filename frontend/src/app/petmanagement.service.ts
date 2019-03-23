@@ -34,4 +34,10 @@ export class PetmanagementService {
       console.log(response);
     });
   }
+  deletePet(petId:any){
+    this.http.delete('http://localhost:3000/pets/delete/'+petId)
+    .subscribe(response=>{
+      console.log(response);
+    });
+  }
 }
