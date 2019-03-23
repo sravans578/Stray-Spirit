@@ -11,6 +11,7 @@
                 <label for="petName" class="">Pet Name</label>
                 <div *ngIf="addPetsForm.get('petName').touched && addPetsForm.get('petName').invalid" class="invalid-feedback">
                   <div *ngIf="addPetsForm.get('petName').errors.required">Pet Name is required</div>
+                  <div *ngIf="addPetsForm.get('petName').errors.pattern">Only character values allowed</div>
                 </div>
               </div>
               <div class="md-form">
@@ -128,7 +129,7 @@
                           <a routerLink="/profile/edit-pet/{{petListings?._id}}">
                             <button type="button" mdbBtn color="warning" mdbWavesEffect>Edit</button>
                           </a>
-                          <button type="button" mdbBtn color="danger" mdbWavesEffect>Delete</button>
+                          <button type="button" mdbBtn color="danger" mdbWavesEffect (click)="deletePet(petListings?._id)">Delete</button>
                       </mat-action-row>
                     </mat-expansion-panel>
                   </div>
