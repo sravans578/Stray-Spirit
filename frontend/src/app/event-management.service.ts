@@ -15,10 +15,10 @@ export class EventManagementService {
  // Posts all the form data to the database model 
   saveEvents(model:any){
     console.log(model);
-    this.http.post('http://localhost:3000/event/',model)
-    .subscribe(responseData => {
-      console.log("Event added!");
-    });
+    // this.http.post('http://localhost:3000/event/',model)
+    // .subscribe(responseData => {
+    //   console.log("Event added!");
+    // });
   }
  //Gets all the events in the database
   getEvents(){

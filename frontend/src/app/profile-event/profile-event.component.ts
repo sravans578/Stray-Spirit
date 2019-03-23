@@ -30,6 +30,7 @@ currentusers:any;
 
   })
   ngOnInit() {
+    console.log("Profile_event_comp");
     this.userId= this.authSer.getUserId();
     this.authSer.getUserById(this.userId).subscribe(currentuser=>{
            this.currentusers = currentuser;
@@ -71,7 +72,7 @@ currentusers:any;
     }
     console.log(this.eventModel);
 
-    this.eventService.saveEvents(this.eventModel);
+    //this.eventService.saveEvents(this.eventModel);
     
   }
 
