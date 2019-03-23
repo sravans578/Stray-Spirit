@@ -1,3 +1,5 @@
+// Developer : Aditya Gadhvi (B00809664)
+// This file will basically authenticate the stored token of the logged in user.
 const jwt=require("jsonwebtoken");
 
 module.exports=(req,res,next)=>{
