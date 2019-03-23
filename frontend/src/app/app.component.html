@@ -4,5 +4,6 @@
         <div class="push"></div>
     </div>
     <div class="profile_footer">
-        <app-footer class=""></app-footer>
+            <!-- https://stackoverflow.com/questions/49685322/hide-certain-components-on-multiple-routes-angular-5 -->
+        <app-footer class="" *ngIf="!hasMatches('profile')"></app-footer>
     </div>
