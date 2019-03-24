@@ -24,7 +24,8 @@ Pet Profile management:
 
 
 Basic CRUD operations on pet profiles is completed.
-User can add a pet by creating personal account and logging in. (Go to http://localhost:4200/profile/my-pet-ads)
+User can add a pet by creating personal account and logging in. (Go to http://localhost:4200/profile/my-pet-ads).
+While adding a pet, user's current location is added in city,state and country. If user wants to change the location for adding, city name, state name and country name should be inputted as suggested in the autocomplete search box on pet listing page (find a pet page). I will work on autcomplete for these three inputs (city, state and country) after assignment 4. Test input value - (city name - Halifax, state name - NS, country name - Canada; city name - Delhi, state name - Delhi, country name - India)
 My ads shows pet profiles which are uploaded by current user and not all the pets. (Go to http://localhost:4200/profile/my-pet-ads and My Listings tab)
 User can edit pet profile uploaded by him/her. 
 User can delete a pet profile listed in My ads.

@@ -159,14 +159,4 @@ export class ProfileInventoryComponent implements OnInit {
       progressBar: true
     });
   }
-  delete() {
-
-    this.toastr.error('Just a message for Assignment4 UI', 'Coming Soon', {
-      timeOut: 5000,
-    this.toastr.success('Success!!', 'Product is Added! View it on Shop page', {
-      timeOut: 5500,
-      closeButton: true,
-      progressBar: true
-    });
-  }
 }
