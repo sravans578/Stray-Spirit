@@ -1,47 +1,32 @@
-Readme file for the Work done by Aadesh Shah (B00802629) for Assignment 2:
+Readme file for the Work done by Aadesh Shah (B00802629) for Assignment 4:
+
+First check the common readme file and installation steps pdf files
 
 Note: Since we are using Angular 7 and Material design for it, W3 validations won't be possible by just copy-pasting the HTML and CSS source code as Angular and Material design provides a lot of different selectors and dependencies on HTML structure. We have ensured that we have followed the W3 standards for creating web pages
 
-Pages Developed by Me - 
+Features Developed by Me - 
 
-Login Page (path - http://localhost:4200/login),
-Register Page (path - http://localhost:4200/register),
-Profile Page (path - http://localhost:4200/profile),
-Profile Inventory Page (path - http://localhost:4200/profile/inventory)
+Pets filtering by location (Fully working)
+Pet Profile Management (80% done)
 
-Please check the Installation_steps.pdf file provided in the zip and on Git to compile and Run my application
+Pets filtering by location:
 
-Login Page - 
+When user routes to Find a pet page, the application will show the pets which are near to user's current location 
+. If there is no pet nearby, the application will show Error for it.
+User can change location for filtering the pets by searching in the search box with autocomplete functionality. If there are pets in that locality, it will show all the pets availble for adoption.
+If the user clicks on any of the listed pet, it opens up the profile page for that pet.
 
-How to access the page?
-In the Navigation bar, click user dropdown icon and then click on 'Login' option
+Currently there are 6 pets added onto database with 4 in Halifax and 2 in Mumbai (type in Mumbai and hit first suggestion to filter pet in Mumbai).
 
-The Login page allows user to enter email as username and their chosen password and until the form is valid, the sign in button won't be active to be submitted.
+Current pet data is added from https://www.petfinder.com/dog/cleo-44059085/ns/dartmouth/good-bones-dog-rescue-ns69/ , https://www.petfinder.com/dog/luna-43887750/ns/amherst/lillian-allbon-shelter-ns11/ , https://www.catcafestudio.com/adoption/
 
-Register Page - 
-
-How to access the page?
-In the Navigation bar, click user dropdown icon and then click on 'Register' option
-
-There are two types of registrations - Personal and Organization. Thus I have created tab view for the same using angular material tabs available at - https://material.angular.io/components/tabs/examples
-The submit buttons won't be active until forms are valid.
-Phone number validations - 
-XXXXXXXXXX,
-XXX-XXX-XXXX,
-(XXX)-(XXX)-(XXXX)
-
-Profile Page - 
-
-How to access the page?
-In the Navigation bar, click on 'My Profile' option
-
-I've created a sidenav as there are multiple pages in Profile Management which can be accessed by the sidenav. I've used angular material sidenav generated using angular command ng g @angular/material:material-nav --name=profile-nav available at: https://material.angular.io/guide/schematics
-User can edit the profile by clicking on edit icon and also update the profile picture by clicking on the profile picture which opens up a modal created using material design for bootstrap available at : https://mdbootstrap.com/docs/angular/modals/basic/
+Pet Profile management:
 
 
-Profile Inventory Page -
+Basic CRUD operations on pet profiles is completed.
+User can add a pet by creating personal account and logging in. (Go to http://localhost:4200/profile/my-pet-ads)
+My ads shows pet profiles which are uploaded by current user and not all the pets. (Go to http://localhost:4200/profile/my-pet-ads and My Listings tab)
+User can edit pet profile uploaded by him/her. 
+User can delete a pet profile listed in My ads.
 
-The profile inventory page has two functionalities - to view my inventory and to add a product to the inventory and ultimately on the shop page. Thus again used the angular material tab.
-
-
-Also, I am responsible to create the Navigation bar for the website, the footer and Not Found Page. The Logo used is the work in progress logo for the application provided by the agency with whom I'm working.
+The part that is remaining is if someone sends a request for adoption, the pet uploader should get the request and update the adoption status accordingly.
