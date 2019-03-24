@@ -11,7 +11,7 @@ Pet Profile Management (80% done)
 
 Pets filtering by location:
 
-When user routes to Find a pet page, the application will show the pets which are near to user's current location 
+When user routes to Find a pet page (http://localhost:4200/pets), the application will show the pets which are near to user's current location 
 . If there is no pet nearby, the application will show Error for it.
 User can change location for filtering the pets by searching in the search box with autocomplete functionality. If there are pets in that locality, it will show all the pets availble for adoption.
 If the user clicks on any of the listed pet, it opens up the profile page for that pet.

@@ -120,6 +120,9 @@ export class ProfilePetAdsComponent implements OnInit {
     console.log(this.petData);
     this.pets.newPets(this.petData);
     this.showSuccess();
+    setTimeout(()=>{  
+      window.location.reload();
+       }, 2000);
   }
 
   deletePet(delete_id:any){
