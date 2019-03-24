@@ -130,11 +130,19 @@ export class ProfileInventoryComponent implements OnInit {
     this.showSuccess();
   }
 
-
-
-
-
-  //Toast taken from https://www.npmjs.com/package/ngx-toastr
+  deleteProduct(delete_id:any){
+    console.log(delete_id);
+    this.products.deleteProduct(delete_id);
+    this.toastr.warning('Product has been deleted from database ', 'Product Deleted', {
+      timeOut: 5500,
+      closeButton: true,
+      progressBar: true
+    });
+    setTimeout(()=>{  
+      window.location.reload();
+       }, 2000);
+  }
+  
   showSuccess() {
     this.toastr.success('Product can be viewed on Shop page', 'Product is added', {
       timeOut: 5000,
