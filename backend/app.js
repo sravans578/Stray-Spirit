@@ -35,7 +35,7 @@ app.use('/pets', petsRoutes);
 app.use('/user', userRoutes);
 app.use('/products', productsRoutes);
 
-app.use('/event', EventsRoutes);
+app.use('/event', EventsRoutes); // Adding Event Routing reference
 
 mongoose.connect('mongodb+srv://strayspirit:' + process.env.MONGO_ATLAS_PW + '@strayspirit-bsghz.mongodb.net/test?retryWrites=true', { useNewUrlParser: true });
 

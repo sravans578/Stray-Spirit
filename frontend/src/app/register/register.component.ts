@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+// Developer : Aditya Gadhvi (B00809664)
 
+import { Component, OnInit } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { NgForm }   from '@angular/forms';
@@ -34,10 +35,6 @@ export class RegisterComponent implements OnInit {
     repassword: new FormControl('', [Validators.required, Validators.minLength(8)])
   })
 
-  // function matchPassword(FormGroup: AbstractControl): {[key: string]: any} | null{
-  //   const emailControl =
-  // }
-
   orgRegisterForm = new FormGroup({
     orgName: new FormControl('', [Validators.required,Validators.pattern(this.namePattern)]),
     orgEmail: new FormControl('', [Validators.required, Validators.email,Validators.pattern(this.emailPattern)]),
@@ -50,21 +47,12 @@ export class RegisterComponent implements OnInit {
     this.titleService.setTitle("Register on StraySpirit");
    }
 
-
-
   ngOnInit() {
   }
-//   userRegisterSubmit(){
-//     this.submitted=true;
-//     setTimeout(()=>{  
-//       this.submitted = false;
-//  }, 3000);
-//  setTimeout(()=>{  
-//   this.router.navigate(['/login']);
-// }, 2000);
-//   }
 
+  //This method will be executed when the user clicks on the Register button located on the User tab of the register page. 
   onUserSignup(){
+    //In this method the entered password and the confirm passowrd value would be compared. If these values are not equal, an error message would be displayed,else a success message will be displayed.
     var pwd=this.registerForm.get('password').value;
     var repwd=this.registerForm.get('repassword').value;
     if(pwd!==repwd)
@@ -74,7 +62,6 @@ export class RegisterComponent implements OnInit {
         closeButton: true,
         progressBar: true
       });
-      //console.log('password do not match');
     }
     else{
       this.usersData={
@@ -84,12 +71,13 @@ export class RegisterComponent implements OnInit {
         email:this.registerForm.get('email').value,
         password:this.registerForm.get('password').value
       }
-      // console.log(this.usersData);
       this.authService.createUser(this.usersData);
     }
   }
 
+  //This method will be executed when the user clicks on the Register button located on the Organization tab of the register page. 
   onOrgSignup(form:NgForm){
+    //In this method the entered password and the confirm passowrd value would be compared. If these values are not equal, an error message would be displayed,else a success message will be displayed.
     var org_pwd=this.orgRegisterForm.get('orgPassword').value;
     var org_repwd=this.orgRegisterForm.get('orgRePassword').value;
 
@@ -99,7 +87,6 @@ export class RegisterComponent implements OnInit {
         closeButton: true,
         progressBar: true
       });
-      console.log('org password do not match');
     }
     else{
     this.orgData={

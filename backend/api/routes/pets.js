@@ -157,7 +157,7 @@ router.put('/update/:id', (req, res, next) =>{
     });
 });
 
-router.delete('/:petId', (req, res, next) => {
+router.delete('/delete/:petId', (req, res, next) => {
     const id = req.params.petId;
     Pet.remove({ _id: id} )
     .exec()

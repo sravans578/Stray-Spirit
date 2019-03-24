@@ -19,9 +19,9 @@ export class ProfileInventoryComponent implements OnInit {
   current_User: any;
   userId: string;
   currentuserData: any;
-  productFind: boolean = true;
-  productListing: any;
-
+  productFind: boolean= true;
+  productListing:any;
+  currentUserId: any;
 
 
   addProductForm = new FormGroup({
@@ -51,7 +51,29 @@ export class ProfileInventoryComponent implements OnInit {
       this.current_User = currentUser;
 
     })
+    // this.products.getProducts().subscribe(productData =>{
+    //   console.log(productData);
+    // this.product_newData=productData;
+    //   console.log(this.product_newData);
+    //        })
 
+    this.products.getproductsUser(this.currentUserId).subscribe(productData =>{
+      console.log(productData);
+      this.productListing= productData;
+      console.log("Products for this user: ",this.productListing);
+      if(this.productListing.length===0){
+        this.productFind=false;
+      }
+    },error =>{
+      console.log("Uploader not found!");
+      this.productFind=false;
+    })
+  
+           this.products.getproductsUser(this.userId).subscribe(currentProductUser=>
+            {
+              this.product_newData = currentProductUser;
+              
+            })
     this.products.getproductsUser(this.userId).subscribe(currentProductUser => {
       this.product_newData = currentProductUser;
     })
@@ -114,7 +136,6 @@ export class ProfileInventoryComponent implements OnInit {
 
   //Toast taken from https://www.npmjs.com/package/ngx-toastr
   showSuccess() {
-
     this.toastr.success('Product can be viewed on Shop page', 'Product is added', {
       timeOut: 5000,
       closeButton: true,
@@ -134,6 +155,8 @@ export class ProfileInventoryComponent implements OnInit {
 
     this.toastr.error('Just a message for Assignment4 UI', 'Coming Soon', {
       timeOut: 5000,
+    this.toastr.success('Success!!', 'Product is Added! View it on Shop page', {
+      timeOut: 5500,
       closeButton: true,
       progressBar: true
     });

@@ -1,7 +1,10 @@
+//Authored by Aparna Sridhar [B00799570]
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControlName, FormControl } from '@angular/forms';
 import { EventManagementService } from '../event-management.service';
 import { AuthService } from '../auth.sevice';
+import {  Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr'; 
 
 @Component({
   selector: 'app-profile-event',
@@ -16,14 +19,15 @@ currentusers:any;
 
   constructor(
   private eventService: EventManagementService,
-  private authSer: AuthService
+  private authSer: AuthService,
+  private toaster: ToastrService,
   ) { }
-
+// Form validations for MyEvents page
   addEventsForm = new FormGroup({
-    eventName: new FormControl(''),
-    eventDescription: new FormControl(''),
+    eventName: new FormControl('', [Validators.required,Validators.pattern("^([a-zA-Z_\ -]*)$")]),
+    eventDescription: new FormControl('', Validators.required),
     location: new FormControl(''),
-    pincode: new FormControl(''),
+    pincode: new FormControl('', [Validators.required, Validators.pattern("^[0-9a-zA-Z]*")]),
     eventDate: new FormControl('')
 
   })
@@ -52,6 +56,7 @@ currentusers:any;
     console.log(this.imageSrc);
   }
 
+// Getting all the events from the database  
   addEvent(){
     this.eventModel={
       eventNameModel:this.addEventsForm.get('eventName').value,
@@ -70,6 +75,15 @@ currentusers:any;
 
     this.eventService.saveEvents(this.eventModel);
     
+  }
+// Toast alert if Event-posting was successful 
+  addToast(){
+    
+    this.toaster.success('Your event has been successfully added!', 'Success', {
+      timeOut: 5500,
+      closeButton: true,
+      progressBar: true
+    });
   }
 
 }
