@@ -33,9 +33,6 @@ img
 }
 
 
-
-
-
 .mb-4 input[type=text]:focus:not([readonly]) 
 {
     border: 1px solid black;
@@ -51,7 +48,7 @@ img:hover{
     cursor:pointer;
 }
 
-// media query for responsiveness
+// media query for responsiveness https://www.w3schools.com/css/css_rwd_mediaqueries.asp
 @media (max-width: 714px)
 {
     .product-list-header
