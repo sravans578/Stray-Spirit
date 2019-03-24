@@ -115,6 +115,19 @@ private imageSrc: string = '';
     this.products.newProducts(this.productData);
     this.showSuccess();
   }
+
+  deleteProduct(delete_id:any){
+    console.log(delete_id);
+    this.products.deleteProduct(delete_id);
+    this.toastr.warning('Product has been deleted from database ', 'Product Deleted', {
+      timeOut: 5500,
+      closeButton: true,
+      progressBar: true
+    });
+    setTimeout(()=>{  
+      window.location.reload();
+       }, 2000);
+  }
   
   showSuccess() {
     console.log("Toast0");
