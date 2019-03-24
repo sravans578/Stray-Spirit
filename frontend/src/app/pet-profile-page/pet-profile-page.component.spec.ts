@@ -1,4 +1,4 @@
-// Developer: Aditya Gadhvi (B00809664) (ad742065@dal.ca)
+// Developed by Aadesh Shah B00802629
 
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
