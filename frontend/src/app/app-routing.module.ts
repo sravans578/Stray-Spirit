@@ -28,6 +28,8 @@ import { AuthGuard } from './auth.guard';
 import { ProfilePetAdsComponent } from './profile-pet-ads/profile-pet-ads.component';
 import { EventDetailComponent } from './event-detail/event-detail.component';
 import { ProfileEventComponent } from './profile-event/profile-event.component';
+import { EditPetsComponent } from './edit-pets/edit-pets.component';
+import { EventListComponent } from './event-list/event-list.component';
 
 
 const routes: Routes = [
@@ -41,6 +43,7 @@ const routes: Routes = [
   { path: 'why-adopt-dog',component:WhyadoptdogComponent},
   { path: 'contact', component: ContactComponent },
   { path: 'register-aparna', component: RegisterAparnaComponent },
+  { path: 'event-list', component: EventListComponent },
 
   { path: 'login-Dheeraj',component:LoginDheerajComponent},
   { path: 'rescue', component: RescueComponent },
@@ -60,7 +63,8 @@ const routes: Routes = [
       { path: '', component: ProfileHomeComponent },
       { path: 'inventory', component: ProfileInventoryComponent },
       { path: 'my-pet-ads', component: ProfilePetAdsComponent },
-      { path: 'my-events', component: ProfileEventComponent }
+      { path: 'my-events', component: ProfileEventComponent },
+      { path: 'edit-pet/:id', component: EditPetsComponent }
     ]
   },
   {path:'product/:id',component:ProductDetailPageComponent},

@@ -102,7 +102,62 @@ router.patch('/:petId', (req, res, next) => {
     });
 });
 
-router.delete('/:petId', (req, res, next) => {
+router.put('/update/:id', (req, res, next) =>{
+    const id=req.params.id;
+    console.log(id);
+    // const editPet = new editPet({
+    //     _id: id,
+    //     petName: req.body.petNameModel,
+    //     petCategory: req.body.petCategoryModel,
+    //     petAge: req.body.petAgeModel,
+    //     petGender: req.body.petGenderModel,
+    //     petHealth: req.body.petHealthModel,
+    //     petDescription: req.body.petDescriptionModel,
+    //     petUploader: {
+    //         userId: req.body.petUploaderModel.petUploaderId,
+    //         firstName: req.body.petUploaderModel.petUploaderfirstName,
+    //         lastName: req.body.petUploaderModel.petUploaderlastName
+    //     },
+    //     petLocation:{
+    //         petCity: req.body.petLocationModel.petCityModel,
+    //         petState: req.body.petLocationModel.petStateModel,
+    //         petCountry: req.body.petLocationModel.petCountryModel
+    //     },
+    //     adoptionStatus: req.body.petAdoptionStatusModel,
+    //     petPic: req.body.petPicModel
+
+    // });
+    //console.log(editPet);
+    Pet.findByIdAndUpdate( id, {
+        _id: id,
+        petName: req.body.petNameModel,
+        petCategory: req.body.petCategoryModel,
+        petAge: req.body.petAgeModel,
+        petGender: req.body.petGenderModel,
+        petHealth: req.body.petHealthModel,
+        petDescription: req.body.petDescriptionModel,
+        petUploader: {
+            userId: req.body.petUploaderModel.petUploaderId,
+            firstName: req.body.petUploaderModel.petUploaderfirstName,
+            lastName: req.body.petUploaderModel.petUploaderlastName
+        },
+        petLocation:{
+            petCity: req.body.petLocationModel.petCityModel,
+            petState: req.body.petLocationModel.petStateModel,
+            petCountry: req.body.petLocationModel.petCountryModel
+        },
+        adoptionStatus: req.body.petAdoptionStatusModel,
+        petPic: req.body.petPicModel
+
+    }).then( result=>{
+        console.log(result);
+        res.status(200).json({
+            message: "Update successfull!"
+        });
+    });
+});
+
+router.delete('/delete/:petId', (req, res, next) => {
     const id = req.params.petId;
     Pet.remove({ _id: id} )
     .exec()

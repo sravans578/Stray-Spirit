@@ -1,4 +1,4 @@
-// Developer - Dheeraj Varshney B00808467 dh301823@dal.ca
+// Developed by Aadesh Shah B00802629
 import { Component, OnInit } from '@angular/core';
 // Using IPAPI to get users current location, available at - https://ipapi.co/
 import { LocationService } from '../location.service';
@@ -31,6 +31,7 @@ export class PetlistingComponent implements OnInit {
   mobile:boolean =false;
   filteredLocation: any;
   searchLocationTerm: any;
+  isLoading: boolean = false;
   
   filterPetsForm = new FormGroup({
     searchLocation: new FormControl(''),
@@ -57,10 +58,12 @@ export class PetlistingComponent implements OnInit {
       this.inputLocation = this.currentCity+this.comma+this.currentState+this.comma+this.currentCountry;
       this.searchLocation.patchValue(this.inputLocation);
     })
-
+    this.isLoading = true;
     this.petService.getPets().subscribe(petData =>{
       //console.log(petData);
-      this.all_Pets=petData
+      this.isLoading=false;
+      this.all_Pets=petData;
+      //filtering according to current location
       this.pet_newData=this.all_Pets.filter(filterPets =>{
         return filterPets.petLocation.petCity.includes(this.currentCity) && filterPets.petLocation.petState.includes(this.currentState) && filterPets.petLocation.petCountry.includes(this.currentCountry);
       });
@@ -71,6 +74,7 @@ export class PetlistingComponent implements OnInit {
 }
 filterPet(searchTerm){
   //console.log(searchTerm);
+  // getting search term from user
   this.searchLocationTerm = searchTerm.split(',');
   this.searchLocationTerm[0] =this.searchLocationTerm[0].replace(/\s/g, "");
   this.searchLocationTerm[1] =this.searchLocationTerm[1].replace(/\s/g, "");
@@ -87,7 +91,13 @@ onSearch(){
     });
   }
   else{
+    this.isLoading=true;
+    setTimeout(()=>{  
+      this.isLoading=false;
+       }, 2000);
+       //filtering pets according to user entered location
     this.pet_newData = this.all_Pets.filter(filterPets =>{
+      
       return filterPets.petLocation.petCity.includes(this.searchLocationTerm[0]) && filterPets.petLocation.petState.includes(this.searchLocationTerm[1]) && filterPets.petLocation.petCountry.includes(this.searchLocationTerm[2]);
     })
   }
@@ -95,6 +105,7 @@ onSearch(){
 }
 onKeydown(event:any) {
     this.city=event.target.value;
+    //getting autocomplete suggestions
     if(this.city.length>2){
     this.loc.getLocation(this.city).subscribe(data =>{
       //console.log(data);

@@ -1,11 +1,11 @@
-// Developer: Aditya Gadhvi (B00809664) (ad742065@dal.ca)
+
 
 // https://getbootstrap.com/docs/4.2/layout/overview/ I have used bootstrap media-queries for responsiveness
 
 #MainDiv{
  background-color:gainsboro;
  padding: 80px 0 150px;
-color: white;
+color:black;
 }
 
 
@@ -26,6 +26,7 @@ h3{
 }
 #Row1Col1{
     margin-top: 10px;
+    padding: 50px;
 }
 
 img{
@@ -62,15 +63,16 @@ span{
 
 @media(max-width:570px){
     #MainDiv{
-        background-color: #000000;
+        background-color: gainsboro;
         padding: 20px;
-       color: white;
+       color: black;
        }
 
     h2{
         font-weight: bold;
         font-size:32px;
         font-family: 'simplificasimplifica';
+        
     }
     
     h3{
@@ -101,6 +103,12 @@ span{
 }
 
 @media(min-width:571px) and (max-width:671px){
+
+    #MainDiv{
+        background-color: gainsboro;
+        padding: 20px;
+       color: black;
+       }
     h2{
         font-weight: bold;
         font-size:50px;
@@ -121,6 +129,11 @@ span{
 }
 
 @media (max-width:600px){
+    #MainDiv{
+        background-color: gainsboro;
+        padding: 20px;
+       color: black;
+       }
     h2{
         font-weight: bold;
         font-size:60px;
@@ -138,14 +151,19 @@ span{
     }
 
     #MainDiv{
-        background-color: #000000;
+        background-color: gainsboro;
         padding: 5px;
-       color: white;
+       color:black;
        }
     
 }
 
 @media (min-width:737px) and (max-width:985px){
+    #MainDiv{
+        background-color: gainsboro;
+        padding: 20px;
+       color: black;
+       }
     h2{
         font-weight: bold;
         font-size:70px;

@@ -1,3 +1,5 @@
+// Developer : Aditya Gadhvi (B00809664)
+
 import { Component, OnInit } from '@angular/core';
 import {Title} from "@angular/platform-browser";
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
@@ -11,20 +13,11 @@ import { empty } from 'rxjs';
   templateUrl: './profile-home.component.html',
   styleUrls: ['./profile-home.component.scss']
 })
+
 export class ProfileHomeComponent implements OnInit {
 
-  userData: {
-//     email: string,
-// firstName: string,
-// lastName: string,
-// password: string,
-// user_creation_date: string,
-// user_type: string,
-// _id: string,
-// address: string,
-// pincode: string,
-// dob: string
-  };
+  userData: {  };
+
   editField: boolean = false;
   editRowID: any ='';
   editRowValue: any ='';
@@ -54,18 +47,16 @@ export class ProfileHomeComponent implements OnInit {
    }
 
   ngOnInit() {
+    
+    //The following code will get the userId of the logged in user and then it will retrieve all the data of the logged in user and then display it on the profile page.
     var userId=this.authService.getUserId();
     this.authService.getUserById(userId).subscribe(user=>{
-      this.userData=user;
+    this.userData=user;
       
-      
-    console.log(this.userData);
     this.userData["address"]="";
-        this.userData["pincode"]="";
-        this.userData["dob"]="";
+    this.userData["pincode"]="";
+    this.userData["dob"]="";
         
-    console.log(this.userData);
-    
     this.updateProfileForm.controls.firstName.patchValue(this.userData["firstName"]);
     this.updateProfileForm.controls.lastName.patchValue(this.userData["lastName"]);
     this.updateProfileForm.controls.email.patchValue(this.userData["email"]);
@@ -74,14 +65,7 @@ export class ProfileHomeComponent implements OnInit {
     this.updateProfileForm.controls.pincode.patchValue(this.userData["pincode"]);
     this.updateProfileForm.controls.dob.patchValue(this.userData["dob"]);
     });
-    // this.userData = [
-    //   { id:1, firstName: 'Aadesh', lastName: 'Shah', email:'shahaadesh5@gmail.com', phone:'9876543210', address:'1333 South Park St, Halifax, NS', pincode: 'B3J2K9', dob: '1995-11-05'  }
-    // ];
-    //   this.userData["address"]="";
-    //     this.userData["pincode"]="";
-    //     this.userData["dob"]="";
-      
-    // console.log(this.userData);
+    
     }
     
 

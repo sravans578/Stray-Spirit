@@ -44,11 +44,14 @@ import { RescueComponent } from './rescue/rescue.component';
 import { HttpClientModule } from '@angular/common/http';
 import {MatSelectModule} from '@angular/material/select';
 import { ProfilePetAdsComponent } from './profile-pet-ads/profile-pet-ads.component';
+import { EventListComponent } from './event-list/event-list.component';
 
 import { ToastrModule } from 'ngx-toastr';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { EventDetailComponent } from './event-detail/event-detail.component';
 import { ProfileEventComponent } from './profile-event/profile-event.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { EditPetsComponent } from './edit-pets/edit-pets.component';
 
 // import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap'
 @NgModule({
@@ -73,12 +76,14 @@ import { ProfileEventComponent } from './profile-event/profile-event.component';
     FooterComponent,
     LoginDheerajComponent,
     ForgotComponent,
+    EventListComponent,
     ContactComponent,
     RegisterAparnaComponent,
     RescueComponent,
     ProfilePetAdsComponent,
     EventDetailComponent,
-    ProfileEventComponent
+    ProfileEventComponent,
+    EditPetsComponent
   ],
   imports: [
     BrowserModule,
@@ -100,7 +105,8 @@ import { ProfileEventComponent } from './profile-event/profile-event.component';
     NgxPaginationModule,
     MatSelectModule,
     ToastrModule.forRoot(),
-    MatExpansionModule
+    MatExpansionModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

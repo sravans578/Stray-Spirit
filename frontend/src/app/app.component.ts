@@ -1,7 +1,7 @@
 import { Component,OnInit } from '@angular/core';
 import { LocationService } from './location.service';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from './auth.sevice';
 
 
@@ -13,9 +13,30 @@ import { AuthService } from './auth.sevice';
 export class AppComponent implements OnInit {
 
   title = 'StraySpirit';
+  routeUrl: string;
+  constructor(
+    private authService:AuthService,
+    private _router: Router,
 
-  constructor(private authService:AuthService){}
-
+    ){
+      this._router.events.subscribe(() => this.routeUrl = this._router.url ); 
+    }
+    private hasMatches(...values: string[]): boolean {
+      let matchFound: boolean = false;
+      var i;
+  
+      // check for null or undefined first
+      if(this.routeUrl){ 
+          for (i=0; i<values.length; i++){
+               if(this.routeUrl.indexOf(values[i]) > -1){
+                  matchFound = true;
+                  break;
+               }
+          }        
+      }
+  
+      return matchFound;
+  }
   ngOnInit(){
     this.authService.autoAuthUser();
     

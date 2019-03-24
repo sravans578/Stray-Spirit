@@ -11,6 +11,7 @@
                 <label for="petName" class="">Pet Name</label>
                 <div *ngIf="addPetsForm.get('petName').touched && addPetsForm.get('petName').invalid" class="invalid-feedback">
                   <div *ngIf="addPetsForm.get('petName').errors.required">Pet Name is required</div>
+                  <div *ngIf="addPetsForm.get('petName').errors.pattern">Only character values allowed</div>
                 </div>
               </div>
               <div class="md-form">
@@ -59,30 +60,6 @@
                   </mat-option>
                 </mat-select>
                     </div>
-              <!-- <div class="md-form">
-                  <input mdbInputDirective type="name" id="petCategory" class="form-control" name="petCategory" formControlName="petCategory"
-                    [ngClass]="{'is-invalid':addPetsForm.get('petCategory').touched && addPetsForm.get('petCategory').invalid}">
-                  <label for="petCategory" class="">Pet Category (Feline/Canine)</label>
-                  <div *ngIf="addPetsForm.get('petCategory').touched && addPetsForm.get('petCategory').invalid" class="invalid-feedback">
-                    <div *ngIf="addPetsForm.get('petCategory').errors.required">Pet Category is required</div>
-                  </div>
-                </div>
-                <div class="md-form">
-                    <input mdbInputDirective type="name" id="petGender" class="form-control" name="petGender" formControlName="petGender"
-                      [ngClass]="{'is-invalid':addPetsForm.get('petGender').touched && addPetsForm.get('petGender').invalid}">
-                    <label for="petGender" class="">Pet Gender (Male/Female)</label>
-                    <div *ngIf="addPetsForm.get('petGender').touched && addPetsForm.get('petGender').invalid" class="invalid-feedback">
-                      <div *ngIf="addPetsForm.get('petGender').errors.required">Pet Gender is required</div>
-                    </div>
-                  </div>
-                  <div class="md-form">
-                      <input mdbInputDirective type="name" id="petHealth" class="form-control" name="petHealth" formControlName="petHealth"
-                        [ngClass]="{'is-invalid':addPetsForm.get('petHealth').touched && addPetsForm.get('petHealth').invalid}">
-                      <label for="petHealth" class="">Pet Health (Vaccinated/Not Vaccinated)</label>
-                      <div *ngIf="addPetsForm.get('petHealth').touched && addPetsForm.get('petHealth').invalid" class="invalid-feedback">
-                        <div *ngIf="addPetsForm.get('petHealth').errors.required">Pet Health is required</div>
-                      </div>
-                    </div> -->
               <div class="md-form">
                   <input mdbInputDirective type="name" id="petCity" class="form-control" name="petCity" formControlName="petCity"
                     [ngClass]="{'is-invalid':addPetsForm.get('petCity').touched && addPetsForm.get('petCity').invalid}">
@@ -142,13 +119,17 @@
                       <p><mdb-badge color="indigo lighten-1">Gender</mdb-badge> {{petListings?.petGender}}</p>
                       <p><mdb-badge color="indigo lighten-1">Category</mdb-badge>  {{petListings?.petCategory}}</p>
                       <p><mdb-badge color="indigo lighten-1">Vaccination Status</mdb-badge>  {{petListings?.petHealth}}</p>
-                      <p><mdb-badge color="indigo lighten-1">About Pet</mdb-badge></p>
+                      <p><mdb-badge color="indigo lighten-1">Adoption Status</mdb-badge>  {{petListings?.adoptionStatus}}</p>
+                      <hr>
+                      <p><mdb-badge color="indigo lighten-1 about_pet_badge">About {{petListings?.petName}}</mdb-badge></p>
                       <div class="">
                         <p> {{petListings?.petDescription}}</p>
                       </div>
                       <mat-action-row>
-                          <button type="button" mdbBtn color="warning" mdbWavesEffect>Edit</button>
-                          <button type="button" mdbBtn color="danger" mdbWavesEffect>Delete</button>
+                          <a routerLink="/profile/edit-pet/{{petListings?._id}}">
+                            <button type="button" mdbBtn color="warning" mdbWavesEffect>Edit</button>
+                          </a>
+                          <button type="button" mdbBtn color="danger" mdbWavesEffect (click)="deletePet(petListings?._id)">Delete</button>
                       </mat-action-row>
                     </mat-expansion-panel>
                   </div>
