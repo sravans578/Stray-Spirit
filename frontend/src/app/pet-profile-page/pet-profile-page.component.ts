@@ -1,4 +1,4 @@
-// Developer: Aditya Gadhvi (B00809664) (ad742065@dal.ca)
+// Developed by Aadesh Shah B00802629
 
 import { Component, OnInit } from '@angular/core';
 
@@ -44,23 +44,23 @@ export class PetProfilePageComponent implements OnInit {
   ngOnInit() {
     
     this.sub = this.route.params.subscribe(params => {
-      this.profile_id = params['id']; 
+      this.profile_id = params['id'];  //Getting id of the pet from route
       console.log(this.profile_id);
    });
    console.log(this.profile_id);
    this.isLoading=true;
+   //getting pet details by petid
    this.petService.getPetById(this.profile_id).subscribe(petData =>{
      this.isLoading=false;
      console.log(petData);
      this.petDetails = petData;
 
    },error =>{
-     console.log("Not found!");
+     console.log("Not found!"); // if pet is not found with the id passed
      this.router.navigate(['/pet-not-found']);
    });
    
    this.loc.getCurrentLocation().subscribe(currentData =>{
-    //console.log(currentData);
     this.currentCity=currentData.city;
     this.currentState=currentData.region_code;
     this.currentCountry=currentData.country_name;
@@ -68,7 +68,6 @@ export class PetProfilePageComponent implements OnInit {
    console.log(this.petDetails);
    this.isPetsLoading=true;
    this.petService.getPets().subscribe(petData =>{
-    //console.log(petData);
     setTimeout(()=>{  
       this.isPetsLoading=false;
        }, 2000);

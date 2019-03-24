@@ -30,4 +30,10 @@ export class ProductmanagementService {
       console.log("Product added!");
     });
   }
+  deleteProduct(productId:any){
+    this.http.delete('http://localhost:3000/products/delete/'+productId)
+    .subscribe(response=>{
+      console.log(response);
+    });
+  }
 }

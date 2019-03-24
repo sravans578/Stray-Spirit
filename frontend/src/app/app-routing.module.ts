@@ -29,6 +29,7 @@ import { ProfilePetAdsComponent } from './profile-pet-ads/profile-pet-ads.compon
 import { EventDetailComponent } from './event-detail/event-detail.component';
 import { ProfileEventComponent } from './profile-event/profile-event.component';
 import { EditPetsComponent } from './edit-pets/edit-pets.component';
+import { EventListComponent } from './event-list/event-list.component';
 
 
 const routes: Routes = [
@@ -42,6 +43,7 @@ const routes: Routes = [
   { path: 'why-adopt-dog',component:WhyadoptdogComponent},
   { path: 'contact', component: ContactComponent },
   { path: 'register-aparna', component: RegisterAparnaComponent },
+  { path: 'event-list', component: EventListComponent },
 
   { path: 'login-Dheeraj',component:LoginDheerajComponent},
   { path: 'rescue', component: RescueComponent },
