@@ -33,9 +33,9 @@ export class ProfileHomeComponent implements OnInit {
     lastName: new FormControl('',[Validators.required,Validators.pattern(this.namePattern)]),
     email: new FormControl('',[Validators.required,Validators.email,Validators.pattern(this.emailPattern)]),
     phone: new FormControl('',[Validators.required,Validators.pattern(this.phoneNumberPattern)]),
-    address: new FormControl('',Validators.required),
-    pincode: new FormControl('',Validators.required),
-    dob: new FormControl('',Validators.required)
+    address: new FormControl(''),
+    pincode: new FormControl(''),
+    dob: new FormControl('')
   })
 
 
@@ -70,10 +70,22 @@ export class ProfileHomeComponent implements OnInit {
     
 
   updateSubmit(){
-    this.submitted=true;
-    setTimeout(()=>{  
-      this.submitted = false;
- }, 3000);
+    var current_user_type=this.authService.getUserType();
+    if(current_user_type==='personal'){
+      var user_id=this.authService.getUserId();
+      this.userData={
+        firstNameModel: this.updateProfileForm.get('firstName').value,
+        lastNameModel: this.updateProfileForm.get('lastName').value,
+        emailModel: this.updateProfileForm.get('email').value,
+        phoneNumberModel: this.updateProfileForm.get('phone').value
+      }
+      console.log(this.userData);
+      this.authService.updateUserData(user_id,this.userData);
+    }
+    else{
+      console.log("organization");
+    }
+   
   }
 
   Edit(val,rowVal){

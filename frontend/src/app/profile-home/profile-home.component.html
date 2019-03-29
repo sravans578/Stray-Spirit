@@ -151,10 +151,10 @@
         </div>
         <div class="mt-25 text-center">
           <button mdbBtn type="submit" color="indigo" mdbWavesEffect class="sign-in_button" 
-            *ngIf="userData?._id === editRowID" (click)="updateSubmit()">Update</button>
-            <div class="alert alert-success mt-25" role="alert" *ngIf=submitted >
+            *ngIf="userData?._id === editRowID" (click)="updateSubmit()" [disabled]="!updateProfileForm.valid">Update</button>
+            <!-- <div class="alert alert-success mt-25" role="alert" *ngIf=submitted >
                 Profile Edited! (Just a UI!). Second feature will implement editing/updating functionality.
-              </div>
+              </div> -->
         </div>
       </form>
     </div>

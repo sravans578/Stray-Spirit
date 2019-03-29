@@ -161,5 +161,21 @@ router.post('/login', (req, res, next) => {
     });
 });
 
+router.put('/update/:id', (req, res, next) =>{
+    const id=req.params.id;
+    User.findByIdAndUpdate( id, {
+        _id: id,
+        firstName: req.body.firstNameModel,
+        lastName: req.body.lastNameModel,
+        email: req.body.emailModel,
+        phoneNumber: req.body.phoneNumberModel 
+    }).then( result=>{
+        console.log(result);
+        res.status(200).json({
+            message: "Update successfull!"
+        });
+    });
+
+});
 
 module.exports = router;
