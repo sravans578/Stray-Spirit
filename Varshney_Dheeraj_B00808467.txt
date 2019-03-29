@@ -1,76 +1,43 @@
-Dheeraj Varshney
-B00808467
-dh301823@dal.ca
-
-Note:- Please refer Angular installation which is included in  
-Note: Since we are using Angular 7 and Material design for it, W3 validations won't be possible by just copy-pasting the HTML and CSS source code as Angular and Material design provides a lot of different selectors and dependencies on HTML structure. We have ensured that we have followed the W3 standards for creating web pages. I have tried including these validations and 
-
-Pages on which I worked along with the path:-
-Why to Adopt Dog?--------- (http://localhost:4200/why-adopt-dog)
-Login Page----------------- (http://localhost:4200/login-Dheeraj)
-Forgot Password------------(http://localhost:4200/forgot-pwd)
-Pet Listing Page-----------(http://localhost:4200/petlisting)
-Product Listing Page-------(http://localhost:4200/productlisting)
+Author: Dheeraj Varshney
+Email dh301823@dal.ca
+BID B00808467
 
 
-How To access?
-Why To Adopt Dog
-
-on the top navigation bar select Why to Adopt A Dog from Resources menu and user will be navigated to that page.
-Pages are responsive. I have attached both normal screenshot of the page and responsive screenshot as well. 
-
-Login Page
-on the top navigation bar select Login-Dheeraj and user will be navigated to that page.I have attached both normal screenshot of the page and responsive screenshot as well.
+Kindly follow the instruction guide for installation steps for backend and one common read me file. Common_Readme. For frontend we provided the installation steps in Assignment2 and it is available on git
 
 
-Forgot Password
-When user clicks on Forgot password on Login page user will be navigated to this page.I have attached both normal screenshot of the page and responsive screenshot as well.
+Features: -
+1. Inventory Management (Adding products, Deleting Products)
+2. Edit Inventory
 
-Pet Listing Page
-On top navigation bar, when user clicks on Find a Pet user will be navigated to this page.I have attached both normal screenshot of the page and responsive screenshot as well.
-
-Product Listing Page
-On top navigation bar, when user clicks on Shop user will be navigated to this page.I have attached both normal screenshot of the page and responsive screenshot as well.
-
-Features 
-Basically this page describes the reasons why to adopt a dog.There are various reasons described for which users adopt a dog. On this page, we havve two images and when user hover over the image i have added an overlay element which adds animation. To add overlay element i have taken help from w3schools.https://www.w3schools.com/howto/howto_css_image_overlay_title.asp
-
-Login Page
-In login page user has to enter his email and password and then only submit button will be enabled. Until then, it will be disabled. I have included all the validations which are if user does not provide the email address, the input box will be highlighted in red and user will receive the error message that ìEmail is requiredî. Similarly, if user does not provide password an error message will be displayed that ìPassword is requiredî. Also, if email is not in proper format that is abc@example.com , an error message will be displayed ìEmail should be a valid  addressî.
-Forgot Password page
-User will be navigated to this page on clicking Forgot password page on Login page -Dheeraj. On this page I have included email input box which will take user email and once user clicks on Submit button a message will be displayed that ìA activation link has been set on your email.î
-Pet Listing Page
-User will be able to view the pets which are available to adopt. It will have list of pets and on clicking on More Info user will be navigated to the pet profile page.
-
-
-
-Product listing page
-User will be able to view the pets which are available to adopt. It will have list of pets and on clicking on More Info user will be navigated to the pet profile page.
-I took help from mdb bootstrap design and video tutorials which I have listed down in references. There are some other links which I have used for help. Apart from that I have used images and have referenced those.
+Strayspirit
+We are working on Strayspirit application which is basically a pet rescue website. This website will help in adopt stray pets and also user will be able to add products, pets and events. The website will also show events to which users can register. Users can also adopt the pets whichever they want to adopt. 
+For this assignment I have worked on Inventory management feature, which includes adding a product by an individual. The products which are being added by the individual will then be displayed on Shop page. 
+I worked on backend in which  i created models and routes which will be repsonsible for storing the schema and the routes.  
+Here I have taken care of the fact that if a product has any product then it will not be displayed in another user‚Äôs My Inventory although other user will be able to view it on Shop page.
+For adding the products user will follow the steps: -
+User will login with valid credentials
+User will navigate to My Profile by clicking on My Profile option which is available under user‚Äôs icon dropdown.
+User will click on My Inventory page
+User will be able to view two sections one is My Inventory and Add Product  
+When user will click on Add Product user will be able to add the details like product name, description, Price, Quantity and user can also upload the image of the product. Once user adds the product, it will be displayed under My inventory and on Shop page.
+Currently I have not implemented Edit functionality and working on it. For Assignment 4 when user will click on Edit button a toast message will be displayed which will have a message that ‚ÄúJust a message for Assignment4 UI. Coming Soon‚Äù
+On Shop page user will be able to view all the products which have been added by different users and on clicking Cart icon and Share icon for now nothing will happen as it is different feature and some other group member is working on it. For now, it will just show the message that ‚ÄúJust a message for Assignment4 UI. Coming Soon‚Äù.
+On Shop page when user will click on the product, user will be navigated to product detail page which will have the details of the product. There also user will have option of Add to Cart and Learn More. When user will click on Add to Cart and Learn More, for Assignment 4 it will show a toast message that ‚ÄúJust a message for Assignment4 UI. Coming Soon‚Äù
+When user wil click on Delete in My Inventory the particular product will be deleted.
 
 
-
- 
+Note : I wil be implementing Edit inventory as my other feature
+Path
+My Inventory:- http://localhost:4200/profile/inventory
 
 References
-https://bestfriends.org/resources/reasons-adopt-pet 
-http://generator.lorem-ipsum.info/
-https://images-na.ssl-images-amazon.com/images/I/61TkTIfQ3RL._SY355_.jpg
-https://images-na.ssl-images-amazon.com/images/I/71gwRbpfLoL._SY606_.jpg
-https://storage.googleapis.com/stateless-puphq/2017/12/spiked-dog-collar-black.jpg
-https://www.petsmart.ca/dog/collars-harnesses-and-leashes/petsafe-3-in-1-dog-harness-50883.html?cgid=100405
-https://s7d2.scene7.com/is/image/PetSmart/5220954?$sclp-prd-main_large$.jpg
-https://www.rescueop.com/media/catalog/product/cache/1/small_image/210x/9df78eab33525d08d6e5fb8d27136e95/k/h/kh1650.jpg
-https://www.rescueop.com/media/catalog/product/cache/1/small_image/210x/9df78eab33525d08d6e5fb8d27136e95/c/v/cvr48t-gy.jpg
-https://images-na.ssl-images-amazon.com/images/I/71gwRbpfLoL._SY606_.jpg
-https://images.pexels.com/photos/356378/pexels-photo-356378.jpeg?cs=srgb&dl=adorable-animal-breed-356378.jpg&fm=jpg
-https://images.pexels.com/photos/58997/pexels-photo-58997.jpeg?cs=srgb&dl=animal-corgi-dog-58997.jpg&fm=jpg
-https://images.pexels.com/photos/257540/pexels-photo-257540.jpeg?cs=srgb&dl=adorable-animal-canine-257540.jpg&fm=jpg
-https://as1.ftcdn.net/jpg/01/06/68/72/500_F_106687254_CFfnEhqM4cEx42XU5BexLccLttBrWpyZ.jpg
-https://cdn.pixabay.com/photo/2015/03/26/09/54/pug-690566_1280.jpg 
-https://cdn.pixabay.com/photo/2016/11/23/18/06/adorable-1854119_1280.jpg
-https://images-na.ssl-images-amazon.com/images/I/71gwRbpfLoL._SY435_.jpg
-https://pixabay.com/en/photos/cat/cat.jpg
-https://www.htmllion.com/angular-reactive-forms-validation.html
-https://material.angularjs.org/latest/CSS/button
-https://www.w3schools.com/howto/howto_css_image_overlay_title.asp
+https://www.w3schools.com/css/css_rwd_mediaqueries.asp
+https://stackoverflow.com/questions/48216410/angular-4-base64-upload-component
+https://www.udemy.com/angular-2-and-nodejs-the-practical-guide/
+https://www.npmjs.com/package/ngx-toastr
+https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/mongoose
+https://www.amazon.ca/Adjustable-Products-Whisperer-Training-Collar/dp/B01LZ98RW9/ref=sr_1_5?keywords=pet+products&qid=1553381126&s=gateway&sr=8-5
+https://www.amazon.ca/Grizzly-Pet-Products-Krill-Oil/dp/B00VEZHK0I/ref=sr_1_88?keywords=pet+products&qid=1553382553&s=gateway&sr=8-88
+https://www.amazon.ca/Pet-Removable-Washable-Majestic-Products/dp/B00OJQB0IM/ref=sr_1_72?keywords=pet+products&qid=1553382553&s=gateway&sr=8-72
+https://www.amazon.ca/Carlson-Pet-Products-Compact-Secure/dp/B00MYDZIBM/ref=sr_1_54?keywords=pet+products&qid=1553382553&s=gateway&sr=8-54
