@@ -28,6 +28,9 @@ export class ProfilePetAdsComponent implements OnInit {
   api_location: any;
   comma: string =', ';
   inputLoc: string;
+  currentUserType: string;
+  currentFirstName: string;
+  currentLastName: string;
 
   public petData: any = {}
 
@@ -54,10 +57,19 @@ export class ProfilePetAdsComponent implements OnInit {
   ngOnInit() {
     this.currentUserId=this.authService.getUserId();
     console.log("This id has logged in: ",this.currentUserId);
-    this.authService.getUserById(this.currentUserId).subscribe(currentUserData =>{
-      this.currentUser=currentUserData;
-      console.log("Logged in user details:",this.currentUser);
-    })
+    this.currentUserType = this.authService.getUserType();
+    if(this.currentUserType==='personal'){
+      this.authService.getUserById(this.currentUserId).subscribe(currentUserData =>{
+        this.currentUser=currentUserData;
+        console.log("Logged in user details:",this.currentUser);
+      })
+    }
+    else{
+      this.authService.getOrgById(this.currentUserId).subscribe(currentUserData =>{
+        this.currentUser=currentUserData;
+        console.log("Logged in user details:",this.currentUser);
+      })
+    }
     this.loc.getCurrentLocation().subscribe(currentData =>{
       console.log(currentData);
       this.currentCity=currentData.city;
@@ -123,6 +135,14 @@ filterPet(searchTerm){
     console.log(this.imageSrc);
   }
   addPet(){
+    if(this.currentUserType==='personal'){
+      this.currentFirstName = this.currentUser["firstName"];
+      this.currentLastName = this.currentUser["lastName"];
+    }
+    else{
+      this.currentFirstName = this.currentUser["organizationtName"];
+      this.currentLastName = this.currentUser["organizationtName"];
+    }
      this.petData = {
       petNameModel: this.addPetsForm.get('petName').value,
       petCategoryModel: this.addPetsForm.get('petCategory').value,
@@ -138,8 +158,8 @@ filterPet(searchTerm){
       petPicModel: this.imageSrc,
       petUploaderModel: {
         petUploaderId: this.currentUserId,
-        petUploaderfirstName: this.currentUser["firstName"],
-        petUploaderlastName: this.currentUser["lastName"]
+        petUploaderfirstName: this.currentFirstName,
+        petUploaderlastName: this.currentLastName
         }
     }
     console.log(this.petData);
