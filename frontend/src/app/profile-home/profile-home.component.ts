@@ -81,6 +81,7 @@ export class ProfileHomeComponent implements OnInit {
       }
       console.log(this.userData);
       this.authService.updateUserData(user_id,this.userData);
+      location.reload();
     }
     else{
       console.log("organization");
