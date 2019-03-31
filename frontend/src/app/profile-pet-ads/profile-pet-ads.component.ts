@@ -66,6 +66,7 @@ export class ProfilePetAdsComponent implements OnInit {
       console.log(this.currentCity);
       this.inputLoc = this.currentCity+this.comma+this.currentState+this.comma+this.currentCountry;
       this.addPetsForm.controls.searchLocation.patchValue(this.inputLoc);
+      this.searchLocationTerm = this.inputLoc.split(',');
     })
     
     this.pets.petUser(this.currentUserId).subscribe(petData =>{
