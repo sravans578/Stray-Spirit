@@ -23,6 +23,11 @@ export class ProfilePetAdsComponent implements OnInit {
   currentUserId: string;
   currentUser: any;
   petFound: boolean =true;
+  searchLocationTerm: any;
+  currentLoc: any;
+  api_location: any;
+  comma: string =', ';
+  inputLoc: string;
 
   public petData: any = {}
 
@@ -42,11 +47,9 @@ export class ProfilePetAdsComponent implements OnInit {
     petGender: new FormControl('', Validators.required),
     petAge: new FormControl('', Validators.required),
     petHealth: new FormControl('', Validators.required),
-    petCity: new FormControl('', Validators.required),
-    petState: new FormControl('', Validators.required),
-    petCountry: new FormControl('', Validators.required),
     petDescription: new FormControl('', Validators.required),
-    petPic: new FormControl('')
+    petPic: new FormControl(''),
+    searchLocation: new FormControl('', Validators.required)
   })
   ngOnInit() {
     this.currentUserId=this.authService.getUserId();
@@ -61,9 +64,8 @@ export class ProfilePetAdsComponent implements OnInit {
       this.currentState=currentData.region_code;
       this.currentCountry=currentData.country_name;
       console.log(this.currentCity);
-      this.addPetsForm.controls.petCity.patchValue(currentData.city);
-      this.addPetsForm.controls.petState.patchValue(this.currentState);
-      this.addPetsForm.controls.petCountry.patchValue(this.currentCountry);
+      this.inputLoc = this.currentCity+this.comma+this.currentState+this.comma+this.currentCountry;
+      this.addPetsForm.controls.searchLocation.patchValue(this.inputLoc);
     })
     
     this.pets.petUser(this.currentUserId).subscribe(petData =>{
@@ -78,6 +80,28 @@ export class ProfilePetAdsComponent implements OnInit {
       this.petFound=false;
     })
   }
+  
+onKeydown(event:any) {
+  this.currentLoc=event.target.value;
+  //getting autocomplete suggestions
+  if(this.currentLoc.length>2){
+  this.loc.getLocation(this.currentLoc).subscribe(data =>{
+    //console.log(data);
+    this.api_location = data;
+    //console.log(this.api_location);
+  })
+}
+
+}
+
+filterPet(searchTerm){
+  // getting search term from user
+  this.searchLocationTerm = searchTerm.split(',');
+  this.searchLocationTerm[0] =this.searchLocationTerm[0].replace(/\s/g, "");
+  this.searchLocationTerm[1] =this.searchLocationTerm[1].replace(/\s/g, "");
+  this.searchLocationTerm[2] =this.searchLocationTerm[2].replace(/\s/g, "");
+  console.log(this.searchLocationTerm);
+}
   
   private imageSrc: string = '';
 //Image conversion to base64:  https://stackoverflow.com/questions/48216410/angular-4-base64-upload-component
@@ -105,9 +129,9 @@ export class ProfilePetAdsComponent implements OnInit {
       petAgeModel: this.addPetsForm.get('petAge').value,
       petHealthModel: this.addPetsForm.get('petHealth').value,
       petLocationModel:{
-        petCityModel: this.addPetsForm.get('petCity').value,
-      petStateModel: this.addPetsForm.get('petState').value,
-      petCountryModel: this.addPetsForm.get('petCountry').value
+        petCityModel: this.searchLocationTerm[0],
+      petStateModel: this.searchLocationTerm[1],
+      petCountryModel: this.searchLocationTerm[2]
       },
       petDescriptionModel: this.addPetsForm.get('petDescription').value,
       petPicModel: this.imageSrc,
