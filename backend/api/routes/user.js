@@ -147,7 +147,7 @@ router.post('/login', (req, res, next) => {
   });
 
   //The following code will return all the user data of the user whose userId is passed.
-  router.get('/:userId', (req, res, next) => {
+  router.get('/personal/:userId', (req, res, next) => {
     const id = req.params.userId;
     User.findById(id)
     .exec()
@@ -161,5 +161,18 @@ router.post('/login', (req, res, next) => {
     });
 });
 
+router.get('/org/:userId', (req, res, next) => {
+    const id = req.params.userId;
+    Organization.findById(id)
+    .exec()
+    .then(doc =>{
+        console.log(doc);
+        res.status(200).json(doc);
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json({error:err});
+    });
+});
 
 module.exports = router;

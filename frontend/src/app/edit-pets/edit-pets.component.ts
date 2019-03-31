@@ -141,8 +141,8 @@ filterPet(searchTerm){
      petPicModel: this.imageSrc,
      petUploaderModel: {
        petUploaderId: this.currentUserId,
-       petUploaderfirstName: this.currentUser["firstName"],
-       petUploaderlastName: this.currentUser["lastName"]
+       petUploaderfirstName: this.petData["petUploader"]["firstName"],
+       petUploaderlastName: this.petData["petUploader"]["lastName"]
        }
    }
    console.log(this.petData);
