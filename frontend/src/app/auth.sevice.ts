@@ -200,6 +200,10 @@ export class AuthService{
         return this.http.get("http://localhost:3000/user/personal/"+loggedInUser);
        
     }
+    getOrgById(orgId:any){
+        return this.http.get("http://localhost:3000/user/org/"+orgId);
+       
+    }
 
     getOrgById(orgId:any){
         return this.http.get("http://localhost:3000/user/org/"+orgId);

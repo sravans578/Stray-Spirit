@@ -60,30 +60,26 @@
                   </mat-option>
                 </mat-select>
                     </div>
-              <div class="md-form">
-                  <input mdbInputDirective type="name" id="petCity" class="form-control" name="petCity" formControlName="petCity"
-                    [ngClass]="{'is-invalid':addPetsForm.get('petCity').touched && addPetsForm.get('petCity').invalid}">
-                  <label for="petCity" class="">Enter City</label>
-                  <div *ngIf="addPetsForm.get('petCity').touched && addPetsForm.get('petCity').invalid" class="invalid-feedback">
-                    <div *ngIf="addPetsForm.get('petCity').errors.required">City is required</div>
-                  </div>
-                </div>
-                <div class="md-form">
-                    <input mdbInputDirective type="name" id="petState" class="form-control" name="petState" formControlName="petState"
-                      [ngClass]="{'is-invalid':addPetsForm.get('petState').touched && addPetsForm.get('petState').invalid}">
-                    <label for="petState" class="">Enter State/Province</label>
-                    <div *ngIf="addPetsForm.get('petState').touched && addPetsForm.get('petState').invalid" class="invalid-feedback">
-                      <div *ngIf="addPetsForm.get('petState').errors.required">State/Province is required</div>
-                    </div>
-                  </div>
-                  <div class="md-form">
-                      <input mdbInputDirective type="name" id="petCountry" class="form-control" name="petCountry" formControlName="petCountry"
-                        [ngClass]="{'is-invalid':addPetsForm.get('petCountry').touched && addPetsForm.get('petCountry').invalid}">
-                      <label for="petCountry" class="">Enter Country</label>
-                      <div *ngIf="addPetsForm.get('petCountry').touched && addPetsForm.get('petCountry').invalid" class="invalid-feedback">
-                        <div *ngIf="addPetsForm.get('petCountry').errors.required">Country is required</div>
-                      </div>
-                    </div>
+                    
+            <div class="md-form">
+              <input mdbInputDirective type="name" id="petLocation" class="form-control" name="petLocation"
+                [matAutocomplete]="auto" formControlName="searchLocation" (keydown)="onKeydown($event)" [ngClass]="{'is-invalid':addPetsForm.get('searchLocation').touched && addPetsForm.get('searchLocation').invalid}">
+              <label for="petLocation" class="">Location</label>
+              <div *ngIf="addPetsForm.get('searchLocation').touched && addPetsForm.get('searchLocation').invalid"
+                class="invalid-feedback">
+                <div *ngIf="addPetsForm.get('searchLocation').errors.required">Pet Location is required</div>
+              </div>
+            </div>
+            <mat-autocomplete #auto="matAutocomplete" (optionSelected)='filterPet($event.option.value)'>
+              <ng-container *ngFor="let location_value of api_location?.suggestions">
+                <mat-option
+                  [value]="location_value.address.city+comma+ location_value.address.state+comma+ location_value.address.country"
+                  *ngIf="location_value.address.city && location_value.address.state && location_value.address.country">
+                  <span>{{location_value.address.city}}, {{location_value.address.state}},
+                    {{location_value.address.country}}</span>
+                </mat-option>
+              </ng-container>
+            </mat-autocomplete>
                     <div class="md-form">
                         <!-- <input type="file" required name="uploadPic" value="Select Picture" (change)="onImagePicked($event)" > -->
                         <input name="imageUrl" type="file" accept="image/*" (change)="handleInputChange($event)" />
@@ -116,6 +112,7 @@
                             <mdb-badge color="purple darken-4">{{petListings?.petName}}</mdb-badge>
                         </span>
                       </mat-expansion-panel-header>
+                      <p><mdb-badge color="indigo lighten-1">Location</mdb-badge> {{petListings?.petLocation?.petCity}}, {{petListings?.petLocation?.petState}}, {{petListings?.petLocation?.petCountry}}</p>
                       <p><mdb-badge color="indigo lighten-1">Gender</mdb-badge> {{petListings?.petGender}}</p>
                       <p><mdb-badge color="indigo lighten-1">Category</mdb-badge>  {{petListings?.petCategory}}</p>
                       <p><mdb-badge color="indigo lighten-1">Vaccination Status</mdb-badge>  {{petListings?.petHealth}}</p>
