@@ -48,6 +48,10 @@ export class RegisterComponent implements OnInit {
    }
 
   ngOnInit() {
+    var token=this.authService.getToken();
+    if(token){
+      this.router.navigate(['/profile']);
+    }
   }
 
   //This method will be executed when the user clicks on the Register button located on the User tab of the register page. 
