@@ -5,7 +5,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { NgForm }   from '@angular/forms';
 import {Title} from "@angular/platform-browser";
-import {Router} from "@angular/router"
+import {Router} from "@angular/router";
 import { AuthService } from '../auth.sevice';
 import { ToastrService } from 'ngx-toastr';
 
