@@ -27,12 +27,19 @@ isOrgLoggedIn=false;
     ) {}
     ngOnInit() {
       var userType=this.authServ.getUserType();
-      if(userType==="Organization"){
-        this.isOrgLoggedIn=true;
-      }
+      
       this.currentUserId=this.authServ.getUserId();
+      if(userType==="personal"){
       this.authServ.getUserById(this.currentUserId).subscribe(userData=>{
         this.userDetail=userData;
+        
       })
     }
+    else{
+      this.authServ.getOrgById(this.currentUserId).subscribe(userData=>{
+        this.userDetail=userData;
+        this.isOrgLoggedIn=true;
+      })
+    }
+  }
 }

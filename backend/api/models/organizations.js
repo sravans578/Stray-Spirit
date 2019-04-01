@@ -11,6 +11,8 @@ const organizationSchema = mongoose.Schema({
     phoneNumber:Number,
     registrationNumber:Number,
     password:String,
+    address:String,
+    pinCode:String,
     user_type:String,
     user_creation_date:String
 });
