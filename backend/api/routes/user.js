@@ -147,7 +147,7 @@ router.post('/login', (req, res, next) => {
   });
 
   //The following code will return all the user data of the user whose userId is passed.
-  router.get('/:userId', (req, res, next) => {
+  router.get('/personal/:userId', (req, res, next) => {
     const id = req.params.userId;
     User.findById(id)
     .exec()
@@ -161,5 +161,58 @@ router.post('/login', (req, res, next) => {
     });
 });
 
+router.get('/org/:userId', (req, res, next) => {
+    const id = req.params.userId;
+    Organization.findById(id)
+    .exec()
+    .then(doc =>{
+        console.log(doc);
+        res.status(200).json(doc);
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json({error:err});
+    });
+});
+
+router.put('/update/:id', (req, res, next) =>{
+    const id=req.params.id;
+    User.findByIdAndUpdate( id, {
+        _id: id,
+        firstName: req.body.firstNameModel,
+        lastName: req.body.lastNameModel,
+        email: req.body.emailModel,
+        phoneNumber: req.body.phoneNumberModel,
+        address:req.body.addressModel,
+        pinCode:req.body.pincodeModel,
+        dateOfBirth:req.body.dobModel 
+    }).then( result=>{
+      console.log(result);
+        res.status(200).json({
+            message: "Update successfull!"
+        });
+    });
+
+});
+
+router.put('/org/update/:id', (req, res, next) =>{
+    const id=req.params.id;
+    Organization.findByIdAndUpdate( id, {
+        _id: id,
+        organizationtName:req.body.orgNameModel,
+        email: req.body.orgEmailModel,
+        phoneNumber: req.body.phoneNumberModel,
+        registrationNumber:req.body.regNumberModel,
+        address:req.body.addressModel,
+        pinCode:req.body.pincodeModel,
+        
+    }).then( result=>{
+      console.log(result);
+        res.status(200).json({
+            message: "Update successfull!"
+        });
+    });
+
+});
 
 module.exports = router;

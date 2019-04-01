@@ -17,7 +17,9 @@ import { empty } from 'rxjs';
 export class ProfileHomeComponent implements OnInit {
 
   userData: {  };
-
+  orgData:{ };
+  personal:boolean=false;
+  current_user_type:any;
   editField: boolean = false;
   editRowID: any ='';
   editRowValue: any ='';
@@ -29,13 +31,17 @@ export class ProfileHomeComponent implements OnInit {
   datePattern: string = '^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$';
 
   updateProfileForm = new FormGroup({
-    firstName: new FormControl('', [Validators.required,Validators.pattern(this.namePattern)]),
-    lastName: new FormControl('',[Validators.required,Validators.pattern(this.namePattern)]),
-    email: new FormControl('',[Validators.required,Validators.email,Validators.pattern(this.emailPattern)]),
-    phone: new FormControl('',[Validators.required,Validators.pattern(this.phoneNumberPattern)]),
-    address: new FormControl('',Validators.required),
-    pincode: new FormControl('',Validators.required),
-    dob: new FormControl('',Validators.required)
+    firstName: new FormControl('', Validators.pattern(this.namePattern)),
+    lastName: new FormControl('',Validators.pattern(this.namePattern)),
+    orgName:new FormControl('',Validators.pattern(this.namePattern)),
+    orgEmail:new FormControl('',Validators.pattern(this.emailPattern)),
+    orgPhone: new FormControl('',Validators.pattern(this.phoneNumberPattern)),
+    orgReg: new FormControl('',Validators.pattern(this.phoneNumberPattern)),
+    email: new FormControl('',[Validators.email,Validators.pattern(this.emailPattern)]),
+    phone: new FormControl('',Validators.pattern(this.phoneNumberPattern)),
+    address: new FormControl(''),
+    pincode: new FormControl(''),
+    dob: new FormControl('')
   })
 
 
@@ -50,30 +56,87 @@ export class ProfileHomeComponent implements OnInit {
     
     //The following code will get the userId of the logged in user and then it will retrieve all the data of the logged in user and then display it on the profile page.
     var userId=this.authService.getUserId();
-    this.authService.getUserById(userId).subscribe(user=>{
-    this.userData=user;
+    this.current_user_type=this.authService.getUserType();  
+
+    if(this.current_user_type==='personal'){
+      this.personal=true;
+
+      this.authService.getUserById(userId).subscribe(user=>{
+        this.userData=user;
       
-    this.userData["address"]="";
-    this.userData["pincode"]="";
-    this.userData["dob"]="";
+        console.log(this.userData);
+            
+        this.updateProfileForm.controls.firstName.patchValue(this.userData["firstName"]);
+        this.updateProfileForm.controls.lastName.patchValue(this.userData["lastName"]);
+        this.updateProfileForm.controls.email.patchValue(this.userData["email"]);
+        this.updateProfileForm.controls.phone.patchValue(this.userData["phoneNumber"]);
+        this.updateProfileForm.controls.address.patchValue(this.userData["address"]);
+        this.updateProfileForm.controls.pincode.patchValue(this.userData["pinCode"]);
+        this.updateProfileForm.controls.dob.patchValue(this.userData["dateOfBirth"]);
+        });
         
-    this.updateProfileForm.controls.firstName.patchValue(this.userData["firstName"]);
-    this.updateProfileForm.controls.lastName.patchValue(this.userData["lastName"]);
-    this.updateProfileForm.controls.email.patchValue(this.userData["email"]);
-    this.updateProfileForm.controls.phone.patchValue(this.userData["phoneNumber"]);
-    this.updateProfileForm.controls.address.patchValue(this.userData["address"]);
-    this.updateProfileForm.controls.pincode.patchValue(this.userData["pincode"]);
-    this.updateProfileForm.controls.dob.patchValue(this.userData["dob"]);
-    });
+    }
+    else{
+      this.personal=false;
+
+      this.authService.getOrgById(userId).subscribe(user=>{
+        this.userData=user; 
+        console.log(this.userData);
+        
+        
+        this.updateProfileForm.controls.orgName.patchValue(this.userData["organizationtName"]);
+        //console.log(this.updateProfileForm.controls.userName.value);
+        this.updateProfileForm.controls.orgEmail.patchValue(this.userData["email"]);
+        this.updateProfileForm.controls.orgPhone.patchValue(this.userData["phoneNumber"]);
+        this.updateProfileForm.controls.orgReg.patchValue(this.userData["registrationNumber"]);
+        this.updateProfileForm.controls.address.patchValue(this.userData["address"]);
+        this.updateProfileForm.controls.pincode.patchValue(this.userData["pinCode"]);
+        });
+        
+    }
+
     
     }
     
 
   updateSubmit(){
-    this.submitted=true;
-    setTimeout(()=>{  
-      this.submitted = false;
- }, 3000);
+   
+    if(this.current_user_type==='personal'){
+     
+      var user_id=this.authService.getUserId();
+      this.userData={
+        firstNameModel: this.updateProfileForm.get('firstName').value,
+        lastNameModel: this.updateProfileForm.get('lastName').value,
+        emailModel: this.updateProfileForm.get('email').value,
+        phoneNumberModel: this.updateProfileForm.get('phone').value,
+        addressModel: this.updateProfileForm.get('address').value,
+        pincodeModel: this.updateProfileForm.get('pincode').value,
+        dobModel:this.updateProfileForm.get('dob').value
+      }
+      console.log(this.userData);
+      this.authService.updateUserData(user_id,this.userData);
+      location.reload();
+    }
+    else{
+      
+      console.log("organization");
+
+      var user_id=this.authService.getUserId();
+      this.userData={
+        orgNameModel: this.updateProfileForm.get('orgName').value,
+        orgEmailModel: this.updateProfileForm.get('orgEmail').value,
+        phoneNumberModel: this.updateProfileForm.get('orgPhone').value,
+        regNumberModel:this.updateProfileForm.get('orgReg').value,
+        addressModel: this.updateProfileForm.get('address').value,
+        pincodeModel: this.updateProfileForm.get('pincode').value
+        
+      }
+      console.log(this.userData);
+      this.authService.updateOrgData(user_id,this.userData);
+      location.reload();
+
+    }
+   
   }
 
   Edit(val,rowVal){
