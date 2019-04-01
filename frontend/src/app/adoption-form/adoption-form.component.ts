@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray, AbstractControl, FormBuilder } from '@angular/forms';
 import { AuthService } from '../auth.sevice';
+import { PetmanagementService } from '../petmanagement.service';
+import { AdoptionService } from '../adoption.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-adoption-form',
@@ -15,6 +18,10 @@ export class AdoptionFormComponent implements OnInit {
 currentUserId: string;
 currentUserData: any;
 services: {};
+sub: any;
+pet_id: string;
+currentPetData: any;
+adoptionModel: any;
 
 //get formArray(): AbstractControl | null { return this.formGroup.get('formArray'); }
 
@@ -44,13 +51,24 @@ firstFormGroup = new FormGroup({
 
 
   constructor(
-    private _formBuilder: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private petService: PetmanagementService,
+    private adoptionService: AdoptionService,
+    private route: ActivatedRoute,
+    private router: Router
     ) { 
 
   }
 
   ngOnInit() {
+
+    this.sub = this.route.params.subscribe(params => {
+      this.pet_id = params['id'];  //Getting id of the pet from route
+      console.log(this.pet_id);
+   });
+   this.petService.getPetById(this.pet_id).subscribe( currentPet =>{
+    this.currentPetData=currentPet;
+   });
     
     // this.formGroup = this._formBuilder.group({
     //   formArray: this._formBuilder.array([
@@ -120,6 +138,34 @@ firstFormGroup = new FormGroup({
     console.log(this.thirdFormGroup.get('petBehaviour').value);
     console.log(this.thirdFormGroup.get('petHome').value);
     
+    this.adoptionModel={
+      prevPetModel: this.secondFormGroup.get('prevPet').value,
+      curPetModel: this.secondFormGroup.get('curPet').value,
+      firstPetModel: this.secondFormGroup.get('firstPet').value,
+      adopterPetFamilyModel: this.secondFormGroup.get('adopterPetFamily').value,
+      petBehaviourModel: this.thirdFormGroup.get('petBehaviour').value,
+      petHomeModel: this.thirdFormGroup.get('petHome').value,
+      travelModel: this.thirdFormGroup.get('travel').value,
+      vacciModel: this.thirdFormGroup.get('vacci').value,
+      petAdopterModel:{
+        petAdopterId: this.currentUserId,
+        petAdopterfirstName: this.firstFormGroup.get('adopterFirstName').value,
+        petAdopterlastName: this.firstFormGroup.get('adopterLastName').value,
+        petAdopteradopterAge: this.firstFormGroup.get('adopterAge').value,
+        petAdopteradopterAddress: this.firstFormGroup.get('adopterAddress').value,
+        petAdopteradopterEmail: this.firstFormGroup.get('adopterEmail').value,
+        petAdopteradopterPhone: this.firstFormGroup.get('adopterPhone').value,
+        
+      },
+      petDetailModel:{
+        petIdModel: this.pet_id,
+        petNameModel: this.currentPetData["petName"],
+        petUploaderIdModel: this.currentPetData["petUploader"]["userId"]
+      }
+    }
+    console.log("Adoption Model!",this.adoptionModel);
+    this.adoptionService.newAdoption(this.adoptionModel);
+
   }
 
 }

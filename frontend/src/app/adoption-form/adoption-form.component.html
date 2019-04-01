@@ -94,7 +94,7 @@
               </mat-step>
               <mat-step [stepControl]="thirdFormGroup">
                   <h3 class="text-center">About your Livelihood</h3>
-                  <form [formGroup]="thirdFormGroup" (submit)="adoptPet()">
+                  <form [formGroup]="thirdFormGroup" (submit)="adoptPet()" method="POST">
                   <p class="question">Does Your Job require you to move or travel often?</p>
                   <div class="">
                       <div class="custom-control custom-radio">
