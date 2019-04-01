@@ -71,4 +71,33 @@ router.get('/singleadoption/:adoptionId', (req, res, next) => {
     });
 });
 
+router.get('/adopterUser/:userId', (req, res, next) => {
+    const id = req.params.userId;
+    Adoption.find({
+        'petAdopter.userId':id
+    })
+    .exec()
+    .then(doc =>{
+        console.log(doc);
+        res.status(200).json(doc);
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json({error:err});
+    });
+});
+router.delete('/delete/:adoptionId', (req, res, next) => {
+    const id = req.params.adoptionId;
+    Adoption.remove({ _id: id} )
+    .exec()
+    .then(result =>{
+        res.status(200).json(result);
+    })
+    .catch(err =>{
+        console.log(err);
+        res.status(500).json({
+            error: err
+        })
+    })
+});
 module.exports = router;

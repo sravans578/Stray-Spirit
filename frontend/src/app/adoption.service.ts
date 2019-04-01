@@ -16,4 +16,17 @@ export class AdoptionService {
     })
   }
 
+  adopterUser(userId:string){
+    console.log(userId);
+    return this.http.get('http://localhost:3000/adoption/adopterUser/'+userId);
+  }
+  
+  deleteAdoption(adoptId:any){
+    //deleting pets
+    this.http.delete('http://localhost:3000/adoption/delete/'+adoptId)
+    .subscribe(response=>{
+      console.log(response);
+    });
+  }
+
 }

@@ -54,6 +54,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatStepperModule} from '@angular/material/stepper';
 import { EditPetsComponent } from './edit-pets/edit-pets.component';
 import { AdoptionFormComponent } from './adoption-form/adoption-form.component';
+import { MyAdoptionsComponent } from './my-adoptions/my-adoptions.component';
 
 // import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap'
 @NgModule({
@@ -86,7 +87,8 @@ import { AdoptionFormComponent } from './adoption-form/adoption-form.component';
     EventDetailComponent,
     ProfileEventComponent,
     EditPetsComponent,
-    AdoptionFormComponent
+    AdoptionFormComponent,
+    MyAdoptionsComponent
   ],
   imports: [
     BrowserModule,
