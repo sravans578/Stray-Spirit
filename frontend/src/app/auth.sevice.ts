@@ -83,10 +83,29 @@ export class AuthService{
             closeButton: true,
             progressBar: true
           });
-          setTimeout(()=>{  
-             // location.reload();
-            // this.router.navigate(['/profile/']);
-             }, 2000);
+        //   setTimeout(()=>{  
+        //      location.reload();
+            
+        //      }, 2000);
+          
+        });
+      }
+
+      updateOrgData(passed_userId:any, passed_userData:any){
+        //editing users data
+        console.log("From service",passed_userData);
+        this.http.put('http://localhost:3000/user/org/update/'+passed_userId,passed_userData)
+        .subscribe(response=>{
+          console.log(response);
+          this.toaster.success('User Profile Edited!', 'SUCCESS!', {
+            timeOut: 5500,
+            closeButton: true,
+            progressBar: true
+          });
+        //   setTimeout(()=>{  
+        //       location.reload();
+            
+        //      }, 2000);
           
         });
       }

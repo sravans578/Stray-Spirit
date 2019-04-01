@@ -182,9 +182,32 @@ router.put('/update/:id', (req, res, next) =>{
         firstName: req.body.firstNameModel,
         lastName: req.body.lastNameModel,
         email: req.body.emailModel,
-        phoneNumber: req.body.phoneNumberModel 
+        phoneNumber: req.body.phoneNumberModel,
+        address:req.body.addressModel,
+        pinCode:req.body.pincodeModel,
+        dateOfBirth:req.body.dobModel 
     }).then( result=>{
-        console.log(result);
+      console.log(result);
+        res.status(200).json({
+            message: "Update successfull!"
+        });
+    });
+
+});
+
+router.put('/org/update/:id', (req, res, next) =>{
+    const id=req.params.id;
+    Organization.findByIdAndUpdate( id, {
+        _id: id,
+        organizationtName:req.body.orgNameModel,
+        email: req.body.orgEmailModel,
+        phoneNumber: req.body.phoneNumberModel,
+        registrationNumber:req.body.regNumberModel,
+        address:req.body.addressModel,
+        pinCode:req.body.pincodeModel,
+        
+    }).then( result=>{
+      console.log(result);
         res.status(200).json({
             message: "Update successfull!"
         });
