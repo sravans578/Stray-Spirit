@@ -178,8 +178,12 @@ export class AuthService{
 
     //This method will return all the data of the user who is currently logged in. This method will be called from the profile home component.
     getUserById(loggedInUser:any){
-        return this.http.get("http://localhost:3000/user/"+loggedInUser);
+        return this.http.get("http://localhost:3000/user/personal/"+loggedInUser);
        
+    }
+
+    getOrgById(orgId:any){
+        return this.http.get("http://localhost:3000/user/org/"+orgId);
     }
     
     //This method will save the token and user_Id of the logged in user in the local storage of the web browser.

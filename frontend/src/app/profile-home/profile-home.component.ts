@@ -17,7 +17,9 @@ import { empty } from 'rxjs';
 export class ProfileHomeComponent implements OnInit {
 
   userData: {  };
-
+  orgData:{ };
+  personal:boolean=false;
+  current_user_type:any;
   editField: boolean = false;
   editRowID: any ='';
   editRowValue: any ='';
@@ -31,6 +33,10 @@ export class ProfileHomeComponent implements OnInit {
   updateProfileForm = new FormGroup({
     firstName: new FormControl('', [Validators.required,Validators.pattern(this.namePattern)]),
     lastName: new FormControl('',[Validators.required,Validators.pattern(this.namePattern)]),
+    orgName:new FormControl('',[Validators.required,Validators.pattern(this.namePattern)]),
+    orgEmail:new FormControl('',[Validators.required,Validators.pattern(this.emailPattern)]),
+    orgPhone: new FormControl('',[Validators.required,Validators.pattern(this.phoneNumberPattern)]),
+    orgReg: new FormControl('',[Validators.required,Validators.pattern(this.phoneNumberPattern)]),
     email: new FormControl('',[Validators.required,Validators.email,Validators.pattern(this.emailPattern)]),
     phone: new FormControl('',[Validators.required,Validators.pattern(this.phoneNumberPattern)]),
     address: new FormControl(''),
@@ -50,28 +56,55 @@ export class ProfileHomeComponent implements OnInit {
     
     //The following code will get the userId of the logged in user and then it will retrieve all the data of the logged in user and then display it on the profile page.
     var userId=this.authService.getUserId();
-    this.authService.getUserById(userId).subscribe(user=>{
-    this.userData=user;
-      
-    this.userData["address"]="";
-    this.userData["pincode"]="";
-    this.userData["dob"]="";
+    this.current_user_type=this.authService.getUserType();  
+
+    if(this.current_user_type==='personal'){
+      this.personal=true;
+
+      this.authService.getUserById(userId).subscribe(user=>{
+        this.userData=user;
+        this.userData["address"]="";
+        this.userData["pincode"]="";
+        this.userData["dob"]="";
+            
+        this.updateProfileForm.controls.firstName.patchValue(this.userData["firstName"]);
+        this.updateProfileForm.controls.lastName.patchValue(this.userData["lastName"]);
+        this.updateProfileForm.controls.email.patchValue(this.userData["email"]);
+        this.updateProfileForm.controls.phone.patchValue(this.userData["phoneNumber"]);
+        this.updateProfileForm.controls.address.patchValue(this.userData["address"]);
+        this.updateProfileForm.controls.pincode.patchValue(this.userData["pincode"]);
+        this.updateProfileForm.controls.dob.patchValue(this.userData["dob"]);
+        });
         
-    this.updateProfileForm.controls.firstName.patchValue(this.userData["firstName"]);
-    this.updateProfileForm.controls.lastName.patchValue(this.userData["lastName"]);
-    this.updateProfileForm.controls.email.patchValue(this.userData["email"]);
-    this.updateProfileForm.controls.phone.patchValue(this.userData["phoneNumber"]);
-    this.updateProfileForm.controls.address.patchValue(this.userData["address"]);
-    this.updateProfileForm.controls.pincode.patchValue(this.userData["pincode"]);
-    this.updateProfileForm.controls.dob.patchValue(this.userData["dob"]);
-    });
+    }
+    else{
+      this.personal=false;
+
+      this.authService.getOrgById(userId).subscribe(user=>{
+        this.userData=user; 
+        console.log(this.userData);
+        this.userData["address"]="";
+        this.userData["pincode"]="";
+        
+        this.updateProfileForm.controls.orgName.patchValue(this.userData["organizationtName"]);
+        //console.log(this.updateProfileForm.controls.userName.value);
+        this.updateProfileForm.controls.orgEmail.patchValue(this.userData["email"]);
+        this.updateProfileForm.controls.orgPhone.patchValue(this.userData["phoneNumber"]);
+        this.updateProfileForm.controls.orgReg.patchValue(this.userData["registrationNumber"]);
+        this.updateProfileForm.controls.address.patchValue(this.userData["address"]);
+        this.updateProfileForm.controls.pincode.patchValue(this.userData["pincode"]);
+        });
+        
+    }
+
     
     }
     
 
   updateSubmit(){
-    var current_user_type=this.authService.getUserType();
-    if(current_user_type==='personal'){
+   
+    if(this.current_user_type==='personal'){
+     
       var user_id=this.authService.getUserId();
       this.userData={
         firstNameModel: this.updateProfileForm.get('firstName').value,
@@ -84,6 +117,7 @@ export class ProfileHomeComponent implements OnInit {
       location.reload();
     }
     else{
+      
       console.log("organization");
     }
    

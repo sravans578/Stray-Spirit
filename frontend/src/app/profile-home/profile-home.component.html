@@ -7,7 +7,7 @@
     </div>
     <div class="container" >
       <form method="POST" action="" name="updateProfileForm" [formGroup]="updateProfileForm">
-        <div class="row">
+        <div *ngIf="personal" class="row">
           <div class="col-sm-4">
             <span class="user_label">First Name :</span>
           </div>
@@ -27,7 +27,7 @@
             </div>
           </div>
         </div>
-        <div class="row mt-25">
+        <div *ngIf="personal" class="row mt-25">
           <div class="col-sm-4">
             <span class="user_label">Last Name :</span>
           </div>
@@ -47,7 +47,87 @@
             </div>
           </div>
         </div>
-        <div class="row mt-25">
+        <div *ngIf="!personal" class="row mt-25">
+          <div class="col-sm-4">
+            <span class="user_label">Organization Name :</span>
+          </div>
+          <div class="col-sm-8">
+            <div class="md-form" *ngIf="userData?._id === editRowID  && userData?.orgName === editRowValue && editField">
+              <input mdbInputDirective type="text" id="orgName" class="form-control" name="orgName" formControlName="orgName"
+                [ngClass]="{'is-invalid':updateProfileForm.get('orgName').touched && updateProfileForm.get('orgName').invalid}"
+                required>
+              <i class="fas fa-times-circle fa-lg" (click)="Edit(userData?._id+1)"></i>
+              <div *ngIf="updateProfileForm.get('orgName').touched && updateProfileForm.get('orgName').invalid" class="invalid-feedback">
+                <div *ngIf="updateProfileForm.get('orgName').errors.required">Organization Name is required</div>
+                <div *ngIf="updateProfileForm.get('orgName').errors.pattern">Invalid Value (No spaces or special characters allowed!)</div>
+              </div>
+            </div>
+            <div *ngIf="userData?.orgName !== editRowValue">
+              <span class="user-info"> {{ userData?.organizationtName }} </span> <i class="fas fa-pencil-alt" (click)="Edit(userData?._id,userData?.orgName)"></i>
+            </div>
+          </div>
+        </div>
+       <div *ngIf="!personal" class="row mt-25">
+          <div class="col-sm-4">
+            <span class="user_label">Organization Email :</span>
+          </div>
+          <div class="col-sm-8">
+            <div class="md-form" *ngIf="userData?._id === editRowID  && userData?.orgEmail === editRowValue && editField">
+              <input mdbInputDirective type="text" id="orgEmail" class="form-control" name="orgEmail" formControlName="orgEmail"
+                [ngClass]="{'is-invalid':updateProfileForm.get('orgEmail').touched && updateProfileForm.get('orgEmail').invalid}"
+                required>
+              <i class="fas fa-times-circle fa-lg" (click)="Edit(userData?._id+1)"></i>
+              <div *ngIf="updateProfileForm.get('orgEmail').touched && updateProfileForm.get('orgEmail').invalid" class="invalid-feedback">
+                <div *ngIf="updateProfileForm.get('orgEmail').errors.required">Organization Email is required</div>
+                <div *ngIf="updateProfileForm.get('orgEmail').errors.pattern">Invalid Value (No spaces or special characters allowed!)</div>
+              </div>
+            </div>
+            <div *ngIf="userData?.orgEmail !== editRowValue">
+              <span class="user-info"> {{ userData?.email }} </span> <i class="fas fa-pencil-alt" (click)="Edit(userData?._id,userData?.orgEmail)"></i>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="!personal" class="row mt-25">
+          <div class="col-sm-4">
+            <span class="user_label">Organization Phone number:</span>
+          </div>
+          <div class="col-sm-8">
+            <div class="md-form" *ngIf="userData?._id === editRowID  && userData?.orgPhone === editRowValue && editField">
+              <input mdbInputDirective type="text" id="orgEmail" class="form-control" name="orgPhone" formControlName="orgPhone"
+                [ngClass]="{'is-invalid':updateProfileForm.get('orgPhone').touched && updateProfileForm.get('orgPhone').invalid}"
+                required>
+              <i class="fas fa-times-circle fa-lg" (click)="Edit(userData?._id+1)"></i>
+              <div *ngIf="updateProfileForm.get('orgPhone').touched && updateProfileForm.get('orgPhone').invalid" class="invalid-feedback">
+                <div *ngIf="updateProfileForm.get('orgPhone').errors.required">Organization Phone number is required</div>
+                <div *ngIf="updateProfileForm.get('orgPhone').errors.pattern">Invalid Value (No spaces or special characters allowed!)</div>
+              </div>
+            </div>
+            <div *ngIf="userData?.orgPhone !== editRowValue">
+              <span class="user-info"> {{ userData?.phoneNumber }} </span> <i class="fas fa-pencil-alt" (click)="Edit(userData?._id,userData?.orgPhone)"></i>
+            </div>
+          </div>
+        </div>
+        <div  *ngIf="!personal" class="row mt-25">
+          <div class="col-sm-4">
+            <span class="user_label">Organization Registration number:</span>
+          </div>
+          <div class="col-sm-8">
+            <div class="md-form" *ngIf="userData?._id === editRowID  && userData?.orgReg === editRowValue && editField">
+              <input mdbInputDirective type="text" id="orgReg" class="form-control" name="orgReg" formControlName="orgReg"
+                [ngClass]="{'is-invalid':updateProfileForm.get('orgReg').touched && updateProfileForm.get('orgReg').invalid}"
+                required>
+              <i class="fas fa-times-circle fa-lg" (click)="Edit(userData?._id+1)"></i>
+              <div *ngIf="updateProfileForm.get('orgReg').touched && updateProfileForm.get('orgReg').invalid" class="invalid-feedback">
+                <div *ngIf="updateProfileForm.get('orgReg').errors.required">Organization Registration number is required</div>
+                <div *ngIf="updateProfileForm.get('orgReg').errors.pattern">Invalid Value (No spaces or special characters allowed!)</div>
+              </div>
+            </div>
+            <div *ngIf="userData?.orgReg !== editRowValue">
+              <span class="user-info"> {{ userData?.registrationNumber }} </span> <i class="fas fa-pencil-alt" (click)="Edit(userData?._id,userData?.orgReg)"></i>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="personal" class="row mt-25">
           <div class="col-sm-4">
             <span class="user_label">Email address :</span>
           </div>
@@ -69,7 +149,7 @@
             </div>
           </div>
         </div>
-        <div class="row mt-25">
+        <div *ngIf="personal" class="row mt-25">
           <div class="col-sm-4">
             <span class="user_label"> Phone number : </span>
           </div>
@@ -129,7 +209,7 @@
             </div>
           </div>
         </div>
-        <div class="row mt-25">
+        <div *ngIf="personal"  class="row mt-25">
           <div class="col-sm-4">
             <span class="user_label"> Birth-date : </span>
           </div>
