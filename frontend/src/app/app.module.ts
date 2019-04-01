@@ -51,7 +51,9 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import { EventDetailComponent } from './event-detail/event-detail.component';
 import { ProfileEventComponent } from './profile-event/profile-event.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatStepperModule} from '@angular/material/stepper';
 import { EditPetsComponent } from './edit-pets/edit-pets.component';
+import { AdoptionFormComponent } from './adoption-form/adoption-form.component';
 
 // import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap'
 @NgModule({
@@ -83,7 +85,8 @@ import { EditPetsComponent } from './edit-pets/edit-pets.component';
     ProfilePetAdsComponent,
     EventDetailComponent,
     ProfileEventComponent,
-    EditPetsComponent
+    EditPetsComponent,
+    AdoptionFormComponent
   ],
   imports: [
     BrowserModule,
@@ -106,7 +109,8 @@ import { EditPetsComponent } from './edit-pets/edit-pets.component';
     MatSelectModule,
     ToastrModule.forRoot(),
     MatExpansionModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatStepperModule
   ],
   providers: [],
   bootstrap: [AppComponent]
