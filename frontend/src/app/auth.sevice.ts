@@ -72,6 +72,44 @@ export class AuthService{
         });
     }
 
+    updateUserData(passed_userId:any, passed_userData:any){
+        //editing users data
+        console.log("From service",passed_userData);
+        this.http.put('http://localhost:3000/user/update/'+passed_userId,passed_userData)
+        .subscribe(response=>{
+          console.log(response);
+          this.toaster.success('User Profile Edited!', 'SUCCESS!', {
+            timeOut: 5500,
+            closeButton: true,
+            progressBar: true
+          });
+        //   setTimeout(()=>{  
+        //      location.reload();
+            
+        //      }, 2000);
+          
+        });
+      }
+
+      updateOrgData(passed_userId:any, passed_userData:any){
+        //editing users data
+        console.log("From service",passed_userData);
+        this.http.put('http://localhost:3000/user/org/update/'+passed_userId,passed_userData)
+        .subscribe(response=>{
+          console.log(response);
+          this.toaster.success('User Profile Edited!', 'SUCCESS!', {
+            timeOut: 5500,
+            closeButton: true,
+            progressBar: true
+          });
+        //   setTimeout(()=>{  
+        //       location.reload();
+            
+        //      }, 2000);
+          
+        });
+      }
+
     //This method will authenticate a personal user. It will be called from the ts file of the login component.
     userLogin(loginData:any)
     {
@@ -162,9 +200,9 @@ export class AuthService{
         return this.http.get("http://localhost:3000/user/personal/"+loggedInUser);
        
     }
+  
     getOrgById(orgId:any){
         return this.http.get("http://localhost:3000/user/org/"+orgId);
-       
     }
     
     //This method will save the token and user_Id of the logged in user in the local storage of the web browser.
@@ -188,6 +226,8 @@ export class AuthService{
             userType:userType
         }
     }
+
+    
     
     //This method will clear the token and user_Id of the logged in user from the local storage of the web browser.
     private clearAuthData(){
