@@ -102,7 +102,6 @@ firstFormGroup = new FormGroup({
     
       this.firstFormGroup.controls.adopterFirstName.patchValue(this.currentUserData["firstName"]);
     
-      this.firstFormGroup.controls.adopterAddress.patchValue("Hardcoded address");
     
       this.firstFormGroup.controls.adopterEmail.patchValue(this.currentUserData["email"]);
     
