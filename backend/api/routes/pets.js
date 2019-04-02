@@ -21,7 +21,6 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
-    console.log(req.file);
     const pets = new Pet({
         _id: new mongoose.Types.ObjectId(),
         petName: req.body.petNameModel,

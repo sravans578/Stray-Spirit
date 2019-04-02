@@ -30,6 +30,8 @@ import { EventDetailComponent } from './event-detail/event-detail.component';
 import { ProfileEventComponent } from './profile-event/profile-event.component';
 import { EditPetsComponent } from './edit-pets/edit-pets.component';
 import { EventListComponent } from './event-list/event-list.component';
+import { AdoptionFormComponent } from './adoption-form/adoption-form.component';
+import { MyAdoptionsComponent } from './my-adoptions/my-adoptions.component';
 
 
 const routes: Routes = [
@@ -53,6 +55,7 @@ const routes: Routes = [
 
   {path:'registration-aditya',component:RegistrationAdityaComponent},
   {path:'event-detail/:id',component:EventDetailComponent},
+  {path:'adopt/:id',component:AdoptionFormComponent},
 
 
   // Implemented nested routes https://angular-2-training-book.rangle.io/handout/routing/child_routes.html
@@ -64,7 +67,8 @@ const routes: Routes = [
       { path: 'inventory', component: ProfileInventoryComponent },
       { path: 'my-pet-ads', component: ProfilePetAdsComponent },
       { path: 'my-events', component: ProfileEventComponent },
-      { path: 'edit-pet/:id', component: EditPetsComponent }
+      { path: 'edit-pet/:id', component: EditPetsComponent },
+      { path: 'my-adoptions', component: MyAdoptionsComponent }
     ]
   },
   {path:'product/:id',component:ProductDetailPageComponent},

@@ -123,6 +123,9 @@
                         <p> {{petListings?.petDescription}}</p>
                       </div>
                       <mat-action-row>
+                          <a routerLink="/profile/adoption-requests/{{petListings?._id}}">
+                            <button type="button" mdbBtn color="indigo" mdbWavesEffect>View Adoption Requests</button>
+                          </a>
                           <a routerLink="/profile/edit-pet/{{petListings?._id}}">
                             <button type="button" mdbBtn color="warning" mdbWavesEffect>Edit</button>
                           </a>
