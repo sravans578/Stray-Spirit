@@ -20,6 +20,11 @@ export class AdoptionService {
     console.log(userId);
     return this.http.get('http://localhost:3000/adoption/adopterUser/'+userId);
   }
+
+  adoptPetById(petId:string){
+    console.log(petId);
+    return this.http.get('http://localhost:3000/adoption/petadopt/'+petId);
+  }
   
   deleteAdoption(adoptId:any){
     //deleting pets
@@ -28,5 +33,13 @@ export class AdoptionService {
       console.log(response);
     });
   }
+  updateAdoption(adoptionId:any, adoptionData:any){
+    //editing pets
+    this.http.put('http://localhost:3000/adoption/update/'+adoptionId,adoptionData)
+    .subscribe(response=>{
+      console.log(response);
+    });
+  }
+
 
 }

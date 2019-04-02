@@ -55,6 +55,7 @@ import {MatStepperModule} from '@angular/material/stepper';
 import { EditPetsComponent } from './edit-pets/edit-pets.component';
 import { AdoptionFormComponent } from './adoption-form/adoption-form.component';
 import { MyAdoptionsComponent } from './my-adoptions/my-adoptions.component';
+import { AdoptionRequestComponent } from './adoption-request/adoption-request.component';
 
 // import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap'
 @NgModule({
@@ -88,7 +89,8 @@ import { MyAdoptionsComponent } from './my-adoptions/my-adoptions.component';
     ProfileEventComponent,
     EditPetsComponent,
     AdoptionFormComponent,
-    MyAdoptionsComponent
+    MyAdoptionsComponent,
+    AdoptionRequestComponent
   ],
   imports: [
     BrowserModule,
