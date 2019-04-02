@@ -151,12 +151,12 @@ export class ProfileInventoryComponent implements OnInit {
     });
   }
 
-  edit() {
+  // edit() {
 
-    this.toastr.error('Just a message for Assignment4 UI', 'Coming Soon', {
-      timeOut: 5000,
-      closeButton: true,
-      progressBar: true
-    });
-  }
+  //   this.toastr.error('Just a message for Assignment4 UI', 'Coming Soon', {
+  //     timeOut: 5000,
+  //     closeButton: true,
+  //     progressBar: true
+  //   });
+  // }
 }

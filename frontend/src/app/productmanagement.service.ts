@@ -30,6 +30,14 @@ export class ProductmanagementService {
       console.log("Product added!");
     });
   }
+  updateProducts(productId:any, productData:any){
+    //editing pets
+    console.log("From service",productData);
+    this.http.put('http://localhost:3000/pets/update/'+productId,productData)
+    .subscribe(response=>{
+      console.log(response);
+    });
+  }
   deleteProduct(productId:any){
     this.http.delete('http://localhost:3000/products/delete/'+productId)
     .subscribe(response=>{
