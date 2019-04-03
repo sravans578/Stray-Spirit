@@ -53,10 +53,7 @@ import { ProfileEventComponent } from './profile-event/profile-event.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatStepperModule} from '@angular/material/stepper';
 import { EditPetsComponent } from './edit-pets/edit-pets.component';
-<<<<<<< HEAD
 import { EditInventoryComponent } from './edit-inventory/edit-inventory.component';
-=======
->>>>>>> 96f19d86772b84f45884edde6311c2af3d87818f
 import { AdoptionFormComponent } from './adoption-form/adoption-form.component';
 import { MyAdoptionsComponent } from './my-adoptions/my-adoptions.component';
 
@@ -91,10 +88,7 @@ import { MyAdoptionsComponent } from './my-adoptions/my-adoptions.component';
     EventDetailComponent,
     ProfileEventComponent,
     EditPetsComponent,
-<<<<<<< HEAD
     EditInventoryComponent,
-=======
->>>>>>> 96f19d86772b84f45884edde6311c2af3d87818f
     AdoptionFormComponent,
     MyAdoptionsComponent
   ],
