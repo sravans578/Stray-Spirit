@@ -37,6 +37,10 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    var token=this.authService.getToken();
+    if(token){
+      this.router.navigate(['/profile']);
+    }
   }
   
   //This method will be executed when the user clicks on Sign in button located on the user login tab on the login page.

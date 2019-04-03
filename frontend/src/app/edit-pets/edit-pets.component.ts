@@ -5,6 +5,7 @@ import { PetmanagementService } from '../petmanagement.service';
 import { Title } from '@angular/platform-browser';
 import { AuthService } from '../auth.sevice';
 import { ToastrService } from 'ngx-toastr';
+import { LocationService } from '../location.service';
 
 
 @Component({
@@ -21,6 +22,11 @@ export class EditPetsComponent implements OnInit {
   imageSrc: string;
   currentUserId: string;
   currentUser: any;
+  api_location: any;
+  comma: string =', ';
+  inputLoc: string;
+  searchLocationTerm: any;
+  currentLoc: any;
 
   constructor(
     private titleService:Title,
@@ -28,7 +34,8 @@ export class EditPetsComponent implements OnInit {
     private router: Router,
     private petService: PetmanagementService,
     private authService: AuthService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private loc: LocationService
     ) {
       this.titleService.setTitle("Edit Pet Profile - StraySpirit");
      }
@@ -40,12 +47,10 @@ export class EditPetsComponent implements OnInit {
     petGender: new FormControl('', Validators.required),
     petAge: new FormControl('', Validators.required),
     petHealth: new FormControl('', Validators.required),
-    petCity: new FormControl('', Validators.required),
-    petState: new FormControl('', Validators.required),
-    petCountry: new FormControl('', Validators.required),
     petDescription: new FormControl('', Validators.required),
     adoptionStatus: new FormControl('', Validators.required),
-    petPic: new FormControl('')
+    petPic: new FormControl(''),
+    searchLocation: new FormControl('', Validators.required)
   })
 
   ngOnInit() {
@@ -67,18 +72,40 @@ export class EditPetsComponent implements OnInit {
     this.editPetsForm.controls.petCategory.patchValue(this.petData["petCategory"]);
     this.editPetsForm.controls.petGender.patchValue(this.petData["petGender"]);
     this.editPetsForm.controls.petAge.patchValue(this.petData["petAge"]);
-    this.editPetsForm.controls.petCity.patchValue(this.petData["petLocation"]["petCity"]);
-    this.editPetsForm.controls.petState.patchValue(this.petData["petLocation"]["petState"]);
-    this.editPetsForm.controls.petCountry.patchValue(this.petData["petLocation"]["petCountry"]);
+    this.inputLoc = this.petData["petLocation"]["petCity"]+this.comma+this.petData["petLocation"]["petState"]+this.comma+this.petData["petLocation"]["petCountry"];
+    this.editPetsForm.controls.searchLocation.patchValue(this.inputLoc);
     this.editPetsForm.controls.petDescription.patchValue(this.petData["petDescription"]);
     this.editPetsForm.controls.petHealth.patchValue(this.petData["petHealth"]);     
     this.editPetsForm.controls.adoptionStatus.patchValue(this.petData["adoptionStatus"]);     
     this.imageSrc=this.petData["petPic"];
+    this.searchLocationTerm = this.inputLoc.split(',');
   },error=>{
     this.router.navigate(['/pet-not-found']);
   })
 
   }
+  
+onKeydown(event:any) {
+  this.currentLoc=event.target.value;
+  //getting autocomplete suggestions
+  if(this.currentLoc.length>2){
+  this.loc.getLocation(this.currentLoc).subscribe(data =>{
+    //console.log(data);
+    this.api_location = data;
+    //console.log(this.api_location);
+  })
+}
+
+}
+
+filterPet(searchTerm){
+  // getting search term from user
+  this.searchLocationTerm = searchTerm.split(',');
+  this.searchLocationTerm[0] =this.searchLocationTerm[0].replace(/\s/g, "");
+  this.searchLocationTerm[1] =this.searchLocationTerm[1].replace(/\s/g, "");
+  this.searchLocationTerm[2] =this.searchLocationTerm[2].replace(/\s/g, "");
+  console.log(this.searchLocationTerm);
+}
   //Image conversion to base64:  https://stackoverflow.com/questions/48216410/angular-4-base64-upload-component
   handleInputChange(e) {
     var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
@@ -106,16 +133,16 @@ export class EditPetsComponent implements OnInit {
      petHealthModel: this.editPetsForm.get('petHealth').value,
      petAdoptionStatusModel: this.editPetsForm.get('adoptionStatus').value,
      petLocationModel:{
-       petCityModel: this.editPetsForm.get('petCity').value,
-     petStateModel: this.editPetsForm.get('petState').value,
-     petCountryModel: this.editPetsForm.get('petCountry').value
+       petCityModel: this.searchLocationTerm[0],
+     petStateModel: this.searchLocationTerm[1],
+     petCountryModel: this.searchLocationTerm[2]
      },
      petDescriptionModel: this.editPetsForm.get('petDescription').value,
      petPicModel: this.imageSrc,
      petUploaderModel: {
        petUploaderId: this.currentUserId,
-       petUploaderfirstName: this.currentUser["firstName"],
-       petUploaderlastName: this.currentUser["lastName"]
+       petUploaderfirstName: this.petData["petUploader"]["firstName"],
+       petUploaderlastName: this.petData["petUploader"]["lastName"]
        }
    }
    console.log(this.petData);

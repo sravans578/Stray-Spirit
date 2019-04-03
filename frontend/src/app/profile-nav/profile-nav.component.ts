@@ -3,6 +3,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AuthService } from '../auth.sevice';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile-nav',
@@ -21,18 +22,27 @@ currentUserId: string;
 userDetail: any;
 isOrgLoggedIn=false;
 
+
   constructor(
     private breakpointObserver: BreakpointObserver,
     private authServ: AuthService
     ) {}
     ngOnInit() {
       var userType=this.authServ.getUserType();
-      if(userType==="Organization"){
-        this.isOrgLoggedIn=true;
-      }
+      
       this.currentUserId=this.authServ.getUserId();
+      
+      if(userType==="personal"){
       this.authServ.getUserById(this.currentUserId).subscribe(userData=>{
         this.userDetail=userData;
+        this.isOrgLoggedIn=false;
+      })
+   }
+    else{
+      this.authServ.getOrgById(this.currentUserId).subscribe(userData=>{
+        this.userDetail=userData;
+        this.isOrgLoggedIn=true;
       })
     }
+  }
 }

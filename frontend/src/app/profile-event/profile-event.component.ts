@@ -5,6 +5,7 @@ import { EventManagementService } from '../event-management.service';
 import { AuthService } from '../auth.sevice';
 import {  Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr'; 
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-profile-event',
@@ -21,6 +22,7 @@ currentusers:any;
   private eventService: EventManagementService,
   private authSer: AuthService,
   private toaster: ToastrService,
+  private router: Router
   ) { }
 // Form validations for MyEvents page
   addEventsForm = new FormGroup({
@@ -36,6 +38,10 @@ currentusers:any;
     this.authSer.getUserById(this.userId).subscribe(currentuser=>{
            this.currentusers = currentuser;
     })
+    var user_type=this.authSer.getUserType();
+    if(user_type==='personal'){
+      this.router.navigate(['/profile']);
+    }
   }
   private imageSrc: string = '';
 //Image conversion to base64:  https://stackoverflow.com/questions/48216410/angular-4-base64-upload-component

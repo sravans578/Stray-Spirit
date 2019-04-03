@@ -51,8 +51,11 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import { EventDetailComponent } from './event-detail/event-detail.component';
 import { ProfileEventComponent } from './profile-event/profile-event.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatStepperModule} from '@angular/material/stepper';
 import { EditPetsComponent } from './edit-pets/edit-pets.component';
 import { EditInventoryComponent } from './edit-inventory/edit-inventory.component';
+import { AdoptionFormComponent } from './adoption-form/adoption-form.component';
+import { MyAdoptionsComponent } from './my-adoptions/my-adoptions.component';
 
 // import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap'
 @NgModule({
@@ -85,7 +88,9 @@ import { EditInventoryComponent } from './edit-inventory/edit-inventory.componen
     EventDetailComponent,
     ProfileEventComponent,
     EditPetsComponent,
-    EditInventoryComponent
+    EditInventoryComponent,
+    AdoptionFormComponent,
+    MyAdoptionsComponent
   ],
   imports: [
     BrowserModule,
@@ -108,7 +113,8 @@ import { EditInventoryComponent } from './edit-inventory/edit-inventory.componen
     MatSelectModule,
     ToastrModule.forRoot(),
     MatExpansionModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatStepperModule
   ],
   providers: [],
   bootstrap: [AppComponent]

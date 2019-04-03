@@ -10,6 +10,9 @@ const userSchema = mongoose.Schema({
     phoneNumber:Number,
     email:{type:String, unique:true},
     password:String,
+    address:String,
+    pinCode:String,
+    dateOfBirth:String,
     user_type:String,
     user_creation_date:String
 });

@@ -5,7 +5,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { NgForm }   from '@angular/forms';
 import {Title} from "@angular/platform-browser";
-import {Router} from "@angular/router"
+import {Router} from "@angular/router";
 import { AuthService } from '../auth.sevice';
 import { ToastrService } from 'ngx-toastr';
 
@@ -48,6 +48,10 @@ export class RegisterComponent implements OnInit {
    }
 
   ngOnInit() {
+    var token=this.authService.getToken();
+    if(token){
+      this.router.navigate(['/profile']);
+    }
   }
 
   //This method will be executed when the user clicks on the Register button located on the User tab of the register page. 
