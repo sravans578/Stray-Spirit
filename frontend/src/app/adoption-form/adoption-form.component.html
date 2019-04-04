@@ -5,7 +5,7 @@
       <h2 class="text-center">Adopt {{currentPetData?.petName}}</h2>
     </div>
     <div class="mt-25">
-            <mat-horizontal-stepper  >
+            <mat-horizontal-stepper  linear>
               <mat-step  [stepControl]="firstFormGroup">
                 <h3 class="text-center">Personal Details</h3>
                 <form [formGroup]="firstFormGroup" >
