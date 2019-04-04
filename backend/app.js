@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const passport = require('passport');
 const session = require('express-session');
+const nodemailer = require('nodemailer');  
 // Passport Config
 require('./passport')(passport);
 
