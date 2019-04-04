@@ -59,8 +59,8 @@ router.post('/register', (req, res, next) =>{
         // port: 587,
         // secure: false, // true for 465, false for other ports
         auth: {
-          user: 'aparna.saparna1995@gmail.com', // generated ethereal user
-          pass: '20071995' // generated ethereal password
+          user: 'aadesh.ks@somaiya.edu', // generated ethereal user
+          pass: 'oZm2fceu&' // generated ethereal password
         },
         tls: {
             rejectUnauthorized: false
@@ -69,11 +69,11 @@ router.post('/register', (req, res, next) =>{
     
       // setup email data with unicode symbols
       let mailOptions = {
-        from: '"Stray Spirit" <aparna.saparna1995@gmail>', // sender address
+        from: '"Stray Spirit" <aadesh.ks@somaiya.edu>', // sender address
         to: req.body.email, // list of receivers
         subject: "Your Registeration is confirmed", // Subject line
-        text: "Here are your event information:", // plain text body
-        html: req.body.events // html body
+        text: "Here are your event information:" // plain text body
+        // html: "req.body.events" // html body
       };
     
       // send mail with defined transport object

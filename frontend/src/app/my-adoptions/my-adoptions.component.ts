@@ -45,7 +45,7 @@ export class MyAdoptionsComponent implements OnInit {
       'elementHandlers': specialElementHandlers
     });
 
-    doc.save('test.pdf');
+    doc.save('Adoption_Request.pdf');
   }
   deleteAdoption(delete_id){
     console.log(delete_id);

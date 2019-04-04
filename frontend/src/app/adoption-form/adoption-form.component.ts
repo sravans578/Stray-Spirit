@@ -129,6 +129,7 @@ firstFormGroup = new FormGroup({
     }
     console.log("Adoption Model!",this.adoptionModel);
     this.adoptionService.newAdoption(this.adoptionModel);
+    this.adoptionService.adoptReqMail({'email': 'shahaadesh5@gmail.com','petName':this.adoptionModel.petDetailModel.petNameModel})
     this.toastr.success('Adoption request sent!', 'SUCCESS!', {
       timeOut: 5500,
       closeButton: true,

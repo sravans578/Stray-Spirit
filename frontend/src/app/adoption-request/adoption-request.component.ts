@@ -55,7 +55,7 @@ export class AdoptionRequestComponent implements OnInit {
       'elementHandlers': specialElementHandlers
     });
 
-    doc.save('test.pdf');
+    doc.save('Adoption_Request.pdf');
   }
 
   editAdopt(adoptionStatus:string, adoptionId:string, adoptUserId:string){
