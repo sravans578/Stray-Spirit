@@ -2,9 +2,9 @@
 <div class="jumbotron-fluid jumbotron">
   <div class="mt-25">
   <div class="container">
-      <h2 class="text-center">Edit a Pet Profile</h2>
+      <h2 class="text-center">Edit Inventory</h2>
 
-      <form method="POST" name="editInventoryForm" [formGroup]="editInventoryForm" (submit)="editProduct()"  enctype="multipart/form-data">
+      <form method="POST" name="editInventoryForm" [formGroup]="editInventoryForm" (submit)="editInventory()"  enctype="multipart/form-data">
         <div class="md-form">
           <input mdbInputDirective type="name" id="productName" class="form-control" name="productName" formControlName="productName"
             [ngClass]="{'is-invalid':editInventoryForm.get('productName').touched && editInventoryForm.get('productName').invalid}">
@@ -108,7 +108,7 @@
                   <textarea type="text" id="productDescription" formControlName="productDescription" class="md-textarea form-control" mdbInputDirective></textarea>
                   <label for="productDescription">Product Description</label>
                 </div>
-          <button mdbBtn type="submit" color="indigo" mdbWavesEffect class="sign-in_button" >Update</button>
+          <!-- <button mdbBtn type="submit" color="indigo" mdbWavesEffect class="sign-in_button" >Update</button> -->
           <button mdbBtn type="submit" color="indigo" mdbWavesEffect class="sign-in_button" [disabled]="!editInventoryForm.valid" >Update</button>
        </form>
        <a routerLink="/profile/my-inventory">

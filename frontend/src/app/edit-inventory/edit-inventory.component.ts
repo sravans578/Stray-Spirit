@@ -5,6 +5,7 @@ import { ProductmanagementService } from '../productmanagement.service';
 import { Title } from '@angular/platform-browser';
 import { AuthService } from '../auth.sevice';
 import { ToastrService } from 'ngx-toastr';
+import { routerNgProbeToken } from '@angular/router/src/router_module';
 
 @Component({
   selector: 'app-edit-inventory',
@@ -13,7 +14,6 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class EditInventoryComponent implements OnInit {
   sub: any;
-  //petId: string;
   productId: string;
   productData: any;
   namePattern: string = '^([a-zA-Z_\-]*)$';
@@ -92,6 +92,20 @@ export class EditInventoryComponent implements OnInit {
        productUploaderfirstName: this.currentUser["firstName"],
        productUploaderlastName: this.currentUser["lastName"]
        }
+
+
+
+      //  this.productData = {
+      //   productName: this.editInventoryForm.get('productName').value,
+      //   productDescription: this.editInventoryForm.get('productDescription').value,
+      //   productQuantity: this.editInventoryForm.get('productQuantity').value,
+      //   productPrice: this.editInventoryForm.get('productPrice').value,
+      //   productPic: this.imageSrc,
+      //   productUploader: {
+      //     productUploaderId: this.currentUserId,
+      //     productUploaderfirstName: this.currentUser["firstName"],
+      //     productUploaderlastName: this.currentUser["lastName"]
+      //     }
    }
    console.log(this.productData);
    this.productService.updateProducts(this.productId,this.productData);
@@ -100,10 +114,10 @@ export class EditInventoryComponent implements OnInit {
     closeButton: true,
     progressBar: true
   });
-  setTimeout(()=>{  
-    this.router.navigate(['/profile/my-inventory']);
-     }, 2000);
   
+  
+  this.router.navigate(['/profile/inventory']);
+
  }
 }
 

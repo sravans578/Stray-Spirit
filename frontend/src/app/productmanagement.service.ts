@@ -31,9 +31,9 @@ export class ProductmanagementService {
     });
   }
   updateProducts(productId:any, productData:any){
-    //editing pets
+    
     console.log("From service",productData);
-    this.http.put('http://localhost:3000/pets/update/'+productId,productData)
+    this.http.put('http://localhost:3000/products/update/'+productId,productData)
     .subscribe(response=>{
       console.log(response);
     });

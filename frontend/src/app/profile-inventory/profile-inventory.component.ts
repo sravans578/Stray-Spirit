@@ -4,6 +4,8 @@ import { ProductmanagementService } from '../productmanagement.service';
 import { ToastrService } from 'ngx-toastr';
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { AuthService } from '../auth.sevice';
+import { Route } from '@angular/compiler/src/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile-inventory',
@@ -24,7 +26,7 @@ export class ProfileInventoryComponent implements OnInit {
   currentUserId: any;
 
 
-  addProductForm = new FormGroup({
+    addProductForm = new FormGroup({
     productName: new FormControl('', [Validators.required, Validators.pattern(this.namePattern)]),
     productQuantity: new FormControl('', [Validators.required, Validators.pattern('^[0-9]*$')]),
     productPrice: new FormControl('', [Validators.required, Validators.pattern('^[0-9]*$')]),
@@ -38,7 +40,8 @@ export class ProfileInventoryComponent implements OnInit {
     private products: ProductmanagementService,
     private toastr: ToastrService,
     private titleService: Title,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
 
   ) {
     this.titleService.setTitle("My Inventory - StraySpirit");
@@ -151,12 +154,15 @@ export class ProfileInventoryComponent implements OnInit {
     });
   }
 
-  // edit() {
+  editInventory(p_id:String) {
 
-  //   this.toastr.error('Just a message for Assignment4 UI', 'Coming Soon', {
-  //     timeOut: 5000,
-  //     closeButton: true,
-  //     progressBar: true
-  //   });
-  // }
+    // this.toastr.error('Just a message for Assignment4 UI', 'Coming Soon', {
+    //   timeOut: 5000,
+    //   closeButton: true,
+    //   progressBar: true
+
+   // });
+   this.router.navigate(['/profile/edit-inventory/'+p_id]);
+  }
+ 
 }
