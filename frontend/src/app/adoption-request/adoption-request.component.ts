@@ -3,6 +3,7 @@ import { PetmanagementService } from '../petmanagement.service';
 import { AdoptionService } from '../adoption.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import  * as jsPDF from 'jspdf';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-adoption-request',
@@ -15,7 +16,8 @@ export class AdoptionRequestComponent implements OnInit {
     private petService: PetmanagementService,
     private adoptionService: AdoptionService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) { }
 
   sub: any;
@@ -88,6 +90,13 @@ export class AdoptionRequestComponent implements OnInit {
         petUploaderIdModel: this.filteredPetAdoptDetail[0]["petDetail"]["petUploaderId"]
       },
       adoptionStatusModel: adoptionStatus
+    }
+    if(adoptionStatus==='Accepted'){
+      this.toastr.success('Adoption Request Accepted!', 'SUCCESS!', {
+        timeOut: 5500,
+        closeButton: true,
+        progressBar: true
+      });
     }
     console.log("New Adoption Model: ",this.adoptionModel);
     this.adoptionService.updateAdoption(adoptionId,this.adoptionModel);
