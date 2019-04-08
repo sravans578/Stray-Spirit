@@ -54,13 +54,9 @@ export class ProfileInventoryComponent implements OnInit {
       this.current_User = currentUser;
 
     })
-    // this.products.getProducts().subscribe(productData =>{
-    //   console.log(productData);
-    // this.product_newData=productData;
-    //   console.log(this.product_newData);
-    //        })
+    
 
-    this.products.getproductsUser(this.currentUserId).subscribe(productData =>{
+    this.products.getproductsUser(this.userId).subscribe(productData =>{
       console.log(productData);
       this.productListing= productData;
       console.log("Products for this user: ",this.productListing);
@@ -155,13 +151,6 @@ export class ProfileInventoryComponent implements OnInit {
   }
 
   editInventory(p_id:String) {
-
-    // this.toastr.error('Just a message for Assignment4 UI', 'Coming Soon', {
-    //   timeOut: 5000,
-    //   closeButton: true,
-    //   progressBar: true
-
-   // });
    this.router.navigate(['/profile/edit-inventory/'+p_id]);
   }
  

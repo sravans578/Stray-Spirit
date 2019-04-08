@@ -4,6 +4,7 @@ import { AuthService } from '../auth.sevice';
 import { PetmanagementService } from '../petmanagement.service';
 import { AdoptionService } from '../adoption.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-adoption-form',
@@ -55,7 +56,8 @@ firstFormGroup = new FormGroup({
     private petService: PetmanagementService,
     private adoptionService: AdoptionService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
     ) { 
 
   }
@@ -70,27 +72,6 @@ firstFormGroup = new FormGroup({
     this.currentPetData=currentPet;
    });
     
-    // this.formGroup = this._formBuilder.group({
-    //   formArray: this._formBuilder.array([
-    //     this._formBuilder.group({
-    //       adopterFirstName: ['Test', Validators.required],
-    //       petName: ['', Validators.required],
-    //       adopterLastName: ['', Validators.required],
-    //       adopterAge: ['', Validators.required],
-    //       adopterAddress: ['', Validators.required],
-    //       adopterEmail: ['', Validators.required],
-    //       adopterPhone: ['', Validators.required]
-    //     }),
-    //     this._formBuilder.group({
-    //       adopterPetFamily: ['', Validators.required],
-    //       firstPet: ['', Validators.required]
-    //     }),
-    //     this._formBuilder.group({
-    //       petBehaviour: ['', Validators.required],
-    //       petHome: ['', Validators.required]
-    //     }),
-    //   ])
-    // });
 
     this.currentUserId=this.authService.getUserId();
     this.authService.getUserById(this.currentUserId).subscribe( userData=>{
@@ -107,8 +88,6 @@ firstFormGroup = new FormGroup({
     
       this.firstFormGroup.controls.adopterPhone.patchValue(this.currentUserData["phoneNumber"]);
     
-     // this.formArray.value["0"]["adopterFirstName"]=this.currentUserData["firstName"];
-      //console.log(this.formArray.value["0"]["adopterFirstName"]);
     })
 
 
@@ -122,20 +101,6 @@ firstFormGroup = new FormGroup({
     // });
   }
   adoptPet(){
-    console.log(this.secondFormGroup.get('firstPet').value);
-    console.log(this.secondFormGroup.get('curPet').value);
-    console.log(this.secondFormGroup.get('prevPet').value);
-    console.log(this.secondFormGroup.get('adopterPetFamily').value);
-    console.log(this.firstFormGroup.get('adopterFirstName').value);
-    console.log(this.firstFormGroup.get('adopterLastName').value);
-    console.log(this.firstFormGroup.get('adopterAge').value);
-    console.log(this.firstFormGroup.get('adopterAddress').value);
-    console.log(this.firstFormGroup.get('adopterEmail').value);
-    console.log(this.firstFormGroup.get('adopterPhone').value);
-    console.log(this.thirdFormGroup.get('travel').value);
-    console.log(this.thirdFormGroup.get('vacci').value);
-    console.log(this.thirdFormGroup.get('petBehaviour').value);
-    console.log(this.thirdFormGroup.get('petHome').value);
     
     this.adoptionModel={
       prevPetModel: this.secondFormGroup.get('prevPet').value,
@@ -164,7 +129,14 @@ firstFormGroup = new FormGroup({
     }
     console.log("Adoption Model!",this.adoptionModel);
     this.adoptionService.newAdoption(this.adoptionModel);
-
+    this.toastr.success('Adoption request sent!', 'SUCCESS!', {
+      timeOut: 5500,
+      closeButton: true,
+      progressBar: true
+    });
+    setTimeout(()=>{  
+      this.router.navigate(['/profile/my-adoptions/']);
+       }, 2000);
   }
 
 }

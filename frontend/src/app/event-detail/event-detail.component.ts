@@ -28,6 +28,8 @@ this.eventdetail.getsingleEvent(this.event_id).subscribe( singleModel =>{
 });
   }
   eventRegister(){
+    this.eventdetail.sendEmail({'email': 'aparna.sridhar27@gmail.com'});
+  
     this.toastr.success('You are registered for the event', 'SUCCESS!', {
       timeOut: 5500,
       closeButton: true,

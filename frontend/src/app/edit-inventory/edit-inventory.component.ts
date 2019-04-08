@@ -93,19 +93,6 @@ export class EditInventoryComponent implements OnInit {
        productUploaderlastName: this.currentUser["lastName"]
        }
 
-
-
-      //  this.productData = {
-      //   productName: this.editInventoryForm.get('productName').value,
-      //   productDescription: this.editInventoryForm.get('productDescription').value,
-      //   productQuantity: this.editInventoryForm.get('productQuantity').value,
-      //   productPrice: this.editInventoryForm.get('productPrice').value,
-      //   productPic: this.imageSrc,
-      //   productUploader: {
-      //     productUploaderId: this.currentUserId,
-      //     productUploaderfirstName: this.currentUser["firstName"],
-      //     productUploaderlastName: this.currentUser["lastName"]
-      //     }
    }
    console.log(this.productData);
    this.productService.updateProducts(this.productId,this.productData);
@@ -115,9 +102,9 @@ export class EditInventoryComponent implements OnInit {
     progressBar: true
   });
   
-  
+  setTimeout(()=>{  
   this.router.navigate(['/profile/inventory']);
-
- }
+}, 2000);
+ 
 }
-
+}

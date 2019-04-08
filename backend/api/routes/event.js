@@ -1,6 +1,7 @@
 //Authored by Aparna Sridhar [B00799570]
 const express = require('express');
 const mongoose = require('mongoose');
+const nodemailer = require('nodemailer'); 
 
 const router = express.Router();
 
@@ -46,6 +47,52 @@ router.post('/', (req, res, next) => {
         message: 'Handling POST requests to /pets',
         createdevents: events
     });
+    
+});
+
+router.post('/register', (req, res, next) =>{
+
+    let transporter = nodemailer.createTransport({
+
+        service: 'gmail',
+        // host: "",
+        // port: 587,
+        // secure: false, // true for 465, false for other ports
+        auth: {
+          user: 'aparna.saparna1995@gmail.com', // generated ethereal user
+          pass: '20071995' // generated ethereal password
+        },
+        tls: {
+            rejectUnauthorized: false
+        }
+      });
+    
+      // setup email data with unicode symbols
+      let mailOptions = {
+        from: '"Stray Spirit" <aparna.saparna1995@gmail>', // sender address
+        to: req.body.email, // list of receivers
+        subject: "Your Registeration is confirmed", // Subject line
+        text: "Here are your event information:", // plain text body
+        html: req.body.events // html body
+      };
+    
+      // send mail with defined transport object
+     transporter.sendMail(mailOptions, (error, info) => {
+         if(error) {
+             return console.log(error);
+         }
+         console.log("Message sent: %s", info.messageId);
+         // Preview only available when sending through an Ethereal account
+         console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+
+     });
+    
+      
+    
+      // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
+      // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
+    // res.render('register');
+
 });
 
 router.get('/singleevent/:eventId', (req, res, next) => {
