@@ -56,6 +56,33 @@ router.get('/singleproduct/:productId', (req, res, next) => {
     });
 });
 
+router.put('/update/:id', (req, res, next) =>{
+    const id=req.params.id;
+    console.log(id);
+    
+    Product.findByIdAndUpdate( id, {
+        _id: id,
+        productName: req.body.productNameModel,
+        productPrice: req.body.productPriceModel,
+        productDescription: req.body.productDescriptionModel,
+        productQuantity: req.body.productQuantityModel,
+        productPic:req.body.productPicModel,
+        productUploader: {
+            uId: req.body.productUploaderModel.productUploaderId,
+            firstName: req.body.productUploaderModel.productUploaderfirstName,
+            lastName: req.body.productUploaderModel.productUploaderlastName
+        }
+       
+
+    }).then( result=>{
+        console.log(result);
+        res.status(200).json({
+            message: "Update successfull!"
+        });
+    });
+});
+
+
 router.get('/uploader/:userId', (req, res, next) => {
     const id = req.params.userId;
     Product.find({

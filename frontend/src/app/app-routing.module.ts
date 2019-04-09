@@ -32,6 +32,7 @@ import { EditPetsComponent } from './edit-pets/edit-pets.component';
 import { EventListComponent } from './event-list/event-list.component';
 import { AdoptionFormComponent } from './adoption-form/adoption-form.component';
 import { MyAdoptionsComponent } from './my-adoptions/my-adoptions.component';
+import { EditInventoryComponent } from './edit-inventory/edit-inventory.component';
 import { AdoptionRequestComponent } from './adoption-request/adoption-request.component';
 
 
@@ -69,6 +70,7 @@ const routes: Routes = [
       { path: 'my-pet-ads', component: ProfilePetAdsComponent },
       { path: 'my-events', component: ProfileEventComponent },
       { path: 'edit-pet/:id', component: EditPetsComponent },
+      {path: 'edit-inventory/:id', component: EditInventoryComponent},
       { path: 'my-adoptions', component: MyAdoptionsComponent },
       { path: 'adoption-request/:id', component: AdoptionRequestComponent }
     ]
