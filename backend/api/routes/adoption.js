@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
+const nodemailer = require('nodemailer');
 
 const Adoption = require('../models/adoption');
 
@@ -151,6 +152,51 @@ router.put('/update/:id', (req, res, next) =>{
             message: "Update successfull!"
         });
     });
+});
+
+router.post('/adopt-req', (req, res, next) =>{
+
+    let transporter = nodemailer.createTransport({
+
+        service: 'gmail',
+        // host: "",
+        // port: 587,
+        // secure: false, // true for 465, false for other ports
+        auth: {
+          user: 'strayspirittest@gmail.com', // generated ethereal user
+          pass: 'Qazwsx!2' // generated ethereal password
+        },
+        tls: {
+            rejectUnauthorized: false
+        }
+      });
+    
+      // setup email data with unicode symbols
+      let mailOptions = {
+        from: '"Stray Spirit" <strayspirittest@gmail.com>', // sender address
+        to: "shahaadesh5@gmail.com", // list of receivers
+        subject: "A new Adoption request for "+req.body.petName, // Subject line
+        text: "", // plain text body
+        html: "<h2>Someone enquired about "+req.body.petName+"</h2>" // html body
+      };
+    
+      // send mail with defined transport object
+     transporter.sendMail(mailOptions, (error, info) => {
+         if(error) {
+             return console.log(error);
+         }
+         console.log("Message sent: %s", info.messageId);
+         // Preview only available when sending through an Ethereal account
+         console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+
+     });
+    
+      
+    
+      // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
+      // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
+    // res.render('register');
+
 });
 
 module.exports = router;

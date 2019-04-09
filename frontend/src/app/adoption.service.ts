@@ -41,5 +41,12 @@ export class AdoptionService {
     });
   }
 
+  adoptReqMail(email:any){
+    this.http.post('http://localhost:3000/adoption/adopt-req',email)
+    .subscribe(responseData =>{
+      console.log("Adoption Mail Sent!");
+    })
+  }
+
 
 }
