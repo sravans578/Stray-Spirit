@@ -32,6 +32,7 @@ export class PetlistingComponent implements OnInit {
   filteredLocation: any;
   searchLocationTerm: any;
   isLoading: boolean = false;
+  pet_cat_filter: any;
   
   filterPetsForm = new FormGroup({
     searchLocation: new FormControl(''),
@@ -118,7 +119,203 @@ onKeydown(event:any) {
 reloadPage(){
   window.location.reload();
 }
+catSelected: any;
+category_filter=new FormControl();
+age_filter=new FormControl();
+gender_filter=new FormControl();
+health_filter=new FormControl();
+categoryChange(event){
+  if(!event){
+    this.catSelected=this.category_filter.value && this.category_filter.value.toString();
+    console.log(this.catSelected);
+    this.pet_cat_filter=this.catSelected.split(',');
+    console.log(this.pet_cat_filter);
+    if(this.searchLocationTerm){
+      
+    if(this.pet_cat_filter.length>1){
+      this.pet_newData = this.all_Pets.filter(filterPets =>{
+        return filterPets.petLocation.petCity.includes(this.searchLocationTerm[0]) 
+        && filterPets.petLocation.petState.includes(this.searchLocationTerm[1]) 
+        && filterPets.petLocation.petCountry.includes(this.searchLocationTerm[2]);
+      })
+      }
+      else{
+        this.pet_newData = this.all_Pets.filter(filterPets =>{
+          return filterPets.petLocation.petCity.includes(this.searchLocationTerm[0]) 
+          && filterPets.petLocation.petState.includes(this.searchLocationTerm[1]) 
+          && filterPets.petLocation.petCountry.includes(this.searchLocationTerm[2])
+          && filterPets.petCategory.includes(this.pet_cat_filter[0]);
+        })
+      }
+  }
+  else{
+    if(this.pet_cat_filter.length>1){
+    this.pet_newData = this.all_Pets.filter(filterPets =>{
+      return filterPets.petLocation.petCity.includes(this.currentCity) 
+      && filterPets.petLocation.petState.includes(this.currentState) 
+      && filterPets.petLocation.petCountry.includes(this.currentCountry);
+    })
+    }
+    else{
+      this.pet_newData = this.all_Pets.filter(filterPets =>{
+        return filterPets.petLocation.petCity.includes(this.currentCity) 
+        && filterPets.petLocation.petState.includes(this.currentState) 
+        && filterPets.petLocation.petCountry.includes(this.currentCountry)
+        && filterPets.petCategory.includes(this.pet_cat_filter[0]);
+      })
+    }
+  }
+  }
+}
 
+ageChange(event){
+  if(!event){
+    this.catSelected=this.age_filter.value && this.age_filter.value.toString();
+    console.log(this.catSelected);
+    this.pet_cat_filter=this.catSelected.split(',');
+    console.log(this.pet_cat_filter);
+    if(this.searchLocationTerm){
+      
+    if(this.pet_cat_filter.length>2){
+      this.pet_newData = this.all_Pets.filter(filterPets =>{
+        return filterPets.petLocation.petCity.includes(this.searchLocationTerm[0]) 
+        && filterPets.petLocation.petState.includes(this.searchLocationTerm[1]) 
+        && filterPets.petLocation.petCountry.includes(this.searchLocationTerm[2]);
+      })
+      }
+      else if(this.pet_cat_filter.length===2){
+        this.pet_newData = this.all_Pets.filter(filterPets =>{
+          return filterPets.petLocation.petCity.includes(this.searchLocationTerm[0]) 
+          && filterPets.petLocation.petState.includes(this.searchLocationTerm[1]) 
+          && filterPets.petLocation.petCountry.includes(this.searchLocationTerm[2])
+          && (filterPets.petAge.includes(this.pet_cat_filter[0])
+          || filterPets.petAge.includes(this.pet_cat_filter[1]));
+        })
+      }
+      else{
+        this.pet_newData = this.all_Pets.filter(filterPets =>{
+          return filterPets.petLocation.petCity.includes(this.searchLocationTerm[0]) 
+          && filterPets.petLocation.petState.includes(this.searchLocationTerm[1]) 
+          && filterPets.petLocation.petCountry.includes(this.searchLocationTerm[2])
+          && filterPets.petAge.includes(this.pet_cat_filter[0]);
+        })
+      }
+  }
+  else{
+    if(this.pet_cat_filter.length>2){
+    this.pet_newData = this.all_Pets.filter(filterPets =>{
+      return filterPets.petLocation.petCity.includes(this.currentCity) 
+      && filterPets.petLocation.petState.includes(this.currentState) 
+      && filterPets.petLocation.petCountry.includes(this.currentCountry);
+    })
+    }
+    else if(this.pet_cat_filter.length===2){
+      this.pet_newData = this.all_Pets.filter(filterPets =>{
+        return filterPets.petLocation.petCity.includes(this.currentCity) 
+        && filterPets.petLocation.petState.includes(this.currentState) 
+        && filterPets.petLocation.petCountry.includes(this.currentCountry)
+        && (filterPets.petAge.includes(this.pet_cat_filter[0])
+        || filterPets.petAge.includes(this.pet_cat_filter[1]));
+      })
+    }
+    else{
+      this.pet_newData = this.all_Pets.filter(filterPets =>{
+        return filterPets.petLocation.petCity.includes(this.currentCity) 
+        && filterPets.petLocation.petState.includes(this.currentState) 
+        && filterPets.petLocation.petCountry.includes(this.currentCountry)
+        && filterPets.petAge.includes(this.pet_cat_filter[0]);
+      })
+    }
+  }
+  }
+}
+
+genderChange(event){
+  if(!event){
+    this.catSelected=this.gender_filter.value && this.gender_filter.value.toString();
+    console.log(this.catSelected);
+    this.pet_cat_filter=this.catSelected.split(',');
+    console.log(this.pet_cat_filter);
+    if(this.searchLocationTerm){
+      
+    if(this.pet_cat_filter.length>1){
+      this.pet_newData = this.all_Pets.filter(filterPets =>{
+        return filterPets.petLocation.petCity.includes(this.searchLocationTerm[0]) 
+        && filterPets.petLocation.petState.includes(this.searchLocationTerm[1]) 
+        && filterPets.petLocation.petCountry.includes(this.searchLocationTerm[2]);
+      })
+      }
+      else{
+        this.pet_newData = this.all_Pets.filter(filterPets =>{
+          return filterPets.petLocation.petCity.includes(this.searchLocationTerm[0]) 
+          && filterPets.petLocation.petState.includes(this.searchLocationTerm[1]) 
+          && filterPets.petLocation.petCountry.includes(this.searchLocationTerm[2])
+          && filterPets.petGender.includes(this.pet_cat_filter[0]);
+        })
+      }
+  }
+  else{
+    if(this.pet_cat_filter.length>1){
+    this.pet_newData = this.all_Pets.filter(filterPets =>{
+      return filterPets.petLocation.petCity.includes(this.currentCity) 
+      && filterPets.petLocation.petState.includes(this.currentState) 
+      && filterPets.petLocation.petCountry.includes(this.currentCountry);
+    })
+    }
+    else{
+      this.pet_newData = this.all_Pets.filter(filterPets =>{
+        return filterPets.petLocation.petCity.includes(this.currentCity) 
+        && filterPets.petLocation.petState.includes(this.currentState) 
+        && filterPets.petLocation.petCountry.includes(this.currentCountry)
+        && filterPets.petGender.includes(this.pet_cat_filter[0]);
+      })
+    }
+  }
+  }
+}
+healthChange(event){
+  if(!event){
+    this.catSelected=this.health_filter.value && this.health_filter.value.toString();
+    console.log(this.catSelected);
+    this.pet_cat_filter=this.catSelected.split(',');
+    console.log(this.pet_cat_filter);
+    if(this.searchLocationTerm){
+      
+    if(this.pet_cat_filter.length>1){
+      this.pet_newData = this.all_Pets.filter(filterPets =>{
+        return filterPets.petLocation.petCity.includes(this.searchLocationTerm[0]) 
+        && filterPets.petLocation.petState.includes(this.searchLocationTerm[1]) 
+        && filterPets.petLocation.petCountry.includes(this.searchLocationTerm[2]);
+      })
+      }
+      else{
+        this.pet_newData = this.all_Pets.filter(filterPets =>{
+          return filterPets.petLocation.petCity.includes(this.searchLocationTerm[0]) 
+          && filterPets.petLocation.petState.includes(this.searchLocationTerm[1]) 
+          && filterPets.petLocation.petCountry.includes(this.searchLocationTerm[2])
+          && filterPets.petHealth.includes(this.pet_cat_filter[0]);
+        })
+      }
+  }
+  else{
+    if(this.pet_cat_filter.length>1){
+    this.pet_newData = this.all_Pets.filter(filterPets =>{
+      return filterPets.petLocation.petCity.includes(this.currentCity) 
+      && filterPets.petLocation.petState.includes(this.currentState) 
+      && filterPets.petLocation.petCountry.includes(this.currentCountry);
+    })
+    }
+    else{
+      this.pet_newData = this.all_Pets.filter(filterPets =>{
+        return filterPets.petLocation.petCity.includes(this.currentCity) 
+        && filterPets.petLocation.petState.includes(this.currentState) 
+        && filterPets.petLocation.petCountry.includes(this.currentCountry)
+        && filterPets.petHealth.includes(this.pet_cat_filter[0]);
+      })
+    }
+  }
+  }
+}
 }
 
 
