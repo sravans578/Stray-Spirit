@@ -31,6 +31,7 @@ export class ProfileInventoryComponent implements OnInit {
     productQuantity: new FormControl('', [Validators.required, Validators.pattern('^[0-9]*$')]),
     productPrice: new FormControl('', [Validators.required, Validators.pattern('^[0-9]*$')]),
     productDescription: new FormControl('', Validators.required),
+    productCategory:new FormControl('', Validators.required),
     productPic: new FormControl('')
   })
 
@@ -117,6 +118,7 @@ export class ProfileInventoryComponent implements OnInit {
       productPrice: this.addProductForm.get('productPrice').value,
       productQuantity: this.addProductForm.get('productQuantity').value,
       productDescription: this.addProductForm.get('productDescription').value,
+      productCategory:this.addProductForm.get('productCategory').value,
       productPic: this.imageSrc,
       productUploader: {
         uId: this.userId,
@@ -148,6 +150,9 @@ export class ProfileInventoryComponent implements OnInit {
       closeButton: true,
       progressBar: true
     });
+    setTimeout(()=>{  
+      window.location.reload();
+       }, 2000);
   }
 
   editInventory(p_id:String) {
