@@ -158,6 +158,23 @@ mdb-card-img{
     
 
 }
+.mat-select{
+    width: 40%;
+    padding: 5px;
+    border: 1px solid #ccc;
+}
+.category_col {
+    p{
+        padding: 15px;
+        cursor: pointer;
+    }
+    p:hover{
+        background:rgba(0, 0, 0, 0.03);
+    }
+}
+mdb-card-header{
+    cursor: pointer;
+}
 
 @media screen and (max-width:900px){
     mdb-card-img{

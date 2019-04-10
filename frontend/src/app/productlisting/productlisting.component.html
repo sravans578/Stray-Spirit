@@ -8,11 +8,11 @@
         <div class="mt-85">
           <p class="category_title text-center">Category</p>
           <mdb-card>
-            <mdb-card-header>Featured</mdb-card-header>
+            <mdb-card-header (click)="filtCat('all')">Featured</mdb-card-header>
             
-            <mat-option value="category_filter">Food</mat-option>
-              <mat-option value="category_filter">Clothing</mat-option>
-              <mat-option value="category_filter">Pet Toys</mat-option>
+            <p (click)="filtCat('Food')">Food</p>
+              <p (click)="filtCat('Clothing')">Clothing</p>
+              <p (click)="filtCat('Pet Toys')">Pet Toys</p>
               
               
               
@@ -23,12 +23,20 @@
         <div class="mt-25">
           <div class="product_page_heading">
             <h2>Here are our listings for Products</h2>
-            <select class="browser-default custom-select">
-              <option selected class="inactive">Sort By</option>
-              <option value="1">Price - Low to High</option>
-              <option value="2">Price - High to Low</option>
-              <option value="3">New Products</option>
-            </select>
+            <mat-select placeholder="Sort By" [formControl]="productCategory" (openedChange)="categoryChange($event)">
+              <mat-option value="lowtohigh">
+                Price - Low to High
+              </mat-option>
+              <mat-option value="hightolow">
+                Price - High to Low
+              </mat-option>
+              <mat-option value="atoz">
+                Name - A to Z
+              </mat-option>
+              <mat-option value="ztoa">
+                Name - Z to A
+              </mat-option>
+            </mat-select>
           </div>
           <div class="container mt-25 products_listing">
           <div class="row">
