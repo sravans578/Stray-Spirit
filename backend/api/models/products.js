@@ -15,6 +15,7 @@ const productSchema = mongoose.Schema({
     productPrice: { type:Number , required:true },
     productQuantity: {type:Number , required:true},
     productDescription: { type:String , required:true },
+    productCategory: { type:String , required:true },
     productPic: { type:String , required:true },
     productUploader: productUploaderSchema
     
