@@ -102,6 +102,19 @@
                   <div *ngIf="editInventoryForm.get('productQuantity').errors.pattern">Only Numeric value allowed</div>
                 </div>
               </div>
+              <div class="md-form">
+                <mat-select placeholder="Product Category" formControlName="productCategory">
+                    <mat-option value="Food">
+                      Food
+                    </mat-option>
+                    <mat-option value="Clothing">
+                      Clothing
+                    </mat-option>
+                    <mat-option value="Pet Toys">
+                      Pet Toys
+                    </mat-option>
+                  </mat-select>
+                  </div>
               <input type="file" name="productImage" required class="product_image_upload" (change)="handleInputChange($event)" >
               <div class="md-form">
                   <i class="fas fa-pencil-alt prefix"></i>

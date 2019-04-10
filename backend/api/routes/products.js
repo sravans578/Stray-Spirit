@@ -21,6 +21,7 @@ router.post('/', (req, res, next) => {
     const products = new Product({
         _id: new mongoose.Types.ObjectId(),
         productName: req.body.productName,
+        productCategory:req.body.productCategory,
         productPrice: req.body.productPrice,
         productQuantity:req.body.productQuantity,
         productDescription: req.body.productDescription,
@@ -67,6 +68,7 @@ router.put('/update/:id', (req, res, next) =>{
         productDescription: req.body.productDescriptionModel,
         productQuantity: req.body.productQuantityModel,
         productPic:req.body.productPicModel,
+        productCategory:req.body.productCategoryModel,
         productUploader: {
             uId: req.body.productUploaderModel.productUploaderId,
             firstName: req.body.productUploaderModel.productUploaderfirstName,

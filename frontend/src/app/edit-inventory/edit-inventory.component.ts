@@ -37,6 +37,7 @@ export class EditInventoryComponent implements OnInit {
     productQuantity: new FormControl('',Validators.required),
     productDescription: new FormControl('', Validators.required),
     productPrice: new FormControl('',Validators.required),
+    productCategory:new FormControl('',Validators.required),
     productPic: new FormControl('')
   })
   ngOnInit() {
@@ -57,6 +58,7 @@ export class EditInventoryComponent implements OnInit {
     this.editInventoryForm.controls.productQuantity.patchValue(this.productData["productQuantity"]);
     this.editInventoryForm.controls.productPrice.patchValue(this.productData["productPrice"]);
     this.editInventoryForm.controls.productDescription.patchValue(this.productData["productDescription"]);
+    this.editInventoryForm.controls.productCategory.patchValue(this.productData["productCategory"]);
     this.imageSrc=this.productData["productPic"];
   },error=>{
     this.router.navigate(['/product-not-found']);
@@ -86,6 +88,7 @@ export class EditInventoryComponent implements OnInit {
      productDescriptionModel: this.editInventoryForm.get('productDescription').value,
      productQuantityModel: this.editInventoryForm.get('productQuantity').value,
      productPriceModel: this.editInventoryForm.get('productPrice').value,
+     productCategoryModel:this.editInventoryForm.get('productCategory').value,
      productPicModel: this.imageSrc,
      productUploaderModel: {
        productUploaderId: this.currentUserId,
