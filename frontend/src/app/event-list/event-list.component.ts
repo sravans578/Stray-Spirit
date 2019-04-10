@@ -10,10 +10,12 @@ import { AuthService } from '../auth.sevice';
   styleUrls: ['./event-list.component.scss']
 })
 export class EventListComponent implements OnInit {
-  allevents:{};
+allevents:{};
 user:string;
 temp:any;
 user_id: string;
+currentUserId: string; 
+userDetails: any;
 isloggedin:boolean = false;
 
   constructor( private eventser: EventManagementService, private toaster: ToastrService, private authser: AuthService) { }
@@ -38,21 +40,19 @@ isloggedin:boolean = false;
         }
       }
     })
-
+    this.currentUserId = this.authser.getUserId(); 
+    this.authser.getUserById(this.currentUserId).subscribe ( UserDet => {
+      this.userDetails = UserDet;
+    } )
 
   }
 // Toast alert for registeration
-  register(){
-    
+  register(id:any){
+    this.eventser.sendEmail({'email': this.userDetails["email"], 'eventName':this.allevents[id]["eventName"],
+    'eventDate': this.allevents[id]["eventDate"],
+    'eventVenue': this.allevents[id]["location"]
+     });
     this.toaster.success('Your registeration was successful', 'Success', {
-      timeOut: 5500,
-      closeButton: true,
-      progressBar: true
-    });
-  }
-// Toast alert for sharing
-  share(){
-    this.toaster.success('Event shared!!!', 'Success', {
       timeOut: 5500,
       closeButton: true,
       progressBar: true

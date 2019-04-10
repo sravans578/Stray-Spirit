@@ -50,14 +50,12 @@ router.post('/', (req, res, next) => {
     
 });
 
+// Post method for sending email for events registeration
 router.post('/register', (req, res, next) =>{
 
     let transporter = nodemailer.createTransport({
 
         service: 'gmail',
-        // host: "",
-        // port: 587,
-        // secure: false, // true for 465, false for other ports
         auth: {
           user: 'strayspirittest@gmail.com', // generated ethereal user
           pass: 'Qazwsx!2' // generated ethereal password
@@ -71,9 +69,10 @@ router.post('/register', (req, res, next) =>{
       let mailOptions = {
         from: '"Stray Spirit" <strayspirittest@gmail.com>', // sender address
         to: req.body.email, // list of receivers
-        subject: "Your Registeration is confirmed", // Subject line
-        text: "Here are your event information:" // plain text body
-        // html: "req.body.events" // html body
+        subject: "Your Registeration for the event" +req.body.eventName+ "is confirmed", // Subject line
+        text: "Here are your event information:", // plain text body
+        html: "<h3> You have registered for the event  " +req.body.eventName+ "which is scheduled at happen on" +req.body.eventDate+
+        "<br> The venue details are as follows: <br>" +req.body.eventVenue+ "</h3>" // html body
       };
     
       // send mail with defined transport object
@@ -87,11 +86,6 @@ router.post('/register', (req, res, next) =>{
 
      });
     
-      
-    
-      // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
-      // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
-    // res.render('register');
 
 });
 

@@ -52,10 +52,9 @@
   <div class="col-md-4" *ngFor = "let event of allevents; let i=index">
     <mdb-card class= "cards" narrower ="true" *ngIf = "i < 3">
       <div class="view view-cascade overlay waves-light" mdbWavesEffect>
-        <mdb-card-img [src]= "event.eventPic" [alt] = "event.eventName"></mdb-card-img>
-        <a>
-          <div class="mask rgba-white-slight"></div>
-        </a>
+          <a routerLink="/event-detail/{{event._id}}">  
+            <mdb-card-img mdbWavesEffect [src]= "event.eventPic" [alt] = "event.eventName"></mdb-card-img>
+            </a> 
       </div>
       <mdb-card-body cascade="true" class="text-center">
         <h3 class="card-title">
@@ -65,7 +64,7 @@
         <mdb-card-text>
           {{event.eventDescription}}<a routerLink = "/event-detail/{{event._id}}">Read more..</a>
         </mdb-card-text>
-        <a (click) = "register()" mdbBtn color="info" mdbWavesEffect *ngIf="!isloggedin"> Register</a>
+        <a (click) = "register(i)" mdbBtn color="info" mdbWavesEffect *ngIf="!isloggedin"> Register</a>
         <a (click) = "share()"  mdbBtn color="success" mdbWavesEffect>Share</a>
       </mdb-card-body>
       <!--/.Card content-->
