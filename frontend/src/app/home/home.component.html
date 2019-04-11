@@ -64,8 +64,7 @@
         <mdb-card-text>
           {{event.eventDescription}}<a routerLink = "/event-detail/{{event._id}}">Read more..</a>
         </mdb-card-text>
-        <a (click) = "register(i)" mdbBtn color="info" mdbWavesEffect *ngIf="!isloggedin"> Register</a>
-        <a (click) = "share()"  mdbBtn color="success" mdbWavesEffect>Share</a>
+        <a (click) = "register(i)" mdbBtn color="info" mdbWavesEffect *ngIf="isloggedin"> Register</a>
       </mdb-card-body>
       <!--/.Card content-->
 

@@ -35,6 +35,8 @@ export class PetProfilePageComponent implements OnInit {
   user_id: string;
   currentPetAdoptStatus: any;
   petAdopterId: any;
+  userType: string;
+  isUserLoggedin: boolean = true;
 
   constructor(
     private authService: AuthService,
@@ -50,6 +52,14 @@ export class PetProfilePageComponent implements OnInit {
 
   ngOnInit() {
     this.user_id=this.authService.getUserId();
+    this.userType = this.authService.getUserType();
+    console.log (this.userType);
+    if(this.userType === 'Organization'){
+      this.isUserLoggedin = false; 
+    }
+    else {
+      this.isUserLoggedin = true;
+    }
     this.sub = this.route.params.subscribe(params => {
       this.profile_id = params['id'];  //Getting id of the pet from route
       console.log(this.profile_id);
