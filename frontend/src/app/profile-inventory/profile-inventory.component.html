@@ -49,7 +49,7 @@
               </div>
               <div class="col-md-2 col-sm-6">
                 <div class="edit_button">
-                  <i class="fas fa-pencil-alt" ></i> <span (click)="edit()">Edit</span>
+                  <i class="fas fa-pencil-alt" ></i> <span (click)="editInventory(p._id)">Edit</span>
                 </div>
               </div>
               <div class="col-md-2 col-sm-6">
@@ -82,7 +82,19 @@
                 <div *ngIf="addProductForm.get('productPrice').errors.pattern">Only Numeric value allowed</div>
               </div>
             </div>
-
+            <div class="md-form">
+              <mat-select placeholder="Product Category" formControlName="productCategory">
+                  <mat-option value="Food">
+                    Food
+                  </mat-option>
+                  <mat-option value="Clothing">
+                    Clothing
+                  </mat-option>
+                  <mat-option value="Toys">
+                    Pet Toys
+                  </mat-option>
+                </mat-select>
+                </div>
             <div class="md-form">
                 <input mdbInputDirective type="number" id="productQuantity" class="form-control" name="productQuantity" formControlName="productQuantity"
                   [ngClass]="{'is-invalid':addProductForm.get('productQuantity').touched && addProductForm.get('productQuantity').invalid}">

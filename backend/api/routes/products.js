@@ -21,6 +21,7 @@ router.post('/', (req, res, next) => {
     const products = new Product({
         _id: new mongoose.Types.ObjectId(),
         productName: req.body.productName,
+        productCategory:req.body.productCategory,
         productPrice: req.body.productPrice,
         productQuantity:req.body.productQuantity,
         productDescription: req.body.productDescription,
@@ -55,6 +56,34 @@ router.get('/singleproduct/:productId', (req, res, next) => {
         res.status(500).json({error:err});
     });
 });
+
+router.put('/update/:id', (req, res, next) =>{
+    const id=req.params.id;
+    console.log(id);
+    
+    Product.findByIdAndUpdate( id, {
+        _id: id,
+        productName: req.body.productNameModel,
+        productPrice: req.body.productPriceModel,
+        productDescription: req.body.productDescriptionModel,
+        productQuantity: req.body.productQuantityModel,
+        productPic:req.body.productPicModel,
+        productCategory:req.body.productCategoryModel,
+        productUploader: {
+            uId: req.body.productUploaderModel.productUploaderId,
+            firstName: req.body.productUploaderModel.productUploaderfirstName,
+            lastName: req.body.productUploaderModel.productUploaderlastName
+        }
+       
+
+    }).then( result=>{
+        console.log(result);
+        res.status(200).json({
+            message: "Update successfull!"
+        });
+    });
+});
+
 
 router.get('/uploader/:userId', (req, res, next) => {
     const id = req.params.userId;

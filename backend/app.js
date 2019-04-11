@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const passport = require('passport');
 const session = require('express-session');
+const nodemailer = require('nodemailer');  
 // Passport Config
 require('./passport')(passport);
 
@@ -12,6 +13,7 @@ const petsRoutes = require('./api/routes/pets');
 const userRoutes = require('./api/routes/user');
 const productsRoutes = require('./api/routes/products');
 const EventsRoutes = require('./api/routes/event');
+const adoptRoutes = require('./api/routes/adoption');
 
 app.use(morgan('dev'));
 app.use(bodyParser.json({limit: '50mb'}));
@@ -34,6 +36,7 @@ app.use((req, res, next) => {
 app.use('/pets', petsRoutes);
 app.use('/user', userRoutes);
 app.use('/products', productsRoutes);
+app.use('/adoption', adoptRoutes);
 
 app.use('/event', EventsRoutes); // Adding Event Routing reference
 
