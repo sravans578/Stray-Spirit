@@ -57,7 +57,7 @@ const routes: Routes = [
 
   {path:'registration-aditya',component:RegistrationAdityaComponent},
   {path:'event-detail/:id',component:EventDetailComponent},
-  {path:'adopt/:id',component:AdoptionFormComponent},
+  {path:'adopt/:id',component:AdoptionFormComponent, canActivate:[AuthGuard]},
 
 
   // Implemented nested routes https://angular-2-training-book.rangle.io/handout/routing/child_routes.html

@@ -22,7 +22,7 @@
         <div class="mt-25">
           <p class="pet_uploader">Rescued by: {{petDetails?.petUploader.firstName}} {{petDetails?.petUploader.lastName}}</p>
           <!-- <a routerLink="/adopt/{{profile_id}}" target="_blank"> -->
-            <button mdbBtn color="primary" class="waves-light toggle_button" type="button" mdbWavesEffect (click)="adopt()">Adopt Me!</button>
+            <button mdbBtn color="primary" class="waves-light toggle_button" type="button" mdbWavesEffect (click)="adopt()" *ngIf = "isUserLoggedin">Adopt Me!</button>
           <!-- </a> -->
         </div>
       </div>

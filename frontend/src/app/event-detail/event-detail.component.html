@@ -22,7 +22,7 @@
             </div>
             <div class="mt-25">
               <p class="event_uploader"><i class="fas fa-user-tie"></i> Host: {{singleEvent?.eventUploader.firstName}} {{singleEvent?.eventUploader.lastName}}  </p>
-              <button mdbBtn color="primary" class="waves-light toggle_button" type="button" mdbWavesEffect (click)="eventRegister()">Register</button>
+              <button mdbBtn color="primary" class="waves-light toggle_button" type="button" mdbWavesEffect (click)="eventRegister()" *ngIf="isloggedin">Register</button>
             </div>
           </div>
           </div>
