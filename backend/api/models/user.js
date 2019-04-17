@@ -14,7 +14,12 @@ const userSchema = mongoose.Schema({
     pinCode:String,
     dateOfBirth:String,
     user_type:String,
-    user_creation_date:String
+    user_creation_date:String,
+    isActive:{
+        type: Boolean,
+        default: false
+    },
+    secretToken: String
 });
 
 

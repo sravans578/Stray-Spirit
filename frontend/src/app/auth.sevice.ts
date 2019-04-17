@@ -78,16 +78,6 @@ export class AuthService{
         this.http.put('http://localhost:3000/user/update/'+passed_userId,passed_userData)
         .subscribe(response=>{
           console.log(response);
-          this.toaster.success('User Profile Edited!', 'SUCCESS!', {
-            timeOut: 5500,
-            closeButton: true,
-            progressBar: true
-          });
-        //   setTimeout(()=>{  
-        //      location.reload();
-            
-        //      }, 2000);
-          
         });
       }
 
@@ -203,6 +193,10 @@ export class AuthService{
   
     getOrgById(orgId:any){
         return this.http.get("http://localhost:3000/user/org/"+orgId);
+    }
+
+    getUserToken(token:string){
+        return this.http.get("http://localhost:3000/user/userToken/"+token);
     }
     
     //This method will save the token and user_Id of the logged in user in the local storage of the web browser.

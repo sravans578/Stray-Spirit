@@ -57,6 +57,7 @@ import { EditInventoryComponent } from './edit-inventory/edit-inventory.componen
 import { AdoptionFormComponent } from './adoption-form/adoption-form.component';
 import { MyAdoptionsComponent } from './my-adoptions/my-adoptions.component';
 import { AdoptionRequestComponent } from './adoption-request/adoption-request.component';
+import { ConfirmationComponent } from './confirmation/confirmation.component';
 
 // import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap'
 @NgModule({
@@ -92,7 +93,8 @@ import { AdoptionRequestComponent } from './adoption-request/adoption-request.co
     EditInventoryComponent,
     AdoptionFormComponent,
     MyAdoptionsComponent,
-    AdoptionRequestComponent
+    AdoptionRequestComponent,
+    ConfirmationComponent
   ],
   imports: [
     BrowserModule,

@@ -7,9 +7,14 @@ const bcrypt=require("bcrypt");
 const mongoose=require("mongoose");
 const jwt=require("jsonwebtoken");
 const router = express.Router();
+const randomstring = require('randomstring');
+const nodemailer = require('nodemailer');
 
 //The following code will save the personal users details and register them and store these details into the database.  
 router.post("/signup_user", (req,res,next)=>{
+
+    const secretToken = randomstring.generate();
+
     bcrypt.hash(req.body.password,10)
     .then(hash=>{
         const user=new User({
@@ -20,7 +25,9 @@ router.post("/signup_user", (req,res,next)=>{
             email:req.body.email,
             password: hash,
             user_type:"personal",
-            user_creation_date: Date()
+            user_creation_date: Date(),
+            secretToken: secretToken,
+            isActive: false
         });
         user.save()
         .then(result=>{
@@ -35,8 +42,63 @@ router.post("/signup_user", (req,res,next)=>{
             });
         });
     });
+
+    
+    let transporter = nodemailer.createTransport({
+
+        service: 'gmail',
+        // host: "",
+        // port: 587,
+        // secure: false, // true for 465, false for other ports
+        auth: {
+          user: 'strayspirittest@gmail.com', // generated ethereal user
+          pass: 'Qazwsx!2' // generated ethereal password
+        },
+        tls: {
+            rejectUnauthorized: false
+        }
+      });
+    
+      confirmURL = 'http://localhost:4200/confirmation/'+secretToken;
+      // setup email data with unicode symbols
+      let mailOptions = {
+        from: '"Stray Spirit" <strayspirittest@gmail.com>', // sender address
+        to: req.body.email, // list of receivers
+        subject: "Confirm your email account", // Subject line
+        text: "", // plain text body
+        html: "<a href="+confirmURL+">"+confirmURL+"</a>" // html body
+      };
+    
+      // send mail with defined transport object
+     transporter.sendMail(mailOptions, (error, info) => {
+         if(error) {
+             return console.log(error);
+         }
+         console.log("Message sent: %s", info.messageId);
+         // Preview only available when sending through an Ethereal account
+         console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+
+     });
     
 });
+
+
+router.get('/userToken/:token', (req, res, next) => {
+    const token = req.params.token;
+    User.find({
+        'secretToken':token
+    })
+    .exec()
+    .then(doc =>{
+        console.log(doc);
+        res.status(200).json(doc);
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json({error:err});
+    });
+});
+
 
 //The following code will save the organization users details and register them and store these details into the database.
 router.post("/signup_org", (req,res,next)=>{
@@ -85,6 +147,12 @@ router.post('/login', (req, res, next) => {
         if(!result){
             return res.status(401).json({
                 message:"Auth failed"
+            });
+        }
+        if(!fetchedUser.isActive)
+        {
+            return res.status(401).json({
+                message:"Inactive user!"
             });
         }
         const token=jwt.sign(
@@ -185,7 +253,8 @@ router.put('/update/:id', (req, res, next) =>{
         phoneNumber: req.body.phoneNumberModel,
         address:req.body.addressModel,
         pinCode:req.body.pincodeModel,
-        dateOfBirth:req.body.dobModel 
+        dateOfBirth:req.body.dobModel,
+        isActive: req.body.isActiveModel
     }).then( result=>{
       console.log(result);
         res.status(200).json({

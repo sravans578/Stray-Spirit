@@ -34,6 +34,7 @@ import { AdoptionFormComponent } from './adoption-form/adoption-form.component';
 import { MyAdoptionsComponent } from './my-adoptions/my-adoptions.component';
 import { EditInventoryComponent } from './edit-inventory/edit-inventory.component';
 import { AdoptionRequestComponent } from './adoption-request/adoption-request.component';
+import { ConfirmationComponent } from './confirmation/confirmation.component';
 
 
 const routes: Routes = [
@@ -55,7 +56,7 @@ const routes: Routes = [
 
   {path: 'forgot-pwd',component:ForgotComponent},
 
-  {path:'registration-aditya',component:RegistrationAdityaComponent},
+  {path:'confirmation/:token',component:ConfirmationComponent},
   {path:'event-detail/:id',component:EventDetailComponent},
   {path:'adopt/:id',component:AdoptionFormComponent, canActivate:[AuthGuard]},
 
