@@ -5,6 +5,7 @@ import {Title} from "@angular/platform-browser";
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { AuthService } from '../auth.sevice';
 import { empty } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 
 
 
@@ -47,7 +48,8 @@ export class ProfileHomeComponent implements OnInit {
 
   constructor(
     private titleService:Title,
-    private authService:AuthService
+    private authService:AuthService,
+    private toaster: ToastrService
     ){ 
     this.titleService.setTitle("Dashboard - StraySpirit");
    }
@@ -115,6 +117,11 @@ export class ProfileHomeComponent implements OnInit {
       }
       console.log(this.userData);
       this.authService.updateUserData(user_id,this.userData);
+      this.toaster.success('User Profile Updated!', 'SUCCESS!', {
+        timeOut: 5500,
+        closeButton: true,
+        progressBar: true
+      });
       location.reload();
     }
     else{
