@@ -4,6 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { HomeComponent } from './home/home.component';
+import { HomeMarleeComponent } from './home-marlee/home-marlee.component';
 import { PetlistingComponent } from './petlisting/petlisting.component';
 import { ProductlistingComponent } from './productlisting/productlisting.component';
 
@@ -23,7 +24,7 @@ import { LoginDheerajComponent } from './login-dheeraj/login-dheeraj.component';
 import { ForgotComponent} from './forgot-pwd/forgot.component';
 import {RegistrationAdityaComponent} from './registration-aditya/registration-aditya.component';
 import { RegisterAparnaComponent } from './register_aparna/register_aparna.component';
-import { RescueComponent } from './rescue/rescue.component'; 
+import { RescueComponent } from './rescue/rescue.component';
 import { AuthGuard } from './auth.guard';
 import { ProfilePetAdsComponent } from './profile-pet-ads/profile-pet-ads.component';
 import { EventDetailComponent } from './event-detail/event-detail.component';
@@ -39,6 +40,7 @@ import { ConfirmationComponent } from './confirmation/confirmation.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'home_marlee', component: HomeMarleeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'pets', component:  PetlistingComponent },
@@ -62,7 +64,7 @@ const routes: Routes = [
 
 
   // Implemented nested routes https://angular-2-training-book.rangle.io/handout/routing/child_routes.html
-  { path:'profile', 
+  { path:'profile',
     component:ProfileNavComponent,
      canActivate:[AuthGuard],
     children: [

@@ -58,6 +58,7 @@ import { AdoptionFormComponent } from './adoption-form/adoption-form.component';
 import { MyAdoptionsComponent } from './my-adoptions/my-adoptions.component';
 import { AdoptionRequestComponent } from './adoption-request/adoption-request.component';
 import { ConfirmationComponent } from './confirmation/confirmation.component';
+import { HomeMarleeComponent } from './home-marlee/home-marlee.component';
 
 // import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap'
 @NgModule({
@@ -94,7 +95,8 @@ import { ConfirmationComponent } from './confirmation/confirmation.component';
     AdoptionFormComponent,
     MyAdoptionsComponent,
     AdoptionRequestComponent,
-    ConfirmationComponent
+    ConfirmationComponent,
+    HomeMarleeComponent
   ],
   imports: [
     BrowserModule,
