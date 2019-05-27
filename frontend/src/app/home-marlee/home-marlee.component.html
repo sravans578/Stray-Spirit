@@ -34,15 +34,17 @@
     </div>
   </div>
   <div class="row secondary-row">
-    <div class="row">
+    <div class="col-12 title-row">
       <h3>Upcoming Events</h3>
     </div>
-    <div class="row">
-    <div class="card" style="width: 18rem;">
+    <div class="col-12 card-row">
+    <div *ngFor="let event of sampleEvents" class="d-inline-block card" style="width: 18rem;">
       <img class="card-img-top" src="https://www.catcafestudio.com/wp-content/uploads/2018/09/IMG_0266.jpg" alt="Card image cap">
       <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <h5 class="card-title">{{event}}</h5>
+        <p class="card-text">Cat ipsum dolor sit amet, go for world domination lick human with sandpaper tongue but groom
+          yourself 4 hours - checked, have your beauty sleep 18 hours - checked, be fabulous for the rest of the day -
+          checked but eat plants, meow, and throw up because i ate plants. Shake treat bag. </p>
         <a href="#" class="btn btn-primary">Go somewhere</a>
       </div>
     </div>

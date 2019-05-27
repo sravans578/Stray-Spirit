@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeMarleeComponent implements OnInit {
 
+  //TODO: replace with real event objects
+  sampleEvents = ['Event 1', 'Event 2', 'Event 3', 'Event 4', 'Event 5'];
+
   constructor() { }
 
   ngOnInit() {
