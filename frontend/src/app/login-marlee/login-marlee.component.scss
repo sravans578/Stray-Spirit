@@ -1,0 +1,25 @@
+.outer-container{
+  margin-top: 8rem;
+  padding: 1.75rem 5rem;
+}
+
+.login-container{
+  max-width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+
+  .strayspirit-logo{
+    margin: -6.75rem 0 1.75rem 0;
+  }
+
+  .form-container{
+    width: 60%;
+    margin: 1.75rem auto;
+
+    button{
+      margin-top: 1.75rem;
+    }
+  }
+}
+

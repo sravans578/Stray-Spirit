@@ -46,6 +46,8 @@
             <div *ngIf="isUserAuthenticated" class="divider dropdown-divider"></div>
             <a *ngIf="!isUserAuthenticated" class="dropdown-item waves-light" mdbWavesEffect routerLink="/login">Login</a>
             <div *ngIf="!isUserAuthenticated" class="divider dropdown-divider"></div>
+            <a *ngIf="!isUserAuthenticated" class="dropdown-item waves-light" mdbWavesEffect routerLink="/login_marlee">Login (Marlee)</a>
+            <div *ngIf="!isUserAuthenticated" class="divider dropdown-divider"></div>
             <a *ngIf="!isUserAuthenticated" class="dropdown-item waves-light" mdbWavesEffect routerLink="/register">Register</a>
             <div *ngIf="!isUserAuthenticated" class="divider dropdown-divider"></div>
             <button *ngIf="isUserAuthenticated" class="dropdown-item waves-light button" (click)="onLogout()" style="cursor:pointer" mdbWavesEffect>Logout</button>
