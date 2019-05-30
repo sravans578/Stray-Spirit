@@ -17,6 +17,24 @@
     width: 60%;
     margin: 1.75rem auto;
 
+    .text-input{
+      margin-bottom: 0.75rem;
+    }
+
+    .invalid-field{
+      color: red;
+      display: none;
+    }
+
+    .invalid{
+      input{
+        background-color: #ffeded;
+      }
+      .invalid-field{
+        display: block;
+      }
+    }
+
     button{
       margin-top: 1.75rem;
     }

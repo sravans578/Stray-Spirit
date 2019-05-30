@@ -5,12 +5,14 @@
     </div>
     <h1>Login</h1>
     <div class="form-container">
-      <form>
-        <div class="form-group">
-          <input type="text" class="form-control" id="usernameInput" placeholder="Username">
+      <form [formGroup]="loginForm" (ngSubmit)="attemptLogin()">
+        <div class="text-input" [ngClass]="{ 'invalid': submitted && validationChecks.email.errors}">
+          <input type="email" class="form-control" formControlName="email" placeholder="E-mail Address">
+          <p class="small invalid-field">E-mail address invalid.</p>
         </div>
-        <div class="form-group">
-          <input type="password" class="form-control" id="passwordInput" placeholder="Password">
+        <div class="text-input" [ngClass]="{ 'invalid': submitted && validationChecks.password.errors}">
+          <input type="password" class="form-control" formControlName="password" placeholder="Password">
+          <p class="small invalid-field">Password invalid.</p>
         </div>
         <div class="form-check">
           <input type="checkbox" class="form-check-input" id="rememberMe">
