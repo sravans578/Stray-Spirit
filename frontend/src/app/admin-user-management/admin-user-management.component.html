@@ -3,38 +3,44 @@
     <h1>Manage Users</h1>
   </div>
   <div class="row">
-    <div class="categories col-lg-6">
-      <button class="btn-primary btn-lg" (click)="showUsers()">Users</button>
-      <button class="btn-primary btn-lg" (click)="showOrganizations()">Organizations</button>
-      <button class="btn-primary btn-lg" (click)="showAdmins()">Administrators</button>
-    </div>
-  </div>
-  <div class="row">
     <div class="page-content col-12">
       <div class="user-list">
-        <table>
-          <tr>
-            <th>Name</th>
-            <th>Email Address</th>
-            <th>Last Active</th>
-            <th>Admin Privileges</th>
-            <th></th>
-          </tr>
-          <tr *ngFor="let user of currentList">
-            <td>{{user.name}}</td>
-            <td>person@fake.com</td>
-            <td>30-05-2019 1:59 PM</td>
-            <td class="button-box">
-              <button class="btn-success" *ngIf="user.isAdmin; else notAdmin" (click)="toggleAdmin(user.id)">Enabled</button>
-              <ng-template #notAdmin>
-                <button class="btn-light" (click)="toggleAdmin(user.id)">Disabled</button>
-              </ng-template>
-            </td>
-            <td class="button-box">
-              <a title="Delete" (click)="confirmDelete.show()"><i class="fas fa-trash fa-lg"></i></a>
-            </td>
-          </tr>
-        </table>
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a class="nav-link" [ngClass]="{ 'active': tabSelected == 0 }" (click)="showUsers()">Users</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [ngClass]="{ 'active': tabSelected == 1 }" (click)="showOrganizations()">Organizations</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [ngClass]="{ 'active': tabSelected == 2 }" (click)="showAdmins()">Admins</a>
+          </li>
+        </ul>
+        <div class="table-container">
+          <table>
+            <tr>
+              <th>Name</th>
+              <th>Email Address</th>
+              <th>Last Active</th>
+              <th>Admin Privileges</th>
+              <th></th>
+            </tr>
+            <tr *ngFor="let user of currentList">
+              <td>{{user.name}}</td>
+              <td>person@fake.com</td>
+              <td>30-05-2019 1:59 PM</td>
+              <td class="button-box">
+                <button class="btn-success" *ngIf="user.isAdmin; else notAdmin" (click)="toggleAdmin(user.id)">Enabled</button>
+                <ng-template #notAdmin>
+                  <button class="btn-light" (click)="toggleAdmin(user.id)">Disabled</button>
+                </ng-template>
+              </td>
+              <td class="button-box">
+                <a title="Delete" (click)="confirmDelete.show()"><i class="fas fa-trash fa-lg"></i></a>
+              </td>
+            </tr>
+          </table>
+        </div>
       </div>
     </div>
   </div>

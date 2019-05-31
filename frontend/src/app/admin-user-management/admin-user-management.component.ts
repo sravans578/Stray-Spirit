@@ -19,7 +19,8 @@ export class AdminUserManagementComponent implements OnInit {
 
   currentList = this.allUsers;
   showAdminTable = false;
-  startingIndex = 0;
+  //0 - Users, 1 - Organizations, 2 - Admins
+  tabSelected = 0;
 
   constructor() { }
 
@@ -32,10 +33,12 @@ export class AdminUserManagementComponent implements OnInit {
   showUsers(){
     this.currentList = this.allUsers;
     this.showAdminTable = false;
+    this.tabSelected = 0;
   }
   showOrganizations(){
     this.currentList = this.organizations;
     this.showAdminTable = false;
+    this.tabSelected = 1;
   }
   showAdmins(){
     var admins = [];
@@ -46,6 +49,7 @@ export class AdminUserManagementComponent implements OnInit {
     }
     this.currentList = admins;
     this.showAdminTable = true;
+    this.tabSelected = 2;
   }
   toggleAdmin(id){
     //TODO: implement more efficiently with queries once there's a real database to search
