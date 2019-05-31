@@ -17,7 +17,7 @@
           </li>
         </ul>
         <div class="table-container">
-          <table>
+          <table *ngIf="tabSelected != 2">
             <tr>
               <th>Name</th>
               <th>Email Address</th>
@@ -37,6 +37,31 @@
               </td>
               <td class="button-box">
                 <a title="Delete" (click)="confirmDelete.show()"><i class="fas fa-trash fa-lg"></i></a>
+              </td>
+            </tr>
+          </table>
+          <!--Show different table with different options for the admin section-->
+          <table *ngIf="tabSelected == 2">
+            <tr>
+              <th>Username</th>
+              <th>Email Address</th>
+              <th>Regular Admin Privileges</th>
+              <th>Super Admin Privileges</th>
+            </tr>
+            <tr *ngFor="let user of currentList">
+              <td>{{user.name}}</td>
+              <td>person@fake.com</td>
+              <td class="button-box">
+                <button class="btn-success" *ngIf="user.isAdmin; else notAdmin" (click)="toggleAdmin(user.id)">Enabled</button>
+                <ng-template #notAdmin>
+                  <button class="btn-light" (click)="toggleAdmin(user.id)">Disabled</button>
+                </ng-template>
+              </td>
+              <td class="button-box">
+                <button class="btn-success" *ngIf="user.isSuperAdmin; else notSuperAdmin" (click)="toggleSuperAdmin(user.id)">Enabled</button>
+                <ng-template #notSuperAdmin>
+                  <button class="btn-light" (click)="toggleSuperAdmin(user.id)">Disabled</button>
+                </ng-template>
               </td>
             </tr>
           </table>

@@ -61,6 +61,7 @@ import { ConfirmationComponent } from './confirmation/confirmation.component';
 import { HomeMarleeComponent } from './home-marlee/home-marlee.component';
 import { LoginMarleeComponent } from './login-marlee/login-marlee.component';
 import { AdminUserManagementComponent } from './admin-user-management/admin-user-management.component';
+import { AdminApproveContentComponent } from './admin-approve-content/admin-approve-content.component';
 
 // import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap'
 @NgModule({
@@ -100,7 +101,8 @@ import { AdminUserManagementComponent } from './admin-user-management/admin-user
     ConfirmationComponent,
     HomeMarleeComponent,
     LoginMarleeComponent,
-    AdminUserManagementComponent
+    AdminUserManagementComponent,
+    AdminApproveContentComponent
   ],
   imports: [
     BrowserModule,

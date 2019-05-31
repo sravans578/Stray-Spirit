@@ -39,6 +39,7 @@ import { AdoptionRequestComponent } from './adoption-request/adoption-request.co
 import { ConfirmationComponent } from './confirmation/confirmation.component';
 
 import { AdminUserManagementComponent} from "./admin-user-management/admin-user-management.component";
+import { AdminApproveContentComponent} from "./admin-approve-content/admin-approve-content.component";
 
 
 const routes: Routes = [
@@ -55,6 +56,8 @@ const routes: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'register-aparna', component: RegisterAparnaComponent },
   { path: 'event-list', component: EventListComponent },
+  { path: 'user_management', component: AdminUserManagementComponent },
+  { path: 'approve_content', component: AdminApproveContentComponent },
 
   { path: 'login-Dheeraj',component:LoginDheerajComponent},
   { path: 'rescue', component: RescueComponent },
@@ -82,8 +85,6 @@ const routes: Routes = [
       { path: 'adoption-request/:id', component: AdoptionRequestComponent }
     ]
   },
-  //TODO: add children
-  { path: 'user_management', component: AdminUserManagementComponent },
   {path:'product/:id',component:ProductDetailPageComponent},
   { path: '**', component: NotfoundComponent }
 ];
