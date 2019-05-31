@@ -1,0 +1,52 @@
+.outer-container{
+  margin: 6.25rem 1.75rem 1.75rem 0;
+  overflow: hidden;
+
+  .page-title{
+    margin-left: 4rem;
+  }
+  .categories{
+    text-align: center;
+    margin: 1rem auto 0 auto;
+    button{
+      margin-right: 1rem;
+    }
+  }
+
+  table{
+    width: 100%;
+
+    .button-box{
+      text-align: center;
+      button{
+        width: 60%;
+      }
+    }
+    th{
+      font-weight: bold;
+    }
+    tr{
+      height: 3rem;
+    }
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+    td, th {
+      border: 1px solid #dddddd;
+      padding-left: 0.5rem;
+    }
+  }
+}
+.side-menu{
+  width: 14rem;
+  height: 100%;
+}
+.user-list{
+  margin: 1.75rem 4rem;
+  max-height: 28rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.sidebar-items{
+  //style: none;
+}

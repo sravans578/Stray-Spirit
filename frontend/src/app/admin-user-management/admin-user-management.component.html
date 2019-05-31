@@ -1,0 +1,40 @@
+<div class="outer-container">
+  <div class="row page-title">
+    <h1>Manage Users</h1>
+  </div>
+  <div class="row">
+    <div class="categories col-lg-6">
+      <button class="btn-primary btn-lg">Users</button>
+      <button class="btn-primary btn-lg">Organizations</button>
+      <button class="btn-primary btn-lg">Administrators</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="page-content col-12">
+      <div class="user-list">
+        <table>
+          <tr>
+            <th>Name</th>
+            <th>Email Address</th>
+            <th>Last Active</th>
+            <th>Admin Privileges</th>
+            <th></th>
+          </tr>
+          <tr *ngFor="let user of allUsers">
+            <td>{{user.name}}</td>
+            <td>person@fake.com</td>
+            <td>30-05-2019 1:59 PM</td>
+            <td class="button-box">
+              <button class="btn-success" *ngIf="user.isAdmin; else notAdmin">Enabled</button>
+              <ng-template #notAdmin>
+                <button class="btn-light">Disabled</button>
+              </ng-template>
+            </td>
+            <td class="button-box"><a title="Delete" (click)="confirmDelete()"><i class="fas fa-trash fa-lg"></i></a></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+

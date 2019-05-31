@@ -38,6 +38,8 @@ import { EditInventoryComponent } from './edit-inventory/edit-inventory.componen
 import { AdoptionRequestComponent } from './adoption-request/adoption-request.component';
 import { ConfirmationComponent } from './confirmation/confirmation.component';
 
+import { AdminUserManagementComponent} from "./admin-user-management/admin-user-management.component";
+
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -46,7 +48,7 @@ const routes: Routes = [
   { path: 'login_marlee', component: LoginMarleeComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'pets', component:  PetlistingComponent },
-  { path: 'shop', component: ProductlistingComponent},
+  { path: 'shop', component: ProductlistingComponent },
   { path: 'pet-profile/:id',component: PetProfilePageComponent},
   { path:'why-adopt-cat' ,component:WhyAdoptCatComponent},
   { path: 'why-adopt-dog',component:WhyadoptdogComponent},
@@ -80,6 +82,8 @@ const routes: Routes = [
       { path: 'adoption-request/:id', component: AdoptionRequestComponent }
     ]
   },
+  //TODO: add children
+  { path: 'user_management', component: AdminUserManagementComponent },
   {path:'product/:id',component:ProductDetailPageComponent},
   { path: '**', component: NotfoundComponent }
 ];
