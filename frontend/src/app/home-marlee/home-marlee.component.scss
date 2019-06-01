@@ -25,11 +25,30 @@
       .card-text {
         max-height: 6.75rem;
         overflow-y: hidden;
-        //text-overflow: ellipsis;
+      }
+      .link-container{
+        width: 100%;
+        text-align: right;
       }
     }
   }
   .title-row{
       margin-top: 1.75rem;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .outer-container{
+    padding: 0;
+    margin-top: 4rem;
+  }
+  .carousel-img{
+    max-height: 13rem;
+  }
+  .mission-statement{
+    padding: 1.75rem;
+    max-height: 16rem;
+    overflow-y: scroll;
+    text-align: center;
   }
 }
