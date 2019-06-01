@@ -52,3 +52,13 @@
     text-align: center;
   }
 }
+
+@media only screen and (max-width: 1024px) {
+  .outer-container{
+    padding: 1rem;
+
+    .main-row{
+      max-height: fit-content;
+    }
+  }
+}
