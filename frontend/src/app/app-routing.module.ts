@@ -23,7 +23,7 @@ import { LoginDheerajComponent } from './login-dheeraj/login-dheeraj.component';
 import { ForgotComponent} from './forgot-pwd/forgot.component';
 import {RegistrationAdityaComponent} from './registration-aditya/registration-aditya.component';
 import { RegisterAparnaComponent } from './register_aparna/register_aparna.component';
-import { RescueComponent } from './rescue/rescue.component'; 
+import { RescueComponent } from './rescue/rescue.component';
 import { AuthGuard } from './auth.guard';
 import { ProfilePetAdsComponent } from './profile-pet-ads/profile-pet-ads.component';
 import { EventDetailComponent } from './event-detail/event-detail.component';
@@ -36,19 +36,24 @@ import { EditInventoryComponent } from './edit-inventory/edit-inventory.componen
 import { AdoptionRequestComponent } from './adoption-request/adoption-request.component';
 import { ConfirmationComponent } from './confirmation/confirmation.component';
 
+import { AdminUserManagementComponent} from "./admin-user-management/admin-user-management.component";
+import { AdminApproveContentComponent} from "./admin-approve-content/admin-approve-content.component";
+
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'pets', component:  PetlistingComponent },
-  { path: 'shop', component: ProductlistingComponent},
+  { path: 'shop', component: ProductlistingComponent },
   { path: 'pet-profile/:id',component: PetProfilePageComponent},
   { path:'why-adopt-cat' ,component:WhyAdoptCatComponent},
   { path: 'why-adopt-dog',component:WhyadoptdogComponent},
   { path: 'contact', component: ContactComponent },
   { path: 'register-aparna', component: RegisterAparnaComponent },
   { path: 'event-list', component: EventListComponent },
+  { path: 'user_management', component: AdminUserManagementComponent },
+  { path: 'approve_content', component: AdminApproveContentComponent },
 
   { path: 'login-Dheeraj',component:LoginDheerajComponent},
   { path: 'rescue', component: RescueComponent },
@@ -62,7 +67,7 @@ const routes: Routes = [
 
 
   // Implemented nested routes https://angular-2-training-book.rangle.io/handout/routing/child_routes.html
-  { path:'profile', 
+  { path:'profile',
     component:ProfileNavComponent,
      canActivate:[AuthGuard],
     children: [
