@@ -16,6 +16,7 @@ import {ProductDetailPageComponent} from './product-detail-page/product-detail-p
 import { WhyadoptdogComponent } from './whyadoptdog/whyadoptdog.component';
 import { ContactComponent } from './contact/contact.component';
 
+import { DonateLakshmiComponent } from './donate-lakshmi/donate-lakshmi.component';
 
 import { LoginDheerajComponent } from './login-dheeraj/login-dheeraj.component';
 
@@ -49,6 +50,7 @@ const routes: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'register-aparna', component: RegisterAparnaComponent },
   { path: 'event-list', component: EventListComponent },
+  {path: 'donate-lakshmi', component: DonateLakshmiComponent},
 
   { path: 'login-Dheeraj',component:LoginDheerajComponent},
   { path: 'rescue', component: RescueComponent },
