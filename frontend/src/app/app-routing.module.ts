@@ -38,6 +38,7 @@ import { AdoptionRequestComponent } from './adoption-request/adoption-request.co
 import { ConfirmationComponent } from './confirmation/confirmation.component';
 
 import { ChangePasswordLakshmiComponent } from './change-password-lakshmi/change-password-lakshmi.component';
+import { ForgotpasswordLakshmiComponent } from './forgotpassword-lakshmi/forgotpassword-lakshmi.component';
 
 
 const routes: Routes = [
@@ -65,6 +66,7 @@ const routes: Routes = [
   {path:'adopt/:id',component:AdoptionFormComponent, canActivate:[AuthGuard]},
 
   {path: 'changePassword-lakshmi', component: ChangePasswordLakshmiComponent},
+  {path: 'forgotpassword-lakshmi', component: ForgotpasswordLakshmiComponent},
 
   // Implemented nested routes https://angular-2-training-book.rangle.io/handout/routing/child_routes.html
   { path:'profile', 
