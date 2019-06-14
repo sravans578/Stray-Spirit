@@ -59,6 +59,7 @@ import { MyAdoptionsComponent } from './my-adoptions/my-adoptions.component';
 import { AdoptionRequestComponent } from './adoption-request/adoption-request.component';
 import { ConfirmationComponent } from './confirmation/confirmation.component';
 import { DonateLakshmiComponent } from './donate-lakshmi/donate-lakshmi.component';
+import { ChangePasswordLakshmiComponent } from './change-password-lakshmi/change-password-lakshmi.component';
 
 // import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap'
 @NgModule({
@@ -96,7 +97,8 @@ import { DonateLakshmiComponent } from './donate-lakshmi/donate-lakshmi.componen
     MyAdoptionsComponent,
     AdoptionRequestComponent,
     ConfirmationComponent,
-    DonateLakshmiComponent
+    DonateLakshmiComponent,
+    ChangePasswordLakshmiComponent
   ],
   imports: [
     BrowserModule,
