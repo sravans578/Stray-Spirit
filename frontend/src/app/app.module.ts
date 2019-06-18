@@ -58,9 +58,35 @@ import { AdoptionFormComponent } from './adoption-form/adoption-form.component';
 import { MyAdoptionsComponent } from './my-adoptions/my-adoptions.component';
 import { AdoptionRequestComponent } from './adoption-request/adoption-request.component';
 import { ConfirmationComponent } from './confirmation/confirmation.component';
+import { AdminUserManagementComponent } from './admin-user-management/admin-user-management.component';
+import { AdminApproveContentComponent } from './admin-approve-content/admin-approve-content.component';
 import { DonateLakshmiComponent } from './donate-lakshmi/donate-lakshmi.component';
 import { ChangePasswordLakshmiComponent } from './change-password-lakshmi/change-password-lakshmi.component';
 import { ForgotpasswordLakshmiComponent } from './forgotpassword-lakshmi/forgotpassword-lakshmi.component';
+import { HomepageSravanComponent } from './homepage-sravan/homepage-sravan.component';
+import { SravanForumComponent } from './sravan-forum/sravan-forum.component';
+import { SravanChangepasswordComponent } from './sravan-changepassword/sravan-changepassword.component';
+import { FaqSravanComponent } from './faq-sravan/faq-sravan.component';
+import { DonateSravanComponent } from './donate-sravan/donate-sravan.component';
+import { ChangePasswordShehzeenComponent } from './change-password-shehzeen/change-password-shehzeen.component';
+import { HomepageShehzeenComponent } from './homepage-shehzeen/homepage-shehzeen.component';
+import { ProductReviewShehzeenComponent } from './product-review-shehzeen/product-review-shehzeen.component';
+import { DonateShehzeenComponent } from './donate-shehzeen/donate-shehzeen.component';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { DiscussionformsAjithComponent } from './discussionforms-ajith/discussionforms-ajith.component';
+import { DonationsAjithComponent } from './donations-ajith/donations-ajith.component';
+import { ShoppingcartAjithComponent } from './shoppingcart-ajith/shoppingcart-ajith.component';
+import { AddStoryRichaComponent } from './add-story-richa/add-story-richa.component';
+import { BlogStoriesRichaComponent } from './blog-stories-richa/blog-stories-richa.component';
+import { ForgotPasswordRichaComponent } from './forgot-password-richa/forgot-password-richa.component';
+import { AdoptRichaComponent } from './adopt-richa/adopt-richa.component';
+import { HomeRichaComponent } from './home-richa/home-richa.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+
+
+
+
 
 // import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap'
 @NgModule({
@@ -98,11 +124,31 @@ import { ForgotpasswordLakshmiComponent } from './forgotpassword-lakshmi/forgotp
     MyAdoptionsComponent,
     AdoptionRequestComponent,
     ConfirmationComponent,
+    AdminUserManagementComponent,
+    AdminApproveContentComponent,
     DonateLakshmiComponent,
     ChangePasswordLakshmiComponent,
-    ForgotpasswordLakshmiComponent
+    ForgotpasswordLakshmiComponent,
+    HomepageSravanComponent,
+    SravanForumComponent,
+    SravanChangepasswordComponent,
+    FaqSravanComponent,
+    DonateSravanComponent,
+    ChangePasswordShehzeenComponent,
+    HomepageShehzeenComponent,
+    ProductReviewShehzeenComponent,
+    DonateShehzeenComponent,
+    DiscussionformsAjithComponent,
+    DonationsAjithComponent,
+    ShoppingcartAjithComponent,
+    AddStoryRichaComponent,
+    BlogStoriesRichaComponent,
+    ForgotPasswordRichaComponent,
+    HomeRichaComponent,
+    AdoptRichaComponent
   ],
   imports: [
+    MatProgressBarModule,
     BrowserModule,
     AppRoutingModule,
     MDBBootstrapModule.forRoot(),
@@ -124,7 +170,9 @@ import { ForgotpasswordLakshmiComponent } from './forgotpassword-lakshmi/forgotp
     ToastrModule.forRoot(),
     MatExpansionModule,
     MatProgressSpinnerModule,
-    MatStepperModule
+    MatStepperModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
