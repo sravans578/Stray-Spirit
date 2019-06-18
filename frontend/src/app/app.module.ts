@@ -68,6 +68,10 @@ import { SravanForumComponent } from './sravan-forum/sravan-forum.component';
 import { SravanChangepasswordComponent } from './sravan-changepassword/sravan-changepassword.component';
 import { FaqSravanComponent } from './faq-sravan/faq-sravan.component';
 import { DonateSravanComponent } from './donate-sravan/donate-sravan.component';
+import { ChangePasswordShehzeenComponent } from './change-password-shehzeen/change-password-shehzeen.component';
+import { HomepageShehzeenComponent } from './homepage-shehzeen/homepage-shehzeen.component';
+import { ProductReviewShehzeenComponent } from './product-review-shehzeen/product-review-shehzeen.component';
+import { DonateShehzeenComponent } from './donate-shehzeen/donate-shehzeen.component';
 
 // import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap'
 @NgModule({
@@ -114,7 +118,11 @@ import { DonateSravanComponent } from './donate-sravan/donate-sravan.component';
     SravanForumComponent,
     SravanChangepasswordComponent,
     FaqSravanComponent,
-    DonateSravanComponent
+    DonateSravanComponent,
+    ChangePasswordShehzeenComponent,
+    HomepageShehzeenComponent,
+    ProductReviewShehzeenComponent,
+    DonateShehzeenComponent
   ],
   imports: [
     BrowserModule,
