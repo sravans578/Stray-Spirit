@@ -65,6 +65,9 @@ import { ChangePasswordLakshmiComponent } from './change-password-lakshmi/change
 import { ForgotpasswordLakshmiComponent } from './forgotpassword-lakshmi/forgotpassword-lakshmi.component';
 import { HomepageSravanComponent } from './homepage-sravan/homepage-sravan.component';
 import { SravanForumComponent } from './sravan-forum/sravan-forum.component';
+import { SravanChangepasswordComponent } from './sravan-changepassword/sravan-changepassword.component';
+import { FaqSravanComponent } from './faq-sravan/faq-sravan.component';
+import { DonateSravanComponent } from './donate-sravan/donate-sravan.component';
 
 // import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap'
 @NgModule({
@@ -108,7 +111,10 @@ import { SravanForumComponent } from './sravan-forum/sravan-forum.component';
     ChangePasswordLakshmiComponent,
     ForgotpasswordLakshmiComponent,
     HomepageSravanComponent,
-    SravanForumComponent
+    SravanForumComponent,
+    SravanChangepasswordComponent,
+    FaqSravanComponent,
+    DonateSravanComponent
   ],
   imports: [
     BrowserModule,
