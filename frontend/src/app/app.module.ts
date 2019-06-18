@@ -68,6 +68,10 @@ import { SravanForumComponent } from './sravan-forum/sravan-forum.component';
 import { SravanChangepasswordComponent } from './sravan-changepassword/sravan-changepassword.component';
 import { FaqSravanComponent } from './faq-sravan/faq-sravan.component';
 import { DonateSravanComponent } from './donate-sravan/donate-sravan.component';
+import { ChangePasswordShehzeenComponent } from './change-password-shehzeen/change-password-shehzeen.component';
+import { HomepageShehzeenComponent } from './homepage-shehzeen/homepage-shehzeen.component';
+import { ProductReviewShehzeenComponent } from './product-review-shehzeen/product-review-shehzeen.component';
+import { DonateShehzeenComponent } from './donate-shehzeen/donate-shehzeen.component';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { DiscussionformsAjithComponent } from './discussionforms-ajith/discussionforms-ajith.component';
 import { DonationsAjithComponent } from './donations-ajith/donations-ajith.component';
@@ -126,6 +130,10 @@ import { HomeRichaComponent } from './home-richa/home-richa.component';
     SravanChangepasswordComponent,
     FaqSravanComponent,
     DonateSravanComponent,
+    ChangePasswordShehzeenComponent,
+    HomepageShehzeenComponent,
+    ProductReviewShehzeenComponent,
+    DonateShehzeenComponent,
     DiscussionformsAjithComponent,
     DonationsAjithComponent,
     ShoppingcartAjithComponent,
