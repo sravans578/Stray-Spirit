@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<div class="mt-85">
+    <h2 class="text-center" style="margin-top:25px">Cart</h2>
+    <div class="row mobile-header heading-border" style="margin-top:25px" >
+        <div class="col-md-2">Product</div>
+        <div class="col-md-4"></div>
+        <div class="col-md-1">Quantity</div>
+        <div class="col-md-1">Price</div>
+        <div class="col-md-1">SubTotal</div>
+        <div class="col-md-3">Action</div>
+      </div>
+      <mdb-card style="margin-left: 17%;margin-right: 7%">
+        <div class="row" >
+            <div class="col-md-2 col-sm-4">
+                <img src="../assets/images/PetProductImages/petproduct.jpg" alt="petproduct" class="img-fluid">
+            </div>
+            <div class="col-md-4 col-sm-8" style="margin-top:4%">
+              <label style="margin-left: 1%">Dog Food</label>
+              <div class="price_mobile_both">
+                  <label style="margin-left:5%"> $20</label>
+                  <input [(ngModel)]="product1count" style="margin-left:18%;width: 20%" min= "1" type="number"  value="1" >
+              </div>
+            </div>
+            <div class="col-md-1 price_quantity_lap" style="margin-left: 7%;margin-top: 4%;">
+                <input  [(ngModel)]="product1mobilecount" style="width: 100%" class="col-xs-3" min= "1" type="number"  value="1" >
+            </div>
+            <div class="col-md-1 price_quantity_lap" style="margin-top:4%">
+                <label >
+                  $ 20
+                </label>
+            </div>
+            <div class="col-md-1 col-sm-6 price_quantity_lap" style="margin-top:4%">
+                <p >
+                   $ 20
+                  </p>
+            </div>
+            <div class="col-md-2 col-sm-6 " style="margin-top:4%">
+                <div class="remove_product_desktop" (click)="removeproduct()" >
+                  <i class="fas fa-trash-alt" ></i> <span> Remove</span>
+                </div>
+                <div class="remove_product_mobile" (click)="removeproduct()" >
+                    <i class="fas fa-trash-alt" ></i> <span> Remove</span>
+                  </div>
+              </div>
+        </div>
+      </mdb-card>
+      <mdb-card style="margin-left: 17%;margin-right: 7%;margin-top:2%">
+          <div class="row" >
+              <div class="col-md-2 col-sm-4">
+                  <img src="../assets/images/PetProductImages/petproduct.jpg" alt="petproduct" class="img-fluid">
+              </div>
+              <div class="col-md-4 col-sm-8" style="margin-top:4%">
+                <label style="margin-left: 1%">Dog Food</label>
+                <div class="price_mobile_both">
+                    <label style="margin-left:5%"> $20</label>
+                    <input [(ngModel)]="product2count" style="margin-left:18%;width: 20%" min= "1" type="number"  value="1" >
+                </div>
+              </div>
+              <div class="col-md-1 price_quantity_lap" style="margin-left: 7%;margin-top: 4%;">
+                  <input  [(ngModel)]="product2mobilecount" style="width: 100%" class="col-xs-3" min= "1" type="number"  value="1" >
+              </div>
+              <div class="col-md-1 price_quantity_lap" style="margin-top:4%">
+                  <label >
+                    $ 20
+                  </label>
+              </div>
+              <div class="col-md-1 col-sm-6 price_quantity_lap" style="margin-top:4%">
+                  <p >
+                     $ 20
+                    </p>
+              </div>
+              <div class="col-md-2 col-sm-6 " style="margin-top:4%">
+                  <div class="remove_product_desktop" (click)="removeproduct()" >
+                    <i class="fas fa-trash-alt" ></i> <span> Remove</span>
+                  </div>
+                  <div class="remove_product_mobile" (click)="removeproduct()" >
+                      <i class="fas fa-trash-alt" ></i> <span> Remove</span>
+                    </div>
+                </div>
+          </div>
+        </mdb-card>
+        <div class="row">
+          <div class="col-sm-8"></div>
+          <div class="col-sm-4 desktop-total" style="margin-left:-5%;margin-top:3%">
+            <div class="row">
+            <label class="col-sm">Grand Total</label>
+            <label class="col-sm">$ 40</label>
+            <button  class="col-sm check-out-button" (click)="checkout()">Checkout</button>
+          </div> 
+          </div>
+          <div class="col-sm-4 mobile-total" style="margin-left:17%;margin-top:3%">
+              <label class="col-sm-2">Grand Total:  $ 40</label>
+              <button class="check-out-button" style="width: 80%" (click)="checkout()">Checkout</button>
+            
+            </div>
+        </div>
+</div>

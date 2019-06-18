@@ -72,6 +72,11 @@ import { ChangePasswordShehzeenComponent } from './change-password-shehzeen/chan
 import { HomepageShehzeenComponent } from './homepage-shehzeen/homepage-shehzeen.component';
 import { ProductReviewShehzeenComponent } from './product-review-shehzeen/product-review-shehzeen.component';
 import { DonateShehzeenComponent } from './donate-shehzeen/donate-shehzeen.component';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { DiscussionformsAjithComponent } from './discussionforms-ajith/discussionforms-ajith.component';
+import { DonationsAjithComponent } from './donations-ajith/donations-ajith.component';
+import { ShoppingcartAjithComponent } from './shoppingcart-ajith/shoppingcart-ajith.component';
+
 
 // import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap'
 @NgModule({
@@ -122,9 +127,13 @@ import { DonateShehzeenComponent } from './donate-shehzeen/donate-shehzeen.compo
     ChangePasswordShehzeenComponent,
     HomepageShehzeenComponent,
     ProductReviewShehzeenComponent,
-    DonateShehzeenComponent
+    DonateShehzeenComponent,
+    DiscussionformsAjithComponent,
+    DonationsAjithComponent,
+    ShoppingcartAjithComponent
   ],
   imports: [
+    MatProgressBarModule,
     BrowserModule,
     AppRoutingModule,
     MDBBootstrapModule.forRoot(),
