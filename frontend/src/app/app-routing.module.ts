@@ -46,6 +46,18 @@ import { ForgotPasswordRichaComponent } from './forgot-password-richa/forgot-pas
 import { BlogStoriesRichaComponent } from './blog-stories-richa/blog-stories-richa.component';
 import { AddStoryRichaComponent } from './add-story-richa/add-story-richa.component';
 import { AdoptRichaComponent } from './adopt-richa/adopt-richa.component';
+import { HomepageSravanComponent } from './homepage-sravan/homepage-sravan.component';
+import { SravanForumComponent } from './sravan-forum/sravan-forum.component';
+import { FaqSravanComponent } from './faq-sravan/faq-sravan.component';
+import { DonateSravanComponent } from './donate-sravan/donate-sravan.component';
+import { ChangePasswordShehzeenComponent } from './change-password-shehzeen/change-password-shehzeen.component';
+import { DonateShehzeenComponent } from './donate-shehzeen/donate-shehzeen.component';
+import { HomepageShehzeenComponent } from './homepage-shehzeen/homepage-shehzeen.component';
+import { ProductReviewShehzeenComponent } from './product-review-shehzeen/product-review-shehzeen.component';
+import { DonationsAjithComponent } from './donations-ajith/donations-ajith.component';
+import { ShoppingcartAjithComponent } from './shoppingcart-ajith/shoppingcart-ajith.component';
+import { DiscussionformsAjithComponent } from './discussionforms-ajith/discussionforms-ajith.component';
+import { SravanChangepasswordComponent } from './sravan-changepassword/sravan-changepassword.component';
 
 
 const routes: Routes = [
@@ -60,9 +72,6 @@ const routes: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'register-aparna', component: RegisterAparnaComponent },
   { path: 'event-list', component: EventListComponent },
-  { path: 'user_management', component: AdminUserManagementComponent },
-  { path: 'approve_content', component: AdminApproveContentComponent },
-  { path: 'donate-lakshmi', component: DonateLakshmiComponent},
 
   { path: 'login-Dheeraj',component:LoginDheerajComponent},
   { path: 'rescue', component: RescueComponent },
@@ -74,14 +83,21 @@ const routes: Routes = [
   {path:'event-detail/:id',component:EventDetailComponent},
   {path:'adopt/:id',component:AdoptionFormComponent, canActivate:[AuthGuard]},
 
-  {path: 'changePassword-lakshmi', component: ChangePasswordLakshmiComponent},
-  {path: 'forgotpassword-lakshmi', component: ForgotpasswordLakshmiComponent},
   {path: 'forgot-pwd',component:ForgotComponent},
-  {path:'forgotpassword-richa',component:ForgotPasswordRichaComponent},
-  {path:'blogs-richa',component:BlogStoriesRichaComponent},
-  {path:'addstory-richa',component:AddStoryRichaComponent},
-  {path:'adoptPet-richa',component:AdoptRichaComponent},
+
+//New Routes
+  {path:'forgotpassword',component:ForgotPasswordRichaComponent},
+  {path:'blogs',component:BlogStoriesRichaComponent},
   {path:'home-richa',component:HomeRichaComponent},
+  {path:'change-password',component:SravanChangepasswordComponent},
+  {path:'home-sraven',component:HomepageSravanComponent},
+  {path:'forums',component:SravanForumComponent},
+  {path:'faq',component:FaqSravanComponent},
+  {path:'donate',component:DonateShehzeenComponent},
+  {path:'product-detail/:id',component:ProductReviewShehzeenComponent},
+  {path:'cart',component:ShoppingcartAjithComponent},
+  { path: 'user_management', component: AdminUserManagementComponent },
+  { path: 'approve_content', component: AdminApproveContentComponent },
 
   // Implemented nested routes https://angular-2-training-book.rangle.io/handout/routing/child_routes.html
   { path:'profile',
@@ -95,7 +111,8 @@ const routes: Routes = [
       { path: 'edit-pet/:id', component: EditPetsComponent },
       {path: 'edit-inventory/:id', component: EditInventoryComponent},
       { path: 'my-adoptions', component: MyAdoptionsComponent },
-      { path: 'adoption-request/:id', component: AdoptionRequestComponent }
+      { path: 'adoption-request/:id', component: AdoptionRequestComponent },
+      {  path:'addstory',component:AddStoryRichaComponent}, // new route
     ]
   },
   {path:'product/:id',component:ProductDetailPageComponent},

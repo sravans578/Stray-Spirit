@@ -81,6 +81,10 @@ import { BlogStoriesRichaComponent } from './blog-stories-richa/blog-stories-ric
 import { ForgotPasswordRichaComponent } from './forgot-password-richa/forgot-password-richa.component';
 import { AdoptRichaComponent } from './adopt-richa/adopt-richa.component';
 import { HomeRichaComponent } from './home-richa/home-richa.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+
+
 
 
 
@@ -166,7 +170,9 @@ import { HomeRichaComponent } from './home-richa/home-richa.component';
     ToastrModule.forRoot(),
     MatExpansionModule,
     MatProgressSpinnerModule,
-    MatStepperModule
+    MatStepperModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
