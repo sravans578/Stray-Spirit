@@ -41,6 +41,11 @@ import { AdminUserManagementComponent} from "./admin-user-management/admin-user-
 import { AdminApproveContentComponent} from "./admin-approve-content/admin-approve-content.component";
 import { ChangePasswordLakshmiComponent } from './change-password-lakshmi/change-password-lakshmi.component';
 import { ForgotpasswordLakshmiComponent } from './forgotpassword-lakshmi/forgotpassword-lakshmi.component';
+import { HomeRichaComponent } from './home-richa/home-richa.component';
+import { ForgotPasswordRichaComponent } from './forgot-password-richa/forgot-password-richa.component';
+import { BlogStoriesRichaComponent } from './blog-stories-richa/blog-stories-richa.component';
+import { AddStoryRichaComponent } from './add-story-richa/add-story-richa.component';
+import { AdoptRichaComponent } from './adopt-richa/adopt-richa.component';
 
 
 const routes: Routes = [
@@ -71,6 +76,12 @@ const routes: Routes = [
 
   {path: 'changePassword-lakshmi', component: ChangePasswordLakshmiComponent},
   {path: 'forgotpassword-lakshmi', component: ForgotpasswordLakshmiComponent},
+  {path: 'forgot-pwd',component:ForgotComponent},
+  {path:'forgotpassword-richa',component:ForgotPasswordRichaComponent},
+  {path:'blogs-richa',component:BlogStoriesRichaComponent},
+  {path:'addstory-richa',component:AddStoryRichaComponent},
+  {path:'adoptPet-richa',component:AdoptRichaComponent},
+  {path:'home-richa',component:HomeRichaComponent},
 
   // Implemented nested routes https://angular-2-training-book.rangle.io/handout/routing/child_routes.html
   { path:'profile',

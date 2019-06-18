@@ -1,0 +1,60 @@
+<!-- Developed by Richa Khatri (B00792218) - Richa.khatri@dal.ca -->
+<div class="container mt-85">
+  <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+          <div class="container">
+              <h2 class="text-center mt-25">Tell your Story</h2>
+              <!--Form Begins-->
+              <form name="addStoryForm" [formGroup]="addStoryForm" (submit)="onSubmit()">
+                  <!--Title-->
+                  <div class="col-sm">
+                      <div class="md-form">
+                          <input mdbInputDirective type="text" id="storyTitle" class="form-control" name="storyTitle"
+                              formControlName="storyTitle"
+                              [ngClass]="{'is-invalid':addStoryForm.get('storyTitle').touched && addStoryForm.get('storyTitle').invalid}">
+                          <label for="storyTitle" class="">Title *</label>
+                          <div *ngIf="addStoryForm.get('storyTitle').touched && addStoryForm.get('storyTitle').invalid"
+                              class="invalid-feedback">
+                              <div *ngIf="addStoryForm.get('storyTitle').errors.required">Title is required</div>
+                          </div>
+                      </div>
+                  </div>
+                  <!--/Title-->
+
+                  <!--Content-->
+                  <div class="col-sm">
+                      <div class="md-form">
+                          <input mdbInputDirective type="text" id="content" class="form-control" name="content"
+                              formControlName="content"
+                              [ngClass]="{'is-invalid':addStoryForm.get('content').touched && addStoryForm.get('content').invalid}">
+                          <label for="content" class="">Content *</label>
+                          <div *ngIf="addStoryForm.get('content').touched && addStoryForm.get('content').invalid"
+                              class="invalid-feedback">
+                              <div *ngIf="addStoryForm.get('content').errors.required">Content is required</div>
+                          </div>
+                      </div>
+                  </div>
+                  <!--/Content-->
+
+                  <!--File Upload-->
+                  <div class="md-form">
+                      <input #myInput name="imageUrl" type="file" accept="image/*" />
+                  </div>
+                  <!--File Upload-->
+
+                  <!--Add button-->
+                  <button mdbBtn type="submit" color="indigo" mdbWavesEffect
+                      [disabled]="!addStoryForm.valid">Add</button>
+                  <!--/Add button-->
+                  
+
+                  <br />
+                  <!--Add Success Message-->
+                  <p><b>{{myTxt}}</b></p>
+                  <!--/Add Success Message-->
+              </form>
+              <!--Form Ends-->
+          </div>
+      </div>
+  </div>
+</div>

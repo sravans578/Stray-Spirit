@@ -72,6 +72,12 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { DiscussionformsAjithComponent } from './discussionforms-ajith/discussionforms-ajith.component';
 import { DonationsAjithComponent } from './donations-ajith/donations-ajith.component';
 import { ShoppingcartAjithComponent } from './shoppingcart-ajith/shoppingcart-ajith.component';
+import { AddStoryRichaComponent } from './add-story-richa/add-story-richa.component';
+import { BlogStoriesRichaComponent } from './blog-stories-richa/blog-stories-richa.component';
+import { ForgotPasswordRichaComponent } from './forgot-password-richa/forgot-password-richa.component';
+import { AdoptRichaComponent } from './adopt-richa/adopt-richa.component';
+import { HomeRichaComponent } from './home-richa/home-richa.component';
+
 
 
 // import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap'
@@ -122,7 +128,12 @@ import { ShoppingcartAjithComponent } from './shoppingcart-ajith/shoppingcart-aj
     DonateSravanComponent,
     DiscussionformsAjithComponent,
     DonationsAjithComponent,
-    ShoppingcartAjithComponent
+    ShoppingcartAjithComponent,
+    AddStoryRichaComponent,
+    BlogStoriesRichaComponent,
+    ForgotPasswordRichaComponent,
+    HomeRichaComponent,
+    AdoptRichaComponent
   ],
   imports: [
     MatProgressBarModule,
