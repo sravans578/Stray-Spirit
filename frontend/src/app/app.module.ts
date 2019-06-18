@@ -60,6 +60,9 @@ import { AdoptionRequestComponent } from './adoption-request/adoption-request.co
 import { ConfirmationComponent } from './confirmation/confirmation.component';
 import { AdminUserManagementComponent } from './admin-user-management/admin-user-management.component';
 import { AdminApproveContentComponent } from './admin-approve-content/admin-approve-content.component';
+import { DonateLakshmiComponent } from './donate-lakshmi/donate-lakshmi.component';
+import { ChangePasswordLakshmiComponent } from './change-password-lakshmi/change-password-lakshmi.component';
+import { ForgotpasswordLakshmiComponent } from './forgotpassword-lakshmi/forgotpassword-lakshmi.component';
 
 // import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap'
 @NgModule({
@@ -99,6 +102,9 @@ import { AdminApproveContentComponent } from './admin-approve-content/admin-appr
     ConfirmationComponent,
     AdminUserManagementComponent,
     AdminApproveContentComponent
+    DonateLakshmiComponent,
+    ChangePasswordLakshmiComponent,
+    ForgotpasswordLakshmiComponent
   ],
   imports: [
     BrowserModule,

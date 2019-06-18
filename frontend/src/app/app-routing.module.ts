@@ -16,6 +16,7 @@ import {ProductDetailPageComponent} from './product-detail-page/product-detail-p
 import { WhyadoptdogComponent } from './whyadoptdog/whyadoptdog.component';
 import { ContactComponent } from './contact/contact.component';
 
+import { DonateLakshmiComponent } from './donate-lakshmi/donate-lakshmi.component';
 
 import { LoginDheerajComponent } from './login-dheeraj/login-dheeraj.component';
 
@@ -38,6 +39,8 @@ import { ConfirmationComponent } from './confirmation/confirmation.component';
 
 import { AdminUserManagementComponent} from "./admin-user-management/admin-user-management.component";
 import { AdminApproveContentComponent} from "./admin-approve-content/admin-approve-content.component";
+import { ChangePasswordLakshmiComponent } from './change-password-lakshmi/change-password-lakshmi.component';
+import { ForgotpasswordLakshmiComponent } from './forgotpassword-lakshmi/forgotpassword-lakshmi.component';
 
 
 const routes: Routes = [
@@ -54,6 +57,7 @@ const routes: Routes = [
   { path: 'event-list', component: EventListComponent },
   { path: 'user_management', component: AdminUserManagementComponent },
   { path: 'approve_content', component: AdminApproveContentComponent },
+  { path: 'donate-lakshmi', component: DonateLakshmiComponent},
 
   { path: 'login-Dheeraj',component:LoginDheerajComponent},
   { path: 'rescue', component: RescueComponent },
@@ -65,6 +69,8 @@ const routes: Routes = [
   {path:'event-detail/:id',component:EventDetailComponent},
   {path:'adopt/:id',component:AdoptionFormComponent, canActivate:[AuthGuard]},
 
+  {path: 'changePassword-lakshmi', component: ChangePasswordLakshmiComponent},
+  {path: 'forgotpassword-lakshmi', component: ForgotpasswordLakshmiComponent},
 
   // Implemented nested routes https://angular-2-training-book.rangle.io/handout/routing/child_routes.html
   { path:'profile',
