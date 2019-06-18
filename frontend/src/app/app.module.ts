@@ -101,7 +101,7 @@ import { ForgotpasswordLakshmiComponent } from './forgotpassword-lakshmi/forgotp
     AdoptionRequestComponent,
     ConfirmationComponent,
     AdminUserManagementComponent,
-    AdminApproveContentComponent
+    AdminApproveContentComponent,
     DonateLakshmiComponent,
     ChangePasswordLakshmiComponent,
     ForgotpasswordLakshmiComponent
