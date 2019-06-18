@@ -68,6 +68,7 @@ import { SravanForumComponent } from './sravan-forum/sravan-forum.component';
 import { SravanChangepasswordComponent } from './sravan-changepassword/sravan-changepassword.component';
 import { FaqSravanComponent } from './faq-sravan/faq-sravan.component';
 import { DonateSravanComponent } from './donate-sravan/donate-sravan.component';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 // import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap'
 @NgModule({
@@ -117,6 +118,7 @@ import { DonateSravanComponent } from './donate-sravan/donate-sravan.component';
     DonateSravanComponent
   ],
   imports: [
+    MatProgressBarModule,
     BrowserModule,
     AppRoutingModule,
     MDBBootstrapModule.forRoot(),
