@@ -102,8 +102,8 @@
     z-index: -1;
     overflow: hidden;
     img{
-      width: 100%;
-      height: auto;
+      width: auto;
+      height: 100%;
     }
   }
 }
@@ -126,10 +126,23 @@
 
 @media only screen and (max-width: 1024px) {
   .outer-container{
-    padding: 1rem;
-
+    
+    #fpage{
+      height: 35vh;
+    }
     .main-row{
       max-height: fit-content;
+    }
+    .secondary-row{
+      margin: 0 0 2rem 0;
+      .title-row{
+        margin-top: 0;
+        margin-bottom: 1.5rem;
+        text-align: center;
+      }
+    }
+    .lower-img{
+      display: none;
     }
   }
 }
