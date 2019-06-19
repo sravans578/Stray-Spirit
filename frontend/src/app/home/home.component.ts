@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   //TODO: replace with real event objects
-  sampleEvents = ['Event 1', 'Event 2', 'Event 3', 'Event 4', 'Event 5'];
+  sampleEvents = ['Pet Painting Class', 'Puppy Yoga', 'Barbecue Fundraiser', 'Pet Food Drive', 'Agility Contest'];
   samplePets = ['Bran', 'Arya', 'Jon', 'Sansa', 'Rickon', 'Robb'];
 
   constructor() { }
