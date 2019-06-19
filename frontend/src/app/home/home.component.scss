@@ -1,9 +1,29 @@
+#fpage {
+  // Image taken from Unsplash, https://unsplash.com/photos/xy1Yo_MHDvQ. [Accessed: 01-Jun-2019].
+  background: url(https://images.unsplash.com/photo-1474201249988-1c597f903bf8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1052&q=80) no-repeat center center fixed;
+  display: table;
+  height: 55vh;
+  width: 100% !important;
+  position: relative;
+  background-size: cover;
+  padding-bottom: 10px;
+  align-items: center;
+}
+
+.content {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  color: white;
+}
+
 .btn-primary{
   background-color: #65427A !important;
 }
+
 .outer-container{
-  margin-top: 6.25rem;
-  padding: 1.75rem 6.25rem;
+  margin-top: 5.75rem;
+  padding: 0;
   overflow: hidden;
 }
 .carousel-img{
@@ -12,8 +32,10 @@
   height: auto;
   object-fit: cover;
 }
+
 .secondary-row{
   margin: 2rem 0 2rem 0;
+  padding: 1.75rem 5.25rem;
   .card-row{
     overflow-x: auto;
     white-space: nowrap;
@@ -36,7 +58,7 @@
   }
 }
 .middle-row{
-  max-height: 500px;
+  height: 400px;
   padding-left: 0;
   padding-right: 0;
 
@@ -63,7 +85,7 @@
     background-color: #68407D;
     height: 100%;
     display: block;
-    padding: 15px;
+    padding: 1.75rem;
     color: #ffffff;
     .raised-content{
       margin: 3.5rem 0 0 1.75rem;
@@ -72,7 +94,7 @@
   .lower-card{
     background-color: #B496C8;
     height: 100%;
-    padding: 15px;
+    padding: 1.75rem;
     z-index: -1;
   }
   .lower-img{
@@ -81,7 +103,7 @@
     overflow: hidden;
     img{
       width: 100%;
-      height: 100%;
+      height: auto;
     }
   }
 }
