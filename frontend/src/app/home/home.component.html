@@ -1,195 +1,114 @@
-<!-- Authored by Aparna Sridhar[B00799570]-->
-<div class="mt-85">
-  <!--material bootstrap for angular https://mdbootstrap.com-->
-<mdb-carousel [animation]="'slide'">
-  <!--Banner image-->
-  <mdb-carousel-item>
-    <img class="d-block h-50 w-100" src="https://www.catcafestudio.com/wp-content/uploads/2018/09/IMG_0266.jpg" alt="Cat">
-  </mdb-carousel-item>
-  <mdb-carousel-item>
-    <img class="d-block h-50 w-100" src="https://www.catcafestudio.com/wp-content/uploads/2018/08/IMG_7728.jpg" alt="Second slide">
-  </mdb-carousel-item>
-  <mdb-carousel-item>
-    <img class="d-block h-50 w-100" src="http://www.thefelinefoundation.com/wp-content/uploads/2018/09/front-slider-2-min.jpg" alt="Third slide">
-  </mdb-carousel-item>
-  <mdb-carousel-item>
-    <img class="d-block h-50 w-100" src="http://kitty-whisperer.com/cat-cute-wallpaper/baby-cute-cat-wallpaper/" alt="Fourth slide">
-  </mdb-carousel-item>
-</mdb-carousel>
-<!--End of banner image-->
-<div class="container home_container">
-  <br>
-  <form class="searchbutton">
-	<input id="search" type="text" placeholder="Search by breed">
-  <button type= ""submit><i class="fas fa-search" aria-hidden="true"></i></button>
-</form>
-	<div id= "one" class="row">
-    <div class="col-sm">
-      <br><h4>Why Adopt a pet?</h4>
-      <!-- sample paragraph from loremipsum.com-->
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. <a routerLink="/rescue">Read more..</a></p>
-    </div>
-    <div class="col-sm">
-      <br><h4>Adopt a pet with StraySpirit</h4>
-      <!-- sample paragraph from loremipsum.com-->
-      <p>. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. <a routerLink="/rescue">Read more..</a></p>
-    </div>
-    </div>
-    <div id= "pas1" class="row">
-    <div class="col-sm">
-      <h4>Our mission</h4>
-      <!-- sample paragraph from loremipsum.com-->
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. <a routerLink="/rescue">Read more..</a></p>
-    </div>
-    <div class="col-sm">
-      <h4>Rescue stories</h4>
-      <!-- sample paragraph from loremipsum.com-->
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<a routerLink="/rescue">Read more..</a></p>
-    </div>
-    </div>
-    <h4><strong>Top Events List</strong></h4>
-     <div id= "root" class="row">
-  <div class="col-md-4" *ngFor = "let event of allevents; let i=index">
-    <mdb-card class= "cards" narrower ="true" *ngIf = "i < 3">
-      <div class="view view-cascade overlay waves-light" mdbWavesEffect>
-          <a routerLink="/event-detail/{{event._id}}">  
-            <mdb-card-img mdbWavesEffect [src]= "event.eventPic" [alt] = "event.eventName"></mdb-card-img>
-            </a> 
+<div class="outer-container">
+  <div class="row top-row">
+    <div id="fpage">
+      <div class="content">
+        <h2>Adopt a pet today </h2>
+        <br>
+        <button mat-mini-fab routerLink="/pets">
+          <!-- Icon taken from “Font Awesome 5,” Font Awesome. [Online]. Available: https://fontawesome.com/. [Accessed: 01-Jun-2019]. -->
+          <i class="fas fa-paw"></i>
+        </button>
       </div>
-      <mdb-card-body cascade="true" class="text-center">
-        <h3 class="card-title">
-          <strong> {{event.eventName}}</strong>
-        </h3>
-      <!-- sample paragraph from loremipsum.com-->
-        <mdb-card-text>
-          {{event.eventDescription}}<a routerLink = "/event-detail/{{event._id}}">Read more..</a>
-        </mdb-card-text>
-        <a (click) = "register(i)" mdbBtn color="info" mdbWavesEffect *ngIf="isloggedin"> Register</a>
-      </mdb-card-body>
-      <!--/.Card content-->
-
-    </mdb-card>
-    <!--/.Card-->
-    
+    </div>
   </div>
-  <a routerLink="/event-list">Click here for more events..</a>
-</div>
-    <br> <h4><strong> Featured Dog Breeds </strong> </h4>
-    <!--examples from material.angular.io-->
-    <div id= "root" class="row">
-      <div class="col-sm">
-      <mat-card class="card" narrower= "true">
-  <mat-card-header >
-    <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title>Siberian Husky</mat-card-title>
-    <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-  </mat-card-header>
-  <img mat-card-image src="https://upload.wikimedia.org/wikipedia/commons/a/a3/Black-Magic-Big-Boy.jpg" alt="Photo of a Husky">
-  <mat-card-content>
-    <p style="color: black">
-      Age: 33
-      <br> Colour: Black and White <br> Qualities:The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-      A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-      bred for hunting <a routerLink="/rescue">Read more..</a>
-    </p>
-  </mat-card-content>
-</mat-card>
-</div>
-<div class="col-sm">
-      <mat-card class="card" narrower= "true">
-  <mat-card-header>
-    <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title>Siberian Husky</mat-card-title>
-    <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-  </mat-card-header>
-  <img mat-card-image src="https://upload.wikimedia.org/wikipedia/commons/a/a3/Black-Magic-Big-Boy.jpg" alt="Photo of a Husky">
-  <mat-card-content>
-    <p style="color: black">
-      Age: 33
-      <br> Colour: Black and White <br> Qualities:The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-      A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-      bred for hunting <a routerLink="/rescue">Read more..</a>
-    </p>
-  </mat-card-content>
-</mat-card>
-</div>
-<div class="col-sm">
-      <mat-card class="card" narrower= "true">
-  <mat-card-header>
-    <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title>Siberian Husky</mat-card-title>
-    <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-  </mat-card-header>
-  <img mat-card-image src="https://upload.wikimedia.org/wikipedia/commons/a/a3/Black-Magic-Big-Boy.jpg" alt="Photo of a Husky">
-  <mat-card-content>
-    <p style="color: black">
-      Age: 33
-      <br> Colour: Black and White <br> Qualities:The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-      A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-      bred for hunting <a routerLink="/rescue">Read more..</a>
-    </p>
-  </mat-card-content>
-</mat-card>
-</div>
+  <div class="row secondary-row">
+    <div class="col-12 title-row">
+      <h3>Featured Pets</h3>
     </div>
-<!--Row two begins-->
-<br> <h4><strong>Featured Cat Breeds</strong></h4>
-    <div id= "root" class="row">
-      <div class="col-sm">
-      <mat-card class="card" narrower= "true">
-  <mat-card-header>
-    <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title>Russian Blue</mat-card-title>
-    <mat-card-subtitle>Cat Breed</mat-card-subtitle>
-  </mat-card-header>
-  <img mat-card-image src="https://upload.wikimedia.org/wikipedia/en/thumb/8/83/Young_Male_CFA_Kitten_-_Age_2_Months.jpg/255px-Young_Male_CFA_Kitten_-_Age_2_Months.jpg" alt="Photo of a Cat">
-  <mat-card-content>
-    <p style="color: black">
-     Age: 33
-      <br> Colour: Black and White <br> Qualities:The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-      A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-      bred for hunting <a routerLink="/rescue">Read more..</a>
-    </p>
-  </mat-card-content>
-</mat-card>
-</div>
-<div class="col-sm">
-      <mat-card class="card" narrower= "true">
-  <mat-card-header>
-    <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title>Russian Blue</mat-card-title>
-    <mat-card-subtitle>Cat Breed</mat-card-subtitle>
-  </mat-card-header>
-  <img mat-card-image src="https://upload.wikimedia.org/wikipedia/en/thumb/8/83/Young_Male_CFA_Kitten_-_Age_2_Months.jpg/255px-Young_Male_CFA_Kitten_-_Age_2_Months.jpg" alt="Photo of a Cat">
-  <mat-card-content>
-    <p style="color: black">
-      Age: 33
-      <br> Colour: Black and White <br> Qualities:The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-      A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-      bred for hunting <a routerLink="/rescue">Read more..</a>
-    </p>
-  </mat-card-content>
-</mat-card>
-</div>
-<div class="col-sm">
-      <mat-card class="card" narrower= "true">
-  <mat-card-header>
-    <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title>Russian Blue</mat-card-title>
-    <mat-card-subtitle>Cat Breed</mat-card-subtitle>
-  </mat-card-header>
-  <img mat-card-image src="https://upload.wikimedia.org/wikipedia/en/thumb/8/83/Young_Male_CFA_Kitten_-_Age_2_Months.jpg/255px-Young_Male_CFA_Kitten_-_Age_2_Months.jpg" alt="Photo of a Cat">
-  <mat-card-content>
-    <p style="color: black">
-      Age: 33
-      <br> Colour: Black and White <br> Qualities:The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-      A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-      bred for hunting <a routerLink="/rescue">Read more..</a>
-    </p>
-  </mat-card-content>
-</mat-card>
-</div>
+    <div class="col-12 card-row">
+    <!-- Vaguely based on the card tutorial found at https://getbootstrap.com/docs/4.0/components/card/ -->
+    <div *ngFor="let pet of samplePets" class="d-inline-block card">
+      <img class="card-img-top" src="https://www.catcafestudio.com/wp-content/uploads/2018/09/IMG_0266.jpg" alt="Cat">
+      <div class="card-body">
+        <h5 class="card-title">{{pet}}</h5>
+        <p class="card-text">Cat ipsum dolor sit amet, go for world domination lick human with sandpaper tongue but groom
+          yourself 4 hours - checked, have your beauty sleep 18 hours - checked, be fabulous for the rest of the day -
+          checked but eat plants, meow, and throw up because i ate plants. Shake treat bag. </p>
+        <div class="link-container">
+          <a href="/">Details</a>
+        </div>
+      </div>
     </div>
-   
-</div>
+    </div>
+  </div>
+  <div class="row middle-row">
+    <div class="col-lg-6 col-md-12 col-sm-12">
+      <div class="raised-card">
+        <div class="raised-content">
+          <h4 class="extra-large-text">Why Rescue?</h4>
+          <p>Give me attention or face the wrath of my claws decide to want nothing to do with my owner today for lick arm
+        hair yet annoy the old grumpy cat, start a fight and then retreat to wash when i lose i like to spend my days
+        sleeping and eating fishes</p>
+          <a href="/rescue">Read More</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 col-md-12 col-sm-12 lower-img">
+      <img src="http://www.thefelinefoundation.com/wp-content/uploads/2018/09/front-slider-2-min.jpg" alt="Dog">
+    </div>
+  </div>
+  <div class="row middle-row">
+    <div class="col-lg-6 col-md-12 col-sm-12 lower-card">
+      <!-- Icon taken from “We Love SoLo,” We Love SoLo. [Online]. Available: https://www.welovesolo.com/free-donate-icon-vector/. [Accessed: 18-Jun-2019]. -->
+      <img class="leftimg" src="../../assets/images/donate-icon.png" alt="Donate">
+      <p class="lower-content">Give me attention or face the wrath of my claws decide to want nothing to do with my owner today for lick arm
+        hair yet annoy the old grumpy cat, start a fight and then retreat to wash when i lose i like to spend my days
+        sleeping and eating fishes that my human fished for me we live on a luxurious yacht, sailing proudly under the sun,
+        i like to walk on the deck, watching the horizon, dreaming of a good bowl of milk sniff all the things. My left
+        donut is missing, as is my right stares at human while pushing stuff off a table jump around on couch, meow constantly
+        until given food, i show my fluffy belly but it's a trap! if you pet it i will tear up your hand and soft kitty
+        warm kitty little ball of fur. </p>
+    </div>
+    <div class="col-lg-6 col-md-12 col-sm-12">
+      <div class="raised-card">
+        <div class="raised-content">
+          <h4 class="extra-large-text">Why Donate?</h4>
+          <p>Give me attention or face the wrath of my claws decide to want nothing to do with my owner today for lick arm
+        hair yet annoy the old grumpy cat, start a fight and then retreat to wash when i lose i like to spend my days
+        sleeping and eating fishes</p>
+          <a href="/donate">Read More</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row middle-row">
+    <div class="col-lg-6 col-md-12 col-sm-12">
+      <div class="raised-card">
+        <div class="raised-content">
+          <h4 class="extra-large-text">Our Stories</h4>
+          <p>Give me attention or face the wrath of my claws decide to want nothing to do with my owner today for lick arm
+        hair yet annoy the old grumpy cat, start a fight and then retreat to wash when i lose i like to spend my days
+        sleeping and eating fishes</p>
+          <a href="/blogs">Read More</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 col-md-12 col-sm-12 lower-img">
+      <img src="http://www.thefelinefoundation.com/wp-content/uploads/2018/09/front-slider-2-min.jpg" alt="Dog">
+    </div>
+  </div>
+  <div class="row secondary-row events-row">
+    <div class="col-12 title-row">
+      <h3>Upcoming Events</h3>
+    </div>
+    <div class="col-12 card-row">
+      <!-- Vaguely based on the card tutorial found at https://getbootstrap.com/docs/4.0/components/card/ -->
+    <div *ngFor="let event of sampleEvents" class="d-inline-block card">
+      <img class="card-img-top" src="http://www.thefelinefoundation.com/wp-content/uploads/2018/09/front-slider-2-min.jpg" alt="Dog">
+      <div class="card-body">
+        <h5 class="card-title">{{event}}</h5>
+        <p class="card-text">
+          Headbutt owner's knee white cat sleeps on a black shirt behind the couch freak human out make funny noise mow
+          mow mow mow mow mow success now attack human. Have a lot of grump in yourself because you can't forget to be
+          grumpy and not be like king grumpy cat cereal boxes make for five star accommodation yet mouse so try to hold
+          own back foot to clean it but foot reflexively kicks you in face, go into a rage and bite own foot, hard scream
+          at teh bath, dismember a mouse and then regurgitate parts of it on the family room floor or stare out the window.</p>
+        <!--TODO: Temporary link. Will redirect to the corresponding pet's profile page once we have real data-->
+        <div class="link-container">
+          <a href="/pets">Details</a>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
 </div>

@@ -83,6 +83,7 @@ import { AdoptRichaComponent } from './adopt-richa/adopt-richa.component';
 import { HomeRichaComponent } from './home-richa/home-richa.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import { HomeOldComponent } from './home-old/home-old.component';
 
 
 
@@ -145,7 +146,8 @@ import {MatInputModule} from '@angular/material/input';
     BlogStoriesRichaComponent,
     ForgotPasswordRichaComponent,
     HomeRichaComponent,
-    AdoptRichaComponent
+    AdoptRichaComponent,
+    HomeOldComponent
   ],
   imports: [
     MatProgressBarModule,
