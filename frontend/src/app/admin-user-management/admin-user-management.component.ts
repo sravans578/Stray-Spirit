@@ -11,33 +11,9 @@ import {UserService} from "../user.service";
 export class AdminUserManagementComponent implements OnInit {
 
   personalUsers: any = [];
+  organizations: any = [];
+  currentList: any = [];
 
-  allUsers = [{id: 0, name: 'Remus Lupin', isAdmin: true, isSuperAdmin: false },
-    {id: 1, name: 'Minerva McGonagall', isAdmin: true, isSuperAdmin: true},
-    {id: 2, name: 'Aurora Sinistra', isAdmin: false, isSuperAdmin: false},
-    {id: 3, name: 'Sybil Trelawney', isAdmin: true, isSuperAdmin: false},
-    {id: 4, name: 'Severus Snape', isAdmin:false, isSuperAdmin: false},
-    {id: 5, name: 'Horace Slughorn', isAdmin: false, isSuperAdmin: false},
-    {id: 6, name: 'Charity Burbidge', isAdmin: false, isSuperAdmin: false},
-    {id: 7, name: 'Rubeus Hagrid',isAdmin:true, isSuperAdmin: false},
-    {id: 8, name: 'Pomona Sprout', isAdmin:true, isSuperAdmin: false},
-    {id: 9, name: 'Filius Flitwick', isAdmin:true, isSuperAdmin: false},
-    {id: 10, name: 'Albus Dumbledore',isAdmin:false, isSuperAdmin: false},
-    {id: 11, name: 'Argus Filch', isAdmin: false, isSuperAdmin: false},
-    {id: 12, name: 'Dolores Umbridge', isAdmin: false, isSuperAdmin: false},
-    {id: 13, name: 'Alecta Carrow', isAdmin: false, isSuperAdmin: false},
-    {id: 14, name:'Gilderoy Lockhart', isAdmin: false, isSuperAdmin: false},
-    {id: 15, name: 'Alastor Moody', isAdmin:true, isSuperAdmin: false},
-    {id: 16, name: 'Irma Pince', isAdmin:true, isSuperAdmin: false},
-    {id: 17, name: 'Quirinus Quirrell', isAdmin: false, isSuperAdmin: false}];
-
-  organizations = [{id: 18, name: 'Dalhousie', isAdmin: false, isSuperAdmin: false},
-    {id: 19, name: 'StraySpirit', isAdmin:true, isSuperAdmin: false},
-    {id: 20, name: 'Hogwarts', isAdmin:false, isSuperAdmin: false},
-    {id: 21, name: 'Fake Inc.', isAdmin: true, isSuperAdmin: false},
-    {id: 22, name: 'Totally a Real Company', isAdmin:false, isSuperAdmin: false}];
-
-  currentList = this.personalUsers;
   showAdminTable = false;
   //0 - Users, 1 - Organizations, 2 - Admins
   tabSelected = 0;
@@ -50,8 +26,13 @@ export class AdminUserManagementComponent implements OnInit {
     //Get all users
     this.userService.getPersonalUsers().subscribe(userData =>{
       this.personalUsers = userData;
+      this.currentList = this.personalUsers;
+    })
+    this.userService.getOrganizationUsers().subscribe(orgData => {
+      this.organizations = orgData;
     })
     console.log("OnInit finished");
+    this.showUsers();
   }
 
   showUsers(){
@@ -66,7 +47,12 @@ export class AdminUserManagementComponent implements OnInit {
   }
   showAdmins(){
     var admins = [];
-    for (let user of this.allUsers){
+    for (let user of this.personalUsers){
+      if(user.isAdmin) {
+        admins.push(user);
+      }
+    }
+    for (let user of this.organizations){
       if(user.isAdmin) {
         admins.push(user);
       }

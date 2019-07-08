@@ -26,7 +26,12 @@
               <th></th>
             </tr>
             <tr *ngFor="let user of currentList">
-              <td>{{user.firstName}} {{user.lastName}}</td>
+              <td>
+                <p *ngIf="user.user_type === 'personal'; else isOrganization">{{user.firstName}} {{user.lastName}}</p>
+                <ng-template #isOrganization>
+                  <p>{{user.organizationtName}}</p>
+                </ng-template>
+              </td>
               <td>{{user.email}}</td>
               <td>
                 <p *ngIf="user.isActive; else notActive">Active</p>

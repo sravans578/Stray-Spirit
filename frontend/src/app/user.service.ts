@@ -16,11 +16,11 @@ export class UserService {
   getOrganizationUsers(){
     //return all users who have an organization account
     //MARLEE: check path
-    return this.http.get('http://localhost:3000/users/');
+    return this.http.get('http://localhost:3000/user/org');
   }
   getAdminUsers(){
     //return all users, then filter by those who are admins
     //MARLEE: check path
-    return this.http.get('http://localhost:3000/users/');
+    return this.http.get('http://localhost:3000/user/');
   }
 }

@@ -21,7 +21,23 @@ router.get('/', (req, res, next) => {
     })
     .catch(err =>{
         console.log(err);
-        res.status(418).json({
+        res.status(500).json({
+            error: err
+        });
+    });
+});
+
+// Get a list of organizations for use with the admin panel
+router.get('/org', (req, res, next) => {
+    Organization.find()
+    .exec()
+    .then(docs =>{
+        console.log(docs);
+        res.status(200).json(docs);
+    })
+    .catch(err =>{
+        console.log(err);
+        res.status(500).json({
             error: err
         });
     });
