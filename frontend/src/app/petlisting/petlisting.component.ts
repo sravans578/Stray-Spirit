@@ -33,22 +33,22 @@ export class PetlistingComponent implements OnInit {
   searchLocationTerm: any;
   isLoading: boolean = false;
   pet_cat_filter: any;
-  
+
   filterPetsForm = new FormGroup({
     searchLocation: new FormControl(''),
-    testSearch: new FormControl('') 
+    testSearch: new FormControl('')
   });
 
   constructor(
-    private loc: LocationService, 
+    private loc: LocationService,
     private petService: PetmanagementService,
-    private toastr: ToastrService, 
-    private titleService:Title) { 
+    private toastr: ToastrService,
+    private titleService:Title) {
       this.titleService.setTitle("Pets Availble for Adoption near you - StraySpirit");
   }
 
   ngOnInit() {
-  
+
     this.loc.getCurrentLocation().subscribe(currentData =>{
       //console.log(currentData);
       this.current_location=currentData;
@@ -59,6 +59,7 @@ export class PetlistingComponent implements OnInit {
       this.inputLocation = this.currentCity+this.comma+this.currentState+this.comma+this.currentCountry;
       this.searchLocation.patchValue(this.inputLocation);
     })
+    //MARLEE: use this to get the list of users
     this.isLoading = true;
     this.petService.getPets().subscribe(petData =>{
       //console.log(petData);
@@ -71,7 +72,7 @@ export class PetlistingComponent implements OnInit {
       console.log(this.all_Pets);
       console.log(this.pet_newData);
     })
-  
+
 }
 filterPet(searchTerm){
   //console.log(searchTerm);
@@ -93,12 +94,12 @@ onSearch(){
   }
   else{
     this.isLoading=true;
-    setTimeout(()=>{  
+    setTimeout(()=>{
       this.isLoading=false;
        }, 2000);
        //filtering pets according to user entered location
     this.pet_newData = this.all_Pets.filter(filterPets =>{
-      
+
       return filterPets.petLocation.petCity.includes(this.searchLocationTerm[0]) && filterPets.petLocation.petState.includes(this.searchLocationTerm[1]) && filterPets.petLocation.petCountry.includes(this.searchLocationTerm[2]);
     })
   }
@@ -131,18 +132,18 @@ categoryChange(event){
     this.pet_cat_filter=this.catSelected.split(',');
     console.log(this.pet_cat_filter);
     if(this.searchLocationTerm){
-      
+
     if(this.pet_cat_filter.length>1){
       this.pet_newData = this.all_Pets.filter(filterPets =>{
-        return filterPets.petLocation.petCity.includes(this.searchLocationTerm[0]) 
-        && filterPets.petLocation.petState.includes(this.searchLocationTerm[1]) 
+        return filterPets.petLocation.petCity.includes(this.searchLocationTerm[0])
+        && filterPets.petLocation.petState.includes(this.searchLocationTerm[1])
         && filterPets.petLocation.petCountry.includes(this.searchLocationTerm[2]);
       })
       }
       else{
         this.pet_newData = this.all_Pets.filter(filterPets =>{
-          return filterPets.petLocation.petCity.includes(this.searchLocationTerm[0]) 
-          && filterPets.petLocation.petState.includes(this.searchLocationTerm[1]) 
+          return filterPets.petLocation.petCity.includes(this.searchLocationTerm[0])
+          && filterPets.petLocation.petState.includes(this.searchLocationTerm[1])
           && filterPets.petLocation.petCountry.includes(this.searchLocationTerm[2])
           && filterPets.petCategory.includes(this.pet_cat_filter[0]);
         })
@@ -151,15 +152,15 @@ categoryChange(event){
   else{
     if(this.pet_cat_filter.length>1){
     this.pet_newData = this.all_Pets.filter(filterPets =>{
-      return filterPets.petLocation.petCity.includes(this.currentCity) 
-      && filterPets.petLocation.petState.includes(this.currentState) 
+      return filterPets.petLocation.petCity.includes(this.currentCity)
+      && filterPets.petLocation.petState.includes(this.currentState)
       && filterPets.petLocation.petCountry.includes(this.currentCountry);
     })
     }
     else{
       this.pet_newData = this.all_Pets.filter(filterPets =>{
-        return filterPets.petLocation.petCity.includes(this.currentCity) 
-        && filterPets.petLocation.petState.includes(this.currentState) 
+        return filterPets.petLocation.petCity.includes(this.currentCity)
+        && filterPets.petLocation.petState.includes(this.currentState)
         && filterPets.petLocation.petCountry.includes(this.currentCountry)
         && filterPets.petCategory.includes(this.pet_cat_filter[0]);
       })
@@ -175,18 +176,18 @@ ageChange(event){
     this.pet_cat_filter=this.catSelected.split(',');
     console.log(this.pet_cat_filter);
     if(this.searchLocationTerm){
-      
+
     if(this.pet_cat_filter.length>2){
       this.pet_newData = this.all_Pets.filter(filterPets =>{
-        return filterPets.petLocation.petCity.includes(this.searchLocationTerm[0]) 
-        && filterPets.petLocation.petState.includes(this.searchLocationTerm[1]) 
+        return filterPets.petLocation.petCity.includes(this.searchLocationTerm[0])
+        && filterPets.petLocation.petState.includes(this.searchLocationTerm[1])
         && filterPets.petLocation.petCountry.includes(this.searchLocationTerm[2]);
       })
       }
       else if(this.pet_cat_filter.length===2){
         this.pet_newData = this.all_Pets.filter(filterPets =>{
-          return filterPets.petLocation.petCity.includes(this.searchLocationTerm[0]) 
-          && filterPets.petLocation.petState.includes(this.searchLocationTerm[1]) 
+          return filterPets.petLocation.petCity.includes(this.searchLocationTerm[0])
+          && filterPets.petLocation.petState.includes(this.searchLocationTerm[1])
           && filterPets.petLocation.petCountry.includes(this.searchLocationTerm[2])
           && (filterPets.petAge.includes(this.pet_cat_filter[0])
           || filterPets.petAge.includes(this.pet_cat_filter[1]));
@@ -194,8 +195,8 @@ ageChange(event){
       }
       else{
         this.pet_newData = this.all_Pets.filter(filterPets =>{
-          return filterPets.petLocation.petCity.includes(this.searchLocationTerm[0]) 
-          && filterPets.petLocation.petState.includes(this.searchLocationTerm[1]) 
+          return filterPets.petLocation.petCity.includes(this.searchLocationTerm[0])
+          && filterPets.petLocation.petState.includes(this.searchLocationTerm[1])
           && filterPets.petLocation.petCountry.includes(this.searchLocationTerm[2])
           && filterPets.petAge.includes(this.pet_cat_filter[0]);
         })
@@ -204,15 +205,15 @@ ageChange(event){
   else{
     if(this.pet_cat_filter.length>2){
     this.pet_newData = this.all_Pets.filter(filterPets =>{
-      return filterPets.petLocation.petCity.includes(this.currentCity) 
-      && filterPets.petLocation.petState.includes(this.currentState) 
+      return filterPets.petLocation.petCity.includes(this.currentCity)
+      && filterPets.petLocation.petState.includes(this.currentState)
       && filterPets.petLocation.petCountry.includes(this.currentCountry);
     })
     }
     else if(this.pet_cat_filter.length===2){
       this.pet_newData = this.all_Pets.filter(filterPets =>{
-        return filterPets.petLocation.petCity.includes(this.currentCity) 
-        && filterPets.petLocation.petState.includes(this.currentState) 
+        return filterPets.petLocation.petCity.includes(this.currentCity)
+        && filterPets.petLocation.petState.includes(this.currentState)
         && filterPets.petLocation.petCountry.includes(this.currentCountry)
         && (filterPets.petAge.includes(this.pet_cat_filter[0])
         || filterPets.petAge.includes(this.pet_cat_filter[1]));
@@ -220,8 +221,8 @@ ageChange(event){
     }
     else{
       this.pet_newData = this.all_Pets.filter(filterPets =>{
-        return filterPets.petLocation.petCity.includes(this.currentCity) 
-        && filterPets.petLocation.petState.includes(this.currentState) 
+        return filterPets.petLocation.petCity.includes(this.currentCity)
+        && filterPets.petLocation.petState.includes(this.currentState)
         && filterPets.petLocation.petCountry.includes(this.currentCountry)
         && filterPets.petAge.includes(this.pet_cat_filter[0]);
       })
@@ -237,18 +238,18 @@ genderChange(event){
     this.pet_cat_filter=this.catSelected.split(',');
     console.log(this.pet_cat_filter);
     if(this.searchLocationTerm){
-      
+
     if(this.pet_cat_filter.length>1){
       this.pet_newData = this.all_Pets.filter(filterPets =>{
-        return filterPets.petLocation.petCity.includes(this.searchLocationTerm[0]) 
-        && filterPets.petLocation.petState.includes(this.searchLocationTerm[1]) 
+        return filterPets.petLocation.petCity.includes(this.searchLocationTerm[0])
+        && filterPets.petLocation.petState.includes(this.searchLocationTerm[1])
         && filterPets.petLocation.petCountry.includes(this.searchLocationTerm[2]);
       })
       }
       else{
         this.pet_newData = this.all_Pets.filter(filterPets =>{
-          return filterPets.petLocation.petCity.includes(this.searchLocationTerm[0]) 
-          && filterPets.petLocation.petState.includes(this.searchLocationTerm[1]) 
+          return filterPets.petLocation.petCity.includes(this.searchLocationTerm[0])
+          && filterPets.petLocation.petState.includes(this.searchLocationTerm[1])
           && filterPets.petLocation.petCountry.includes(this.searchLocationTerm[2])
           && filterPets.petGender.includes(this.pet_cat_filter[0]);
         })
@@ -257,15 +258,15 @@ genderChange(event){
   else{
     if(this.pet_cat_filter.length>1){
     this.pet_newData = this.all_Pets.filter(filterPets =>{
-      return filterPets.petLocation.petCity.includes(this.currentCity) 
-      && filterPets.petLocation.petState.includes(this.currentState) 
+      return filterPets.petLocation.petCity.includes(this.currentCity)
+      && filterPets.petLocation.petState.includes(this.currentState)
       && filterPets.petLocation.petCountry.includes(this.currentCountry);
     })
     }
     else{
       this.pet_newData = this.all_Pets.filter(filterPets =>{
-        return filterPets.petLocation.petCity.includes(this.currentCity) 
-        && filterPets.petLocation.petState.includes(this.currentState) 
+        return filterPets.petLocation.petCity.includes(this.currentCity)
+        && filterPets.petLocation.petState.includes(this.currentState)
         && filterPets.petLocation.petCountry.includes(this.currentCountry)
         && filterPets.petGender.includes(this.pet_cat_filter[0]);
       })
@@ -280,18 +281,18 @@ healthChange(event){
     this.pet_cat_filter=this.catSelected.split(',');
     console.log(this.pet_cat_filter);
     if(this.searchLocationTerm){
-      
+
     if(this.pet_cat_filter.length>1){
       this.pet_newData = this.all_Pets.filter(filterPets =>{
-        return filterPets.petLocation.petCity.includes(this.searchLocationTerm[0]) 
-        && filterPets.petLocation.petState.includes(this.searchLocationTerm[1]) 
+        return filterPets.petLocation.petCity.includes(this.searchLocationTerm[0])
+        && filterPets.petLocation.petState.includes(this.searchLocationTerm[1])
         && filterPets.petLocation.petCountry.includes(this.searchLocationTerm[2]);
       })
       }
       else{
         this.pet_newData = this.all_Pets.filter(filterPets =>{
-          return filterPets.petLocation.petCity.includes(this.searchLocationTerm[0]) 
-          && filterPets.petLocation.petState.includes(this.searchLocationTerm[1]) 
+          return filterPets.petLocation.petCity.includes(this.searchLocationTerm[0])
+          && filterPets.petLocation.petState.includes(this.searchLocationTerm[1])
           && filterPets.petLocation.petCountry.includes(this.searchLocationTerm[2])
           && filterPets.petHealth.includes(this.pet_cat_filter[0]);
         })
@@ -300,15 +301,15 @@ healthChange(event){
   else{
     if(this.pet_cat_filter.length>1){
     this.pet_newData = this.all_Pets.filter(filterPets =>{
-      return filterPets.petLocation.petCity.includes(this.currentCity) 
-      && filterPets.petLocation.petState.includes(this.currentState) 
+      return filterPets.petLocation.petCity.includes(this.currentCity)
+      && filterPets.petLocation.petState.includes(this.currentState)
       && filterPets.petLocation.petCountry.includes(this.currentCountry);
     })
     }
     else{
       this.pet_newData = this.all_Pets.filter(filterPets =>{
-        return filterPets.petLocation.petCity.includes(this.currentCity) 
-        && filterPets.petLocation.petState.includes(this.currentState) 
+        return filterPets.petLocation.petCity.includes(this.currentCity)
+        && filterPets.petLocation.petState.includes(this.currentState)
         && filterPets.petLocation.petCountry.includes(this.currentCountry)
         && filterPets.petHealth.includes(this.pet_cat_filter[0]);
       })

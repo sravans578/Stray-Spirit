@@ -21,14 +21,19 @@
             <tr>
               <th>Name</th>
               <th>Email Address</th>
-              <th>Last Active</th>
+              <th>Activity Status</th>
               <th>Admin Privileges</th>
               <th></th>
             </tr>
             <tr *ngFor="let user of currentList">
-              <td>{{user.name}}</td>
-              <td>person@fake.com</td>
-              <td>30-05-2019 1:59 PM</td>
+              <td>{{user.firstName}} {{user.lastName}}</td>
+              <td>{{user.email}}</td>
+              <td>
+                <p *ngIf="user.isActive; else notActive">Active</p>
+                <ng-template #notActive>
+                  <p>Inactive</p>
+                </ng-template>
+              </td>
               <td class="button-box">
                 <button class="btn-success" *ngIf="user.isAdmin; else notAdmin" (click)="toggleAdmin(user.id)">Enabled</button>
                 <ng-template #notAdmin>

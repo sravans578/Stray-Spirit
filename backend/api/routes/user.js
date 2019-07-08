@@ -1,4 +1,5 @@
 //Developer : Aditya Gadhvi (B00809664)
+// Modified by Marlee Donnelly in July 2019
 
 const express = require('express');
 const User=require("../models/user");
@@ -9,6 +10,22 @@ const jwt=require("jsonwebtoken");
 const router = express.Router();
 const randomstring = require('randomstring');
 const nodemailer = require('nodemailer');
+
+// Get a list of users for use with the admin panel
+router.get('/', (req, res, next) => {
+    User.find()
+    .exec()
+    .then(docs =>{
+        console.log(docs);
+        res.status(200).json(docs);
+    })
+    .catch(err =>{
+        console.log(err);
+        res.status(418).json({
+            error: err
+        });
+    });
+});
 
 //The following code will save the personal users details and register them and store these details into the database.  
 router.post("/signup_user", (req,res,next)=>{
@@ -25,6 +42,7 @@ router.post("/signup_user", (req,res,next)=>{
             email:req.body.email,
             password: hash,
             user_type:"personal",
+            admin_status: "none",
             user_creation_date: Date(),
             secretToken: secretToken,
             isActive: false
@@ -112,6 +130,7 @@ router.post("/signup_org", (req,res,next)=>{
             registrationNumber:req.body.orgRegNo,
             password:hash,
             user_type:"Organization",
+            admin_status: "none",
             user_creation_date:Date()
         });
         organization.save()
@@ -254,11 +273,12 @@ router.put('/update/:id', (req, res, next) =>{
         address:req.body.addressModel,
         pinCode:req.body.pincodeModel,
         dateOfBirth:req.body.dobModel,
-        isActive: req.body.isActiveModel
+        isActive: req.body.isActiveModel,
+        admin_status: req.body.adminModel,
     }).then( result=>{
       console.log(result);
         res.status(200).json({
-            message: "Update successfull!"
+            message: "Update successful!"
         });
     });
 
@@ -274,11 +294,12 @@ router.put('/org/update/:id', (req, res, next) =>{
         registrationNumber:req.body.regNumberModel,
         address:req.body.addressModel,
         pinCode:req.body.pincodeModel,
+        admin_status: req.body.adminModel,
         
     }).then( result=>{
       console.log(result);
         res.status(200).json({
-            message: "Update successfull!"
+            message: "Update successful!"
         });
     });
 

@@ -1,4 +1,7 @@
+// Author: Marlee Donnelly (B00710138)
+
 import { Component, OnInit } from '@angular/core';
+import {UserService} from "../user.service";
 
 @Component({
   selector: 'app-admin-user-management',
@@ -6,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-user-management.component.scss']
 })
 export class AdminUserManagementComponent implements OnInit {
+
+  personalUsers: any = [];
 
   allUsers = [{id: 0, name: 'Remus Lupin', isAdmin: true, isSuperAdmin: false },
     {id: 1, name: 'Minerva McGonagall', isAdmin: true, isSuperAdmin: true},
@@ -32,21 +37,25 @@ export class AdminUserManagementComponent implements OnInit {
     {id: 21, name: 'Fake Inc.', isAdmin: true, isSuperAdmin: false},
     {id: 22, name: 'Totally a Real Company', isAdmin:false, isSuperAdmin: false}];
 
-  currentList = this.allUsers;
+  currentList = this.personalUsers;
   showAdminTable = false;
   //0 - Users, 1 - Organizations, 2 - Admins
   tabSelected = 0;
 
-  constructor() { }
+  constructor(
+    private userService: UserService,) { }
 
   ngOnInit() {
+    console.log("OnInit called");
+    //Get all users
+    this.userService.getPersonalUsers().subscribe(userData =>{
+      this.personalUsers = userData;
+    })
+    console.log("OnInit finished");
   }
 
-  confirmDelete(){
-    alert("Are you sure you want to delete this user?");
-  }
   showUsers(){
-    this.currentList = this.allUsers;
+    this.currentList = this.personalUsers;
     this.showAdminTable = false;
     this.tabSelected = 0;
   }
