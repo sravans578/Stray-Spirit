@@ -1,11 +1,6 @@
 /** Author : Shehzeen B00812551 */
-import {
-	Component,
-	OnInit
-} from '@angular/core';
-import { FormGroup, FormBuilder, FormControl, Validators, AbstractControl } from '@angular/forms';
-import { stringify } from 'querystring';
-import { Message } from '@angular/compiler/src/i18n/i18n_ast';
+import {	Component, OnInit} from '@angular/core';
+import { FormGroup, FormBuilder, Validators} from '@angular/forms';
 
 /**
  * Component
@@ -24,13 +19,10 @@ export class DonateShehzeenComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder) { }
 
-	
-
-	
 	/**
 	 * This code is done by the help  from https://stackblitz.com/edit/numeric-only
 	 * This function checks and validates that the amount field lets the user only enter numbers
-	 * @param event 
+	 * @param event
 	 * @returns  boolean
 	 */
 	numberOnly(event) {
@@ -44,11 +36,15 @@ export class DonateShehzeenComponent implements OnInit {
 	ngOnInit() {
 
     this.donateForm = this.formBuilder.group({
+      donorFirstName:['', [Validators.required]],
+      donorLastName:['', [Validators.required]],
       amountOneTime: ['', [Validators.required]],
       organizationOneTime: ['', [Validators.required]]
   });
 
   this.donateFormRecurring = this.formBuilder.group({
+    firstNameRecurring: ['', [Validators.required]],
+    lastNameRecurring: ['', [Validators.required]],
     amountRecurring: ['', [Validators.required]],
     organizationRecurring: ['', [Validators.required]],
     frequencyRecurring: ['', [Validators.required]]
@@ -68,38 +64,40 @@ get f() { return this.donateForm.controls; }
  */
 get fr() { return this.donateFormRecurring.controls; }
 
- 
+
 
 
 	/**
 	 * Ondonates one time This function checks if the amount and organization both are valid then it submits else it remains on the same page.
-	 * @returns  
+	 * @returns
 	 */
 	ondonateOneTime() {
     this.submitted = true;
     if(this.donateForm.invalid){
       return;
     }
-    else{
+    
       alert('Successfully submitted form');
-    }
+    
 
-	}
-
+  }
+  
+  show : boolean = false;
+  toggle() {
+    this.show = true;
+  }
 
 	/**
 	 * This function verifies if amountRecurring , frequency and oragnization all are given then it submits else it gives errors
-	 * @returns  
+	 * @returns
 	 */
 	onSubmitRecurring() {
 	  this.submitted = true;
     if(this.donateFormRecurring.invalid){
       return;
     }
-    else{
-      alert('Successfully submitted form');
-    }
-
+    alert('Form Submitted successfully \n');
+  
 	}
 
 }
