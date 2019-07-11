@@ -40,9 +40,9 @@
                 </ng-template>
               </td>
               <td class="button-box">
-                <button class="btn-success" *ngIf="user.isAdmin; else notAdmin" (click)="toggleAdmin(user.id)">Enabled</button>
+                <button class="btn-success" *ngIf="user.isAdmin; else notAdmin" (click)="toggleAdmin(user._id)">Enabled</button>
                 <ng-template #notAdmin>
-                  <button class="btn-light" (click)="toggleAdmin(user.id)">Disabled</button>
+                  <button class="btn-light" (click)="toggleAdmin(user._id)">Disabled</button>
                 </ng-template>
               </td>
               <td class="button-box">
@@ -62,15 +62,15 @@
               <td>{{user.name}}</td>
               <td>person@fake.com</td>
               <td class="button-box">
-                <button class="btn-success" *ngIf="user.isAdmin; else notAdmin" (click)="toggleAdmin(user.id)">Enabled</button>
+                <button class="btn-success" *ngIf="user.isAdmin; else notAdmin" (click)="toggleAdmin(user._id)">Enabled</button>
                 <ng-template #notAdmin>
-                  <button class="btn-light" (click)="toggleAdmin(user.id)">Disabled</button>
+                  <button class="btn-light" (click)="toggleAdmin(user._id)">Disabled</button>
                 </ng-template>
               </td>
               <td class="button-box">
-                <button class="btn-success" *ngIf="user.isSuperAdmin; else notSuperAdmin" (click)="toggleSuperAdmin(user.id)">Enabled</button>
+                <button class="btn-success" *ngIf="user.isSuperAdmin; else notSuperAdmin" (click)="toggleSuperAdmin(user._id)">Enabled</button>
                 <ng-template #notSuperAdmin>
-                  <button class="btn-light" (click)="toggleSuperAdmin(user.id)">Disabled</button>
+                  <button class="btn-light" (click)="toggleSuperAdmin(user._id)">Disabled</button>
                 </ng-template>
               </td>
             </tr>

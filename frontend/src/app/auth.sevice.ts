@@ -14,8 +14,8 @@ export class AuthService{
     private userType:string;
     private authStatusListener=new Subject<boolean>();
     constructor(private http:HttpClient,private router: Router,private toaster:ToastrService){}
-    
-    //This method will return the token to the location where it gets called. 
+
+    //This method will return the token to the location where it gets called.
     getToken(){
        return this.token;
     }
@@ -47,15 +47,15 @@ export class AuthService{
                 closeButton: true,
                 progressBar: true
               });
-              setTimeout(()=>{  
+              setTimeout(()=>{
                 this.router.navigate(['/login']);
                  }, 3000);
         });
-       
+
     }
 
     //This method will create a profile for an organization. It will be called from the ts file of the register component.
-     createOrganizationUser( 
+     createOrganizationUser(
          orgData:any
     ){
         this.http.post("http://localhost:3000/user/signup_org",orgData)
@@ -65,10 +65,10 @@ export class AuthService{
                 closeButton: true,
                 progressBar: true
               });
-              setTimeout(()=>{  
+              setTimeout(()=>{
                 this.router.navigate(['/login']);
                  }, 3000);
-            
+
         });
     }
 
@@ -92,18 +92,13 @@ export class AuthService{
             closeButton: true,
             progressBar: true
           });
-        //   setTimeout(()=>{  
-        //       location.reload();
-            
-        //      }, 2000);
-          
         });
       }
 
     //This method will authenticate a personal user. It will be called from the ts file of the login component.
     userLogin(loginData:any)
     {
-        
+
         this.http.post<{token:string;userId:string;userType:string}>("http://localhost:3000/user/login",loginData)
         .subscribe(response =>
             {
@@ -117,14 +112,14 @@ export class AuthService{
                     this.saveAuthData(token,this.userId,this.userType);
                     this.router.navigate(['/profile']);
                 }
-                
+
             },error=>{
                 this.toaster.error('Invalid credentials!!!', 'ERROR!', {
                     timeOut: 5500,
                     closeButton: true,
                     progressBar: true
                   });
-                  
+
             }
         )
     }
@@ -132,7 +127,7 @@ export class AuthService{
     //This method will authenticate an organization user. It will be called from the ts file of the login component.
     orgLogin(orgLoginData:any)
     {
-        
+
         this.http.post<{token:string;userId:string;userType:string}>("http://localhost:3000/user/orgLogin",orgLoginData)
         .subscribe(response =>
             {
@@ -146,7 +141,7 @@ export class AuthService{
                 this.saveAuthData(token,this.userId,this.userType);
                 this.router.navigate(['/profile']);
                 }
- 
+
             },error=>{
                 this.toaster.error('Invalid credentials!!!', 'ERROR!', {
                     timeOut: 5500,
@@ -170,7 +165,7 @@ export class AuthService{
         else{
             return null;
         }
-        
+
     }
 
     //This method will be called when the user clicks on the logout button. It will clear out everything (token, userid, isAuthenticated). After clearing everything, it will redirect the logged out user to the home page.
@@ -182,15 +177,15 @@ export class AuthService{
         this.authStatusListener.next(false);
         this.clearAuthData();
         this.router.navigate(['/']);
-        
+
     }
 
     //This method will return all the data of the user who is currently logged in. This method will be called from the profile home component.
     getUserById(loggedInUser:any){
         return this.http.get("http://localhost:3000/user/personal/"+loggedInUser);
-       
+
     }
-  
+
     getOrgById(orgId:any){
         return this.http.get("http://localhost:3000/user/org/"+orgId);
     }
@@ -198,7 +193,7 @@ export class AuthService{
     getUserToken(token:string){
         return this.http.get("http://localhost:3000/user/userToken/"+token);
     }
-    
+
     //This method will save the token and user_Id of the logged in user in the local storage of the web browser.
     private saveAuthData(token:string,userId:string,userType){
         localStorage.setItem("token",token);
@@ -221,8 +216,8 @@ export class AuthService{
         }
     }
 
-    
-    
+
+
     //This method will clear the token and user_Id of the logged in user from the local storage of the web browser.
     private clearAuthData(){
         localStorage.removeItem("token");

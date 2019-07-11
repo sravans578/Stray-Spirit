@@ -290,12 +290,17 @@ router.put('/update/:id', (req, res, next) =>{
         pinCode:req.body.pincodeModel,
         dateOfBirth:req.body.dobModel,
         isActive: req.body.isActiveModel,
-        admin_status: req.body.adminModel,
+        isAdmin: req.body.isAdminModel,
+        isSuperAdmin: req.body.isSuperAdminModel,
     }).then( result=>{
       console.log(result);
         res.status(200).json({
             message: "Update successful!"
         });
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json({error:err});
     });
 
 });
@@ -310,9 +315,10 @@ router.put('/org/update/:id', (req, res, next) =>{
         registrationNumber:req.body.regNumberModel,
         address:req.body.addressModel,
         pinCode:req.body.pincodeModel,
-        admin_status: req.body.adminModel,
-        
-    }).then( result=>{
+        isAdmin: req.body.isAdminModel,
+        isSuperAdmin: req.body.isSuperAdminModel,
+
+    }, {omitUndefined:true}).then( result=>{
       console.log(result);
         res.status(200).json({
             message: "Update successful!"
