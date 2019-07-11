@@ -66,44 +66,19 @@ export class AdminUserManagementComponent implements OnInit {
   }
   //Check whether they're an admin or not and set the new value to the opposite
   toggleAdmin(id){
-    // For personal users
-    //MARLEE: is this breaking because the put is happening before authservice.subscribe finishes, giving it a null value?
+    // For personal accounts
     if(this.tabSelected === 0){
       this.authService.getUserById(id).subscribe(targetUserData => {
-
-          console.log("user type is personal");
-          //If removing regular admin status, remove super admin status too
-          if (targetUserData['isAdmin']) {
-            this.userData = {
-              isAdminModel: false,
-              isSuperAdminModel: false,
-            }
-          }
-          else {
-            this.userData = {
-              isAdminModel: true,
-            }
-          }
-        console.log(this.userData);
-        this.authService.updateUserData(id,this.userData);
+          this.changeRegularAdmin(id, targetUserData['isAdmin']);
+          this.authService.updateUserData(id,this.userData);
+          //MARLEE: reload with AJAX so the whole page doesn't have to refresh
+          location.reload();
       })
     }
     // If not a personal account, handle the organization account
     else if(this.tabSelected === 1){
       this.authService.getOrgById(id).subscribe(targetOrgData => {
-          //If removing regular admin status, remove super admin status too
-          if (targetOrgData['isAdmin']) {
-            this.userData = {
-              isAdminModel: false,
-              isSuperAdminModel: false,
-            }
-          }
-          else {
-            this.userData = {
-              isAdminModel: true,
-            }
-          }
-        console.log(this.userData);
+        this.changeRegularAdmin(id, targetOrgData['isAdmin']);
         this.authService.updateOrgData(id,this.userData);
         location.reload();
         //MARLEE: reload with AJAX so the whole page doesn't have to refresh
@@ -111,45 +86,76 @@ export class AdminUserManagementComponent implements OnInit {
 
     }
     else {
-      console.log('admin page');
+      // If the id matches a document in the personal user collection, update them using the personal route
+      this.authService.getUserById(id).subscribe(targetUserData => {
+        console.log("TARGET USER DATA BITCH: ");
+        console.log(targetUserData);
+        if(targetUserData != null) {
+          this.changeRegularAdmin(id, targetUserData['isAdmin']);
+          this.authService.updateUserData(id, this.userData);
+        }
+      })
+      //Otherwise, it's an organization
+      this.authService.getOrgById(id).subscribe(targetOrgData => {
+        console.log(targetOrgData);
+        if(targetOrgData != null) {
+          this.changeRegularAdmin(id, targetOrgData['isAdmin']);
+          this.authService.updateOrgData(id, this.userData);
+        }
+      })
     }
-
-    //The whole change has to happen in the subscribe method because it's asynchronous
-
-    // // MARLEE: use UpdateUserData from auth.sevice.ts
-    // for(let user of this.currentList){
-    //   if(user.id == id){
-    //     //If removing regular admin status, remove super admin status too
-    //     if(user.isAdmin){
-    //       user.isSuperAdmin = false;
-    //     }
-    //     user.isAdmin = !user.isAdmin;
-    //     break;
-    //   }
-    // }
   }
 
   toggleSuperAdmin(id){
-    for(let user of this.currentList){
-      if(user.id == id){
-        user.isSuperAdmin = !user.isSuperAdmin;
-        //If giving super admin status, grant regular admin status too
-        if(user.isSuperAdmin){
-          user.isAdmin = true;
-        }
-        break;
+    // If the id matches a document in the personal user collection, update them using the personal route
+    this.authService.getUserById(id).subscribe(targetUserData => {
+      console.log("TARGET USER DATA BITCH: ");
+      console.log(targetUserData);
+      if(targetUserData != null) {
+        this.changeSuperAdmin(id, targetUserData['isSuperAdmin']);
+        this.authService.updateUserData(id, this.userData);
+      }
+    })
+    //Otherwise, it's an organization
+    this.authService.getOrgById(id).subscribe(targetOrgData => {
+      console.log(targetOrgData);
+      if(targetOrgData != null) {
+        this.changeSuperAdmin(id, targetOrgData['isSuperAdmin']);
+        this.authService.updateOrgData(id, this.userData);
+      }
+    })
+  }
+  changeRegularAdmin(id, isAdmin){
+    if (isAdmin) {
+      //If removing regular admin status, remove super admin status too
+      this.userData = {
+        isAdminModel: false,
+        isSuperAdminModel: false,
+      }
+    }
+    else {
+      //Make the user a regular admin
+      this.userData = {
+        isAdminModel: true,
       }
     }
   }
-  updateAdminStatus(id, status){
-    var targetUser = this.authService.getUserById(id);
-    if(targetUser['user_type']==='personal'){
-      this.userData={
-        isAdminModel: status,
+  changeSuperAdmin(id, isSuperAdmin){
+    if (isSuperAdmin) {
+      console.log("removing super admin status");
+      //Just remove super admin status
+      this.userData = {
+        isSuperAdminModel: false,
       }
-      console.log(this.userData);
-      this.authService.updateUserData(id,this.userData);
-      location.reload();
+    }
+    else {
+      //If giving super admin status, grant regular admin status too
+      console.log("granting super admin status");
+      this.userData = {
+        isAdminModel: true,
+        isSuperAdminModel: true,
+      }
     }
   }
+
 }

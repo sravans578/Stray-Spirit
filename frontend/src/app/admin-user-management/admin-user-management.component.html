@@ -59,8 +59,13 @@
               <th>Super Admin Privileges</th>
             </tr>
             <tr *ngFor="let user of currentList">
-              <td>{{user.name}}</td>
-              <td>person@fake.com</td>
+              <td>
+                <p *ngIf="user.user_type === 'personal'; else isOrganization">{{user.firstName}} {{user.lastName}}</p>
+                <ng-template #isOrganization>
+                  <p>{{user.organizationtName}}</p>
+                </ng-template>
+              </td>
+              <td>{{user.email}}</td>
               <td class="button-box">
                 <button class="btn-success" *ngIf="user.isAdmin; else notAdmin" (click)="toggleAdmin(user._id)">Enabled</button>
                 <ng-template #notAdmin>

@@ -292,7 +292,7 @@ router.put('/update/:id', (req, res, next) =>{
         isActive: req.body.isActiveModel,
         isAdmin: req.body.isAdminModel,
         isSuperAdmin: req.body.isSuperAdminModel,
-    }).then( result=>{
+    }, {omitUndefined:true}).then( result=>{
       console.log(result);
         res.status(200).json({
             message: "Update successful!"
