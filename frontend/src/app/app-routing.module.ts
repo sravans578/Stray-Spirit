@@ -60,6 +60,7 @@ import { DiscussionformsAjithComponent } from './discussionforms-ajith/discussio
 import { SravanChangepasswordComponent } from './sravan-changepassword/sravan-changepassword.component';
 import {SuperAdminGuard} from "./super-admin.guard";
 import {AdminGuard} from "./admin.guard";
+import {UnauthorizedComponent} from "./unauthorized/unauthorized.component";
 
 
 const routes: Routes = [
@@ -100,6 +101,7 @@ const routes: Routes = [
   {path:'cart',component:ShoppingcartAjithComponent},
   { path: 'user_management', canActivate: [SuperAdminGuard], component: AdminUserManagementComponent },
   { path: 'approve_content', canActivate: [AdminGuard], component: AdminApproveContentComponent },
+  { path: 'unauthorized', component: UnauthorizedComponent },
 
   // Implemented nested routes https://angular-2-training-book.rangle.io/handout/routing/child_routes.html
   { path:'profile',

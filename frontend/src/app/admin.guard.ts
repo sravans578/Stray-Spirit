@@ -12,13 +12,18 @@ import { AuthService } from './auth.sevice';
 //Used to check for regular admin status when navigating to admin-only pages
 export class AdminGuard implements CanActivate {
 
-  constructor(private authService: AuthService){ }
+  constructor(private authService: AuthService, private router: Router){ }
 
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
 
-    console.log("is admin: "+this.authService.getIsAdmin());
-    return this.authService.getIsAdmin();
+    if(this.authService.getIsAdmin()){
+      return true;
+    }
+    else{
+      //If the user tries to access an admin page without the correct privileges, show an error message
+      this.router.navigate(['/unauthorized']);
+    }
   }
 }

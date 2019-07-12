@@ -33,7 +33,7 @@
           <li class="nav-item">
               <a class="nav-link waves-light" mdbWavesEffect routerLink="/blogs">Stories</a>
           </li>
-          <li *ngIf="isAdmin" class="nav-item dropdown" dropdown>
+          <li *ngIf="isAdmin && isUserAuthenticated" class="nav-item dropdown" dropdown>
             <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
                 Admin<span class="caret"></span></a>
             <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
