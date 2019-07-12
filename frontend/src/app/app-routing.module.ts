@@ -58,6 +58,8 @@ import { DonationsAjithComponent } from './donations-ajith/donations-ajith.compo
 import { ShoppingcartAjithComponent } from './shoppingcart-ajith/shoppingcart-ajith.component';
 import { DiscussionformsAjithComponent } from './discussionforms-ajith/discussionforms-ajith.component';
 import { SravanChangepasswordComponent } from './sravan-changepassword/sravan-changepassword.component';
+import {SuperAdminGuard} from "./super-admin.guard";
+import {AdminGuard} from "./admin.guard";
 
 
 const routes: Routes = [
@@ -96,8 +98,8 @@ const routes: Routes = [
   {path:'donate',component:DonateShehzeenComponent},
   {path:'product-detail/:id',component:ProductReviewShehzeenComponent},
   {path:'cart',component:ShoppingcartAjithComponent},
-  { path: 'user_management', component: AdminUserManagementComponent },
-  { path: 'approve_content', component: AdminApproveContentComponent },
+  { path: 'user_management', canActivate: [SuperAdminGuard], component: AdminUserManagementComponent },
+  { path: 'approve_content', canActivate: [AdminGuard], component: AdminApproveContentComponent },
 
   // Implemented nested routes https://angular-2-training-book.rangle.io/handout/routing/child_routes.html
   { path:'profile',

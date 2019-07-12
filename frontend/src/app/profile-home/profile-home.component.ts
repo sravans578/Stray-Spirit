@@ -100,7 +100,6 @@ export class ProfileHomeComponent implements OnInit {
 
     }
 
-//MARLEE: use logic like this to update the user
   updateSubmit(){
 
     if(this.current_user_type==='personal'){

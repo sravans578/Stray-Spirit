@@ -1,4 +1,5 @@
 // Developer : Aditya Gadhvi (B00809664)
+// Modified by Marlee Donnelly in July 2019
 
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from '../auth.sevice';
@@ -14,20 +15,26 @@ export class NavComponent implements OnInit,OnDestroy {
   private authListenerSubs:Subscription;
   private rsub;
   public isUserAuthenticated=false;
+
+  isAdmin = false;
+  isSuperAdmin = false;
+
   constructor(private authService:AuthService, private router:Router) {
 
-   }
+  }
 
-  //This method will be executed when the nav will be launched for the first time. It will check whether the user is logged in or not. If so, it will set isUserAuthenticated to true, or else set to false. 
+  //This method will be executed when the nav will be launched for the first time. It will check whether the user is logged in or not. If so, it will set isUserAuthenticated to true, or else set to false.
   ngOnInit() {
     this.isUserAuthenticated=this.authService.getIsAuth();
     this.authListenerSubs=this.authService.getAuthStatusListener()
-    .subscribe(isAuthenticated=>
-      {
-      this.isUserAuthenticated=isAuthenticated;
-    }
+      .subscribe(isAuthenticated=> {
+        this.isUserAuthenticated=isAuthenticated;
+      }
     );
- 
+
+    this.isAdmin = this.authService.getIsAdmin();
+    this.isSuperAdmin = this.authService.getIsSuperAdmin();
+
   }
 
   ngOnDestroy(){

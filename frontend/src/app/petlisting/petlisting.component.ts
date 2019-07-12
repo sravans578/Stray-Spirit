@@ -59,7 +59,7 @@ export class PetlistingComponent implements OnInit {
       this.inputLocation = this.currentCity+this.comma+this.currentState+this.comma+this.currentCountry;
       this.searchLocation.patchValue(this.inputLocation);
     })
-    //MARLEE: use this to get the list of users
+
     this.isLoading = true;
     this.petService.getPets().subscribe(petData =>{
       //console.log(petData);

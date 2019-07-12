@@ -1,4 +1,5 @@
 // Developer : Aditya Gadhvi (B00809664)
+// Modified by Marlee Donnelly in July 2019
 
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -12,6 +13,8 @@ export class AuthService{
     private isAuthenticated=false;
     private userId:string;
     private userType:string;
+    private isAdmin: boolean;
+    private isSuperAdmin: boolean;
     private authStatusListener=new Subject<boolean>();
     constructor(private http:HttpClient,private router: Router,private toaster:ToastrService){}
 
@@ -36,6 +39,13 @@ export class AuthService{
 
     getAuthStatusListener(){
         return this.authStatusListener.asObservable();
+    }
+
+    getIsAdmin(){
+      return this.isAdmin;
+    }
+    getIsSuperAdmin(){
+      return this.isSuperAdmin;
     }
 
     //This method will create a profile for a personal user. It will be called from the ts file of the register component.
@@ -99,7 +109,7 @@ export class AuthService{
     userLogin(loginData:any)
     {
 
-        this.http.post<{token:string;userId:string;userType:string}>("http://localhost:3000/user/login",loginData)
+        this.http.post<{token:string;userId:string;userType:string; isAdmin:boolean; isSuperAdmin: boolean;}>("http://localhost:3000/user/login",loginData)
         .subscribe(response =>
             {
                 const token=response.token;
@@ -108,8 +118,10 @@ export class AuthService{
                     this.isAuthenticated=true;
                     this.userId=response.userId;
                     this.userType=response.userType;
+                    this.isAdmin = response.isAdmin;
+                    this.isSuperAdmin = response.isSuperAdmin;
                     this.authStatusListener.next(true);
-                    this.saveAuthData(token,this.userId,this.userType);
+                    this.saveAuthData(token, this.userId, this.userType, this.isAdmin, this.isSuperAdmin);
                     this.router.navigate(['/profile']);
                 }
 
@@ -128,7 +140,7 @@ export class AuthService{
     orgLogin(orgLoginData:any)
     {
 
-        this.http.post<{token:string;userId:string;userType:string}>("http://localhost:3000/user/orgLogin",orgLoginData)
+        this.http.post<{token:string;userId:string;userType:string;isAdmin:boolean;isSuperAdmin:boolean;}>("http://localhost:3000/user/orgLogin",orgLoginData)
         .subscribe(response =>
             {
                 const token=response.token;
@@ -137,8 +149,10 @@ export class AuthService{
                 this.isAuthenticated=true;
                 this.userId=response.userId;
                 this.userType=response.userType;
+                this.isAdmin = response.isAdmin;
+                this.isSuperAdmin = response.isSuperAdmin;
                 this.authStatusListener.next(true);
-                this.saveAuthData(token,this.userId,this.userType);
+                this.saveAuthData(token, this.userId, this.userType, this.isAdmin, this.isSuperAdmin);
                 this.router.navigate(['/profile']);
                 }
 
@@ -160,6 +174,9 @@ export class AuthService{
             this.isAuthenticated=true;
             this.userId=authInformation.userId;
             this.userType=authInformation.userType;
+            // Convert from strings to booleans
+            this.isAdmin = (authInformation.isAdmin === "true");
+            this.isSuperAdmin = (authInformation.isSuperAdmin === "true");
             this.authStatusListener.next(true);
         }
         else{
@@ -174,6 +191,8 @@ export class AuthService{
         this.isAuthenticated=false;
         this.userId=null;
         this.userType=null;
+        this.isAdmin = false;
+        this.isSuperAdmin = false;
         this.authStatusListener.next(false);
         this.clearAuthData();
         this.router.navigate(['/']);
@@ -195,10 +214,12 @@ export class AuthService{
     }
 
     //This method will save the token and user_Id of the logged in user in the local storage of the web browser.
-    private saveAuthData(token:string,userId:string,userType){
+    private saveAuthData(token:string,userId:string,userType:string,isAdmin:boolean,isSuperAdmin:boolean){
         localStorage.setItem("token",token);
         localStorage.setItem("userId",userId);
         localStorage.setItem("userType",userType);
+        localStorage.setItem("isAdmin",isAdmin.toString());
+        localStorage.setItem("isSuperAdmin",isSuperAdmin.toString());
     }
 
     //This method will return the data such as token, user_Id of the logged in user. Basically it returns the authentication information of the logged in user.
@@ -206,13 +227,17 @@ export class AuthService{
         const token=localStorage.getItem("token");
         const userId=localStorage.getItem("userId");
         const userType=localStorage.getItem("userType");
+        const isAdmin=localStorage.getItem("isAdmin");
+        const isSuperAdmin=localStorage.getItem("isSuperAdmin");
         if(token==="" && token===null){
             return;
         }
         return{
-            token:token,
-            userId:userId,
-            userType:userType
+          token:token,
+          userId:userId,
+          userType:userType,
+          isAdmin: isAdmin,
+          isSuperAdmin: isSuperAdmin
         }
     }
 
@@ -223,5 +248,7 @@ export class AuthService{
         localStorage.removeItem("token");
         localStorage.removeItem("userId");
         localStorage.removeItem("userType");
+        localStorage.removeItem("isAdmin");
+        localStorage.removeItem("isSuperAdmin");
     }
 }

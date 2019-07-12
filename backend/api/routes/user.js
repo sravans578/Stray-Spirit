@@ -176,6 +176,8 @@ router.post('/login', (req, res, next) => {
             });
         }
          fetchedUser= user;
+        console.log("Fetched user: ");
+        console.log(fetchedUser);
         return bcrypt.compare(req.body.password,user.password);
     })
     .then(result => {
@@ -198,7 +200,9 @@ router.post('/login', (req, res, next) => {
         res.status(200).json({
             token:token,
             userId:fetchedUser._id,
-            userType:fetchedUser.user_type
+            userType:fetchedUser.user_type,
+            isAdmin: fetchedUser.isAdmin,
+            isSuperAdmin: fetchedUser.isSuperAdmin,
         });
     })
     .catch(err=>{
@@ -238,7 +242,9 @@ router.post('/login', (req, res, next) => {
         res.status(200).json({
             token:token,
             userId:fetchedOrg._id,
-            userType:fetchedOrg.user_type
+            userType:fetchedOrg.user_type,
+            isAdmin: fetchedOrg.isAdmin,
+            isSuperAdmin: fetchedOrg.isSuperAdmin,
         });
     })
     .catch(err=>{
