@@ -1,5 +1,5 @@
 // Developer - Dheeraj Varshney B00808467 dh301823@dal.ca 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output ,EventEmitter } from '@angular/core';
 import {Router} from "@angular/router";
 import { FormControl } from '@angular/forms';
 import { ProductmanagementService } from '../productmanagement.service'
@@ -10,15 +10,20 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./productlisting.component.scss']
 })
 export class ProductlistingComponent implements OnInit {
+  
+  @Output() global_shopping_cart_count = new EventEmitter<number>();
   products: any = [];
   product_newData: any;
   allProducts: any;
   productCategory=new FormControl();
-  
+  product_details : any ={};
+  cart_items:any=[];
+  item_exists:boolean;
   constructor(private toastr: ToastrService,private productService: ProductmanagementService) { }
 
  
   ngOnInit() {
+    this.product_details={};
       this.productService.getProducts().subscribe(productData =>
         {
       this.product_newData=productData;
@@ -87,8 +92,45 @@ onClick()
     
   }
 
-  addToCart(){
-    this.toastr.error('Just a message for Assignment 4 UI', 'Coming Soon', {
+  addToCart(productpic,productname,productprice,productid,productDescription){
+    this.product_details={};
+    this.cart_items=JSON.parse(localStorage.getItem("shopping_cart"));
+    if(this.cart_items == null){
+      this.cart_items=[];
+      this.product_details["productpic"]=productpic;
+      this.product_details["productname"]=productname;
+      this.product_details["productprice"]=productprice;
+      this.product_details["itemcount"]=1;
+      this.product_details["productid"]=productid;
+      this.product_details["productDescription"]=productDescription;
+      this.cart_items.push(this.product_details);
+      localStorage.setItem("shopping_cart",JSON.stringify(this.cart_items));
+    }
+    else{
+      this.item_exists=false;
+      for(var item in this.cart_items){
+        if(this.cart_items[item]["productpic"]==productpic && this.cart_items[item]["productname"]==productname ){
+          this.cart_items[item]["itemcount"] = this.cart_items[item]["itemcount"]+1;
+          this.item_exists=true;
+          break;
+        }
+      }
+      if(!this.item_exists){
+        this.product_details["productpic"]=productpic;
+        this.product_details["productname"]=productname;
+        this.product_details["productprice"]=productprice;
+        this.product_details["itemcount"]=1;
+        this.product_details["productid"]=productid;
+        this.product_details["productDescription"]=productDescription;
+        this.cart_items.push(this.product_details);
+      }
+      localStorage.removeItem("shopping_cart");
+      localStorage.setItem("shopping_cart",JSON.stringify(this.cart_items));
+    }
+    debugger;
+    this.global_shopping_cart_count.emit(this.cart_items.length);
+     
+    this.toastr.success('please continue shopping....', 'Product Added to the cart', {
       timeOut: 5000,
       closeButton: true,
       progressBar: true
