@@ -45,9 +45,14 @@
       </ul>
       <ul class="navbar-nav ml-auto">
       <li class="nav-item">
-        <a class="nav-link waves-light" mdWavesEffect routerLink="/cart">
+        <div class="row">
+                <!-- <button  style="border-radius: 25px;background-color: orangered;width: 30px;height: 30px;margin-left: -13px;">2</button> -->
+        <app-productlisting  [hidden]="true" (global_shopping_cart_count)="receivecartcount($event)"></app-productlisting>                
+        <a class="nav-link waves-light"  mdWavesEffect routerLink="/cart">
             <i class="fas fa-cart-arrow-down fa-lg"></i>
         </a>
+        <button  routerLink="/cart" class="cart-count">{{items_in_cart}}</button>
+        </div>
 
       </li>
       <li class="nav-item dropdown" dropdown>

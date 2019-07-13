@@ -8,12 +8,14 @@ import { AuthService } from './auth.sevice';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+ 
 })
 export class AppComponent implements OnInit {
 
   title = 'StraySpirit';
   routeUrl: string;
+  public myValue:number = 2;
   constructor(
     private authService:AuthService,
     private _router: Router,
@@ -21,6 +23,7 @@ export class AppComponent implements OnInit {
     ){
       this._router.events.subscribe(() => this.routeUrl = this._router.url ); 
     }
+    
     private hasMatches(...values: string[]): boolean {
       let matchFound: boolean = false;
       var i;
