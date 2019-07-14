@@ -4,7 +4,7 @@ import { HttpClient , HttpParams } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class ProductmanagementService {
+export class ProductmanagementService { 
 
   constructor(private http: HttpClient) { 
 
@@ -30,7 +30,7 @@ export class ProductmanagementService {
       console.log("Product added!");
     });
   }
-  updateProducts(productId:any, productData:any){
+  updateProducts(productId:any, productData:any){ 
     
     console.log("From service",productData);
     this.http.put('http://localhost:3000/products/update/'+productId,productData)
