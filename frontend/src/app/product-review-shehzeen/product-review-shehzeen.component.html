@@ -5,58 +5,76 @@
  <head></head>
  <div class="jumbotron-fluid jumbotron mt-85">
     <div class="container">
-       <div style="width:100%;">
-          <div style="width:30%; float:left; height: 50%;">
-             <mat-card class="product-card">
-                <mat-card-header>
-                   <mat-card-title>Signature Chicken</mat-card-title>
-                   <mat-card-subtitle>Kirkland</mat-card-subtitle>
-                </mat-card-header>
-                <!--The below image is taken from https://images.costco-static.com/ImageDelivery/imageService?profileId=12026539&imageId=29506-894__1&recipeName=350-->
-                <img mat-card-image src="https://images.costco-static.com/ImageDelivery/imageService?profileId=12026539&imageId=29506-894__1&recipeName=350"
-                   alt="Kirkland Signature Chicken">
-             </mat-card>
-             <br>
-          </div>
-          <div style="width:65%; float:right; height: 50%">
-             <form [formGroup]="reviewForm" name="reviewForm" (submit)="onSubmit()">
-             <mat-card>
-                <mat-card-header>
-                   <mat-card-title>Product Details</mat-card-title>
-                </mat-card-header>
-                <mat-divider></mat-divider>
-                <br>
-                <mat-card-content>
-                   <mat-card-subtitle>
-                      <div style=" width:12%;float:left;"><b>Price:</b></div>
-                      <div style="width:67%; "> <b>$5</b></div>
-                   </mat-card-subtitle>
-                   <mat-card-subtitle>
-                      <div><b>Description:</b></div>
-                      <div>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                      </div>
-                   </mat-card-subtitle>
-                   <mat-card-subtitle>
-                      <div style=" float:left;"><b>Write a Review:</b></div>
-                      <div style="width:100%; ">
-                         <br>
-                         <textarea id="reviewBox" name="reviewBox" formControlName="reviewBox"
-                            [ngClass]="{'is-invalid':reviewForm.get('reviewBox').touched}"
-                            class="md-textarea form-control"></textarea>
-                         <div *ngIf="reviewForm.get('reviewBox').touched && reviewForm.get('reviewBox').invalid"
-                            class="invalid-feedback">
-                            <div *ngIf="reviewForm.get('reviewBox').errors.required">First Name is required</div>
-                         </div>
-                      </div>
-                   </mat-card-subtitle>
-                </mat-card-content>
-                <button type="submit" class="button" [attr.disabled]="!reviewForm.valid ? true : null " mat-flat-button color="primary"
-                [disabled]="!reviewForm.valid">Submit Review</button>
-             </mat-card>
-             <br>
-             </form>
-          </div>
+       <div style="width:100%; margin-bottom: 25px;">
+         <div class="row" style="margin-bottom: 50px;">
+               
+            <div class="col-md-4 col-md-border">
+              
+                  
+                  <img  src={{product_data?.productPic}}
+                  alt={{product_data?.productPic}}>
+               
+            </div>
+            <div class="col-md-8 col-md-border">
+                  <form  [formGroup]="reviewForm" name="reviewForm" (submit)="onSubmit()">
+                       <div>
+                           <mat-card-header>
+                                 <mat-card-title>{{product_data?.productName}}</mat-card-title>
+                                 
+                                 <span class="cart_button">
+                                       <i class="fas fa-cart-plus fa-lg" (click) = "addToCart()"></i>
+                                   </span>
+                              </mat-card-header>
+                          
+                             
+                       </div>
+                      
+                         
+                           <mat-divider></mat-divider>
+                           <br>
+                           <mat-card-content>
+                              <mat-card-subtitle>
+                                 <div style=" width:12%;float:left;"><b>Price:</b></div>
+                                 <div style="width:67%; "> <b>{{product_data?.productPrice}}</b></div>
+                              </mat-card-subtitle>
+                              <mat-card-subtitle>
+                                 <div><b>Description:</b></div>
+                                 <div>
+                                       {{product_data?.productDescription}}
+                                 </div>
+                              </mat-card-subtitle>
+                              <mat-card-subtitle>
+                                 <div style=" float:left;"><b>Write a Review:</b></div>
+                                 <div style="width:100%; ">
+                                    <br>
+                                    <textarea name = "reviewBox" id="reviewBox" name="reviewBox" formControlName="reviewBox"
+                                       [ngClass]="{'is-invalid':reviewForm.get('reviewBox').touched}"
+                                       class="md-textarea form-control"></textarea>
+                                    <div *ngIf="reviewForm.get('reviewBox').touched && reviewForm.get('reviewBox').invalid"
+                                       class="invalid-feedback">
+                                       <div *ngIf="reviewForm.get('reviewBox').errors.required">Review is required</div>
+                                    </div>
+                                 </div>
+                              </mat-card-subtitle>
+                           </mat-card-content>
+                           <br>
+                           <button type="submit" class="button" [attr.disabled]="reviewForm.valid ? false : true " mat-flat-button color="primary"
+                           [disabled]="reviewForm.valid ? false : true ">Submit Review</button>
+                      
+                        </form>
+            </div>
+        
+        </div> 
+        
+        <mat-card-header>
+         <mat-card-title>REVIEWS</mat-card-title>
+      </mat-card-header>
+      <mat-divider></mat-divider> 
+      <div *ngIf="product_data.productReview.length == 0"><mat-card>No Review Found.</mat-card></div>
+      <mat-card   *ngFor="let  result of product_data.productReview" style="margin-bottom: 15px;">
+         {{result?.productReview}}</mat-card>
+     
+      
        </div>
     </div>
  </div>
