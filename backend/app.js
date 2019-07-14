@@ -15,6 +15,7 @@ const productsRoutes = require('./api/routes/products');
 const EventsRoutes = require('./api/routes/event');
 const adoptRoutes = require('./api/routes/adoption');
 const orderRoutes = require('./api/routes/order');
+const shoppingCartRoutes = require('./api/routes/shoppingcart');
 
 app.use(morgan('dev'));
 app.use(bodyParser.json({limit: '50mb'}));
@@ -41,6 +42,7 @@ app.use('/adoption', adoptRoutes);
 app.use('/order', orderRoutes);
 
 
+app.use('/shoppingcart',shoppingCartRoutes);
 app.use('/event', EventsRoutes); // Adding Event Routing reference
 
 mongoose.connect('mongodb+srv://strayspirit:' + process.env.MONGO_ATLAS_PW + '@strayspirit-bsghz.mongodb.net/test?retryWrites=true', { useNewUrlParser: true });

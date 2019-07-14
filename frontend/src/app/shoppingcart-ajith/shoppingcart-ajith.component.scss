@@ -49,7 +49,15 @@
     color: #ffb3b3;
     cursor: pointer;
 }
-
+.address-label{
+    margin-left: 5%;
+    margin-top: 1%;
+}
+.address-input{
+    margin-left: 5%;
+    width: 80%;
+    border-radius: 12px;
+}
 @media screen and (max-width:960px){
     .mobile-header{
         display: none;

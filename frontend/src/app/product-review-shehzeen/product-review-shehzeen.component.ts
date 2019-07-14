@@ -123,7 +123,12 @@ onSubmit() {
     
       console.log(this.product_data);
       
-      alert('Successfully submitted form');
+      this.toastr.success('Successfully submitted the review for the Product.', 'SUCCESS!', {
+        timeOut: 5500,
+        closeButton: true,
+        progressBar: true
+      });
+     // alert('Successfully submitted form');
     }
 
     

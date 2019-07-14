@@ -70,7 +70,7 @@
          <mat-card-title>REVIEWS</mat-card-title>
       </mat-card-header>
       <mat-divider></mat-divider> 
-      <div *ngIf="product_data.productReview.length == 0">Not found.</div>
+      <div *ngIf="product_data.productReview.length == 0"><mat-card>No Review Found.</mat-card></div>
       <mat-card   *ngFor="let  result of product_data.productReview" style="margin-bottom: 15px;">
          {{result?.productReview}}</mat-card>
      

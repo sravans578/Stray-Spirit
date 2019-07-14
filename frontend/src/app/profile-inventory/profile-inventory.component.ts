@@ -51,9 +51,10 @@ export class ProfileInventoryComponent implements OnInit {
   ngOnInit() {
 
     this.userId = this.authService.getUserId();
+    
     this.authService.getUserById(this.userId).subscribe(currentUser => {
       this.current_User = currentUser;
-
+        
     })
     
 
