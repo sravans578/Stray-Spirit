@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../auth.sevice';
+import { FAQService } from '../f-aq.service';
 
 @Component({
   selector: 'app-faq-sravan',
@@ -8,7 +8,7 @@ import { AuthService } from '../auth.sevice';
 })
 export class FaqSravanComponent implements OnInit {
   result: any ;
-  constructor(public authService:AuthService) { }
+  constructor(public faq_service:FAQService) { }
 
 // FAQ = [
 //   {title: 'question1', answer: 'answer1'},
@@ -20,7 +20,7 @@ export class FaqSravanComponent implements OnInit {
   ngOnInit() {
 
 
-    this.authService.getFaq().subscribe(faq =>
+    this.faq_service.getFaq().subscribe(faq =>
       {
     this.result = faq
     console.log(this.result);

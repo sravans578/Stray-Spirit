@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../auth.sevice';
+import { FAQService } from '../f-aq.service';
 import { ToastrService } from 'ngx-toastr';
-import { refreshDescendantViews } from '@angular/core/src/render3/instructions';
+
 
 
 @Component({
@@ -13,12 +13,12 @@ export class SravanFeedbackComponent implements OnInit {
 text = '';
 Message ={};
 
-  constructor(public authService:AuthService, private toastr: ToastrService) { }
+  constructor(public faq_service:FAQService, private toastr: ToastrService) { }
 
  // Passing the feedback message to service 
 onSubmit(){
    this.Message = {Message: this.text}
-   this.authService.sendFeedback(this.Message);
+   this.faq_service.sendFeedback(this.Message);
    // Success on submission
    this.toastr.success('Feedback submitted!', 'Thank You!');
    // Refreshing the page after a delay
