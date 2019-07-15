@@ -105,6 +105,18 @@ export class AuthService{
         });
       }
 
+      deleteUser(passed_userID:any){
+        this.http.delete('http://localhost:3000/user/personal/'+passed_userID).subscribe(response =>{
+          console.log(response);
+        });
+      }
+
+      deleteOrganization(passed_userID:any){
+        this.http.delete('http://localhost:3000/user/org/'+passed_userID).subscribe(response =>{
+          console.log(response);
+        });
+      }
+
     //This method will authenticate a personal user. It will be called from the ts file of the login component.
     userLogin(loginData:any)
     {

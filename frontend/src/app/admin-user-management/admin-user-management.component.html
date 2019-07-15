@@ -46,7 +46,7 @@
                 </ng-template>
               </td>
               <td class="button-box">
-                <a title="Delete" (click)="confirmDelete.show()"><i class="fas fa-trash fa-lg"></i></a>
+                <a title="Delete" (click)="showDeletePopup(user._id)"><i class="fas fa-trash fa-lg"></i></a>
               </td>
             </tr>
           </table>
@@ -86,12 +86,12 @@
   </div>
   <!--Delete confirmation popup. The documentation for Angular-specific Bootstrap modals at
       https://mdbootstrap.com/docs/angular/modals/basic/ was used as a guideline.-->
-  <div mdbModal #confirmDelete="mdbModal" class="modal fade" aria-hidden="true">
+  <div mdbModal #confirmDelete="mdbModal" id="delete-warning" class="modal fade" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">Are You Sure?</h5>
-          <button type="button" class="close" title="Close" (click)="confirmDelete.hide()">
+          <button type="button" class="close" title="Close" (click)="hideDeletePopup()">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
@@ -99,8 +99,8 @@
           <p>Deleting this user will completely remove their account from the Stray Spirit website. This action cannot be undone.</p>
         </div>
         <div class="modal-footer">
-          <button class="btn btn-secondary" (click)="confirmDelete.hide()">Cancel</button>
-          <button class="btn btn-primary" (click)="confirmDelete.hide()">Delete User</button>
+          <button class="btn btn-secondary" (click)="hideDeletePopup()">Cancel</button>
+          <button class="btn btn-primary" (click)="deleteUser()">Delete User</button>
         </div>
       </div>
     </div>

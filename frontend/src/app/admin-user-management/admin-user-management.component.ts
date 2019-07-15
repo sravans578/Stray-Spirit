@@ -1,8 +1,9 @@
 // Author: Marlee Donnelly (B00710138)
 
-import { Component, OnInit } from '@angular/core';
-import {UserService} from "../user.service";
-import {AuthService} from "../auth.sevice";
+import {Component, OnInit, ViewChild} from '@angular/core';
+import { UserService } from "../user.service";
+import { AuthService } from "../auth.sevice";
+import { ModalDirective } from "angular-bootstrap-md";
 
 @Component({
   selector: 'app-admin-user-management',
@@ -10,6 +11,7 @@ import {AuthService} from "../auth.sevice";
   styleUrls: ['./admin-user-management.component.scss']
 })
 export class AdminUserManagementComponent implements OnInit {
+  @ViewChild('confirmDelete') warningModal: ModalDirective;
 
   personalUsers: any = [];
   organizations: any = [];
@@ -19,6 +21,7 @@ export class AdminUserManagementComponent implements OnInit {
   showAdminTable = false;
   //0 - Users, 1 - Organizations, 2 - Admins
   tabSelected = 0;
+  idToDelete = "";
 
   constructor(
     private userService: UserService,
@@ -88,8 +91,6 @@ export class AdminUserManagementComponent implements OnInit {
     else {
       // If the id matches a document in the personal user collection, update them using the personal route
       this.authService.getUserById(id).subscribe(targetUserData => {
-        console.log("TARGET USER DATA BITCH: ");
-        console.log(targetUserData);
         if(targetUserData != null) {
           this.changeRegularAdmin(id, targetUserData['isAdmin']);
           this.authService.updateUserData(id, this.userData);
@@ -109,8 +110,6 @@ export class AdminUserManagementComponent implements OnInit {
   toggleSuperAdmin(id){
     // If the id matches a document in the personal user collection, update them using the personal route
     this.authService.getUserById(id).subscribe(targetUserData => {
-      console.log("TARGET USER DATA BITCH: ");
-      console.log(targetUserData);
       if(targetUserData != null) {
         this.changeSuperAdmin(id, targetUserData['isSuperAdmin']);
         this.authService.updateUserData(id, this.userData);
@@ -156,6 +155,30 @@ export class AdminUserManagementComponent implements OnInit {
         isSuperAdminModel: true,
       }
     }
+  }
+
+  showDeletePopup(id){
+    this.warningModal.show();
+    this.idToDelete = id;
+  }
+
+  hideDeletePopup(){
+    this.idToDelete = "";
+    this.warningModal.hide();
+  }
+
+  deleteUser(){
+    if(this.idToDelete != "") {
+      if (this.tabSelected == 0) {
+        console.log("Deleting user with id " + this.idToDelete);
+        this.authService.deleteUser(this.idToDelete);
+      }
+      else if (this.tabSelected == 1) {
+        console.log("Deleting org with id " + this.idToDelete);
+        this.authService.deleteOrganization(this.idToDelete);
+      }
+    }
+    this.warningModal.hide();
   }
 
 }

@@ -333,4 +333,35 @@ router.put('/org/update/:id', (req, res, next) =>{
 
 });
 
+// Handle account deletion
+router.delete('/personal/:id', (req, res) =>{
+    const id = req.params.id;
+    User.findByIdAndDelete(id).then( result=>{
+      console.log(result);
+      res.status(200).json({
+          message: "The personal account was deleted successfully."
+      });
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json({error:err});
+    });
+
+});
+
+router.delete('/org/:id', (req, res) =>{
+    const id = req.params.id;
+    Organization.findByIdAndDelete(id).then( result=>{
+      console.log(result);
+        res.status(200).json({
+            message: "The organization account was deleted successfully."
+        });
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json({error:err});
+    });
+
+});
+
 module.exports = router;
