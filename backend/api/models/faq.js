@@ -1,3 +1,4 @@
+// Schema for FAQ 
 const mongoose = require('mongoose');
 
 const faqSchema = mongoose.Schema({
