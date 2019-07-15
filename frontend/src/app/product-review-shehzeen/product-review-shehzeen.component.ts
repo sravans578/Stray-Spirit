@@ -27,6 +27,7 @@ export class ProductReviewShehzeenComponent implements OnInit {
   namePattern: string = '';//'/^[\w\s]+$/';  
 
   product_id: string;
+  product_reviews: any;
   sub: any;
   product_data: any;
   currentUserId : any;
@@ -49,7 +50,7 @@ export class ProductReviewShehzeenComponent implements OnInit {
  * on init This function intanciate the review form with all the validators present in the form.
  */
 ngOnInit() { 
-    debugger; 
+     
     this.reviewForm = this.formBuilder.group({
       reviewBox: ['', [Validators.required,Validators.pattern(this.namePattern)]],
     });
@@ -60,21 +61,18 @@ ngOnInit() {
       this.currentUser=currentUserData;
       console.log("Logged in user details:",this.currentUser);
     },error=>{
-      this.router.navigate(['/server-cannot-process-the-request.']);
+   
       });
 
     this.sub = this.route.params.subscribe(params => {
       this.product_id = params['id']; 
       
-   },error=>{
-    this.router.navigate(['/server-cannot-process-the-request.']);
-    });
+   });
 
      this.productService.getProductsById(this.product_id).subscribe(product=>{
 this.product_data = product;
+this.product_reviews = this.product_data.productReview;
 //this.product_data.productReview = [];
-     },error=>{
-     this.router.navigate(["/product-not-found"]);
      });
   }
 /**
@@ -94,7 +92,7 @@ onSubmit() {
     }
     else{
       console.log(this.reviewForm.get('reviewBox'));
-      debugger;
+      
       this.product_data.productReview.push(
         {
           productUploaderId: this.currentUserId,
@@ -128,8 +126,12 @@ onSubmit() {
         closeButton: true,
         progressBar: true
       });
+      this.reviewForm.reset();
+
      // alert('Successfully submitted form');
     }
+   // this.reviewForm.controls['reviewBox'].setValue('');
+    //this.reviewForm.controls['reviewBox'].markAsTouched({ onlySelf: true });
 
     
 }

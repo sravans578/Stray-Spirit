@@ -6,14 +6,7 @@
         <div class="row" style="margin-bottom: 50px;">
           <h4><b>Order History</b></h4>
           </div>
-          <mat-progress-spinner [diameter]="70" style="margin:0 auto;"  *ngIf="currentList != null && !loop"
-          class="example-margin"
-          [color]="color"
-          [mode]="loading"
-          [value]="value">
-      </mat-progress-spinner>
           <div>
-              <div *ngIf="currentList != null && loop">
               <mat-accordion>
                   
               
@@ -40,7 +33,7 @@
                           <td class="description-cell">
                             <div >
                                <h5><b>{{item.productname}}</b></h5>
-                              <b>Price: $</b><span>{{item.productprice}}</span><br>
+                              <b>Price: </b><span>{{item.productprice}}</span><br>
                               <b>Quantity:</b> {{item.itemcount}}<br>
                               <b>Description: </b>{{item.productDescription}}
         
@@ -57,7 +50,7 @@
                                 <b>Estimated delivery date: </b>  {{order.estimatedDeliveryDate}}
                            </div>
                            <div class="float-right">
-                                 <b>Ordered total: </b>$ {{order.totalPrice}}
+                                 <b>Ordered total: </b> {{order.totalPrice}}
                               </div>
                               
                               </div><br>
@@ -68,7 +61,7 @@
                                    <b>Order delivery status: </b>  {{order.orderStatus}}
                               </div><br><br>
                               <div class="row" >
-                                <div *ngIf="showCancel">
+                                <div>
                                     <button (click) = "onCancel($event)" class="button" mat-flat-button color="primary"> 
                                         <input type="hidden" value={{order._id}}>
                                       Cancel Order </button>
@@ -91,13 +84,6 @@
                   </mat-expansion-panel>
              
                 </mat-accordion>
-                </div>
-                <div *ngIf="currentList.length == 0">
-                    <mat-card>
-                      No Orders Found.
-                    </mat-card>
-
-                </div>
           </div>
        
          </div><div></div>

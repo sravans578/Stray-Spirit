@@ -25,6 +25,9 @@ export class ParticularOrderManageComponent implements OnInit {
   productData :any;
   selectedOrder: any;
   checker :any;
+  loop : any;
+  loading : any;
+  showCancel: any;
 
   constructor(
     private orders: OrdermanagmentService,
@@ -38,7 +41,10 @@ export class ParticularOrderManageComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.currentList = [{}];
+    this.loading = "indeterminate";
     var that = this;
+    this.loop = false;
     try {
       this.currentUserId=this.authService.getUserId();
       this.authService.getUserById(this.currentUserId).subscribe(currentUserData =>{
@@ -47,6 +53,8 @@ export class ParticularOrderManageComponent implements OnInit {
   
         if(that.currentUser.user_type == "seller"){
           this.orders.getOrders().subscribe ( data => {
+            that.loop = true;
+            this.loading = "determinate";
             that.currentList = data;
            // debugger;
           },error=>{
@@ -57,6 +65,7 @@ export class ParticularOrderManageComponent implements OnInit {
         else{
           this.orders.getPOrders(this.currentUser.firstName).subscribe ( data => {
             that.currentList = data;
+            this.loop = true;
            // debugger;
           },error=>{
             this.router.navigate(['/server-cannot-process-the-request.']);
@@ -136,6 +145,12 @@ export class ParticularOrderManageComponent implements OnInit {
 
   }
   open(){
+    if(this.currentUser.user_type == "personal"){
+      this.showCancel = true;
+    }
+    else{
+      this.showCancel = false;
+    }
     var that = this;
     that.checker = false; 
     if(this.selectedOrder.checker != true){
@@ -147,6 +162,7 @@ export class ParticularOrderManageComponent implements OnInit {
           //this.product_data.productReview = [];
           if(product["productUploader"]["uId"] == that.currentUserId ){
             that.checker = true;
+            that.showCancel = true;
           }
                },error=>{
                this.router.navigate(["/product-not-found"]);
