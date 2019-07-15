@@ -1,9 +1,10 @@
 // FEEDBACK ROUTE
 const express = require('express');
 const router = express.Router();
+const nodemailer = require('nodemailer');
 const FAQ = require('../models/faq')
 
-router.post('/', (req, res, next) => {
+router.post('/submitFeedback', (req, res, next) => {
 
     
     // Configuring Node mailer to send mails to support email upon user feedback submission

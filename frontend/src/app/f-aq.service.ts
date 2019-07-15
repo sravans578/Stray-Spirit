@@ -14,7 +14,7 @@ export class FAQService {
    sendFeedback (FeedbackPost:any){
     console.log(FeedbackPost);
     // POST call to backend server
-    this.http.post("http://localhost:3000/feedback/",FeedbackPost)
+    this.http.post("http://localhost:3000/feedback/submitFeedback",FeedbackPost)
     .subscribe(response=>{
 
         this.toaster.success('Feedback submitted', 'SUCCESS!', {

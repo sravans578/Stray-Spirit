@@ -10,20 +10,14 @@ export class FaqSravanComponent implements OnInit {
   result: any ;
   constructor(public faq_service:FAQService) { }
 
-// FAQ = [
-//   {title: 'question1', answer: 'answer1'},
-//   {title: 'question2', answer: 'answer2'},
-// ]
-
 
 
   ngOnInit() {
 
-
+    // On page load, fetching all FAQs
     this.faq_service.getFaq().subscribe(faq =>
       {
-    this.result = faq
-    console.log(this.result);
+    this.result = faq // assigning to variable to result (JSON object)
      })
 }
 

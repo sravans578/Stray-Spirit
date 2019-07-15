@@ -54,28 +54,7 @@ export class AuthService{
        
     }
 
-    // Method for passing feedback entered by a user
-    sendFeedback (FeedbackPost:any){
-        console.log(FeedbackPost);
-        // POST call to backend server
-        this.http.post("http://localhost:3000/feedback/",FeedbackPost)
-        .subscribe(response=>{
-
-            this.toaster.success('Feedback submitted', 'SUCCESS!', {
-                timeOut: 5500,
-                closeButton: true,
-                progressBar: true
-              });
-           
-        });
-    }
-
-    // METHOD FOR Fetching all FAQs 
-    getFaq (){
-    
-        return this.http.get("http://localhost:3000/feedback/getFAQ")
-        
-    }
+ 
 
     //This method will create a profile for an organization. It will be called from the ts file of the register component.
      createOrganizationUser( 
