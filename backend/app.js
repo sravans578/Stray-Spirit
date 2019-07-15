@@ -14,6 +14,7 @@ const userRoutes = require('./api/routes/user');
 const productsRoutes = require('./api/routes/products');
 const EventsRoutes = require('./api/routes/event');
 const adoptRoutes = require('./api/routes/adoption');
+const feedbacknew = require('./api/routes/feedback');
 
 app.use(morgan('dev'));
 app.use(bodyParser.json({limit: '50mb'}));
@@ -37,6 +38,7 @@ app.use('/pets', petsRoutes);
 app.use('/user', userRoutes);
 app.use('/products', productsRoutes);
 app.use('/adoption', adoptRoutes);
+// app.use('/feedback', feedbacknew);
 
 app.use('/event', EventsRoutes); // Adding Event Routing reference
 

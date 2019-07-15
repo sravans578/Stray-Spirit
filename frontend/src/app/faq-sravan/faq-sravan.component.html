@@ -11,91 +11,27 @@
 <div class="mt -25 container" >
   <div class="row">
 <mat-card class="col-md-8" >
-  <mat-expansion-panel>
+  <mat-expansion-panel *ngFor="let item of result">
     <mat-expansion-panel-header>
       <mat-panel-title>
-          Why should you rescue a pet? 
+          {{item.Title}}
       </mat-panel-title>
     </mat-expansion-panel-header>
-    <p>Each year, 2.7 million adoptable dogs and cats are euthanized in the United States, simply because too many pets come into shelters and too few people consider adoption when looking for a pet. The number of euthanized animals could be reduced dramatically if more people adopted pets instead of buying them. When you adopt, you save a loving animal by making them part of your family and open up shelter space for another animal who might desperately need it.</p>
+    <p>{{item.Content}}</p>
   
   </mat-expansion-panel>
-  <mat-expansion-panel>
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        Frequently asked question 2 
-      </mat-panel-title>
-    </mat-expansion-panel-header>
-    <p>Answer to this question.</p>
-  
-  </mat-expansion-panel>
-  <mat-expansion-panel>
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        Frequently asked question 3
-      </mat-panel-title>
-    </mat-expansion-panel-header>
-    <p>Answer to this question.</p>
-  
-  </mat-expansion-panel>
-  <mat-expansion-panel>
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        Frequently asked question 4
-      </mat-panel-title>
-    </mat-expansion-panel-header>
-    <p>Answer to this question .</p>
-  
-  </mat-expansion-panel>
-  <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Frequently asked question 5
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-      <p>Answer to this question .</p>
-    
-    </mat-expansion-panel>
-    <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            Frequently asked question 6
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-        <p>Answer to this question .</p>
-      
-      </mat-expansion-panel>
-      <mat-expansion-panel>
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              Frequently asked question 7
-            </mat-panel-title>
-          </mat-expansion-panel-header>
-          <p>Answer to this question .</p>
-        
-        </mat-expansion-panel>
-        <mat-expansion-panel>
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                Frequently asked question 8
-              </mat-panel-title>
-            </mat-expansion-panel-header>
-            <p>Answer to this question .</p>
-
-           
-          
-          </mat-expansion-panel>
-  
 </mat-card >
+
 <mat-card class="col-md-4"  >
   
   <h4 style="text-align:center;"> Have more to ask ? </h4>
   <button mat-raised-button color = "yellow" style="margin-left:58px;" routerLink="/pets"> Head over to Stray spirit Forum</button>
   <mat-divider style="margin-top: 20px"></mat-divider>
   <mat-list style=" margin-top: 80px;">
-      <mat-list-item> Contact us: XXXXXXXXXX  </mat-list-item>
-      <mat-list-item> Email: Example@example.org</mat-list-item>
-      <mat-list-item> Phone: XXXXXXXXX </mat-list-item>
+      <mat-list-item > 
+        <button mat-raised-button color = "primary" style="margin:auto;" routerLink="/feedback"> Write to us </button>
+      </mat-list-item>
+      
      </mat-list>
   
 </mat-card>
