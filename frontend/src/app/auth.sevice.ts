@@ -58,7 +58,7 @@ export class AuthService{
     sendFeedback (FeedbackPost:any){
         console.log(FeedbackPost);
         // POST call to backend server
-        this.http.post("http://localhost:3000/products/new",FeedbackPost)
+        this.http.post("http://localhost:3000/feedback/",FeedbackPost)
         .subscribe(response=>{
 
             this.toaster.success('Feedback submitted', 'SUCCESS!', {
@@ -73,7 +73,7 @@ export class AuthService{
     // METHOD FOR Fetching all FAQs 
     getFaq (){
     
-        return this.http.get("http://localhost:3000/products/getFAQ")
+        return this.http.get("http://localhost:3000/feedback/getFAQ")
         
     }
 

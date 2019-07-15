@@ -3,7 +3,7 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const nodemailer = require('nodemailer');
 const Product = require('../models/products');
-const FAQ = require('../models/faq')
+
 
 router.get('/', (req, res, next) => {
     Product.find()
@@ -138,55 +138,5 @@ router.delete('/delete/:productId', (req, res, next) => {
 
 module.exports = router;
 
-router.post('/new', (req, res, next) => {
 
-    
 
-    console.log("rached here")
-    console.log(req.body.Message);
-
-    let transporter = nodemailer.createTransport({
-
-        service: 'gmail',
-        auth: {
-          user: 'strayspirittest@gmail.com', // Test mail id 
-          pass: 'Qazwsx!2' 
-        },
-        tls: {
-            rejectUnauthorized: false
-        }
-      });
-    
-    
-      let mailOptions = {
-        from: '"Stray Spirit" <strayspirittest@gmail.com>', 
-        to: 'sravans578@gmail.com', // Replace with Support mail of stray spirit 
-        subject: "Feedback", // Subject line
-        text: "Here are your event information:", // plain text body
-        html: "<h3> You have a new feedback  <br> </h3>" +req.body.Message // html body
-      };
-    
-      // Send mail 
-     transporter.sendMail(mailOptions, (error, info) => {
-         if(error) {
-             return console.log(error);
-         }
-        
-     });
-    
-});
-
-router.get('/getfaq', (req, res, next) => {
-    console.log(" here")
-    FAQ.find()
-    .exec()
-    .then(docs =>{
-        res.status(200).json(docs);
-    })
-    .catch(err =>{
-        res.status(500).json({
-            error: err
-        });
-    });
-    
-});

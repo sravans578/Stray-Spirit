@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.sevice';
 import { ToastrService } from 'ngx-toastr';
+import { refreshDescendantViews } from '@angular/core/src/render3/instructions';
 
 
 @Component({
@@ -14,14 +15,28 @@ Message ={};
 
   constructor(public authService:AuthService, private toastr: ToastrService) { }
 
-
+ // Passing the feedback message to service 
 onSubmit(){
    this.Message = {Message: this.text}
    this.authService.sendFeedback(this.Message);
-    this.toastr.success('Feedback submitted!', 'Thank You!');
-
+   // Success on submission
+   this.toastr.success('Feedback submitted!', 'Thank You!');
+   // Refreshing the page after a delay
+   this.delay(1000).then(any=>{
+    this.refresh();
+    });
+   
 
   
+}
+
+//https://stackoverflow.com/questions/37764665/typescript-sleep (Adding a delay for refreshing the page after success message)
+  async delay(ms: number) {
+  await new Promise(resolve => setTimeout(()=>resolve(), ms)).then(()=>console.log("Delay added"));
+ }
+
+refresh(): void {
+  window.location.reload();
 }
 
   ngOnInit() {
