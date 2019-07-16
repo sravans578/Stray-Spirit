@@ -7,6 +7,8 @@ const FAQ = require('../models/faq')
 
 router.post('/submitFeedback', (req, res, next) => {
 
+    console.log("reached here");
+
     
     // Configuring Node mailer to send mails to support email upon user feedback submission
     let transporter = nodemailer.createTransport({

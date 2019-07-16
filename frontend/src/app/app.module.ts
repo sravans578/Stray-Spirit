@@ -151,7 +151,7 @@ import { ParticularOrderManageComponent } from './particular-order-manage/partic
     HomeRichaComponent,
     AdoptRichaComponent,
     HomeOldComponent,
-    SravanFeedbackComponent
+    SravanFeedbackComponent,
     OrderManagmentShehzeenComponent,
     ParticularOrderManageComponent
   ],
