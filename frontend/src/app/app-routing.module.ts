@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
@@ -21,6 +21,8 @@ import { SravanFeedbackComponent } from './sravan-feedback/sravan-feedback.compo
 import { DonateLakshmiComponent } from './donate-lakshmi/donate-lakshmi.component';
 
 import { LoginDheerajComponent } from './login-dheeraj/login-dheeraj.component';
+import { ParticularOrderManageComponent } from './particular-order-manage/particular-order-manage.component';
+
 
 
 import { ForgotComponent} from './forgot-pwd/forgot.component';
@@ -60,6 +62,7 @@ import { DonationsAjithComponent } from './donations-ajith/donations-ajith.compo
 import { ShoppingcartAjithComponent } from './shoppingcart-ajith/shoppingcart-ajith.component';
 import { DiscussionformsAjithComponent } from './discussionforms-ajith/discussionforms-ajith.component';
 import { SravanChangepasswordComponent } from './sravan-changepassword/sravan-changepassword.component';
+import { OrderManagmentShehzeenComponent } from './order-managment-shehzeen/order-managment-shehzeen.component';
 
 
 const routes: Routes = [
@@ -74,12 +77,15 @@ const routes: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'register-aparna', component: RegisterAparnaComponent },
   { path: 'event-list', component: EventListComponent },
+  {path: 'myorders', component : ParticularOrderManageComponent},
 
   { path: 'login-Dheeraj',component:LoginDheerajComponent},
   { path: 'rescue', component: RescueComponent },
 
 
   {path: 'forgot-pwd',component:ForgotComponent},
+  {path: 'updateOrderManagment/:id',component:OrderManagmentShehzeenComponent},
+
 
   {path:'confirmation/:token',component:ConfirmationComponent},
   {path:'event-detail/:id',component:EventDetailComponent},
@@ -118,7 +124,7 @@ const routes: Routes = [
       {  path:'addstory',component:AddStoryRichaComponent}, // new route
     ]
   },
-  {path:'product/:id',component:ProductDetailPageComponent},
+  {path:'product/:id',component:ProductReviewShehzeenComponent},
   { path: '**', component: NotfoundComponent }
 ];
 

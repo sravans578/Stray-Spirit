@@ -1,3 +1,4 @@
+// developed by Ajith Jayanthi B00825322 aj788769@dal.ca
 .hr-class{
     border: 1px solid black;
     margin-left: 7%;
@@ -33,7 +34,7 @@
 }
 .check-out-button{
     border-radius: 12px;
-    background-color: red;
+    background-color: #8080ff;
     color: white;
     cursor: pointer;
 }
@@ -49,7 +50,18 @@
     color: #ffb3b3;
     cursor: pointer;
 }
-
+.address-label{
+    margin-left: 5%;
+    margin-top: 1%;
+}
+.address-input{
+    margin-left: 5%;
+    width: 80%;
+    border-radius: 12px;
+}
+::ng-deep .mat-horizontal-stepper-header {
+    pointer-events: none !important;
+}
 @media screen and (max-width:960px){
     .mobile-header{
         display: none;

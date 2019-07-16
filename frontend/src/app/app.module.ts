@@ -85,6 +85,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { HomeOldComponent } from './home-old/home-old.component';
 import { SravanFeedbackComponent } from './sravan-feedback/sravan-feedback.component';
+import { OrderManagmentShehzeenComponent } from './order-managment-shehzeen/order-managment-shehzeen.component';
+import { ParticularOrderManageComponent } from './particular-order-manage/particular-order-manage.component';
 
 
 
@@ -150,6 +152,8 @@ import { SravanFeedbackComponent } from './sravan-feedback/sravan-feedback.compo
     AdoptRichaComponent,
     HomeOldComponent,
     SravanFeedbackComponent
+    OrderManagmentShehzeenComponent,
+    ParticularOrderManageComponent
   ],
   imports: [
     MatProgressBarModule,
