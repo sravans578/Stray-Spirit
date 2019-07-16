@@ -7,6 +7,9 @@ var productUploaderSchema = {
 };
 
 
+  
+
+
 
 //Schema created for products https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/mongoose
 const productSchema = mongoose.Schema({
@@ -17,6 +20,7 @@ const productSchema = mongoose.Schema({
     productDescription: { type:String , required:true },
     productCategory: { type:String , required:true },
     productPic: { type:String , required:true },
+    productReview: [],
     productUploader: productUploaderSchema
     
 });

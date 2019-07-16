@@ -85,7 +85,12 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { HomeOldComponent } from './home-old/home-old.component';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
-import {CdkTableModule} from "@angular/cdk/table";
+import { CdkTableModule } from "@angular/cdk/table";
+import { SravanFeedbackComponent } from './sravan-feedback/sravan-feedback.component';
+import { OrderManagmentShehzeenComponent } from './order-managment-shehzeen/order-managment-shehzeen.component';
+import { ParticularOrderManageComponent } from './particular-order-manage/particular-order-manage.component';
+import { MatRippleModule, MatDatepickerModule, MatNativeDateModule } from '@angular/material'; // Added for date picker in blog module by Richa Khatri
+import { AddBlogRichaComponent } from './add-blog-richa/add-blog-richa.component';
 
 
 
@@ -150,7 +155,11 @@ import {CdkTableModule} from "@angular/cdk/table";
     HomeRichaComponent,
     AdoptRichaComponent,
     HomeOldComponent,
-    UnauthorizedComponent
+    UnauthorizedComponent,
+    SravanFeedbackComponent,
+    OrderManagmentShehzeenComponent,
+    ParticularOrderManageComponent,
+    AddBlogRichaComponent
   ],
   imports: [
     MatProgressBarModule,
@@ -180,6 +189,9 @@ import {CdkTableModule} from "@angular/cdk/table";
     MatInputModule,
     CdkTableModule,
     MatTableModule,
+    MatRippleModule,  // Added for date picker in blog module  by Richa Khatri
+    MatDatepickerModule, // Added for date picker in blog module by Richa Khatri
+    MatNativeDateModule// Added for date picker in blog module by Richa Khatri
   ],
   providers: [],
   bootstrap: [AppComponent]

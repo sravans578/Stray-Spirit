@@ -97,7 +97,7 @@ export class EditInventoryComponent implements OnInit {
        }
 
    }
-   console.log(this.productData);
+   console.log(this.productData); 
    this.productService.updateProducts(this.productId,this.productData);
    this.toastr.success('Inventory  Updated!', 'SUCCESS!', {
     timeOut: 5500,

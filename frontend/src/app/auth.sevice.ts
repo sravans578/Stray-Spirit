@@ -65,6 +65,8 @@ export class AuthService{
 
     }
 
+ 
+
     //This method will create a profile for an organization. It will be called from the ts file of the register component.
      createOrganizationUser(
          orgData:any

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
@@ -15,10 +15,14 @@ import { ProfileNavComponent } from './profile-nav/profile-nav.component';
 import {ProductDetailPageComponent} from './product-detail-page/product-detail-page.component';
 import { WhyadoptdogComponent } from './whyadoptdog/whyadoptdog.component';
 import { ContactComponent } from './contact/contact.component';
+import { SravanFeedbackComponent } from './sravan-feedback/sravan-feedback.component';
+
 
 import { DonateLakshmiComponent } from './donate-lakshmi/donate-lakshmi.component';
 
 import { LoginDheerajComponent } from './login-dheeraj/login-dheeraj.component';
+import { ParticularOrderManageComponent } from './particular-order-manage/particular-order-manage.component';
+
 
 
 import { ForgotComponent} from './forgot-pwd/forgot.component';
@@ -58,9 +62,11 @@ import { DonationsAjithComponent } from './donations-ajith/donations-ajith.compo
 import { ShoppingcartAjithComponent } from './shoppingcart-ajith/shoppingcart-ajith.component';
 import { DiscussionformsAjithComponent } from './discussionforms-ajith/discussionforms-ajith.component';
 import { SravanChangepasswordComponent } from './sravan-changepassword/sravan-changepassword.component';
-import {SuperAdminGuard} from "./super-admin.guard";
-import {AdminGuard} from "./admin.guard";
-import {UnauthorizedComponent} from "./unauthorized/unauthorized.component";
+import { SuperAdminGuard } from "./super-admin.guard";
+import { AdminGuard } from "./admin.guard";
+import { UnauthorizedComponent } from "./unauthorized/unauthorized.component";
+import { OrderManagmentShehzeenComponent } from './order-managment-shehzeen/order-managment-shehzeen.component';
+import { AddBlogRichaComponent } from './add-blog-richa/add-blog-richa.component';
 
 
 const routes: Routes = [
@@ -75,12 +81,15 @@ const routes: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'register-aparna', component: RegisterAparnaComponent },
   { path: 'event-list', component: EventListComponent },
+  {path: 'myorders', component : ParticularOrderManageComponent},
 
   { path: 'login-Dheeraj',component:LoginDheerajComponent},
   { path: 'rescue', component: RescueComponent },
 
 
   {path: 'forgot-pwd',component:ForgotComponent},
+  {path: 'updateOrderManagment/:id',component:OrderManagmentShehzeenComponent},
+
 
   {path:'confirmation/:token',component:ConfirmationComponent},
   {path:'event-detail/:id',component:EventDetailComponent},
@@ -102,6 +111,7 @@ const routes: Routes = [
   { path: 'user_management', canActivate: [SuperAdminGuard], component: AdminUserManagementComponent },
   { path: 'approve_content', canActivate: [AdminGuard], component: AdminApproveContentComponent },
   { path: 'unauthorized', component: UnauthorizedComponent },
+  { path: 'feedback', component: SravanFeedbackComponent },
 
   // Implemented nested routes https://angular-2-training-book.rangle.io/handout/routing/child_routes.html
   { path:'profile',
@@ -116,10 +126,11 @@ const routes: Routes = [
       {path: 'edit-inventory/:id', component: EditInventoryComponent},
       { path: 'my-adoptions', component: MyAdoptionsComponent },
       { path: 'adoption-request/:id', component: AdoptionRequestComponent },
-      {  path:'addstory',component:AddStoryRichaComponent}, // new route
+      {  path:'addstory',component:AddStoryRichaComponent},
+      {path:'addblog', component:AddBlogRichaComponent}, // new route
     ]
   },
-  {path:'product/:id',component:ProductDetailPageComponent},
+  {path:'product/:id',component:ProductReviewShehzeenComponent},
   { path: '**', component: NotfoundComponent }
 ];
 

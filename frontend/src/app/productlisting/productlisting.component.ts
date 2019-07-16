@@ -1,30 +1,39 @@
 // Developer - Dheeraj Varshney B00808467 dh301823@dal.ca 
+// Modified By - Ajith Jayanthi B00825322 aj788769@dal.ca
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import { FormControl } from '@angular/forms';
 import { ProductmanagementService } from '../productmanagement.service'
 import { ToastrService } from 'ngx-toastr';
+import {ShoppingcartService} from '../shoppingcart.service';
 @Component({
   selector: 'app-productlisting',
   templateUrl: './productlisting.component.html',
   styleUrls: ['./productlisting.component.scss']
 })
 export class ProductlistingComponent implements OnInit {
+  
+  
   products: any = [];
   product_newData: any;
   allProducts: any;
   productCategory=new FormControl();
-  
-  constructor(private toastr: ToastrService,private productService: ProductmanagementService) { }
-
+  product_details : any ={};
+  cart_items:any=[];
+  item_exists:boolean;
+  constructor(private toastr: ToastrService,private productService: ProductmanagementService,private shoppingCartService: ShoppingcartService) { }
+  global_cart_count:string;
  
   ngOnInit() {
+    this.product_details={};
       this.productService.getProducts().subscribe(productData =>
         {
       this.product_newData=productData;
       this.allProducts=this.product_newData;
       console.log(this.allProducts);
        })
+       //code to update the global shopping cart products count
+       this.shoppingCartService.existing.subscribe(shopping_count => this.global_cart_count = shopping_count)
   }
 filtCat(cat:string){
   console.log(cat);
@@ -86,9 +95,47 @@ onClick()
     window.location.href = '/product-detail-page';
     
   }
-
-  addToCart(){
-    this.toastr.error('Just a message for Assignment 4 UI', 'Coming Soon', {
+  // method to add products to the cart
+  addToCart(productpic,productname,productprice,productid,productDescription){
+    this.product_details={};
+    this.cart_items=JSON.parse(localStorage.getItem("shopping_cart"));
+    if(this.cart_items == null){
+      // add details to the first product to the cart
+      this.cart_items=[];
+      this.product_details["productpic"]=productpic;
+      this.product_details["productname"]=productname;
+      this.product_details["productprice"]=productprice;
+      this.product_details["itemcount"]=1;
+      this.product_details["productid"]=productid;
+      this.product_details["productDescription"]=productDescription;
+      this.cart_items.push(this.product_details);
+      localStorage.setItem("shopping_cart",JSON.stringify(this.cart_items));
+    }
+    else{
+      // add the products to the cart after checking if the product already exists in the cart
+      this.item_exists=false;
+      for(var item in this.cart_items){
+        if(this.cart_items[item]["productpic"]==productpic && this.cart_items[item]["productname"]==productname ){
+          this.cart_items[item]["itemcount"] = this.cart_items[item]["itemcount"]+1;
+          this.item_exists=true;
+          break;
+        }
+      }
+      if(!this.item_exists){
+        this.product_details["productpic"]=productpic;
+        this.product_details["productname"]=productname;
+        this.product_details["productprice"]=productprice;
+        this.product_details["itemcount"]=1;
+        this.product_details["productid"]=productid;
+        this.product_details["productDescription"]=productDescription;
+        this.cart_items.push(this.product_details);
+      }
+      localStorage.removeItem("shopping_cart");
+      localStorage.setItem("shopping_cart",JSON.stringify(this.cart_items));
+    } 
+    //updates the global count to the shopping cart which will be displayed in the navigation menu
+    this.shoppingCartService.updatecount(String((JSON.parse(localStorage.getItem("shopping_cart")).length)));
+    this.toastr.success('please continue shopping....', 'Product Added to the cart', {
       timeOut: 5000,
       closeButton: true,
       progressBar: true

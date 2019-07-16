@@ -22,6 +22,9 @@
       <a mat-list-item routerLink="/profile/my-adoptions">My Adoptions</a>
      <!-- <a mat-list-item routerLink="">My Orders</a> -->
       <a *ngIf="isOrgLoggedIn" mat-list-item routerLink="/profile/my-events">My Events</a>
+      <a *ngIf="!isOrgLoggedIn" mat-list-item routerLink="/profile/addstory">Add Story</a>
+      <a *ngIf="isOrgLoggedIn" mat-list-item routerLink="/profile/addblog">Add Blog</a>
+
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
