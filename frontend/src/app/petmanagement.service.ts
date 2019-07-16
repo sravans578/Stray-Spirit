@@ -4,12 +4,13 @@ import { HttpClient , HttpParams } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
+
 export class PetmanagementService {
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient) {
 
    }
-   
+
   getPets(){
     //getting all pet profiles
     return this.http.get('http://localhost:3000/pets/');

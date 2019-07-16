@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+// Author: Marlee Donnelly (B00710138)
+
+import {Component, OnInit, ViewChild} from '@angular/core';
+import { UserService } from "../user.service";
+import { AuthService } from "../auth.sevice";
+import { ModalDirective } from "angular-bootstrap-md";
+import { MatTable } from "@angular/material";
 
 @Component({
   selector: 'app-admin-user-management',
@@ -6,89 +12,228 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-user-management.component.scss']
 })
 export class AdminUserManagementComponent implements OnInit {
+  @ViewChild('confirmDelete') warningModal: ModalDirective;
+  @ViewChild('userTable') table: MatTable<any>;
 
-  allUsers = [{id: 0, name: 'Remus Lupin', isAdmin: true, isSuperAdmin: false },
-    {id: 1, name: 'Minerva McGonagall', isAdmin: true, isSuperAdmin: true},
-    {id: 2, name: 'Aurora Sinistra', isAdmin: false, isSuperAdmin: false},
-    {id: 3, name: 'Sybil Trelawney', isAdmin: true, isSuperAdmin: false},
-    {id: 4, name: 'Severus Snape', isAdmin:false, isSuperAdmin: false},
-    {id: 5, name: 'Horace Slughorn', isAdmin: false, isSuperAdmin: false},
-    {id: 6, name: 'Charity Burbidge', isAdmin: false, isSuperAdmin: false},
-    {id: 7, name: 'Rubeus Hagrid',isAdmin:true, isSuperAdmin: false},
-    {id: 8, name: 'Pomona Sprout', isAdmin:true, isSuperAdmin: false},
-    {id: 9, name: 'Filius Flitwick', isAdmin:true, isSuperAdmin: false},
-    {id: 10, name: 'Albus Dumbledore',isAdmin:false, isSuperAdmin: false},
-    {id: 11, name: 'Argus Filch', isAdmin: false, isSuperAdmin: false},
-    {id: 12, name: 'Dolores Umbridge', isAdmin: false, isSuperAdmin: false},
-    {id: 13, name: 'Alecta Carrow', isAdmin: false, isSuperAdmin: false},
-    {id: 14, name:'Gilderoy Lockhart', isAdmin: false, isSuperAdmin: false},
-    {id: 15, name: 'Alastor Moody', isAdmin:true, isSuperAdmin: false},
-    {id: 16, name: 'Irma Pince', isAdmin:true, isSuperAdmin: false},
-    {id: 17, name: 'Quirinus Quirrell', isAdmin: false, isSuperAdmin: false}];
+  personalUsers: any = [];
+  organizations: any = [];
+  currentList: any = [];
+  userData: { };
 
-  organizations = [{id: 18, name: 'Dalhousie', isAdmin: false, isSuperAdmin: false},
-    {id: 19, name: 'StraySpirit', isAdmin:true, isSuperAdmin: false},
-    {id: 20, name: 'Hogwarts', isAdmin:false, isSuperAdmin: false},
-    {id: 21, name: 'Fake Inc.', isAdmin: true, isSuperAdmin: false},
-    {id: 22, name: 'Totally a Real Company', isAdmin:false, isSuperAdmin: false}];
-
-  currentList = this.allUsers;
   showAdminTable = false;
   //0 - Users, 1 - Organizations, 2 - Admins
   tabSelected = 0;
+  idToDelete = "";
+  userCols = ['name', 'email', 'activity', 'admin', 'delete'];
+  adminCols = ['username', 'email', 'admin', 'superAdmin'];
+  colsToShow = this.userCols;
 
-  constructor() { }
+  constructor(
+    private userService: UserService,
+    private authService: AuthService,) { }
 
   ngOnInit() {
+    //Get all users
+    this.userService.getPersonalUsers().subscribe(userData =>{
+      this.personalUsers = userData;
+      this.currentList = this.personalUsers;
+    })
+    this.userService.getOrganizationUsers().subscribe(orgData => {
+      this.organizations = orgData;
+    })
+    this.showUsers();
   }
 
-  confirmDelete(){
-    alert("Are you sure you want to delete this user?");
-  }
   showUsers(){
-    this.currentList = this.allUsers;
+    this.currentList = this.personalUsers;
+    this.colsToShow = this.userCols;
     this.showAdminTable = false;
     this.tabSelected = 0;
   }
   showOrganizations(){
     this.currentList = this.organizations;
+    this.colsToShow = this.userCols;
     this.showAdminTable = false;
     this.tabSelected = 1;
   }
   showAdmins(){
     var admins = [];
-    for (let user of this.allUsers){
+    for (let user of this.personalUsers){
+      if(user.isAdmin) {
+        admins.push(user);
+      }
+    }
+    for (let user of this.organizations){
       if(user.isAdmin) {
         admins.push(user);
       }
     }
     this.currentList = admins;
+    this.colsToShow = this.adminCols;
     this.showAdminTable = true;
     this.tabSelected = 2;
   }
+  //Check whether they're an admin or not and set the new value to the opposite
   toggleAdmin(id){
-    //TODO: implement more efficiently with queries once there's a real database to search
-    for(let user of this.currentList){
-      if(user.id == id){
-        //If removing regular admin status, remove super admin status too
-        if(user.isAdmin){
-          user.isSuperAdmin = false;
+    // For personal accounts
+    if(this.tabSelected === 0){
+      this.authService.getUserById(id).subscribe(targetUserData => {
+          this.changeRegularAdmin(id, targetUserData['isAdmin']);
+          this.authService.updateUserData(id,this.userData).subscribe(response=>{
+            console.log(response);
+            this.reloadTable();
+          });
+      })
+    }
+
+    // If not a personal account, handle the organization account
+    else if(this.tabSelected === 1){
+      this.authService.getOrgById(id).subscribe(targetOrgData => {
+        this.changeRegularAdmin(id, targetOrgData['isAdmin']);
+        this.authService.updateOrgData(id, this.userData).subscribe(response=>{
+          console.log(response);
+          this.reloadTable();
+        });
+      })
+
+    }
+    else {
+      // If the id matches a document in the personal user collection, update them using the personal route
+      this.authService.getUserById(id).subscribe(targetUserData => {
+        if(targetUserData != null) {
+          this.changeRegularAdmin(id, targetUserData['isAdmin']);
+          this.authService.updateUserData(id,this.userData).subscribe(response=>{
+            console.log(response);
+            this.reloadTable();
+          });
         }
-        user.isAdmin = !user.isAdmin;
-        break;
-      }
+      })
+      //Otherwise, it's an organization
+      this.authService.getOrgById(id).subscribe(targetOrgData => {
+        if(targetOrgData != null) {
+          this.changeRegularAdmin(id, targetOrgData['isAdmin']);
+          this.authService.updateOrgData(id, this.userData).subscribe(response=>{
+            console.log(response);
+            this.reloadTable();
+          });
+        }
+      })
     }
   }
+
   toggleSuperAdmin(id){
-    for(let user of this.currentList){
-      if(user.id == id){
-        user.isSuperAdmin = !user.isSuperAdmin;
-        //If giving super admin status, grant regular admin status too
-        if(user.isSuperAdmin){
-          user.isAdmin = true;
-        }
-        break;
+    // If the id matches a document in the personal user collection, update them using the personal route
+    this.authService.getUserById(id).subscribe(targetUserData => {
+      if(targetUserData != null) {
+        this.changeSuperAdmin(id, targetUserData['isSuperAdmin']);
+        this.authService.updateUserData(id,this.userData).subscribe(response=>{
+            console.log(response);
+            this.reloadTable();
+          });
+      }
+    })
+    //Otherwise, it's an organization
+    this.authService.getOrgById(id).subscribe(targetOrgData => {
+      if(targetOrgData != null) {
+        this.changeSuperAdmin(id, targetOrgData['isSuperAdmin']);
+        this.authService.updateOrgData(id, this.userData).subscribe(response=>{
+          console.log(response);
+          this.reloadTable();
+        });
+      }
+    })
+  }
+
+  changeRegularAdmin(id, isAdmin){
+    if (isAdmin) {
+      //If removing regular admin status, remove super admin status too
+      this.userData = {
+        isAdminModel: false,
+        isSuperAdminModel: false,
+      }
+    }
+    else {
+      //Make the user a regular admin
+      this.userData = {
+        isAdminModel: true,
       }
     }
   }
+  changeSuperAdmin(id, isSuperAdmin){
+    if (isSuperAdmin) {
+      console.log("removing super admin status");
+      //Just remove super admin status
+      this.userData = {
+        isSuperAdminModel: false,
+      }
+    }
+    else {
+      //If giving super admin status, grant regular admin status too
+      console.log("granting super admin status");
+      this.userData = {
+        isAdminModel: true,
+        isSuperAdminModel: true,
+      }
+    }
+  }
+
+  reloadTable(){
+    // Get updated data for the table
+    if(this.tabSelected == 0){
+      this.userService.getPersonalUsers().subscribe(userData =>{
+      this.personalUsers = userData;
+      this.currentList = this.personalUsers;
+      })
+    }
+    else if(this.tabSelected == 1){
+      this.userService.getOrganizationUsers().subscribe(orgData => {
+      this.organizations = orgData;
+      this.currentList = this.organizations;
+    })
+    }
+    else{
+      this.userService.getPersonalUsers().subscribe(userData => {
+        this.personalUsers = userData;
+
+        this.userService.getOrganizationUsers().subscribe(orgData => {
+        this.organizations = orgData;
+        })
+
+        this.showAdmins();
+      })
+    }
+
+    // Now refresh the contents of the table
+    this.table.renderRows();
+  }
+
+  showDeletePopup(id){
+    this.warningModal.show();
+    this.idToDelete = id;
+  }
+
+  hideDeletePopup(){
+    this.idToDelete = "";
+    this.warningModal.hide();
+  }
+
+  deleteUser(){
+    if(this.idToDelete != "") {
+      if (this.tabSelected == 0) {
+        this.authService.deleteUser(this.idToDelete).subscribe(response =>{
+          console.log(response);
+          this.reloadTable();
+          this.warningModal.hide();
+        });
+      }
+      else if (this.tabSelected == 1) {
+        this.authService.deleteOrganization(this.idToDelete).subscribe(response =>{
+          console.log(response);
+          this.reloadTable();
+          this.warningModal.hide();
+        });
+      }
+    }
+  }
+
 }
