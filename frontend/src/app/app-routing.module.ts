@@ -106,7 +106,6 @@ const routes: Routes = [
   {path:'product-detail/:id',component:ProductReviewShehzeenComponent},
   {path:'cart',component:ShoppingcartAjithComponent},
   { path: 'user_management', component: AdminUserManagementComponent },
-  { path: 'approve_content', component: AdminApproveContentComponent },
   { path: 'feedback', component: SravanFeedbackComponent },
 
   // Implemented nested routes https://angular-2-training-book.rangle.io/handout/routing/child_routes.html
@@ -123,7 +122,8 @@ const routes: Routes = [
       { path: 'my-adoptions', component: MyAdoptionsComponent },
       { path: 'adoption-request/:id', component: AdoptionRequestComponent },
       {  path:'addstory',component:AddStoryRichaComponent},
-      {path:'addblog', component:AddBlogRichaComponent}, // new route
+      {path:'addblog', component:AddBlogRichaComponent},
+      { path: 'approve_content', component: AdminApproveContentComponent }, // new route
     ]
   },
   {path:'product/:id',component:ProductReviewShehzeenComponent},
