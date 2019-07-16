@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
-
+const nodemailer = require('nodemailer');
 const Product = require('../models/products');
 
 router.get('/', (req, res, next) => { 
@@ -137,3 +137,6 @@ router.delete('/delete/:productId', (req, res, next) => {
 });
 
 module.exports = router;
+
+
+

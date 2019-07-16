@@ -1,3 +1,4 @@
+// modified by Ajith Jayanthi B00825322 aj788769@DataTransferItemList.ca
 const mongoose = require('mongoose');
 
 var orderUploaderSchema = {
@@ -24,5 +25,3 @@ const orderSchema = mongoose.Schema({
 });
 
 module.exports = mongoose.model('Order', orderSchema);
-
-

@@ -1,3 +1,4 @@
+// Developed By Ajith Jayanthi B00825322 aj788769@dal.ca
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
@@ -21,13 +22,12 @@ router.post('/', (req, res, next) => {
        },
        products: req.body.products    
     });
-    console.log(order);
     order.save().then(result =>{
         
     })
     .catch(err => console.log(err));
     res.status(201).json({
-        message: 'Handling POST requests to /shopping cart',
+        message: 'Inserting shopping cart object successfully',
     });
 
 
