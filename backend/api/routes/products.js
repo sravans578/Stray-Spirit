@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 
 const Product = require('../models/products');
 
-router.get('/', (req, res, next) => {
+router.get('/', (req, res, next) => { 
     Product.find()
     .exec()
     .then(docs =>{
@@ -69,6 +69,7 @@ router.put('/update/:id', (req, res, next) =>{
         productQuantity: req.body.productQuantityModel,
         productPic:req.body.productPicModel,
         productCategory:req.body.productCategoryModel,
+        productReview : req.body.productReview,
         productUploader: {
             uId: req.body.productUploaderModel.productUploaderId,
             firstName: req.body.productUploaderModel.productUploaderfirstName,

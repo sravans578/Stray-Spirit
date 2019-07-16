@@ -4,7 +4,7 @@ First check the common readme file and installation steps pdf files
 
 Note: Since we are using Angular 7 and Material design for it, W3 validations won't be possible by just copy-pasting the HTML and CSS source code as Angular and Material design provides a lot of different selectors and dependencies on HTML structure. We have ensured that we have followed the W3 standards for creating web pages
 
-Features Developed by Me - 
+Features Developed by Me -  
 
 Pets filtering by location (Fully working)
 Pet Profile Management (80% done)

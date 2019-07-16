@@ -14,12 +14,19 @@ export class NavComponent implements OnInit,OnDestroy {
   private authListenerSubs:Subscription;
   private rsub;
   public isUserAuthenticated=false;
+  items_in_cart : number =0;
   constructor(private authService:AuthService, private router:Router) {
 
    }
 
   //This method will be executed when the nav will be launched for the first time. It will check whether the user is logged in or not. If so, it will set isUserAuthenticated to true, or else set to false. 
   ngOnInit() {
+    if(JSON.parse(localStorage.getItem("shopping_cart")) != null){
+      this.items_in_cart = JSON.parse(localStorage.getItem("shopping_cart")).length;
+    }
+    else{
+      this.items_in_cart=0;
+    }
     this.isUserAuthenticated=this.authService.getIsAuth();
     this.authListenerSubs=this.authService.getAuthStatusListener()
     .subscribe(isAuthenticated=>
@@ -28,6 +35,10 @@ export class NavComponent implements OnInit,OnDestroy {
     }
     );
  
+  }
+  receivecartcount($event){
+    debugger;
+    this.items_in_cart = $event; 
   }
 
   ngOnDestroy(){
