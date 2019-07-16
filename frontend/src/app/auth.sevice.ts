@@ -86,19 +86,14 @@ export class AuthService{
     updateUserData(passed_userId:any, passed_userData:any){
         //editing user's data
         console.log("From service",passed_userData);
-        this.http.put('http://localhost:3000/user/update/'+passed_userId,passed_userData)
-        .subscribe(response=>{
-          console.log(response);
-        });
+        return this.http.put('http://localhost:3000/user/update/'+passed_userId,passed_userData)
+        // Subscribe to this method in components to see the result
       }
 
       updateOrgData(passed_userId:any, passed_userData:any){
         //editing organization data
         console.log("From service",passed_userData);
-        this.http.put('http://localhost:3000/user/org/update/'+passed_userId,passed_userData)
-        .subscribe(response=>{
-          console.log(response);
-        });
+        return this.http.put('http://localhost:3000/user/org/update/'+passed_userId,passed_userData)
       }
 
       deleteUser(passed_userID:any){

@@ -81,22 +81,21 @@ export class AdminUserManagementComponent implements OnInit {
     if(this.tabSelected === 0){
       this.authService.getUserById(id).subscribe(targetUserData => {
           this.changeRegularAdmin(id, targetUserData['isAdmin']);
-          this.authService.updateUserData(id,this.userData);
-          //MARLEE: reload with AJAX so the whole page doesn't have to refresh
-          location.reload();
-        //Refresh table to reflect change
-          this.reloadTable();
+          this.authService.updateUserData(id,this.userData).subscribe(response=>{
+            console.log(response);
+            this.reloadTable();
+          });
       })
     }
+
     // If not a personal account, handle the organization account
     else if(this.tabSelected === 1){
       this.authService.getOrgById(id).subscribe(targetOrgData => {
         this.changeRegularAdmin(id, targetOrgData['isAdmin']);
-        this.authService.updateOrgData(id,this.userData);
-        location.reload();
-        //MARLEE: reload with AJAX so the whole page doesn't have to refresh
-        //Refresh table to reflect change
+        this.authService.updateOrgData(id, this.userData).subscribe(response=>{
+          console.log(response);
           this.reloadTable();
+        });
       })
 
     }
@@ -105,31 +104,23 @@ export class AdminUserManagementComponent implements OnInit {
       this.authService.getUserById(id).subscribe(targetUserData => {
         if(targetUserData != null) {
           this.changeRegularAdmin(id, targetUserData['isAdmin']);
-          this.authService.updateUserData(id, this.userData);
-          location.reload();
-          // MARLEE: it's rendering before the update finishes (ugh)
-          //Refresh table to reflect change
-          this.reloadTable();
+          this.authService.updateUserData(id,this.userData).subscribe(response=>{
+            console.log(response);
+            this.reloadTable();
+          });
         }
       })
       //Otherwise, it's an organization
       this.authService.getOrgById(id).subscribe(targetOrgData => {
-        console.log(targetOrgData);
         if(targetOrgData != null) {
           this.changeRegularAdmin(id, targetOrgData['isAdmin']);
-          this.authService.updateOrgData(id, this.userData);
-          location.reload();
-          //Refresh table to reflect change
-          this.reloadTable();
+          this.authService.updateOrgData(id, this.userData).subscribe(response=>{
+            console.log(response);
+            this.reloadTable();
+          });
         }
       })
     }
-  }
-
-  reloadTable(){
-    console.log("About to render");
-    this.table.renderRows();
-    console.log("finished rendering");
   }
 
   toggleSuperAdmin(id){
@@ -137,9 +128,10 @@ export class AdminUserManagementComponent implements OnInit {
     this.authService.getUserById(id).subscribe(targetUserData => {
       if(targetUserData != null) {
         this.changeSuperAdmin(id, targetUserData['isSuperAdmin']);
-        this.authService.updateUserData(id, this.userData);
-        location.reload();
-        this.table.renderRows();
+        this.authService.updateUserData(id,this.userData).subscribe(response=>{
+            console.log(response);
+            this.reloadTable();
+          });
       }
     })
     //Otherwise, it's an organization
@@ -147,12 +139,14 @@ export class AdminUserManagementComponent implements OnInit {
       console.log(targetOrgData);
       if(targetOrgData != null) {
         this.changeSuperAdmin(id, targetOrgData['isSuperAdmin']);
-        this.authService.updateOrgData(id, this.userData);
-        location.reload();
-        this.table.renderRows();
+        this.authService.updateOrgData(id, this.userData).subscribe(response=>{
+          console.log(response);
+          this.reloadTable();
+        });
       }
     })
   }
+
   changeRegularAdmin(id, isAdmin){
     if (isAdmin) {
       //If removing regular admin status, remove super admin status too
@@ -184,6 +178,40 @@ export class AdminUserManagementComponent implements OnInit {
         isSuperAdminModel: true,
       }
     }
+  }
+
+  reloadTable(){
+    console.log("About to render");
+    console.log(this.currentList);
+    // Get updated data for the table
+    if(this.tabSelected == 0){
+      this.userService.getPersonalUsers().subscribe(userData =>{
+      this.personalUsers = userData;
+      this.currentList = this.personalUsers;
+      })
+    }
+    else if(this.tabSelected == 1){
+      this.userService.getOrganizationUsers().subscribe(orgData => {
+      this.organizations = orgData;
+      this.currentList = this.organizations;
+    })
+    }
+    else{
+      this.userService.getPersonalUsers().subscribe(userData => {
+        this.personalUsers = userData;
+
+        this.userService.getOrganizationUsers().subscribe(orgData => {
+        this.organizations = orgData;
+        })
+
+        this.showAdmins();
+      })
+    }
+
+    console.log(this.currentList);
+    // Now refresh the contents of the table
+    this.table.renderRows();
+    console.log("finished rendering");
   }
 
   showDeletePopup(id){
