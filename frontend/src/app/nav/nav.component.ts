@@ -29,12 +29,10 @@ export class NavComponent implements OnInit,OnDestroy {
     this.authListenerSubs=this.authService.getAuthStatusListener()
       .subscribe(isAuthenticated=> {
         this.isUserAuthenticated=isAuthenticated;
+        this.isAdmin = this.authService.getIsAdmin();
+        this.isSuperAdmin = this.authService.getIsSuperAdmin();
       }
     );
-
-    this.isAdmin = this.authService.getIsAdmin();
-    this.isSuperAdmin = this.authService.getIsSuperAdmin();
-
   }
 
   ngOnDestroy(){

@@ -13,7 +13,7 @@ import { MatTable } from "@angular/material";
 })
 export class AdminUserManagementComponent implements OnInit {
   @ViewChild('confirmDelete') warningModal: ModalDirective;
-  @ViewChild(MatTable) table: MatTable<any>;
+  @ViewChild('userTable') table: MatTable<any>;
 
   personalUsers: any = [];
   organizations: any = [];
@@ -83,8 +83,9 @@ export class AdminUserManagementComponent implements OnInit {
           this.changeRegularAdmin(id, targetUserData['isAdmin']);
           this.authService.updateUserData(id,this.userData);
           //MARLEE: reload with AJAX so the whole page doesn't have to refresh
-          // location.reload();
-          this.table.renderRows();
+          location.reload();
+        //Refresh table to reflect change
+          this.reloadTable();
       })
     }
     // If not a personal account, handle the organization account
@@ -92,9 +93,10 @@ export class AdminUserManagementComponent implements OnInit {
       this.authService.getOrgById(id).subscribe(targetOrgData => {
         this.changeRegularAdmin(id, targetOrgData['isAdmin']);
         this.authService.updateOrgData(id,this.userData);
-        // location.reload();
+        location.reload();
         //MARLEE: reload with AJAX so the whole page doesn't have to refresh
-        this.table.renderRows();
+        //Refresh table to reflect change
+          this.reloadTable();
       })
 
     }
@@ -104,8 +106,10 @@ export class AdminUserManagementComponent implements OnInit {
         if(targetUserData != null) {
           this.changeRegularAdmin(id, targetUserData['isAdmin']);
           this.authService.updateUserData(id, this.userData);
-          // location.reload();
-          this.table.renderRows();
+          location.reload();
+          // MARLEE: it's rendering before the update finishes (ugh)
+          //Refresh table to reflect change
+          this.reloadTable();
         }
       })
       //Otherwise, it's an organization
@@ -114,11 +118,18 @@ export class AdminUserManagementComponent implements OnInit {
         if(targetOrgData != null) {
           this.changeRegularAdmin(id, targetOrgData['isAdmin']);
           this.authService.updateOrgData(id, this.userData);
-          // location.reload();
-          this.table.renderRows();
+          location.reload();
+          //Refresh table to reflect change
+          this.reloadTable();
         }
       })
     }
+  }
+
+  reloadTable(){
+    console.log("About to render");
+    this.table.renderRows();
+    console.log("finished rendering");
   }
 
   toggleSuperAdmin(id){
@@ -127,6 +138,7 @@ export class AdminUserManagementComponent implements OnInit {
       if(targetUserData != null) {
         this.changeSuperAdmin(id, targetUserData['isSuperAdmin']);
         this.authService.updateUserData(id, this.userData);
+        location.reload();
         this.table.renderRows();
       }
     })
@@ -136,6 +148,7 @@ export class AdminUserManagementComponent implements OnInit {
       if(targetOrgData != null) {
         this.changeSuperAdmin(id, targetOrgData['isSuperAdmin']);
         this.authService.updateOrgData(id, this.userData);
+        location.reload();
         this.table.renderRows();
       }
     })
@@ -196,6 +209,7 @@ export class AdminUserManagementComponent implements OnInit {
     }
     this.table.renderRows();
     this.warningModal.hide();
+    location.reload();
   }
 
 }

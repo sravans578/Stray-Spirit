@@ -13,8 +13,8 @@ export class AuthService{
     private isAuthenticated=false;
     private userId:string;
     private userType:string;
-    private isAdmin: boolean;
-    private isSuperAdmin: boolean;
+    private isAdmin = (localStorage.getItem("isAdmin") == "true");
+    private isSuperAdmin = (localStorage.getItem("isSuperAdmin") == "true");
     private authStatusListener=new Subject<boolean>();
     constructor(private http:HttpClient,private router: Router,private toaster:ToastrService){}
 
@@ -44,6 +44,7 @@ export class AuthService{
     getIsAdmin(){
       return this.isAdmin;
     }
+
     getIsSuperAdmin(){
       return this.isSuperAdmin;
     }
@@ -52,7 +53,7 @@ export class AuthService{
      createUser( userData:any ){
         this.http.post("http://localhost:3000/user/signup_user",userData)
         .subscribe(response=>{
-            this.toaster.success('Profile created!!!', 'SUCCESS!', {
+            this.toaster.success('Profile created!', 'SUCCESS!', {
                 timeOut: 5500,
                 closeButton: true,
                 progressBar: true
@@ -70,7 +71,7 @@ export class AuthService{
     ){
         this.http.post("http://localhost:3000/user/signup_org",orgData)
         .subscribe(response=>{
-            this.toaster.success('Profile created!!!', 'SUCCESS!', {
+            this.toaster.success('Profile created!', 'SUCCESS!', {
                 timeOut: 5500,
                 closeButton: true,
                 progressBar: true
@@ -83,7 +84,7 @@ export class AuthService{
     }
 
     updateUserData(passed_userId:any, passed_userData:any){
-        //editing users data
+        //editing user's data
         console.log("From service",passed_userData);
         this.http.put('http://localhost:3000/user/update/'+passed_userId,passed_userData)
         .subscribe(response=>{
@@ -92,16 +93,11 @@ export class AuthService{
       }
 
       updateOrgData(passed_userId:any, passed_userData:any){
-        //editing users data
+        //editing organization data
         console.log("From service",passed_userData);
         this.http.put('http://localhost:3000/user/org/update/'+passed_userId,passed_userData)
         .subscribe(response=>{
           console.log(response);
-          this.toaster.success('User Profile Edited!', 'SUCCESS!', {
-            timeOut: 5500,
-            closeButton: true,
-            progressBar: true
-          });
         });
       }
 
@@ -135,6 +131,8 @@ export class AuthService{
                     this.authStatusListener.next(true);
                     this.saveAuthData(token, this.userId, this.userType, this.isAdmin, this.isSuperAdmin);
                     this.router.navigate(['/profile']);
+                    //MARLEE: here too
+                    // location.reload();
                 }
 
             },error=>{
@@ -166,6 +164,8 @@ export class AuthService{
                 this.authStatusListener.next(true);
                 this.saveAuthData(token, this.userId, this.userType, this.isAdmin, this.isSuperAdmin);
                 this.router.navigate(['/profile']);
+                // MARLEE: remove this if you can
+                // location.reload();
                 }
 
             },error=>{
