@@ -4,6 +4,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import { UserService } from "../user.service";
 import { AuthService } from "../auth.sevice";
 import { ModalDirective } from "angular-bootstrap-md";
+import { MatTable } from "@angular/material";
 
 @Component({
   selector: 'app-admin-user-management',
@@ -12,6 +13,7 @@ import { ModalDirective } from "angular-bootstrap-md";
 })
 export class AdminUserManagementComponent implements OnInit {
   @ViewChild('confirmDelete') warningModal: ModalDirective;
+  @ViewChild(MatTable) table: MatTable<any>;
 
   personalUsers: any = [];
   organizations: any = [];
@@ -22,6 +24,9 @@ export class AdminUserManagementComponent implements OnInit {
   //0 - Users, 1 - Organizations, 2 - Admins
   tabSelected = 0;
   idToDelete = "";
+  userCols = ['name', 'email', 'activity', 'admin', 'delete'];
+  adminCols = ['username', 'email', 'admin', 'superAdmin'];
+  colsToShow = this.userCols;
 
   constructor(
     private userService: UserService,
@@ -43,11 +48,13 @@ export class AdminUserManagementComponent implements OnInit {
 
   showUsers(){
     this.currentList = this.personalUsers;
+    this.colsToShow = this.userCols;
     this.showAdminTable = false;
     this.tabSelected = 0;
   }
   showOrganizations(){
     this.currentList = this.organizations;
+    this.colsToShow = this.userCols;
     this.showAdminTable = false;
     this.tabSelected = 1;
   }
@@ -64,6 +71,7 @@ export class AdminUserManagementComponent implements OnInit {
       }
     }
     this.currentList = admins;
+    this.colsToShow = this.adminCols;
     this.showAdminTable = true;
     this.tabSelected = 2;
   }
@@ -75,7 +83,8 @@ export class AdminUserManagementComponent implements OnInit {
           this.changeRegularAdmin(id, targetUserData['isAdmin']);
           this.authService.updateUserData(id,this.userData);
           //MARLEE: reload with AJAX so the whole page doesn't have to refresh
-          location.reload();
+          // location.reload();
+          this.table.renderRows();
       })
     }
     // If not a personal account, handle the organization account
@@ -83,8 +92,9 @@ export class AdminUserManagementComponent implements OnInit {
       this.authService.getOrgById(id).subscribe(targetOrgData => {
         this.changeRegularAdmin(id, targetOrgData['isAdmin']);
         this.authService.updateOrgData(id,this.userData);
-        location.reload();
+        // location.reload();
         //MARLEE: reload with AJAX so the whole page doesn't have to refresh
+        this.table.renderRows();
       })
 
     }
@@ -94,6 +104,8 @@ export class AdminUserManagementComponent implements OnInit {
         if(targetUserData != null) {
           this.changeRegularAdmin(id, targetUserData['isAdmin']);
           this.authService.updateUserData(id, this.userData);
+          // location.reload();
+          this.table.renderRows();
         }
       })
       //Otherwise, it's an organization
@@ -102,6 +114,8 @@ export class AdminUserManagementComponent implements OnInit {
         if(targetOrgData != null) {
           this.changeRegularAdmin(id, targetOrgData['isAdmin']);
           this.authService.updateOrgData(id, this.userData);
+          // location.reload();
+          this.table.renderRows();
         }
       })
     }
@@ -113,6 +127,7 @@ export class AdminUserManagementComponent implements OnInit {
       if(targetUserData != null) {
         this.changeSuperAdmin(id, targetUserData['isSuperAdmin']);
         this.authService.updateUserData(id, this.userData);
+        this.table.renderRows();
       }
     })
     //Otherwise, it's an organization
@@ -121,6 +136,7 @@ export class AdminUserManagementComponent implements OnInit {
       if(targetOrgData != null) {
         this.changeSuperAdmin(id, targetOrgData['isSuperAdmin']);
         this.authService.updateOrgData(id, this.userData);
+        this.table.renderRows();
       }
     })
   }
@@ -178,6 +194,7 @@ export class AdminUserManagementComponent implements OnInit {
         this.authService.deleteOrganization(this.idToDelete);
       }
     }
+    this.table.renderRows();
     this.warningModal.hide();
   }
 

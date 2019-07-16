@@ -23,7 +23,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import { ProfileNavComponent } from './profile-nav/profile-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatButtonModule, MatIconModule } from '@angular/material';
+import {MatButtonModule, MatIconModule, MatTableModule} from '@angular/material';
 import { ProfileInventoryComponent } from './profile-inventory/profile-inventory.component';
 import { ProductDetailPageComponent } from './product-detail-page/product-detail-page.component';
 import {MatCardModule} from '@angular/material/card';
@@ -85,6 +85,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { HomeOldComponent } from './home-old/home-old.component';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
+import {CdkTableModule} from "@angular/cdk/table";
 
 
 
@@ -176,7 +177,9 @@ import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
     MatProgressSpinnerModule,
     MatStepperModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    CdkTableModule,
+    MatTableModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
