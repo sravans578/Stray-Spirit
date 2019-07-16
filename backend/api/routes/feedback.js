@@ -1,3 +1,4 @@
+// Authored by Sravan Sajeev [B00825856]
 // FEEDBACK ROUTE
 const express = require('express');
 const router = express.Router();
@@ -23,7 +24,7 @@ router.post('/submitFeedback', (req, res, next) => {
     
       let mailOptions = {
         from: '"Stray Spirit" <strayspirittest@gmail.com>', 
-        to: 'sravans578@gmail.com', // Replace with Support mail of stray spirit 
+        to: 'sravans578@gmail.com', // Replace with Support mail of stray spirit (for now this is my personal mail ID )
         subject: "Feedback", // Subject line
         text: " ", // plain text body
         html: "<h3> You have a new feedback  <br> </h3>" +req.body.Message // Message body filled with content from user feedback

@@ -1,3 +1,4 @@
+// Authored by Sravan Sajeev [B00825856]
 import { Component, OnInit } from '@angular/core';
 import { FAQService } from '../f-aq.service';
 

@@ -1,3 +1,4 @@
+// Authored by Sravan Sajeev [B00825856]
 // Schema for FAQ 
 const mongoose = require('mongoose');
 
