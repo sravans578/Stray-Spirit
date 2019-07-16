@@ -87,6 +87,8 @@ import { HomeOldComponent } from './home-old/home-old.component';
 import { SravanFeedbackComponent } from './sravan-feedback/sravan-feedback.component';
 import { OrderManagmentShehzeenComponent } from './order-managment-shehzeen/order-managment-shehzeen.component';
 import { ParticularOrderManageComponent } from './particular-order-manage/particular-order-manage.component';
+import { MatRippleModule, MatDatepickerModule, MatNativeDateModule } from '@angular/material';
+import { AddBlogRichaComponent } from './add-blog-richa/add-blog-richa.component';
 
 
 
@@ -153,7 +155,8 @@ import { ParticularOrderManageComponent } from './particular-order-manage/partic
     HomeOldComponent,
     SravanFeedbackComponent,
     OrderManagmentShehzeenComponent,
-    ParticularOrderManageComponent
+    ParticularOrderManageComponent,
+    AddBlogRichaComponent
   ],
   imports: [
     MatProgressBarModule,
@@ -180,7 +183,10 @@ import { ParticularOrderManageComponent } from './particular-order-manage/partic
     MatProgressSpinnerModule,
     MatStepperModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatRippleModule,            
+    MatDatepickerModule,       
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]
