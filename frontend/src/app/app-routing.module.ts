@@ -63,6 +63,7 @@ import { ShoppingcartAjithComponent } from './shoppingcart-ajith/shoppingcart-aj
 import { DiscussionformsAjithComponent } from './discussionforms-ajith/discussionforms-ajith.component';
 import { SravanChangepasswordComponent } from './sravan-changepassword/sravan-changepassword.component';
 import { OrderManagmentShehzeenComponent } from './order-managment-shehzeen/order-managment-shehzeen.component';
+import { AddBlogRichaComponent } from './add-blog-richa/add-blog-richa.component';
 
 
 const routes: Routes = [
@@ -121,7 +122,8 @@ const routes: Routes = [
       {path: 'edit-inventory/:id', component: EditInventoryComponent},
       { path: 'my-adoptions', component: MyAdoptionsComponent },
       { path: 'adoption-request/:id', component: AdoptionRequestComponent },
-      {  path:'addstory',component:AddStoryRichaComponent}, // new route
+      {  path:'addstory',component:AddStoryRichaComponent},
+      {path:'addblog', component:AddBlogRichaComponent}, // new route
     ]
   },
   {path:'product/:id',component:ProductReviewShehzeenComponent},

@@ -17,23 +17,28 @@
           </li>
         </ul>
         <div class="table-container">
+            <div *ngIf="!Stories?.length > 0">
+                <p class="error_no_pets">No Story Posts available!</p>
+                <a mdbBtn color="primary" class="waves-light toggle_button" mdbWavesEffect
+                  href="/">Go back Home</a>
+              </div>
           <table>
-            <tr *ngFor="let item of currentList">
+            <tr *ngFor="let story of Stories">
               <td class="image-cell">
-                <img class="img-thumbnail" src="http://kitty-whisperer.com/cat-cute-wallpaper/baby-cute-cat-wallpaper/">
+                <img class="img-thumbnail" [src]="story.storyPicModel" [alt]="story.storyTitle">
               </td>
               <td class="description-cell">
                 <div class="text-container">
-                  {{item.description}}
+                  {{story.storyTitle}}
                 </div>
               </td>
               <td class="author-cell">
                 <!--TODO: link to user profile if/when applicable-->
-                <a href="/approve_content">{{item.author}}</a>
+                <a href="/approve_content">{{story.storyPublisher.firstName}}</a>
               </td>
               <td class="button-cell">
                 <div class="button-container">
-                  <button class="btn-success btn-sm">Approve</button>
+                  <button class="btn-success btn-sm" (click) = "updateStory(story._id,false)">Approve</button>
                   <button class="btn-light btn-sm" (click)="confirmDelete.show()">Delete</button>
                 </div>
               </td>
@@ -57,7 +62,7 @@
         </div>
         <div class="modal-footer">
           <button class="btn btn-secondary" (click)="confirmDelete.hide()">Cancel</button>
-          <button class="btn btn-primary" (click)="confirmDelete.hide()">Delete</button>
+          <button class="btn btn-primary" (click)="updateStory(story._id,true)">Delete</button>
         </div>
       </div>
     </div>
