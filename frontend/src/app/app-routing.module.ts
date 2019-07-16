@@ -127,7 +127,8 @@ const routes: Routes = [
       { path: 'my-adoptions', component: MyAdoptionsComponent },
       { path: 'adoption-request/:id', component: AdoptionRequestComponent },
       {  path:'addstory',component:AddStoryRichaComponent},
-      {path:'addblog', component:AddBlogRichaComponent}, // new route
+      {path:'addblog', component:AddBlogRichaComponent},
+      { path: 'approve_content', component: AdminApproveContentComponent }, // new route
     ]
   },
   {path:'product/:id',component:ProductReviewShehzeenComponent},
