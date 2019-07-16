@@ -97,15 +97,11 @@ export class AuthService{
       }
 
       deleteUser(passed_userID:any){
-        this.http.delete('http://localhost:3000/user/personal/'+passed_userID).subscribe(response =>{
-          console.log(response);
-        });
+        return this.http.delete('http://localhost:3000/user/personal/'+passed_userID);
       }
 
       deleteOrganization(passed_userID:any){
-        this.http.delete('http://localhost:3000/user/org/'+passed_userID).subscribe(response =>{
-          console.log(response);
-        });
+        return this.http.delete('http://localhost:3000/user/org/'+passed_userID);
       }
 
     //This method will authenticate a personal user. It will be called from the ts file of the login component.
@@ -126,8 +122,6 @@ export class AuthService{
                     this.authStatusListener.next(true);
                     this.saveAuthData(token, this.userId, this.userType, this.isAdmin, this.isSuperAdmin);
                     this.router.navigate(['/profile']);
-                    //MARLEE: here too
-                    // location.reload();
                 }
 
             },error=>{
@@ -159,8 +153,6 @@ export class AuthService{
                 this.authStatusListener.next(true);
                 this.saveAuthData(token, this.userId, this.userType, this.isAdmin, this.isSuperAdmin);
                 this.router.navigate(['/profile']);
-                // MARLEE: remove this if you can
-                // location.reload();
                 }
 
             },error=>{

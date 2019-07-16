@@ -33,7 +33,6 @@ export class AdminUserManagementComponent implements OnInit {
     private authService: AuthService,) { }
 
   ngOnInit() {
-    console.log("OnInit called");
     //Get all users
     this.userService.getPersonalUsers().subscribe(userData =>{
       this.personalUsers = userData;
@@ -42,7 +41,6 @@ export class AdminUserManagementComponent implements OnInit {
     this.userService.getOrganizationUsers().subscribe(orgData => {
       this.organizations = orgData;
     })
-    console.log("OnInit finished");
     this.showUsers();
   }
 
@@ -136,7 +134,6 @@ export class AdminUserManagementComponent implements OnInit {
     })
     //Otherwise, it's an organization
     this.authService.getOrgById(id).subscribe(targetOrgData => {
-      console.log(targetOrgData);
       if(targetOrgData != null) {
         this.changeSuperAdmin(id, targetOrgData['isSuperAdmin']);
         this.authService.updateOrgData(id, this.userData).subscribe(response=>{
@@ -181,8 +178,6 @@ export class AdminUserManagementComponent implements OnInit {
   }
 
   reloadTable(){
-    console.log("About to render");
-    console.log(this.currentList);
     // Get updated data for the table
     if(this.tabSelected == 0){
       this.userService.getPersonalUsers().subscribe(userData =>{
@@ -208,10 +203,8 @@ export class AdminUserManagementComponent implements OnInit {
       })
     }
 
-    console.log(this.currentList);
     // Now refresh the contents of the table
     this.table.renderRows();
-    console.log("finished rendering");
   }
 
   showDeletePopup(id){
@@ -227,17 +220,20 @@ export class AdminUserManagementComponent implements OnInit {
   deleteUser(){
     if(this.idToDelete != "") {
       if (this.tabSelected == 0) {
-        console.log("Deleting user with id " + this.idToDelete);
-        this.authService.deleteUser(this.idToDelete);
+        this.authService.deleteUser(this.idToDelete).subscribe(response =>{
+          console.log(response);
+          this.reloadTable();
+          this.warningModal.hide();
+        });
       }
       else if (this.tabSelected == 1) {
-        console.log("Deleting org with id " + this.idToDelete);
-        this.authService.deleteOrganization(this.idToDelete);
+        this.authService.deleteOrganization(this.idToDelete).subscribe(response =>{
+          console.log(response);
+          this.reloadTable();
+          this.warningModal.hide();
+        });
       }
     }
-    this.table.renderRows();
-    this.warningModal.hide();
-    location.reload();
   }
 
 }
