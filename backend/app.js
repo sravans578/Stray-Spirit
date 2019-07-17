@@ -5,7 +5,8 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const passport = require('passport');
 const session = require('express-session');
-const nodemailer = require('nodemailer');  
+const nodemailer = require('nodemailer');
+const path = require('path');  
 // Passport Config
 require('./passport')(passport);
 
@@ -39,22 +40,27 @@ app.use((req, res, next) => {
 });
 
 
-app.use('/pets', petsRoutes);
-app.use('/user', userRoutes);
-app.use('/products', productsRoutes);
-app.use('/adoption', adoptRoutes);
-app.use('/order', orderRoutes);
-app.use('/shoppingcart',shoppingCartRoutes);
-app.use('/event', EventsRoutes); // Adding Event Routing reference
-app.use('/feedback',feedbackRoutes);
-app.use('/blogs',blogsRoutes); 
-app.use('/stories',storiesRoutes); 
+app.use('/api/pets', petsRoutes);
+app.use('/api/user', userRoutes);
+app.use('/api/products', productsRoutes);
+app.use('/api/adoption', adoptRoutes);
+app.use('/api/order', orderRoutes);
+app.use('/api/shoppingcart',shoppingCartRoutes);
+app.use('/api/event', EventsRoutes); // Adding Event Routing reference
+app.use('/api/feedback',feedbackRoutes);
+app.use('/api/blogs',blogsRoutes); 
+app.use('/api/stories',storiesRoutes); 
 
 mongoose.connect('mongodb+srv://strayspirit:' + process.env.MONGO_ATLAS_PW + '@strayspirit-bsghz.mongodb.net/test?retryWrites=true', { useNewUrlParser: true });
 
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.get('*', (req,res)=>{
+    res.sendFile(path.join(__dirname,'public/index.html'));
+})
 app.use((req, res, next) =>{
     const error = new Error('Not Found');
-    error.statud = 404;
+    error.status = 404;
     next(error);
 })
 

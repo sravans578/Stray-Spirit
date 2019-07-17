@@ -11,10 +11,10 @@ export class UserService {
 
   getPersonalUsers(){
     //return all users who don't have an organization account
-    return this.http.get('http://localhost:3000/user');
+    return this.http.get('api/user');
   }
   getOrganizationUsers(){
     //return all users who have an organization account
-    return this.http.get('http://localhost:3000/user/org');
+    return this.http.get('api/user/org');
   }
 }
