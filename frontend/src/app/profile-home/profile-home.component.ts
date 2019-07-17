@@ -50,24 +50,24 @@ export class ProfileHomeComponent implements OnInit {
     private titleService:Title,
     private authService:AuthService,
     private toaster: ToastrService
-    ){ 
+    ){
     this.titleService.setTitle("Dashboard - StraySpirit");
    }
 
   ngOnInit() {
-    
+
     //The following code will get the userId of the logged in user and then it will retrieve all the data of the logged in user and then display it on the profile page.
     var userId=this.authService.getUserId();
-    this.current_user_type=this.authService.getUserType();  
+    this.current_user_type=this.authService.getUserType();
 
     if(this.current_user_type==='personal'){
       this.personal=true;
 
       this.authService.getUserById(userId).subscribe(user=>{
         this.userData=user;
-      
+
         console.log(this.userData);
-            
+
         this.updateProfileForm.controls.firstName.patchValue(this.userData["firstName"]);
         this.updateProfileForm.controls.lastName.patchValue(this.userData["lastName"]);
         this.updateProfileForm.controls.email.patchValue(this.userData["email"]);
@@ -76,16 +76,16 @@ export class ProfileHomeComponent implements OnInit {
         this.updateProfileForm.controls.pincode.patchValue(this.userData["pinCode"]);
         this.updateProfileForm.controls.dob.patchValue(this.userData["dateOfBirth"]);
         });
-        
+
     }
     else{
       this.personal=false;
 
       this.authService.getOrgById(userId).subscribe(user=>{
-        this.userData=user; 
+        this.userData=user;
         console.log(this.userData);
-        
-        
+
+
         this.updateProfileForm.controls.orgName.patchValue(this.userData["organizationtName"]);
         //console.log(this.updateProfileForm.controls.userName.value);
         this.updateProfileForm.controls.orgEmail.patchValue(this.userData["email"]);
@@ -94,17 +94,16 @@ export class ProfileHomeComponent implements OnInit {
         this.updateProfileForm.controls.address.patchValue(this.userData["address"]);
         this.updateProfileForm.controls.pincode.patchValue(this.userData["pinCode"]);
         });
-        
+
     }
 
-    
+
     }
-    
 
   updateSubmit(){
-   
+
     if(this.current_user_type==='personal'){
-     
+
       var user_id=this.authService.getUserId();
       this.userData={
         firstNameModel: this.updateProfileForm.get('firstName').value,
@@ -125,7 +124,7 @@ export class ProfileHomeComponent implements OnInit {
       location.reload();
     }
     else{
-      
+
       console.log("organization");
 
       var user_id=this.authService.getUserId();
@@ -136,18 +135,18 @@ export class ProfileHomeComponent implements OnInit {
         regNumberModel:this.updateProfileForm.get('orgReg').value,
         addressModel: this.updateProfileForm.get('address').value,
         pincodeModel: this.updateProfileForm.get('pincode').value
-        
+
       }
       console.log(this.userData);
       this.authService.updateOrgData(user_id,this.userData);
       location.reload();
 
     }
-   
+
   }
 
   Edit(val,rowVal){
-    this.editRowID = val; 
+    this.editRowID = val;
     this.editRowValue = rowVal;
     this.editField = true;
   }

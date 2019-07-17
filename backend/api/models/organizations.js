@@ -1,7 +1,7 @@
 //Developer : Aditya Gadhvi (B00809664)
+// Modified by Marlee Donnelly in July 2019
 
 const mongoose = require("mongoose");
-//const uniqueValidator=require("mongoose-unique-validator");
 
 
 const organizationSchema = mongoose.Schema({
@@ -14,10 +14,15 @@ const organizationSchema = mongoose.Schema({
     address:String,
     pinCode:String,
     user_type:String,
-    user_creation_date:String
+    user_creation_date:String,
+    isAdmin:{
+        type: Boolean,
+        default: false
+    },
+    isSuperAdmin:{
+        type: Boolean,
+        default: false
+    },
 });
-
-
-//userSchema.plugin(uniqueValidator);
 
 module.exports = mongoose.model("Organization", organizationSchema);

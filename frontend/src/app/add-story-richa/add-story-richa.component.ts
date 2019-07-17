@@ -92,7 +92,7 @@ export class AddStoryRichaComponent implements OnInit {
     this.stories.newStory(this.StoryData);
     this.showSuccess();
     setTimeout(()=>{  
-      //window.location.reload();
+      window.location.reload();
        }, 2000);
   }
   showSuccess() {

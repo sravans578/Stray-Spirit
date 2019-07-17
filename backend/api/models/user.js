@@ -1,7 +1,7 @@
 //Developer : Aditya Gadhvi (B00809664)
+// Modified by Marlee Donnelly (B00710138) in July 2019
 
 const mongoose = require("mongoose");
-//const uniqueValidator=require("mongoose-unique-validator");
 
 const userSchema = mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
@@ -14,6 +14,14 @@ const userSchema = mongoose.Schema({
     pinCode:String,
     dateOfBirth:String,
     user_type:String,
+    isAdmin:{
+        type: Boolean,
+        default: false
+    },
+    isSuperAdmin:{
+        type: Boolean,
+        default: false
+    },
     user_creation_date:String,
     isActive:{
         type: Boolean,
@@ -21,10 +29,5 @@ const userSchema = mongoose.Schema({
     },
     secretToken: String
 });
-
-
-
-
-//userSchema.plugin(uniqueValidator);
 
 module.exports = mongoose.model("User", userSchema);

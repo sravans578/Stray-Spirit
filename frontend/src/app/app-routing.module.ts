@@ -41,6 +41,8 @@ import { EditInventoryComponent } from './edit-inventory/edit-inventory.componen
 import { AdoptionRequestComponent } from './adoption-request/adoption-request.component';
 import { ConfirmationComponent } from './confirmation/confirmation.component';
 
+import { PaymentGatewayComponent } from './payment-gateway/payment-gateway.component';
+
 import { AdminUserManagementComponent} from "./admin-user-management/admin-user-management.component";
 import { AdminApproveContentComponent} from "./admin-approve-content/admin-approve-content.component";
 import { ChangePasswordLakshmiComponent } from './change-password-lakshmi/change-password-lakshmi.component';
@@ -62,6 +64,9 @@ import { DonationsAjithComponent } from './donations-ajith/donations-ajith.compo
 import { ShoppingcartAjithComponent } from './shoppingcart-ajith/shoppingcart-ajith.component';
 import { DiscussionformsAjithComponent } from './discussionforms-ajith/discussionforms-ajith.component';
 import { SravanChangepasswordComponent } from './sravan-changepassword/sravan-changepassword.component';
+import { SuperAdminGuard } from "./super-admin.guard";
+import { AdminGuard } from "./admin.guard";
+import { UnauthorizedComponent } from "./unauthorized/unauthorized.component";
 import { OrderManagmentShehzeenComponent } from './order-managment-shehzeen/order-managment-shehzeen.component';
 import { AddBlogRichaComponent } from './add-blog-richa/add-blog-richa.component';
 
@@ -105,9 +110,11 @@ const routes: Routes = [
   {path:'donate',component:DonateShehzeenComponent},
   {path:'product-detail/:id',component:ProductReviewShehzeenComponent},
   {path:'cart',component:ShoppingcartAjithComponent},
-  { path: 'user_management', component: AdminUserManagementComponent },
-  { path: 'approve_content', component: AdminApproveContentComponent },
+  { path: 'user_management', canActivate: [SuperAdminGuard], component: AdminUserManagementComponent },
+  { path: 'approve_content', canActivate: [AdminGuard], component: AdminApproveContentComponent },
+  { path: 'unauthorized', component: UnauthorizedComponent },
   { path: 'feedback', component: SravanFeedbackComponent },
+  { path: 'payment_gateway', component: PaymentGatewayComponent},
 
   // Implemented nested routes https://angular-2-training-book.rangle.io/handout/routing/child_routes.html
   { path:'profile',
@@ -123,7 +130,8 @@ const routes: Routes = [
       { path: 'my-adoptions', component: MyAdoptionsComponent },
       { path: 'adoption-request/:id', component: AdoptionRequestComponent },
       {  path:'addstory',component:AddStoryRichaComponent},
-      {path:'addblog', component:AddBlogRichaComponent}, // new route
+      {path:'addblog', component:AddBlogRichaComponent},
+      { path: 'approve_content', component: AdminApproveContentComponent }, // new route
     ]
   },
   {path:'product/:id',component:ProductReviewShehzeenComponent},

@@ -89,12 +89,24 @@ export class AdminApproveContentComponent implements OnInit {
       isDeleted:true
     }
   }
-  this.storyManagementService.updateStory(id,this.StoryData)
-   this.toastr.success('Story Updated!', 'SUCCESS!', {
+  console.log(this.StoryData);
+  this.storyManagementService.updateStory(id,this.StoryData);    
+    this.showSuccess();
+    setTimeout(()=>{  
+      window.location.reload();
+       }, 5500);
+  //  this.toastr.success('Story Updated!', 'SUCCESS!', {
+  //   timeOut: 5500,
+  //   closeButton: true,
+  //   progressBar: true,
+  // });
+
+}
+showSuccess() {
+  this.toastr.success('Story Updated!', 'SUCCESS!', {
     timeOut: 5500,
     closeButton: true,
     progressBar: true
   });
-
 }
 }
