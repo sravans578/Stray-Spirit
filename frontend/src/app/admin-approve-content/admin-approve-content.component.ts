@@ -1,11 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-
+import {Router} from "@angular/router";
+import { FormControl } from '@angular/forms';
+import { storyManagementService } from '../storyManagement.service'
+import { ToastrService } from 'ngx-toastr';
+import { analyzeAndValidateNgModules } from '@angular/compiler';
 @Component({
   selector: 'app-admin-approve-content',
   templateUrl: './admin-approve-content.component.html',
   styleUrls: ['./admin-approve-content.component.scss']
 })
 export class AdminApproveContentComponent implements OnInit {
+  Stories: any = [];   
+  public StoryData: any = {}
 
   petProfiles = [{description: 'Chase after silly colored fish toys around the house. Eat plants, meow, and throw up because ' +
     'i ate plants behind the couch as lick i the shoes. Play time hide when guests come over, so shove bum in owner\'s face like ' +
@@ -46,9 +52,15 @@ export class AdminApproveContentComponent implements OnInit {
   //0 - pet profiles, 1 - shop items, 2 - blog posts
   tabSelected = 0;
 
-  constructor() { }
+  constructor(private toastr: ToastrService,private storyManagementService: storyManagementService) { }
 
   ngOnInit() {
+    this.storyManagementService.getStory().subscribe(storyData =>
+    {
+      // console.log(storyData);
+      this.Stories=storyData;
+      // console.log(this.Stories);
+    })
   }
 
   showPets(){
@@ -63,4 +75,26 @@ export class AdminApproveContentComponent implements OnInit {
     this.currentList = this.blogPosts;
     this.tabSelected = 2;
   }
+  updateStory(id:any,isDelete:Boolean){
+    if(isDelete==false)
+    {
+    this.StoryData={
+      isApproved:true,
+      isDeleted:false
+    }
+  }
+  else{
+    this.StoryData={
+      isApproved:true,
+      isDeleted:true
+    }
+  }
+  this.storyManagementService.updateStory(id,this.StoryData)
+   this.toastr.success('Story Updated!', 'SUCCESS!', {
+    timeOut: 5500,
+    closeButton: true,
+    progressBar: true
+  });
+
+}
 }

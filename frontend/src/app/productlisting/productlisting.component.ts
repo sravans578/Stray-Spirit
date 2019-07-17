@@ -1,9 +1,11 @@
 // Developer - Dheeraj Varshney B00808467 dh301823@dal.ca 
-import { Component, OnInit, Output ,EventEmitter } from '@angular/core';
+// Modified By - Ajith Jayanthi B00825322 aj788769@dal.ca
+import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import { FormControl } from '@angular/forms';
 import { ProductmanagementService } from '../productmanagement.service'
 import { ToastrService } from 'ngx-toastr';
+import {ShoppingcartService} from '../shoppingcart.service';
 @Component({
   selector: 'app-productlisting',
   templateUrl: './productlisting.component.html',
@@ -11,7 +13,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ProductlistingComponent implements OnInit {
   
-  @Output() global_shopping_cart_count = new EventEmitter<number>();
+  
   products: any = [];
   product_newData: any;
   allProducts: any;
@@ -19,8 +21,8 @@ export class ProductlistingComponent implements OnInit {
   product_details : any ={};
   cart_items:any=[];
   item_exists:boolean;
-  constructor(private toastr: ToastrService,private productService: ProductmanagementService) { }
-
+  constructor(private toastr: ToastrService,private productService: ProductmanagementService,private shoppingCartService: ShoppingcartService) { }
+  global_cart_count:string;
  
   ngOnInit() {
     this.product_details={};
@@ -30,6 +32,8 @@ export class ProductlistingComponent implements OnInit {
       this.allProducts=this.product_newData;
       console.log(this.allProducts);
        })
+       //code to update the global shopping cart products count
+       this.shoppingCartService.existing.subscribe(shopping_count => this.global_cart_count = shopping_count)
   }
 filtCat(cat:string){
   console.log(cat);
@@ -91,11 +95,12 @@ onClick()
     window.location.href = '/product-detail-page';
     
   }
-
+  // method to add products to the cart
   addToCart(productpic,productname,productprice,productid,productDescription){
     this.product_details={};
     this.cart_items=JSON.parse(localStorage.getItem("shopping_cart"));
     if(this.cart_items == null){
+      // add details to the first product to the cart
       this.cart_items=[];
       this.product_details["productpic"]=productpic;
       this.product_details["productname"]=productname;
@@ -107,6 +112,7 @@ onClick()
       localStorage.setItem("shopping_cart",JSON.stringify(this.cart_items));
     }
     else{
+      // add the products to the cart after checking if the product already exists in the cart
       this.item_exists=false;
       for(var item in this.cart_items){
         if(this.cart_items[item]["productpic"]==productpic && this.cart_items[item]["productname"]==productname ){
@@ -126,10 +132,9 @@ onClick()
       }
       localStorage.removeItem("shopping_cart");
       localStorage.setItem("shopping_cart",JSON.stringify(this.cart_items));
-    }
-    debugger;
-    this.global_shopping_cart_count.emit(this.cart_items.length);
-     
+    } 
+    //updates the global count to the shopping cart which will be displayed in the navigation menu
+    this.shoppingCartService.updatecount(String((JSON.parse(localStorage.getItem("shopping_cart")).length)));
     this.toastr.success('please continue shopping....', 'Product Added to the cart', {
       timeOut: 5000,
       closeButton: true,

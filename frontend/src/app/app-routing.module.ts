@@ -15,6 +15,8 @@ import { ProfileNavComponent } from './profile-nav/profile-nav.component';
 import {ProductDetailPageComponent} from './product-detail-page/product-detail-page.component';
 import { WhyadoptdogComponent } from './whyadoptdog/whyadoptdog.component';
 import { ContactComponent } from './contact/contact.component';
+import { SravanFeedbackComponent } from './sravan-feedback/sravan-feedback.component';
+
 
 import { DonateLakshmiComponent } from './donate-lakshmi/donate-lakshmi.component';
 
@@ -61,6 +63,7 @@ import { ShoppingcartAjithComponent } from './shoppingcart-ajith/shoppingcart-aj
 import { DiscussionformsAjithComponent } from './discussionforms-ajith/discussionforms-ajith.component';
 import { SravanChangepasswordComponent } from './sravan-changepassword/sravan-changepassword.component';
 import { OrderManagmentShehzeenComponent } from './order-managment-shehzeen/order-managment-shehzeen.component';
+import { AddBlogRichaComponent } from './add-blog-richa/add-blog-richa.component';
 
 
 const routes: Routes = [
@@ -104,6 +107,7 @@ const routes: Routes = [
   {path:'cart',component:ShoppingcartAjithComponent},
   { path: 'user_management', component: AdminUserManagementComponent },
   { path: 'approve_content', component: AdminApproveContentComponent },
+  { path: 'feedback', component: SravanFeedbackComponent },
 
   // Implemented nested routes https://angular-2-training-book.rangle.io/handout/routing/child_routes.html
   { path:'profile',
@@ -118,7 +122,8 @@ const routes: Routes = [
       {path: 'edit-inventory/:id', component: EditInventoryComponent},
       { path: 'my-adoptions', component: MyAdoptionsComponent },
       { path: 'adoption-request/:id', component: AdoptionRequestComponent },
-      {  path:'addstory',component:AddStoryRichaComponent}, // new route
+      {  path:'addstory',component:AddStoryRichaComponent},
+      {path:'addblog', component:AddBlogRichaComponent}, // new route
     ]
   },
   {path:'product/:id',component:ProductReviewShehzeenComponent},

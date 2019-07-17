@@ -84,8 +84,11 @@ import { HomeRichaComponent } from './home-richa/home-richa.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { HomeOldComponent } from './home-old/home-old.component';
+import { SravanFeedbackComponent } from './sravan-feedback/sravan-feedback.component';
 import { OrderManagmentShehzeenComponent } from './order-managment-shehzeen/order-managment-shehzeen.component';
 import { ParticularOrderManageComponent } from './particular-order-manage/particular-order-manage.component';
+import { MatRippleModule, MatDatepickerModule, MatNativeDateModule } from '@angular/material'; // Added for date picker in blog module by Richa Khatri
+import { AddBlogRichaComponent } from './add-blog-richa/add-blog-richa.component';
 
 
 
@@ -150,8 +153,10 @@ import { ParticularOrderManageComponent } from './particular-order-manage/partic
     HomeRichaComponent,
     AdoptRichaComponent,
     HomeOldComponent,
+    SravanFeedbackComponent,
     OrderManagmentShehzeenComponent,
-    ParticularOrderManageComponent
+    ParticularOrderManageComponent,
+    AddBlogRichaComponent
   ],
   imports: [
     MatProgressBarModule,
@@ -178,7 +183,10 @@ import { ParticularOrderManageComponent } from './particular-order-manage/partic
     MatProgressSpinnerModule,
     MatStepperModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatRippleModule,  // Added for date picker in blog module  by Richa Khatri          
+    MatDatepickerModule, // Added for date picker in blog module by Richa Khatri      
+    MatNativeDateModule// Added for date picker in blog module by Richa Khatri
   ],
   providers: [],
   bootstrap: [AppComponent]

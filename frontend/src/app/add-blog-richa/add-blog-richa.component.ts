@@ -1,37 +1,40 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
-import { storyManagementService } from '../storyManagement.service';
+import { BlogmanagementService } from '../blogmanagement.service';
 import { ToastrService } from 'ngx-toastr';
 import { Title } from "@angular/platform-browser";
 import { AuthService } from '../auth.sevice';
 
 @Component({
-  selector: 'app-add-story-richa',
-  templateUrl: './add-story-richa.component.html',
-  styleUrls: ['./add-story-richa.component.scss']
+  selector: 'app-add-blog-richa',
+  templateUrl: './add-blog-richa.component.html',
+  styleUrls: ['./add-blog-richa.component.scss']
 })
-export class AddStoryRichaComponent implements OnInit {
+export class AddBlogRichaComponent implements OnInit {
   currentUserId: string;
   currentUserType: string;
   currentFirstName: string;
   currentLastName: string;
   currentUser: any;
-  public StoryData: any = {}
+  public BlogData: any = {}
 
   constructor( 
-    private stories: storyManagementService,
+    private blogs: BlogmanagementService,
     private toastr: ToastrService,
     private titleService: Title,
     private authService: AuthService
     ){  
-      this.titleService.setTitle("Stories - StraySpirit");
+      this.titleService.setTitle("Add Blogs - StraySpirit");
     }
 
-    addStoryForm = new FormGroup({
-    storyTitle: new FormControl('', Validators.required),
+    addBlogForm = new FormGroup({
+    blogTitle: new FormControl('', Validators.required),
     content: new FormControl('', Validators.required),
+    petCategory: new FormControl('', Validators.required),
+    petTopic: new FormControl('', Validators.required),
     imageUrl: new FormControl(''),
-    petCategory: new FormControl('', Validators.required)
+    blogExpiryDate:new FormControl('')
+    
   })
 
   ngOnInit() {
@@ -68,7 +71,7 @@ export class AddStoryRichaComponent implements OnInit {
     this.imageSrc = reader.result;
     console.log("IMAGE URL"+this.imageSrc);
   }
-  addStory(){
+  addBlogs(){
     if(this.currentUserType==='personal'){
       this.currentFirstName = this.currentUser["firstName"];
       this.currentLastName = this.currentUser["lastName"];
@@ -77,30 +80,32 @@ export class AddStoryRichaComponent implements OnInit {
       this.currentFirstName = this.currentUser["organizationtName"];
       this.currentLastName = this.currentUser["organizationtName"];
     }
-     this.StoryData = {
-      storyTitle: this.addStoryForm.get('storyTitle').value,
-      storycontentModel: this.addStoryForm.get('content').value,
-      storyPicModel: this.imageSrc,
-      storyPublisher: {
+     this.BlogData = {
+      blogTitle: this.addBlogForm.get('blogTitle').value,
+      contentModel: this.addBlogForm.get('content').value,
+      petCategory:this.addBlogForm.get('petCategory').value,
+      petTopic:this.addBlogForm.get('petTopic').value,
+      blogPicModel: this.imageSrc,
+      blogPostDate:new Date(),
+      blogExpiryDate:this.addBlogForm.get('blogExpiryDate').value,
+      blogPublisher: {
         userId: this.currentUserId,
         firstName: this.currentFirstName,
         lastName: this.currentLastName
-        },
-        storyCategory:this.addStoryForm.get('petCategory').value
+        }
     }
-    console.log(this.StoryData);
-    this.stories.newStory(this.StoryData);
+    console.log(this.BlogData);
+    this.blogs.newBlog(this.BlogData);
     this.showSuccess();
     setTimeout(()=>{  
-      //window.location.reload();
+      window.location.reload();
        }, 2000);
   }
   showSuccess() {
-    this.toastr.success('Pet Story added!', 'SUCCESS!', {
+    this.toastr.success('Blog added!', 'SUCCESS!', {
       timeOut: 5500,
       closeButton: true,
       progressBar: true
     });
   }
-
 }
