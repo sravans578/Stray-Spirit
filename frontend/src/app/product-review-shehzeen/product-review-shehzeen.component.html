@@ -48,8 +48,8 @@
                                  <div style=" float:left;"><b>Write a Review:</b></div>
                                  <div style="width:100%; ">
                                     <br>
-                                    <textarea name = "reviewBox" id="reviewBox" name="reviewBox" formControlName="reviewBox"
-                                       [ngClass]="{'is-invalid':reviewForm.get('reviewBox').touched}"
+                                    <textarea #review name = "reviewBox" id="reviewBox" name="reviewBox" formControlName="reviewBox"
+                                       [ngClass]="{'is-invalid':reviewForm.get('reviewBox').invalid}"
                                        class="md-textarea form-control"></textarea>
                                     <div *ngIf="(reviewForm.get('reviewBox').touched && reviewForm.get('reviewBox').invalid)"
                                        class="invalid-feedback">
@@ -75,8 +75,13 @@
       <mat-divider></mat-divider> 
       <div *ngIf="product_reviews">
          <div *ngIf="product_reviews.length == 0">No Review Found.</div>
-         <mat-card   *ngFor="let  result of product_reviews" style="margin-bottom: 15px;">
-            {{result?.productReview}}</mat-card>
+         <mat-card   *ngFor="let  result of product_reviews; let i = index" style="margin-bottom: 15px;">
+           
+            {{result?.productReview}}
+            <i *ngIf="result?.editShow" class="fas fa-pencil-alt" style="float:right" (click)="editReview(this, i)"></i>
+            
+         
+         </mat-card>
         
       </div>
     
