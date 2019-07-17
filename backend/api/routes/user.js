@@ -1,5 +1,5 @@
 //Developer : Aditya Gadhvi (B00809664)
-// Modified by Marlee Donnelly in July 2019
+// Modified by Marlee Donnelly (B00710138) in July 2019
 
 const express = require('express');
 const User=require("../models/user");
@@ -146,7 +146,8 @@ router.post("/signup_org", (req,res,next)=>{
             registrationNumber:req.body.orgRegNo,
             password:hash,
             user_type:"Organization",
-            admin_status: "none",
+            isAdmin: false,
+            isSuperAdmin: false,
             user_creation_date:Date()
         });
         organization.save()
@@ -265,6 +266,7 @@ router.post('/login', (req, res, next) => {
         res.status(200).json(doc);
     })
     .catch(err => {
+        // If the get request fails, respond with an error
         console.log(err);
         res.status(500).json({error:err});
     });
@@ -279,6 +281,7 @@ router.get('/org/:userId', (req, res, next) => {
         res.status(200).json(doc);
     })
     .catch(err => {
+        // If the get request fails, respond with an error
         console.log(err);
         res.status(500).json({error:err});
     });
@@ -333,7 +336,7 @@ router.put('/org/update/:id', (req, res, next) =>{
 
 });
 
-// Handle account deletion
+// Handle user and organization account deletion
 router.delete('/personal/:id', (req, res) =>{
     const id = req.params.id;
     User.findByIdAndDelete(id).then( result=>{

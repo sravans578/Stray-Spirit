@@ -1,4 +1,4 @@
-// Marlee Donnelly (B00710138)
+// Author: Marlee Donnelly (B00710138)
 
 import { TestBed, async, inject } from '@angular/core/testing';
 

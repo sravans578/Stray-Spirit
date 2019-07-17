@@ -1,4 +1,4 @@
-// Marlee Donnelly (B00710138)
+// Author: Marlee Donnelly (B00710138)
 
 import { Injectable } from '@angular/core';
 import {CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router} from '@angular/router';

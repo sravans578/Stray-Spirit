@@ -1,3 +1,5 @@
+// Author: Marlee Donnelly (B00710138)
+
 import { Component, OnInit } from '@angular/core';
 
 @Component({

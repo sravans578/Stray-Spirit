@@ -1,3 +1,4 @@
+// Author: Marlee Donnelly (B00710138)
 import { TestBed } from '@angular/core/testing';
 
 import { UserService } from './user.service';

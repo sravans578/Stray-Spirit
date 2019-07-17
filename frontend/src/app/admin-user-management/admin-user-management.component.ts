@@ -33,7 +33,7 @@ export class AdminUserManagementComponent implements OnInit {
     private authService: AuthService,) { }
 
   ngOnInit() {
-    //Get all users
+    // Get all users
     this.userService.getPersonalUsers().subscribe(userData =>{
       this.personalUsers = userData;
       this.currentList = this.personalUsers;
@@ -44,6 +44,7 @@ export class AdminUserManagementComponent implements OnInit {
     this.showUsers();
   }
 
+  // Methods for controlling which content is displayed depending on which tab is selected
   showUsers(){
     this.currentList = this.personalUsers;
     this.colsToShow = this.userCols;
@@ -73,7 +74,8 @@ export class AdminUserManagementComponent implements OnInit {
     this.showAdminTable = true;
     this.tabSelected = 2;
   }
-  //Check whether they're an admin or not and set the new value to the opposite
+
+  // Check whether the selected user an admin or not and set the new value to the opposite
   toggleAdmin(id){
     // For personal accounts
     if(this.tabSelected === 0){
@@ -108,7 +110,7 @@ export class AdminUserManagementComponent implements OnInit {
           });
         }
       })
-      //Otherwise, it's an organization
+      // Otherwise, it's an organization
       this.authService.getOrgById(id).subscribe(targetOrgData => {
         if(targetOrgData != null) {
           this.changeRegularAdmin(id, targetOrgData['isAdmin']);
@@ -144,6 +146,7 @@ export class AdminUserManagementComponent implements OnInit {
     })
   }
 
+  // The methods that actually determine which value to set a user's admin status to
   changeRegularAdmin(id, isAdmin){
     if (isAdmin) {
       //If removing regular admin status, remove super admin status too
@@ -177,6 +180,7 @@ export class AdminUserManagementComponent implements OnInit {
     }
   }
 
+  // Handle updates without reloading the whole page
   reloadTable(){
     // Get updated data for the table
     if(this.tabSelected == 0){
@@ -207,18 +211,21 @@ export class AdminUserManagementComponent implements OnInit {
     this.table.renderRows();
   }
 
+  //Initialize a popup and figure out which table entry was clicked
   showDeletePopup(id){
     this.warningModal.show();
     this.idToDelete = id;
   }
 
   hideDeletePopup(){
+    // Make sure there isn't a specific table entry selected anymore
     this.idToDelete = "";
     this.warningModal.hide();
   }
 
   deleteUser(){
     if(this.idToDelete != "") {
+      // For deleting regular users
       if (this.tabSelected == 0) {
         this.authService.deleteUser(this.idToDelete).subscribe(response =>{
           console.log(response);
@@ -226,6 +233,7 @@ export class AdminUserManagementComponent implements OnInit {
           this.warningModal.hide();
         });
       }
+      // For deleting organization accounts
       else if (this.tabSelected == 1) {
         this.authService.deleteOrganization(this.idToDelete).subscribe(response =>{
           console.log(response);

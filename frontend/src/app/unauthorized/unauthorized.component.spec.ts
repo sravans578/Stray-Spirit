@@ -1,3 +1,5 @@
+//Author: Marlee Donnelly (B00710138)
+
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UnauthorizedComponent } from './unauthorized.component';

@@ -1,3 +1,5 @@
+// Author: Marlee Donnelly (B00710138)
+
 import { Injectable } from '@angular/core';
 import {CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router} from '@angular/router';
 import { Observable } from 'rxjs';
@@ -6,7 +8,7 @@ import { AuthService } from "./auth.sevice";
 @Injectable({
   providedIn: 'root'
 })
-//This class protects pages that are only meant to be acces
+//This class protects pages that are only meant to be accessed by super admins
 export class SuperAdminGuard implements CanActivate {
 
   constructor(private authService: AuthService, private router: Router){ }

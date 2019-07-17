@@ -1,5 +1,5 @@
 // Developer : Aditya Gadhvi (B00809664)
-// Modified by Marlee Donnelly in July 2019
+// Modified by Marlee Donnelly (B00710138) in July 2019
 
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -41,6 +41,7 @@ export class AuthService{
         return this.authStatusListener.asObservable();
     }
 
+    // Determine whether the user that's currently logged in has admin or super admin status
     getIsAdmin(){
       return this.isAdmin;
     }
@@ -65,7 +66,7 @@ export class AuthService{
 
     }
 
- 
+
 
     //This method will create a profile for an organization. It will be called from the ts file of the register component.
      createOrganizationUser(
