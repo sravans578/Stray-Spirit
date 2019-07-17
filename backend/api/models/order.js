@@ -9,7 +9,7 @@ var orderUploaderSchema = {
     addressLine1:{type: String, required:true},
     addressLine2:{type: String, required:false},
     pincode:{type: String, required:true},
-    phoneNumber:{ type:Number , required:false }
+    phoneNumber:{ type:String , required:false }
 };
 
 //Schema created for orders https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/mongoose

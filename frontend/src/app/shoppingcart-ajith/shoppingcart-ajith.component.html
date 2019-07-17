@@ -23,7 +23,7 @@
               </div>
               <div *ngFor="let product of cart_items">
                 <div style="margin-top:1%">
-              <mdb-card style="margin-left: 17%;margin-right: 7%">
+              <mdb-card class="card" style="margin-left: 17%;margin-right: 7%">
                 <div class="row" >
                     <div class="col-md-2 col-sm-4">
                         <img [src]="product.productpic" [alt]="product.productname" class="img-fluid">
@@ -31,7 +31,7 @@
                     <div class="col-md-4 col-sm-8" style="margin-top:4%">
                       <label style="margin-left: 1%">{{product.productname}}</label>
                       <div class="price_mobile_both">
-                          <label style="margin-left:5%"> $20</label>
+                          <label style="margin-left:5%"> {{product.productprice}}</label>
                           <input [(ngModel)]="product.itemcount" style="margin-left:18%;width: 20%" min= "1" type="number" (click)="count_items_update(product.productpic,product.productname,product.itemcount)">
                       </div>
                     </div>
@@ -69,6 +69,14 @@
                     <button  mat-button matStepperNext class="col-sm check-out-button" (click)="checkout()">Checkout</button>
                   </div> 
                   </div>
+                  <div class="col-sm-4 tab-total" style="margin-left:-5%;margin-top:3%">
+                    <div class="row">
+                    <label class="col-sm">Grand Total</label>
+                    <label class="col-sm">$ {{grand_total}}</label>
+                    </div>
+                    <button  mat-button matStepperNext class="col-sm check-out-button" (click)="checkout()">Checkout</button>
+                   
+                  </div>
                   <div class="col-sm-4 mobile-total" style="margin-left:17%;margin-top:3%">
                       <label class="col-sm-2">Grand Total:  $ {{grand_total}}</label>
                       <button  mat-button matStepperNext class="check-out-button" style="width: 80%" (click)="checkout()">Checkout</button>
@@ -80,7 +88,7 @@
         <mat-step  [stepControl]="secondFormGroup">
             
             <ng-template matStepLabel>Delivery Address</ng-template>
-            <mdb-card style="width: 50%;margin-left:25%">
+            <mdb-card class="card" style="width: 50%;margin-left:25%">
               
               <label style="margin-left:5%;margin-top:3%">FirstName *</label>
               <input  [(ngModel)]="first_name" style="width: 80%;margin-left:5%;border-radius: 12px" type="text" placeholder="Enter First Name" >
@@ -102,7 +110,7 @@
               <p [hidden]="pincode_required" style="color: red;margin-left: 5%;margin-top: 1%;">please enter the Pincode</p>
               <p [hidden]="pincode_validation" style="color: red;margin-left: 5%;margin-top: 1%;">please enter the valid 6 character Pincode</p>
               <label class="address-label">Phone Number *</label>
-              <input [(ngModel)]="phone_number" class="address-input" type="number" placeholder="Enter Phone Number">
+              <input [(ngModel)]="phone_number" class="address-input" type="text" placeholder="Enter Phone Number">
               <p [hidden]="phone_number_required" style="color: red;margin-left: 5%;margin-top: 1%;">please enter the phone number</p>
               <p [hidden]="phone_number_validation" style="color: red;margin-left: 5%;margin-top: 1%;">please enter the valid 10 digit phone number</p>
               <div class="row" style="margin-left:17%;margin-top:3%;margin-bottom: 3%;width:80%">
