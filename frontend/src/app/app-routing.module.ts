@@ -59,6 +59,8 @@ import { ShoppingcartAjithComponent } from './shoppingcart-ajith/shoppingcart-aj
 import { DiscussionformsAjithComponent } from './discussionforms-ajith/discussionforms-ajith.component';
 import { SravanChangepasswordComponent } from './sravan-changepassword/sravan-changepassword.component';
 
+import { PaymentGatewayComponent } from './payment-gateway/payment-gateway.component';
+
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -98,6 +100,7 @@ const routes: Routes = [
   {path:'cart',component:ShoppingcartAjithComponent},
   { path: 'user_management', component: AdminUserManagementComponent },
   { path: 'approve_content', component: AdminApproveContentComponent },
+  { path: 'payment_gateway', component: PaymentGatewayComponent},
 
   // Implemented nested routes https://angular-2-training-book.rangle.io/handout/routing/child_routes.html
   { path:'profile',

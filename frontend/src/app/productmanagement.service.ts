@@ -6,10 +6,10 @@ import { HttpClient , HttpParams } from '@angular/common/http';
 })
 export class ProductmanagementService {
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient) {
 
    }
-   
+
   getProducts(){
     console.log("Inside getProducts");
     return this.http.get('http://localhost:3000/products/');
@@ -31,7 +31,7 @@ export class ProductmanagementService {
     });
   }
   updateProducts(productId:any, productData:any){
-    
+
     console.log("From service",productData);
     this.http.put('http://localhost:3000/products/update/'+productId,productData)
     .subscribe(response=>{

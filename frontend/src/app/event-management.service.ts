@@ -29,8 +29,8 @@ export class EventManagementService {
     .subscribe(responseData => {
       console.log("Email sent!");
     });
-  }  
- // Retrieved single event based on the Event Id passed in GET method 
+  }
+ // Retrieved single event based on the Event Id passed in GET method
   getsingleEvent( id: string){
       return this.http.get('http://localhost:3000/event/singleevent/' + id);
   }

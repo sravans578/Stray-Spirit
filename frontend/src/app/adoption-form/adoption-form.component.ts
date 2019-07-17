@@ -58,7 +58,7 @@ firstFormGroup = new FormGroup({
     private route: ActivatedRoute,
     private router: Router,
     private toastr: ToastrService
-    ) { 
+    ) {
 
   }
 
@@ -71,23 +71,23 @@ firstFormGroup = new FormGroup({
    this.petService.getPetById(this.pet_id).subscribe( currentPet =>{
     this.currentPetData=currentPet;
    });
-    
+
 
     this.currentUserId=this.authService.getUserId();
     this.authService.getUserById(this.currentUserId).subscribe( userData=>{
       this.currentUserData=userData;
       this.firstFormGroup.controls.adopterFirstName.patchValue(this.currentUserData["firstName"]);
-      
+
       this.firstFormGroup.controls.adopterLastName.patchValue(this.currentUserData["lastName"]);
-    
-    
+
+
       this.firstFormGroup.controls.adopterFirstName.patchValue(this.currentUserData["firstName"]);
-    
-    
+
+
       this.firstFormGroup.controls.adopterEmail.patchValue(this.currentUserData["email"]);
-    
+
       this.firstFormGroup.controls.adopterPhone.patchValue(this.currentUserData["phoneNumber"]);
-    
+
     })
 
 
@@ -101,7 +101,7 @@ firstFormGroup = new FormGroup({
     // });
   }
   adoptPet(){
-    
+
     this.adoptionModel={
       prevPetModel: this.secondFormGroup.get('prevPet').value,
       curPetModel: this.secondFormGroup.get('curPet').value,
@@ -119,7 +119,7 @@ firstFormGroup = new FormGroup({
         petAdopteradopterAddress: this.firstFormGroup.get('adopterAddress').value,
         petAdopteradopterEmail: this.firstFormGroup.get('adopterEmail').value,
         petAdopteradopterPhone: this.firstFormGroup.get('adopterPhone').value,
-        
+
       },
       petDetailModel:{
         petIdModel: this.pet_id,
@@ -135,7 +135,7 @@ firstFormGroup = new FormGroup({
       closeButton: true,
       progressBar: true
     });
-    setTimeout(()=>{  
+    setTimeout(()=>{
       this.router.navigate(['/profile/my-adoptions/']);
        }, 2000);
   }
