@@ -75,12 +75,17 @@
       <mat-divider></mat-divider> 
       <div *ngIf="product_reviews">
          <div *ngIf="product_reviews.length == 0">No Review Found.</div>
-         <mat-card   *ngFor="let  result of product_reviews; let i = index" style="margin-bottom: 15px;">
+         <mat-card   *ngFor="let  result of product_reviews; let i = index" style="margin-bottom: 20px;">
            
             {{result?.productReview}}
-            <i *ngIf="result?.editShow" class="fas fa-pencil-alt" style="float:right" (click)="editReview(this, i)"></i>
+
+            <i *ngIf="result?.editShow" class="fas fa-pencil-alt fa-fw" style="float:right" (click)="editReview(this, i)"></i>
+            <i *ngIf="result?.editShow"  class="fas fa fa-trash fa-fw" style="float:right" (click)="deleteReview(this, i)"></i>
             
-         
+            
+          
+           
+           
          </mat-card>
         
       </div>

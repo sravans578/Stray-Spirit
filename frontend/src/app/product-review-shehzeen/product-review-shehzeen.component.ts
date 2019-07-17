@@ -107,6 +107,41 @@ this.product_reviews = this.product_data.productReview;
     this.objectIdToBeEdited = i;
     debugger;
     this.reviewForm.controls.reviewBox.setValue(this.product_data.productReview[i].productReview);
+   
+
+  }
+
+  deleteReview(event, i){
+    this.product_data.productReview.splice(i,1);
+debugger;
+
+this.productData = {
+  productNameModel: this.product_data.productName,
+  productDescriptionModel: this.product_data.productDescription,
+  productQuantityModel: this.product_data.productQuantity,
+  productPriceModel: this.product_data.productPrice,
+  productCategoryModel:this.product_data.productCategory,
+  productPicModel: this.product_data.productPic,
+  productUploaderModel: {
+    productUploaderId: this.product_data.productUploader.uId,
+    productUploaderfirstName: this.product_data.productUploader.firstName,
+    productUploaderlastName: this.product_data.productUploader.lastName
+
+  },
+  productReview : this.product_data.productReview 
+};
+
+    var result = this.productService.updateProducts(this.product_id , this.productData);
+    console.log(this.product_data);
+    
+    //Toaster for the successful submission of the form.
+    this.toastr.success('Successfully deleted the review for the Product.', 'SUCCESS!', {
+      timeOut: 5500,
+      closeButton: true,
+      progressBar: true
+    });
+
+
   }
 /**
  * This function validates all the fields on the submit button click of the form.If all the fields are validated correctly then the review is submitted in the database.
