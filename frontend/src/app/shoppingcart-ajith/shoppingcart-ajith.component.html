@@ -23,7 +23,7 @@
               </div>
               <div *ngFor="let product of cart_items">
                 <div style="margin-top:1%">
-              <mdb-card class="card" style="margin-left: 17%;margin-right: 7%">
+              <mdb-card  style="margin-left: 17%;margin-right: 7%">
                 <div class="row" >
                     <div class="col-md-2 col-sm-4">
                         <img [src]="product.productpic" [alt]="product.productname" class="img-fluid">
@@ -88,7 +88,7 @@
         <mat-step  [stepControl]="secondFormGroup">
             
             <ng-template matStepLabel>Delivery Address</ng-template>
-            <mdb-card class="card" style="width: 50%;margin-left:25%">
+            <mdb-card  style="width: 50%;margin-left:25%">
               
               <label style="margin-left:5%;margin-top:3%">FirstName *</label>
               <input  [(ngModel)]="first_name" style="width: 80%;margin-left:5%;border-radius: 12px" type="text" placeholder="Enter First Name" >
