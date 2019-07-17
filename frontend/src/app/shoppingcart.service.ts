@@ -16,7 +16,7 @@ export class ShoppingcartService {
       this.initial.next(shopping_count);
   }
   insertPurchaseDetails(shoppingCartData:any){
-    this.http.post('http://localhost:3000/shoppingCart/',shoppingCartData)
+    this.http.post('api/shoppingCart/',shoppingCartData)
     .subscribe(responseData => {
       console.log("Cart deatils added!");
     });

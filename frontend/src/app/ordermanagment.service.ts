@@ -11,7 +11,7 @@ export class OrdermanagmentService {
   }
   newOrder(orderModel:any){
     console.log(orderModel);
-    this.http.post('http://localhost:3000/order/',orderModel)
+    this.http.post('api/order/',orderModel)
     .subscribe(responseData => {
       console.log("Order added!");
     });
@@ -19,26 +19,26 @@ export class OrdermanagmentService {
 
   getOrders(){
     console.log("Inside getProducts");
-    return this.http.get('http://localhost:3000/order/');
+    return this.http.get('api/order/');
   }
   getOrdersById(oId: any)
   {
-    return this.http.get('http://localhost:3000/order/singleorder/'+oId);
+    return this.http.get('api/order/singleorder/'+oId);
   }
 
   getPOrders(firstName: any)
   {
-    return this.http.get('http://localhost:3000/order/normalUser/'+firstName);
+    return this.http.get('api/order/normalUser/'+firstName);
   }
 
   cancelOrder(oId: any){
-    return this.http.delete('http://localhost:3000/order/delete/'+oId);
+    return this.http.delete('api/order/delete/'+oId);
   }
 
   updateOrder(orderId:any, orderData:any){ 
     
     console.log("From service",orderData);
-    this.http.put('http://localhost:3000/order/update/'+orderId,orderData)
+    this.http.put('api/order/update/'+orderId,orderData)
     .subscribe(response=>{
       console.log(response);
     });

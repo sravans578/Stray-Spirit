@@ -7,12 +7,12 @@ export class BlogmanagementService {
 constructor(private http: HttpClient) {   } 
  
 newBlog(blogModel:any){
-    this.http.post('http://localhost:3000/blogs/',blogModel)
+    this.http.post('api/blogs/',blogModel)
     .subscribe(responseData => {
       console.log("Blog added!");
     });
   }
   getBlog(){
-    return this.http.get('http://localhost:3000/blogs/');
+    return this.http.get('api/blogs/');
     }
 }

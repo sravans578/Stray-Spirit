@@ -39,7 +39,8 @@
               <td class="button-cell">
                 <div class="button-container">
                   <button class="btn-success btn-sm" (click) = "updateStory(story._id,false)">Approve</button>
-                  <button class="btn-light btn-sm" (click)="confirmDelete.show()">Delete</button>
+                  <button class="btn-light btn-sm" (click)="updateStory(story._id,true)">Delete</button>
+                  <!-- <button class="btn-light btn-sm" (click)="confirmDelete.show()">Delete</button> -->
                 </div>
               </td>
             </tr>

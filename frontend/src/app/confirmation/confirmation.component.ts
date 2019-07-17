@@ -8,7 +8,7 @@ import { AuthService } from '../auth.sevice';
   styleUrls: ['./confirmation.component.scss']
 })
 export class ConfirmationComponent implements OnInit {
-  
+
   token:any;
   token_id: string;
   userDetail: any;
@@ -16,7 +16,7 @@ export class ConfirmationComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private route: ActivatedRoute, 
+    private route: ActivatedRoute,
     private auth: AuthService
   ) { }
 
@@ -33,7 +33,8 @@ export class ConfirmationComponent implements OnInit {
           lastNameModel: this.userDetail[0]["lastName"],
           emailModel: this.userDetail[0]["email"],
           phoneNumberModel: this.userDetail[0]["phoneNumber"],
-          isActiveModel: true
+          isActiveModel: true,
+          adminModel: this.userDetail[0]["adminStatus"]
         }
         this.auth.updateUserData(this.userDetail[0]["_id"],this.updateUser);
       } )

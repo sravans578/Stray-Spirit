@@ -17,53 +17,72 @@
           </li>
         </ul>
         <div class="table-container">
-          <table *ngIf="tabSelected != 2">
-            <tr>
-              <th>Name</th>
-              <th>Email Address</th>
-              <th>Last Active</th>
-              <th>Admin Privileges</th>
-              <th></th>
-            </tr>
-            <tr *ngFor="let user of currentList">
-              <td>{{user.name}}</td>
-              <td>person@fake.com</td>
-              <td>30-05-2019 1:59 PM</td>
-              <td class="button-box">
-                <button class="btn-success" *ngIf="user.isAdmin; else notAdmin" (click)="toggleAdmin(user.id)">Enabled</button>
-                <ng-template #notAdmin>
-                  <button class="btn-light" (click)="toggleAdmin(user.id)">Disabled</button>
+          <table mat-table #userTable [dataSource]="currentList">
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef>Name</th>
+              <td mat-cell *matCellDef="let user">
+                <p *ngIf="user.user_type === 'personal'; else isOrganization">{{user.firstName}} {{user.lastName}}</p>
+                <ng-template #isOrganization>
+                  <p>{{user.organizationtName}}</p>
                 </ng-template>
               </td>
-              <td class="button-box">
-                <a title="Delete" (click)="confirmDelete.show()"><i class="fas fa-trash fa-lg"></i></a>
-              </td>
-            </tr>
-          </table>
-          <!--Show different table with different options for the admin section-->
-          <table *ngIf="tabSelected == 2">
-            <tr>
-              <th>Username</th>
-              <th>Email Address</th>
-              <th>Regular Admin Privileges</th>
-              <th>Super Admin Privileges</th>
-            </tr>
-            <tr *ngFor="let user of currentList">
-              <td>{{user.name}}</td>
-              <td>person@fake.com</td>
-              <td class="button-box">
-                <button class="btn-success" *ngIf="user.isAdmin; else notAdmin" (click)="toggleAdmin(user.id)">Enabled</button>
-                <ng-template #notAdmin>
-                  <button class="btn-light" (click)="toggleAdmin(user.id)">Disabled</button>
+            </ng-container>
+
+            <ng-container matColumnDef="username">
+              <th mat-header-cell *matHeaderCellDef>Username</th>
+              <td mat-cell *matCellDef="let user">
+                <p *ngIf="user.user_type === 'personal'; else isOrganization">{{user.firstName}} {{user.lastName}}</p>
+                <ng-template #isOrganization>
+                  <p>{{user.organizationtName}}</p>
                 </ng-template>
               </td>
-              <td class="button-box">
-                <button class="btn-success" *ngIf="user.isSuperAdmin; else notSuperAdmin" (click)="toggleSuperAdmin(user.id)">Enabled</button>
+            </ng-container>
+
+            <ng-container matColumnDef="email">
+              <th mat-header-cell *matHeaderCellDef>Email Address</th>
+              <td mat-cell *matCellDef="let user"> {{user.email}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="activity">
+              <th mat-header-cell *matHeaderCellDef>Activity Status</th>
+              <td mat-cell *matCellDef="let user">
+                <p *ngIf="user.isActive; else notActive">Active</p>
+                <ng-template #notActive>
+                  <p>Inactive</p>
+                </ng-template>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="admin">
+              <th mat-header-cell *matHeaderCellDef>Admin Privileges</th>
+              <td mat-cell class="button-box" *matCellDef="let user">
+                <button class="btn-success" *ngIf="user.isAdmin; else notAdmin" (click)="toggleAdmin(user._id)">Enabled</button>
+                <ng-template #notAdmin>
+                  <button class="btn-light" (click)="toggleAdmin(user._id)">Disabled</button>
+                </ng-template>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="superAdmin">
+              <th mat-header-cell *matHeaderCellDef>Super Admin Privileges</th>
+              <td mat-cell class="button-box" *matCellDef="let user">
+                <button class="btn-success" *ngIf="user.isSuperAdmin; else notSuperAdmin" (click)="toggleSuperAdmin(user._id)">Enabled</button>
                 <ng-template #notSuperAdmin>
-                  <button class="btn-light" (click)="toggleSuperAdmin(user.id)">Disabled</button>
+                  <button class="btn-light" (click)="toggleSuperAdmin(user._id)">Disabled</button>
                 </ng-template>
               </td>
-            </tr>
+            </ng-container>
+
+            <ng-container matColumnDef="delete">
+              <th mat-header-cell *matHeaderCellDef> </th>
+              <td mat-cell class="button-box" *matCellDef="let user">
+                <a title="Delete" (click)="showDeletePopup(user._id)"><i class="fas fa-trash fa-lg"></i></a>
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="colsToShow"></tr>
+            <tr mat-row *matRowDef="let row; columns: colsToShow;"></tr>
+
           </table>
         </div>
       </div>
@@ -71,12 +90,12 @@
   </div>
   <!--Delete confirmation popup. The documentation for Angular-specific Bootstrap modals at
       https://mdbootstrap.com/docs/angular/modals/basic/ was used as a guideline.-->
-  <div mdbModal #confirmDelete="mdbModal" class="modal fade" aria-hidden="true">
+  <div mdbModal #confirmDelete="mdbModal" id="delete-warning" class="modal fade" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">Are You Sure?</h5>
-          <button type="button" class="close" title="Close" (click)="confirmDelete.hide()">
+          <button type="button" class="close" title="Close" (click)="hideDeletePopup()">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
@@ -84,8 +103,8 @@
           <p>Deleting this user will completely remove their account from the Stray Spirit website. This action cannot be undone.</p>
         </div>
         <div class="modal-footer">
-          <button class="btn btn-secondary" (click)="confirmDelete.hide()">Cancel</button>
-          <button class="btn btn-primary" (click)="confirmDelete.hide()">Delete User</button>
+          <button class="btn btn-secondary" (click)="hideDeletePopup()">Cancel</button>
+          <button class="btn btn-primary" (click)="deleteUser()">Delete User</button>
         </div>
       </div>
     </div>

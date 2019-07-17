@@ -12,20 +12,20 @@ export class ProductmanagementService {
    
   getProducts(){
     console.log("Inside getProducts");
-    return this.http.get('http://localhost:3000/products/');
+    return this.http.get('api/products/');
   }
   getProductsById(pId: any)
   {
-    return this.http.get('http://localhost:3000/products/singleproduct/'+pId);
+    return this.http.get('api/products/singleproduct/'+pId);
   }
   getproductsUser(uId: any)
   {
-    return this.http.get('http://localhost:3000/products/uploader/'+uId);
+    return this.http.get('api/products/uploader/'+uId);
   }
 
   newProducts(productModel:any){
     console.log(productModel);
-    this.http.post('http://localhost:3000/products/',productModel)
+    this.http.post('api/products/',productModel)
     .subscribe(responseData => {
       console.log("Product added!");
     });
@@ -33,13 +33,13 @@ export class ProductmanagementService {
   updateProducts(productId:any, productData:any){ 
     
     console.log("From service",productData);
-    this.http.put('http://localhost:3000/products/update/'+productId,productData)
+    this.http.put('api/products/update/'+productId,productData)
     .subscribe(response=>{
       console.log(response);
     });
   }
   deleteProduct(productId:any){
-    this.http.delete('http://localhost:3000/products/delete/'+productId)
+    this.http.delete('api/products/delete/'+productId)
     .subscribe(response=>{
       console.log(response);
     });

@@ -23,7 +23,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import { ProfileNavComponent } from './profile-nav/profile-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatButtonModule, MatIconModule } from '@angular/material';
+import {MatButtonModule, MatIconModule, MatTableModule} from '@angular/material';
 import { ProfileInventoryComponent } from './profile-inventory/profile-inventory.component';
 import { ProductDetailPageComponent } from './product-detail-page/product-detail-page.component';
 import {MatCardModule} from '@angular/material/card';
@@ -84,6 +84,8 @@ import { HomeRichaComponent } from './home-richa/home-richa.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { HomeOldComponent } from './home-old/home-old.component';
+import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
+import { CdkTableModule } from "@angular/cdk/table";
 import { SravanFeedbackComponent } from './sravan-feedback/sravan-feedback.component';
 import { OrderManagmentShehzeenComponent } from './order-managment-shehzeen/order-managment-shehzeen.component';
 import { ParticularOrderManageComponent } from './particular-order-manage/particular-order-manage.component';
@@ -153,6 +155,7 @@ import { AddBlogRichaComponent } from './add-blog-richa/add-blog-richa.component
     HomeRichaComponent,
     AdoptRichaComponent,
     HomeOldComponent,
+    UnauthorizedComponent,
     SravanFeedbackComponent,
     OrderManagmentShehzeenComponent,
     ParticularOrderManageComponent,
@@ -184,8 +187,10 @@ import { AddBlogRichaComponent } from './add-blog-richa/add-blog-richa.component
     MatStepperModule,
     MatFormFieldModule,
     MatInputModule,
-    MatRippleModule,  // Added for date picker in blog module  by Richa Khatri          
-    MatDatepickerModule, // Added for date picker in blog module by Richa Khatri      
+    CdkTableModule,
+    MatTableModule,
+    MatRippleModule,  // Added for date picker in blog module  by Richa Khatri
+    MatDatepickerModule, // Added for date picker in blog module by Richa Khatri
     MatNativeDateModule// Added for date picker in blog module by Richa Khatri
   ],
   providers: [],

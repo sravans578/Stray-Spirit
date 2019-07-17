@@ -26,7 +26,7 @@ export class ShoppingcartAjithComponent implements OnInit {
   email:string="";
   address_line1:string="";
   pincode:string="";
-  phone_number:number;
+  phone_number:string="";
   first_name_validation:boolean=true;
   last_name_validation:boolean=true;
   email_validation:boolean=true;
@@ -47,6 +47,7 @@ export class ShoppingcartAjithComponent implements OnInit {
   regexp:RegExp;
   string_phone_number:string;
   global_cart_count:string;
+  phone_regexp:RegExp;
   constructor(private toastr: ToastrService,private _formBuilder: FormBuilder,private shoppingCartService: ShoppingcartService,private authService: AuthService ) { }
 
   ngOnInit() {
@@ -69,7 +70,7 @@ export class ShoppingcartAjithComponent implements OnInit {
     this.first_name="";
     this.last_name="";
     this.email="";
-    this.phone_number=0;
+    this.phone_number="";
     this.address_line1="";
     this.address_line2="";
     this.pincode="";
@@ -184,15 +185,16 @@ export class ShoppingcartAjithComponent implements OnInit {
     }
     //regular expression for checking whether the given email is valid or not
     //https://stackoverflow.com/questions/46370725/how-to-do-email-validation-using-regular-expression-in-typescript/46370978
-    this.regexp = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+    this.regexp = new RegExp(/^[a-zA-Z0-9*_.-]+@[a-zA-Z]+[.][a-zA-Z]{2,3}$/);
+    //regular expression taken from register component developed by aadesh shah
+    this.phone_regexp= new RegExp(/^[\(][0-9]{3}[\)][\-][\(][0-9]{3}[\)][\-][\(][0-9]{4}[\)]$|[0-9]{10}|[0-9]{3}-[0-9]{3}-[0-9]{4}$/);
     if((!this.regexp.test(this.email)) && this.email_required){
       this.email_validation=false;
     }
     else{
       this.email_validation=true;
     }
-    this.string_phone_number=String(this.phone_number);
-    if(this.string_phone_number.length != 10 && this.phone_number_required){
+    if((!this.phone_regexp.test(this.phone_number)) && this.phone_number_required){ 
       this.phone_number_validation =false;
     }
     else{

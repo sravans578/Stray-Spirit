@@ -62,6 +62,9 @@ import { DonationsAjithComponent } from './donations-ajith/donations-ajith.compo
 import { ShoppingcartAjithComponent } from './shoppingcart-ajith/shoppingcart-ajith.component';
 import { DiscussionformsAjithComponent } from './discussionforms-ajith/discussionforms-ajith.component';
 import { SravanChangepasswordComponent } from './sravan-changepassword/sravan-changepassword.component';
+import { SuperAdminGuard } from "./super-admin.guard";
+import { AdminGuard } from "./admin.guard";
+import { UnauthorizedComponent } from "./unauthorized/unauthorized.component";
 import { OrderManagmentShehzeenComponent } from './order-managment-shehzeen/order-managment-shehzeen.component';
 import { AddBlogRichaComponent } from './add-blog-richa/add-blog-richa.component';
 
@@ -105,8 +108,9 @@ const routes: Routes = [
   {path:'donate',component:DonateShehzeenComponent},
   {path:'product-detail/:id',component:ProductReviewShehzeenComponent},
   {path:'cart',component:ShoppingcartAjithComponent},
-  { path: 'user_management', component: AdminUserManagementComponent },
-  { path: 'approve_content', component: AdminApproveContentComponent },
+  { path: 'user_management', canActivate: [SuperAdminGuard], component: AdminUserManagementComponent },
+  { path: 'approve_content', canActivate: [AdminGuard], component: AdminApproveContentComponent },
+  { path: 'unauthorized', component: UnauthorizedComponent },
   { path: 'feedback', component: SravanFeedbackComponent },
 
   // Implemented nested routes https://angular-2-training-book.rangle.io/handout/routing/child_routes.html
@@ -123,7 +127,8 @@ const routes: Routes = [
       { path: 'my-adoptions', component: MyAdoptionsComponent },
       { path: 'adoption-request/:id', component: AdoptionRequestComponent },
       {  path:'addstory',component:AddStoryRichaComponent},
-      {path:'addblog', component:AddBlogRichaComponent}, // new route
+      {path:'addblog', component:AddBlogRichaComponent},
+      { path: 'approve_content', component: AdminApproveContentComponent }, // new route
     ]
   },
   {path:'product/:id',component:ProductReviewShehzeenComponent},

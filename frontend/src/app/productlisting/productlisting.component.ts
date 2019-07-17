@@ -96,7 +96,7 @@ onClick()
     
   }
   // method to add products to the cart
-  addToCart(productpic,productname,productprice,productid,productDescription){
+  addToCart(productpic,productname,productprice,productid,productDescription,uploaderid){
     this.product_details={};
     this.cart_items=JSON.parse(localStorage.getItem("shopping_cart"));
     if(this.cart_items == null){
@@ -108,6 +108,8 @@ onClick()
       this.product_details["itemcount"]=1;
       this.product_details["productid"]=productid;
       this.product_details["productDescription"]=productDescription;
+      this.product_details["status"]=false;
+      this.product_details["uploader_id"]=uploaderid;
       this.cart_items.push(this.product_details);
       localStorage.setItem("shopping_cart",JSON.stringify(this.cart_items));
     }
@@ -128,6 +130,8 @@ onClick()
         this.product_details["itemcount"]=1;
         this.product_details["productid"]=productid;
         this.product_details["productDescription"]=productDescription;
+        this.product_details["status"]=false;
+        this.product_details["uploader_id"]=uploaderid;
         this.cart_items.push(this.product_details);
       }
       localStorage.removeItem("shopping_cart");
