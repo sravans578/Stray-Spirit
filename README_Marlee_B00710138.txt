@@ -3,7 +3,7 @@ Marlee Donnelly (B00710138)
 *****************************************************************************
 
 GitLab repository: https://git.cs.dal.ca/akshah/strayspirit
-Links:
+Link: http://129.173.22.35:14785/user_management (make sure you're logged in with the super admin credentials I provided)
 
 Related files:
 backend/api/models/user.js (MODIFIED) 
@@ -31,6 +31,7 @@ Note that administrative tools can only be accessed by users who are both logged
 Email:fakeOrg@organization.com
 Password: password
 
+Note that this is an ORGANIZATION account and you'll have to use the organization login page to sign in!
 *****************************************************************************
 
 This project is a continuation of the work done by A. Shah, A. Gadhvi, A. Sridhar, and D. Varshney in the winter semester, so some of the files I worked with contain a significant amount of code not written by me. These files include the original author's name in the comments, as well as a note that the code was modified (not authored) by me. I have indicated large additions with comments in the code, as well as a more general overview of the changes I made below.
