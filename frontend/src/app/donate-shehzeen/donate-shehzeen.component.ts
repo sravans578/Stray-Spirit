@@ -1,105 +1,85 @@
-/** Author : Shehzeen B00812551 */
-import {
-	Component,
-	OnInit
-} from '@angular/core';
-import { FormGroup, FormBuilder, FormControl, Validators, AbstractControl } from '@angular/forms';
-import { stringify } from 'querystring';
-import { Message } from '@angular/compiler/src/i18n/i18n_ast';
+/** Authored by Shehzeen[B00812551]
+    Modified by Lakshmi Ponnuru [B00811623] */
+
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { DonationService } from '../donation.service';
+import { Router } from '@angular/router';
 
 /**
  * Component
  */
 @Component({
-	selector: 'app-donate-shehzeen',
-	templateUrl: './donate-shehzeen.component.html',
-	styleUrls: ['./donate-shehzeen.component.scss']
+  selector: 'app-donate-shehzeen',
+  templateUrl: './donate-shehzeen.component.html',
+  styleUrls: ['./donate-shehzeen.component.scss']
 })
 
 
 export class DonateShehzeenComponent implements OnInit {
+
+  emailPattern: string = '^[a-zA-Z0-9*_.-]+@[a-zA-Z]+[.][a-zA-Z]{2,3}$';
+  donationModel: any;
   donateForm: FormGroup;
-  donateFormRecurring: FormGroup;
   submitted = false;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder,
+    private donationService: DonationService,
+    private router: Router) { }
 
-	
-
-	
 	/**
 	 * This code is done by the help  from https://stackblitz.com/edit/numeric-only
 	 * This function checks and validates that the amount field lets the user only enter numbers
-	 * @param event 
+	 * @param event
 	 * @returns  boolean
 	 */
-	numberOnly(event) {
-		const charCode = (event.which) ? event.which : event.keyCode;
-		return (charCode > 31 && (charCode < 48 || charCode > 57)) ? false : true;
-	}
+
 
 	/**
 	 * on init : This function runs at the component initialization
 	 */
-	ngOnInit() {
+  ngOnInit() {
 
+    // form validations for the donation page
     this.donateForm = this.formBuilder.group({
-      amountOneTime: ['', [Validators.required]],
-      organizationOneTime: ['', [Validators.required]]
-  });
-
-  this.donateFormRecurring = this.formBuilder.group({
-    amountRecurring: ['', [Validators.required]],
-    organizationRecurring: ['', [Validators.required]],
-    frequencyRecurring: ['', [Validators.required]]
-  });
-
+      donorFirstName: ['', [Validators.required]],
+      donorLastName: ['', [Validators.required]],
+      emailID: ['', [Validators.required, Validators.email, Validators.pattern(this.emailPattern)]],
+      amount: ['', [Validators.required]],
+      frequency: ['', [Validators.required]]
+    });
 
   }
 
-/**
- * Gets f this function is the getter for donate form controls
- */
-get f() { return this.donateForm.controls; }
+  /**
+   * Gets fr This function is the getter for donateformrecurring controls
+   */
+  get fr() { return this.donateForm.controls; }
 
 
-/**
- * Gets fr This function is the getter for donateformrecurring controls
- */
-get fr() { return this.donateFormRecurring.controls; }
+  show: boolean = false;
+  toggle() {
+    this.show = true;
 
- 
+  }
 
-
-	/**
-	 * Ondonates one time This function checks if the amount and organization both are valid then it submits else it remains on the same page.
-	 * @returns  
-	 */
-	ondonateOneTime() {
+  // This function runs on form submission and connects to the service
+  onDonation() {
     this.submitted = true;
-    if(this.donateForm.invalid){
+    this.donationModel = {
+      donorFirstNameModel: this.donateForm.get('donorFirstName').value,
+      donorLastNameModel: this.donateForm.get('donorLastName').value,
+      emailIDModel: this.donateForm.get('emailID').value,
+      amountModel: this.donateForm.get('amount').value,
+      frequencyModel: this.donateForm.get('frequency').value
+    }
+    if (this.donateForm.valid) {
+      this.router.navigateByUrl('/payment_gateway');
+    }
+    else if (this.donateForm.invalid) {
       return;
     }
-    else{
-      alert('Successfully submitted form');
-    }
-
-	}
-
-
-	/**
-	 * This function verifies if amountRecurring , frequency and oragnization all are given then it submits else it gives errors
-	 * @returns  
-	 */
-	onSubmitRecurring() {
-	  this.submitted = true;
-    if(this.donateFormRecurring.invalid){
-      return;
-    }
-    else{
-      alert('Successfully submitted form');
-    }
-
-	}
-
+    console.log('hi');
+    this.donationService.newDonation(this.donationModel);
+  }
 }

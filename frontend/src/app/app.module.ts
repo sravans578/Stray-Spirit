@@ -92,6 +92,7 @@ import { ParticularOrderManageComponent } from './particular-order-manage/partic
 import { MatRippleModule, MatDatepickerModule, MatNativeDateModule } from '@angular/material'; // Added for date picker in blog module by Richa Khatri
 import { AddBlogRichaComponent } from './add-blog-richa/add-blog-richa.component';
 
+import { PaymentGatewayComponent } from './payment-gateway/payment-gateway.component';
 
 
 
@@ -159,7 +160,8 @@ import { AddBlogRichaComponent } from './add-blog-richa/add-blog-richa.component
     SravanFeedbackComponent,
     OrderManagmentShehzeenComponent,
     ParticularOrderManageComponent,
-    AddBlogRichaComponent
+    AddBlogRichaComponent,
+	PaymentGatewayComponent
   ],
   imports: [
     MatProgressBarModule,
