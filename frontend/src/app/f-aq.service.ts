@@ -14,7 +14,7 @@ export class FAQService {
    sendFeedback (FeedbackPost:any){
     console.log(FeedbackPost);
     // POST call to backend server
-    this.http.post("http://localhost:3000/feedback/submitFeedback",FeedbackPost)
+    this.http.post("api/feedback/submitFeedback",FeedbackPost)
     .subscribe(response=>{
 
         this.toaster.success('Feedback submitted', 'SUCCESS!', {
@@ -29,7 +29,7 @@ export class FAQService {
 // METHOD FOR Fetching all FAQs 
 getFaq (){
 
-    return this.http.get("http://localhost:3000/feedback/getFAQ")
+    return this.http.get("api/feedback/getFAQ")
     
 }
 }

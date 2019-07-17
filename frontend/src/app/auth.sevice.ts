@@ -52,7 +52,7 @@ export class AuthService{
 
     //This method will create a profile for a personal user. It will be called from the ts file of the register component.
      createUser( userData:any ){
-        this.http.post("http://localhost:3000/user/signup_user",userData)
+        this.http.post("api/user/signup_user",userData)
         .subscribe(response=>{
             this.toaster.success('Profile created!', 'SUCCESS!', {
                 timeOut: 5500,
@@ -72,7 +72,7 @@ export class AuthService{
      createOrganizationUser(
          orgData:any
     ){
-        this.http.post("http://localhost:3000/user/signup_org",orgData)
+        this.http.post("api/user/signup_org",orgData)
         .subscribe(response=>{
             this.toaster.success('Profile created!', 'SUCCESS!', {
                 timeOut: 5500,
@@ -89,29 +89,29 @@ export class AuthService{
     updateUserData(passed_userId:any, passed_userData:any){
         //editing user's data
         console.log("From service",passed_userData);
-        return this.http.put('http://localhost:3000/user/update/'+passed_userId,passed_userData)
+        return this.http.put('api/user/update/'+passed_userId,passed_userData)
         // Subscribe to this method in components to see the result
       }
 
       updateOrgData(passed_userId:any, passed_userData:any){
         //editing organization data
         console.log("From service",passed_userData);
-        return this.http.put('http://localhost:3000/user/org/update/'+passed_userId,passed_userData)
+        return this.http.put('api/user/org/update/'+passed_userId,passed_userData)
       }
 
       deleteUser(passed_userID:any){
-        return this.http.delete('http://localhost:3000/user/personal/'+passed_userID);
+        return this.http.delete('api/user/personal/'+passed_userID);
       }
 
       deleteOrganization(passed_userID:any){
-        return this.http.delete('http://localhost:3000/user/org/'+passed_userID);
+        return this.http.delete('api/user/org/'+passed_userID);
       }
 
     //This method will authenticate a personal user. It will be called from the ts file of the login component.
     userLogin(loginData:any)
     {
 
-        this.http.post<{token:string;userId:string;userType:string; isAdmin:boolean; isSuperAdmin: boolean;}>("http://localhost:3000/user/login",loginData)
+        this.http.post<{token:string;userId:string;userType:string; isAdmin:boolean; isSuperAdmin: boolean;}>("api/user/login",loginData)
         .subscribe(response =>
             {
                 const token=response.token;
@@ -142,7 +142,7 @@ export class AuthService{
     orgLogin(orgLoginData:any)
     {
 
-        this.http.post<{token:string;userId:string;userType:string;isAdmin:boolean;isSuperAdmin:boolean;}>("http://localhost:3000/user/orgLogin",orgLoginData)
+        this.http.post<{token:string;userId:string;userType:string;isAdmin:boolean;isSuperAdmin:boolean;}>("api/user/orgLogin",orgLoginData)
         .subscribe(response =>
             {
                 const token=response.token;
@@ -203,16 +203,16 @@ export class AuthService{
 
     //This method will return all the data of the user who is currently logged in. This method will be called from the profile home component.
     getUserById(loggedInUser:any){
-        return this.http.get("http://localhost:3000/user/personal/"+loggedInUser);
+        return this.http.get("api/user/personal/"+loggedInUser);
 
     }
 
     getOrgById(orgId:any){
-        return this.http.get("http://localhost:3000/user/org/"+orgId);
+        return this.http.get("api/user/org/"+orgId);
     }
 
     getUserToken(token:string){
-        return this.http.get("http://localhost:3000/user/userToken/"+token);
+        return this.http.get("api/user/userToken/"+token);
     }
 
     //This method will save the token and user_Id of the logged in user in the local storage of the web browser.

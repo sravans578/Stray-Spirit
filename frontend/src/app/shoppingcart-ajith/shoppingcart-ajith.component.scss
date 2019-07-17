@@ -32,6 +32,9 @@
 .mobile-total{
     display: none;
 }
+.tab-total{
+    display: none;
+}
 .check-out-button{
     border-radius: 12px;
     background-color: #8080ff;
@@ -62,6 +65,7 @@
 ::ng-deep .mat-horizontal-stepper-header {
     pointer-events: none !important;
 }
+
 @media screen and (max-width:960px){
     .mobile-header{
         display: none;
@@ -85,6 +89,15 @@
         display: block;
         margin-left: 10%;
     }
+    .tab-total{
+        display: block;
+    }
+    .desktop-total{
+        display: none;
+    }
+    .mobile-total{
+        display: none;
+    }
 }
 @media screen and (max-width:576px) {
     .price_mobile_both{
@@ -102,5 +115,8 @@
     }
     .mobile-total{
         display: block;
+    }
+    .tab-total{
+        display: none;
     }
 }
