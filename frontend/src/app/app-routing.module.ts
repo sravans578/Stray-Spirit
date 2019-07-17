@@ -41,6 +41,8 @@ import { EditInventoryComponent } from './edit-inventory/edit-inventory.componen
 import { AdoptionRequestComponent } from './adoption-request/adoption-request.component';
 import { ConfirmationComponent } from './confirmation/confirmation.component';
 
+import { PaymentGatewayComponent } from './payment-gateway/payment-gateway.component';
+
 import { AdminUserManagementComponent} from "./admin-user-management/admin-user-management.component";
 import { AdminApproveContentComponent} from "./admin-approve-content/admin-approve-content.component";
 import { ChangePasswordLakshmiComponent } from './change-password-lakshmi/change-password-lakshmi.component';
@@ -112,6 +114,7 @@ const routes: Routes = [
   { path: 'approve_content', canActivate: [AdminGuard], component: AdminApproveContentComponent },
   { path: 'unauthorized', component: UnauthorizedComponent },
   { path: 'feedback', component: SravanFeedbackComponent },
+  { path: 'payment_gateway', component: PaymentGatewayComponent},
 
   // Implemented nested routes https://angular-2-training-book.rangle.io/handout/routing/child_routes.html
   { path:'profile',
