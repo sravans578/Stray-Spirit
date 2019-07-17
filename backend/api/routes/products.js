@@ -3,7 +3,7 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const nodemailer = require('nodemailer');
 const Product = require('../models/products');
-
+//route for fetching the product along with reviews
 router.get('/', (req, res, next) => { 
     Product.find()
     .exec()
@@ -57,6 +57,7 @@ router.get('/singleproduct/:productId', (req, res, next) => {
     });
 });
 
+//route for updating the product
 router.put('/update/:id', (req, res, next) =>{
     const id=req.params.id;
     console.log(id);
@@ -102,6 +103,7 @@ router.get('/uploader/:userId', (req, res, next) => {
     });
 });
 
+
 router.patch('/:productId', (req, res, next) => {
     const id = req.params.productId;
     const updateOps = {};
@@ -121,7 +123,7 @@ router.patch('/:productId', (req, res, next) => {
         });
     });
 });
-
+//route for deleting the product
 router.delete('/delete/:productId', (req, res, next) => {
     const id = req.params.productId;
     Product.remove({ _id: id} )
