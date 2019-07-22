@@ -44,7 +44,7 @@ router.post('/submitFeedback', (req, res, next) => {
 
 // Retieve all faqs
 router.get('/getfaq', (req, res, next) => {
-    // console.log(" here")
+    console.log(" here")
     FAQ.find()
     .exec()
     .then(docs =>{

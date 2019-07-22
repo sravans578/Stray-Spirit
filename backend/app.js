@@ -21,6 +21,7 @@ const shoppingCartRoutes = require('./api/routes/shoppingcart');
 const blogsRoutes = require('./api/routes/blogs');
 const storiesRoutes = require('./api/routes/stories');
 const donationRoutes=require('./api/routes/donation');
+const recommendation =require('./api/routes/recommendation');
 
 app.use(morgan('dev'));
 app.use(bodyParser.json({limit: '50mb'}));
@@ -52,6 +53,7 @@ app.use('/api/feedback',feedbackRoutes);
 app.use('/api/blogs',blogsRoutes); 
 app.use('/api/stories',storiesRoutes); 
 app.use('/api/donation', donationRoutes); //Adding Donation Route
+app.use('/api/recommendation',recommendation);
 
 mongoose.connect('mongodb+srv://strayspirit:' + process.env.MONGO_ATLAS_PW + '@strayspirit-bsghz.mongodb.net/test?retryWrites=true', { useNewUrlParser: true });
 
@@ -87,5 +89,7 @@ app.use((error, req, res, next) =>{
         }
     })
 })
+
+
 
 module.exports = app;
