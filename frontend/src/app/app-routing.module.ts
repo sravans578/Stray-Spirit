@@ -16,6 +16,7 @@ import {ProductDetailPageComponent} from './product-detail-page/product-detail-p
 import { WhyadoptdogComponent } from './whyadoptdog/whyadoptdog.component';
 import { ContactComponent } from './contact/contact.component';
 import { SravanFeedbackComponent } from './sravan-feedback/sravan-feedback.component';
+import {PetrecSravanComponent} from './petrec-sravan/petrec-sravan.component';
 
 
 import { DonateLakshmiComponent } from './donate-lakshmi/donate-lakshmi.component';
@@ -123,7 +124,7 @@ const routes: Routes = [
     children: [
       { path: '', component: ProfileHomeComponent },
       { path: 'inventory', component: ProfileInventoryComponent },
-      { path: 'my-pet-ads', component: ProfilePetAdsComponent },
+      { path: 'my-pet-ads', component: ProfilePetAdsComponent },  
       { path: 'my-events', component: ProfileEventComponent },
       { path: 'edit-pet/:id', component: EditPetsComponent },
       {path: 'edit-inventory/:id', component: EditInventoryComponent},
@@ -132,6 +133,7 @@ const routes: Routes = [
       {  path:'addstory',component:AddStoryRichaComponent},
       {path:'addblog', component:AddBlogRichaComponent},
       { path: 'approve_content', component: AdminApproveContentComponent }, // new route
+      { path: 'recommended', component: PetrecSravanComponent }, // new Route
     ]
   },
   {path:'product/:id',component:ProductReviewShehzeenComponent},

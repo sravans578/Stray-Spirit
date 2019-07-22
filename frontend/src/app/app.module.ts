@@ -93,6 +93,7 @@ import { MatRippleModule, MatDatepickerModule, MatNativeDateModule } from '@angu
 import { AddBlogRichaComponent } from './add-blog-richa/add-blog-richa.component';
 
 import { PaymentGatewayComponent } from './payment-gateway/payment-gateway.component';
+import { PetrecSravanComponent } from './petrec-sravan/petrec-sravan.component';
 
 
 
@@ -161,7 +162,8 @@ import { PaymentGatewayComponent } from './payment-gateway/payment-gateway.compo
     OrderManagmentShehzeenComponent,
     ParticularOrderManageComponent,
     AddBlogRichaComponent,
-	PaymentGatewayComponent
+	PaymentGatewayComponent,
+	PetrecSravanComponent
   ],
   imports: [
     MatProgressBarModule,
