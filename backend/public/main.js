@@ -1581,41 +1581,43 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _whyadoptdog_whyadoptdog_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./whyadoptdog/whyadoptdog.component */ "./src/app/whyadoptdog/whyadoptdog.component.ts");
 /* harmony import */ var _contact_contact_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./contact/contact.component */ "./src/app/contact/contact.component.ts");
 /* harmony import */ var _sravan_feedback_sravan_feedback_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./sravan-feedback/sravan-feedback.component */ "./src/app/sravan-feedback/sravan-feedback.component.ts");
-/* harmony import */ var _login_dheeraj_login_dheeraj_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./login-dheeraj/login-dheeraj.component */ "./src/app/login-dheeraj/login-dheeraj.component.ts");
-/* harmony import */ var _particular_order_manage_particular_order_manage_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./particular-order-manage/particular-order-manage.component */ "./src/app/particular-order-manage/particular-order-manage.component.ts");
-/* harmony import */ var _forgot_pwd_forgot_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./forgot-pwd/forgot.component */ "./src/app/forgot-pwd/forgot.component.ts");
-/* harmony import */ var _register_aparna_register_aparna_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./register_aparna/register_aparna.component */ "./src/app/register_aparna/register_aparna.component.ts");
-/* harmony import */ var _rescue_rescue_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./rescue/rescue.component */ "./src/app/rescue/rescue.component.ts");
-/* harmony import */ var _auth_guard__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./auth.guard */ "./src/app/auth.guard.ts");
-/* harmony import */ var _profile_pet_ads_profile_pet_ads_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./profile-pet-ads/profile-pet-ads.component */ "./src/app/profile-pet-ads/profile-pet-ads.component.ts");
-/* harmony import */ var _event_detail_event_detail_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./event-detail/event-detail.component */ "./src/app/event-detail/event-detail.component.ts");
-/* harmony import */ var _profile_event_profile_event_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./profile-event/profile-event.component */ "./src/app/profile-event/profile-event.component.ts");
-/* harmony import */ var _edit_pets_edit_pets_component__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./edit-pets/edit-pets.component */ "./src/app/edit-pets/edit-pets.component.ts");
-/* harmony import */ var _event_list_event_list_component__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./event-list/event-list.component */ "./src/app/event-list/event-list.component.ts");
-/* harmony import */ var _adoption_form_adoption_form_component__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./adoption-form/adoption-form.component */ "./src/app/adoption-form/adoption-form.component.ts");
-/* harmony import */ var _my_adoptions_my_adoptions_component__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./my-adoptions/my-adoptions.component */ "./src/app/my-adoptions/my-adoptions.component.ts");
-/* harmony import */ var _edit_inventory_edit_inventory_component__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./edit-inventory/edit-inventory.component */ "./src/app/edit-inventory/edit-inventory.component.ts");
-/* harmony import */ var _adoption_request_adoption_request_component__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./adoption-request/adoption-request.component */ "./src/app/adoption-request/adoption-request.component.ts");
-/* harmony import */ var _confirmation_confirmation_component__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./confirmation/confirmation.component */ "./src/app/confirmation/confirmation.component.ts");
-/* harmony import */ var _payment_gateway_payment_gateway_component__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./payment-gateway/payment-gateway.component */ "./src/app/payment-gateway/payment-gateway.component.ts");
-/* harmony import */ var _admin_user_management_admin_user_management_component__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./admin-user-management/admin-user-management.component */ "./src/app/admin-user-management/admin-user-management.component.ts");
-/* harmony import */ var _admin_approve_content_admin_approve_content_component__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./admin-approve-content/admin-approve-content.component */ "./src/app/admin-approve-content/admin-approve-content.component.ts");
-/* harmony import */ var _home_richa_home_richa_component__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./home-richa/home-richa.component */ "./src/app/home-richa/home-richa.component.ts");
-/* harmony import */ var _forgot_password_richa_forgot_password_richa_component__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./forgot-password-richa/forgot-password-richa.component */ "./src/app/forgot-password-richa/forgot-password-richa.component.ts");
-/* harmony import */ var _blog_stories_richa_blog_stories_richa_component__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ./blog-stories-richa/blog-stories-richa.component */ "./src/app/blog-stories-richa/blog-stories-richa.component.ts");
-/* harmony import */ var _add_story_richa_add_story_richa_component__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! ./add-story-richa/add-story-richa.component */ "./src/app/add-story-richa/add-story-richa.component.ts");
-/* harmony import */ var _homepage_sravan_homepage_sravan_component__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! ./homepage-sravan/homepage-sravan.component */ "./src/app/homepage-sravan/homepage-sravan.component.ts");
-/* harmony import */ var _sravan_forum_sravan_forum_component__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! ./sravan-forum/sravan-forum.component */ "./src/app/sravan-forum/sravan-forum.component.ts");
-/* harmony import */ var _faq_sravan_faq_sravan_component__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(/*! ./faq-sravan/faq-sravan.component */ "./src/app/faq-sravan/faq-sravan.component.ts");
-/* harmony import */ var _donate_shehzeen_donate_shehzeen_component__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__(/*! ./donate-shehzeen/donate-shehzeen.component */ "./src/app/donate-shehzeen/donate-shehzeen.component.ts");
-/* harmony import */ var _product_review_shehzeen_product_review_shehzeen_component__WEBPACK_IMPORTED_MODULE_44__ = __webpack_require__(/*! ./product-review-shehzeen/product-review-shehzeen.component */ "./src/app/product-review-shehzeen/product-review-shehzeen.component.ts");
-/* harmony import */ var _shoppingcart_ajith_shoppingcart_ajith_component__WEBPACK_IMPORTED_MODULE_45__ = __webpack_require__(/*! ./shoppingcart-ajith/shoppingcart-ajith.component */ "./src/app/shoppingcart-ajith/shoppingcart-ajith.component.ts");
-/* harmony import */ var _sravan_changepassword_sravan_changepassword_component__WEBPACK_IMPORTED_MODULE_46__ = __webpack_require__(/*! ./sravan-changepassword/sravan-changepassword.component */ "./src/app/sravan-changepassword/sravan-changepassword.component.ts");
-/* harmony import */ var _super_admin_guard__WEBPACK_IMPORTED_MODULE_47__ = __webpack_require__(/*! ./super-admin.guard */ "./src/app/super-admin.guard.ts");
-/* harmony import */ var _admin_guard__WEBPACK_IMPORTED_MODULE_48__ = __webpack_require__(/*! ./admin.guard */ "./src/app/admin.guard.ts");
-/* harmony import */ var _unauthorized_unauthorized_component__WEBPACK_IMPORTED_MODULE_49__ = __webpack_require__(/*! ./unauthorized/unauthorized.component */ "./src/app/unauthorized/unauthorized.component.ts");
-/* harmony import */ var _order_managment_shehzeen_order_managment_shehzeen_component__WEBPACK_IMPORTED_MODULE_50__ = __webpack_require__(/*! ./order-managment-shehzeen/order-managment-shehzeen.component */ "./src/app/order-managment-shehzeen/order-managment-shehzeen.component.ts");
-/* harmony import */ var _add_blog_richa_add_blog_richa_component__WEBPACK_IMPORTED_MODULE_51__ = __webpack_require__(/*! ./add-blog-richa/add-blog-richa.component */ "./src/app/add-blog-richa/add-blog-richa.component.ts");
+/* harmony import */ var _petrec_sravan_petrec_sravan_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./petrec-sravan/petrec-sravan.component */ "./src/app/petrec-sravan/petrec-sravan.component.ts");
+/* harmony import */ var _login_dheeraj_login_dheeraj_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./login-dheeraj/login-dheeraj.component */ "./src/app/login-dheeraj/login-dheeraj.component.ts");
+/* harmony import */ var _particular_order_manage_particular_order_manage_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./particular-order-manage/particular-order-manage.component */ "./src/app/particular-order-manage/particular-order-manage.component.ts");
+/* harmony import */ var _forgot_pwd_forgot_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./forgot-pwd/forgot.component */ "./src/app/forgot-pwd/forgot.component.ts");
+/* harmony import */ var _register_aparna_register_aparna_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./register_aparna/register_aparna.component */ "./src/app/register_aparna/register_aparna.component.ts");
+/* harmony import */ var _rescue_rescue_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./rescue/rescue.component */ "./src/app/rescue/rescue.component.ts");
+/* harmony import */ var _auth_guard__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./auth.guard */ "./src/app/auth.guard.ts");
+/* harmony import */ var _profile_pet_ads_profile_pet_ads_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./profile-pet-ads/profile-pet-ads.component */ "./src/app/profile-pet-ads/profile-pet-ads.component.ts");
+/* harmony import */ var _event_detail_event_detail_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./event-detail/event-detail.component */ "./src/app/event-detail/event-detail.component.ts");
+/* harmony import */ var _profile_event_profile_event_component__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./profile-event/profile-event.component */ "./src/app/profile-event/profile-event.component.ts");
+/* harmony import */ var _edit_pets_edit_pets_component__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./edit-pets/edit-pets.component */ "./src/app/edit-pets/edit-pets.component.ts");
+/* harmony import */ var _event_list_event_list_component__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./event-list/event-list.component */ "./src/app/event-list/event-list.component.ts");
+/* harmony import */ var _adoption_form_adoption_form_component__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./adoption-form/adoption-form.component */ "./src/app/adoption-form/adoption-form.component.ts");
+/* harmony import */ var _my_adoptions_my_adoptions_component__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./my-adoptions/my-adoptions.component */ "./src/app/my-adoptions/my-adoptions.component.ts");
+/* harmony import */ var _edit_inventory_edit_inventory_component__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./edit-inventory/edit-inventory.component */ "./src/app/edit-inventory/edit-inventory.component.ts");
+/* harmony import */ var _adoption_request_adoption_request_component__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./adoption-request/adoption-request.component */ "./src/app/adoption-request/adoption-request.component.ts");
+/* harmony import */ var _confirmation_confirmation_component__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./confirmation/confirmation.component */ "./src/app/confirmation/confirmation.component.ts");
+/* harmony import */ var _payment_gateway_payment_gateway_component__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./payment-gateway/payment-gateway.component */ "./src/app/payment-gateway/payment-gateway.component.ts");
+/* harmony import */ var _admin_user_management_admin_user_management_component__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./admin-user-management/admin-user-management.component */ "./src/app/admin-user-management/admin-user-management.component.ts");
+/* harmony import */ var _admin_approve_content_admin_approve_content_component__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./admin-approve-content/admin-approve-content.component */ "./src/app/admin-approve-content/admin-approve-content.component.ts");
+/* harmony import */ var _home_richa_home_richa_component__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./home-richa/home-richa.component */ "./src/app/home-richa/home-richa.component.ts");
+/* harmony import */ var _forgot_password_richa_forgot_password_richa_component__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ./forgot-password-richa/forgot-password-richa.component */ "./src/app/forgot-password-richa/forgot-password-richa.component.ts");
+/* harmony import */ var _blog_stories_richa_blog_stories_richa_component__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! ./blog-stories-richa/blog-stories-richa.component */ "./src/app/blog-stories-richa/blog-stories-richa.component.ts");
+/* harmony import */ var _add_story_richa_add_story_richa_component__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! ./add-story-richa/add-story-richa.component */ "./src/app/add-story-richa/add-story-richa.component.ts");
+/* harmony import */ var _homepage_sravan_homepage_sravan_component__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! ./homepage-sravan/homepage-sravan.component */ "./src/app/homepage-sravan/homepage-sravan.component.ts");
+/* harmony import */ var _sravan_forum_sravan_forum_component__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(/*! ./sravan-forum/sravan-forum.component */ "./src/app/sravan-forum/sravan-forum.component.ts");
+/* harmony import */ var _faq_sravan_faq_sravan_component__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__(/*! ./faq-sravan/faq-sravan.component */ "./src/app/faq-sravan/faq-sravan.component.ts");
+/* harmony import */ var _donate_shehzeen_donate_shehzeen_component__WEBPACK_IMPORTED_MODULE_44__ = __webpack_require__(/*! ./donate-shehzeen/donate-shehzeen.component */ "./src/app/donate-shehzeen/donate-shehzeen.component.ts");
+/* harmony import */ var _product_review_shehzeen_product_review_shehzeen_component__WEBPACK_IMPORTED_MODULE_45__ = __webpack_require__(/*! ./product-review-shehzeen/product-review-shehzeen.component */ "./src/app/product-review-shehzeen/product-review-shehzeen.component.ts");
+/* harmony import */ var _shoppingcart_ajith_shoppingcart_ajith_component__WEBPACK_IMPORTED_MODULE_46__ = __webpack_require__(/*! ./shoppingcart-ajith/shoppingcart-ajith.component */ "./src/app/shoppingcart-ajith/shoppingcart-ajith.component.ts");
+/* harmony import */ var _sravan_changepassword_sravan_changepassword_component__WEBPACK_IMPORTED_MODULE_47__ = __webpack_require__(/*! ./sravan-changepassword/sravan-changepassword.component */ "./src/app/sravan-changepassword/sravan-changepassword.component.ts");
+/* harmony import */ var _super_admin_guard__WEBPACK_IMPORTED_MODULE_48__ = __webpack_require__(/*! ./super-admin.guard */ "./src/app/super-admin.guard.ts");
+/* harmony import */ var _admin_guard__WEBPACK_IMPORTED_MODULE_49__ = __webpack_require__(/*! ./admin.guard */ "./src/app/admin.guard.ts");
+/* harmony import */ var _unauthorized_unauthorized_component__WEBPACK_IMPORTED_MODULE_50__ = __webpack_require__(/*! ./unauthorized/unauthorized.component */ "./src/app/unauthorized/unauthorized.component.ts");
+/* harmony import */ var _order_managment_shehzeen_order_managment_shehzeen_component__WEBPACK_IMPORTED_MODULE_51__ = __webpack_require__(/*! ./order-managment-shehzeen/order-managment-shehzeen.component */ "./src/app/order-managment-shehzeen/order-managment-shehzeen.component.ts");
+/* harmony import */ var _add_blog_richa_add_blog_richa_component__WEBPACK_IMPORTED_MODULE_52__ = __webpack_require__(/*! ./add-blog-richa/add-blog-richa.component */ "./src/app/add-blog-richa/add-blog-richa.component.ts");
+
 
 
 
@@ -1678,52 +1680,53 @@ var routes = [
     { path: 'why-adopt-cat', component: _why_adopt_cat_why_adopt_cat_component__WEBPACK_IMPORTED_MODULE_10__["WhyAdoptCatComponent"] },
     { path: 'why-adopt-dog', component: _whyadoptdog_whyadoptdog_component__WEBPACK_IMPORTED_MODULE_14__["WhyadoptdogComponent"] },
     { path: 'contact', component: _contact_contact_component__WEBPACK_IMPORTED_MODULE_15__["ContactComponent"] },
-    { path: 'register-aparna', component: _register_aparna_register_aparna_component__WEBPACK_IMPORTED_MODULE_20__["RegisterAparnaComponent"] },
-    { path: 'event-list', component: _event_list_event_list_component__WEBPACK_IMPORTED_MODULE_27__["EventListComponent"] },
-    { path: 'myorders', component: _particular_order_manage_particular_order_manage_component__WEBPACK_IMPORTED_MODULE_18__["ParticularOrderManageComponent"] },
-    { path: 'login-Dheeraj', component: _login_dheeraj_login_dheeraj_component__WEBPACK_IMPORTED_MODULE_17__["LoginDheerajComponent"] },
-    { path: 'rescue', component: _rescue_rescue_component__WEBPACK_IMPORTED_MODULE_21__["RescueComponent"] },
-    { path: 'forgot-pwd', component: _forgot_pwd_forgot_component__WEBPACK_IMPORTED_MODULE_19__["ForgotComponent"] },
-    { path: 'updateOrderManagment/:id', component: _order_managment_shehzeen_order_managment_shehzeen_component__WEBPACK_IMPORTED_MODULE_50__["OrderManagmentShehzeenComponent"] },
-    { path: 'confirmation/:token', component: _confirmation_confirmation_component__WEBPACK_IMPORTED_MODULE_32__["ConfirmationComponent"] },
-    { path: 'event-detail/:id', component: _event_detail_event_detail_component__WEBPACK_IMPORTED_MODULE_24__["EventDetailComponent"] },
-    { path: 'adopt/:id', component: _adoption_form_adoption_form_component__WEBPACK_IMPORTED_MODULE_28__["AdoptionFormComponent"], canActivate: [_auth_guard__WEBPACK_IMPORTED_MODULE_22__["AuthGuard"]] },
-    { path: 'forgot-pwd', component: _forgot_pwd_forgot_component__WEBPACK_IMPORTED_MODULE_19__["ForgotComponent"] },
+    { path: 'register-aparna', component: _register_aparna_register_aparna_component__WEBPACK_IMPORTED_MODULE_21__["RegisterAparnaComponent"] },
+    { path: 'event-list', component: _event_list_event_list_component__WEBPACK_IMPORTED_MODULE_28__["EventListComponent"] },
+    { path: 'myorders', component: _particular_order_manage_particular_order_manage_component__WEBPACK_IMPORTED_MODULE_19__["ParticularOrderManageComponent"] },
+    { path: 'login-Dheeraj', component: _login_dheeraj_login_dheeraj_component__WEBPACK_IMPORTED_MODULE_18__["LoginDheerajComponent"] },
+    { path: 'rescue', component: _rescue_rescue_component__WEBPACK_IMPORTED_MODULE_22__["RescueComponent"] },
+    { path: 'forgot-pwd', component: _forgot_pwd_forgot_component__WEBPACK_IMPORTED_MODULE_20__["ForgotComponent"] },
+    { path: 'updateOrderManagment/:id', component: _order_managment_shehzeen_order_managment_shehzeen_component__WEBPACK_IMPORTED_MODULE_51__["OrderManagmentShehzeenComponent"] },
+    { path: 'confirmation/:token', component: _confirmation_confirmation_component__WEBPACK_IMPORTED_MODULE_33__["ConfirmationComponent"] },
+    { path: 'event-detail/:id', component: _event_detail_event_detail_component__WEBPACK_IMPORTED_MODULE_25__["EventDetailComponent"] },
+    { path: 'adopt/:id', component: _adoption_form_adoption_form_component__WEBPACK_IMPORTED_MODULE_29__["AdoptionFormComponent"], canActivate: [_auth_guard__WEBPACK_IMPORTED_MODULE_23__["AuthGuard"]] },
+    { path: 'forgot-pwd', component: _forgot_pwd_forgot_component__WEBPACK_IMPORTED_MODULE_20__["ForgotComponent"] },
     //New Routes
-    { path: 'forgotpassword', component: _forgot_password_richa_forgot_password_richa_component__WEBPACK_IMPORTED_MODULE_37__["ForgotPasswordRichaComponent"] },
-    { path: 'blogs', component: _blog_stories_richa_blog_stories_richa_component__WEBPACK_IMPORTED_MODULE_38__["BlogStoriesRichaComponent"] },
-    { path: 'home-richa', component: _home_richa_home_richa_component__WEBPACK_IMPORTED_MODULE_36__["HomeRichaComponent"] },
-    { path: 'change-password', component: _sravan_changepassword_sravan_changepassword_component__WEBPACK_IMPORTED_MODULE_46__["SravanChangepasswordComponent"] },
-    { path: 'home-sraven', component: _homepage_sravan_homepage_sravan_component__WEBPACK_IMPORTED_MODULE_40__["HomepageSravanComponent"] },
-    { path: 'forums', component: _sravan_forum_sravan_forum_component__WEBPACK_IMPORTED_MODULE_41__["SravanForumComponent"] },
-    { path: 'faq', component: _faq_sravan_faq_sravan_component__WEBPACK_IMPORTED_MODULE_42__["FaqSravanComponent"] },
-    { path: 'donate', component: _donate_shehzeen_donate_shehzeen_component__WEBPACK_IMPORTED_MODULE_43__["DonateShehzeenComponent"] },
-    { path: 'product-detail/:id', component: _product_review_shehzeen_product_review_shehzeen_component__WEBPACK_IMPORTED_MODULE_44__["ProductReviewShehzeenComponent"] },
-    { path: 'cart', component: _shoppingcart_ajith_shoppingcart_ajith_component__WEBPACK_IMPORTED_MODULE_45__["ShoppingcartAjithComponent"] },
-    { path: 'user_management', canActivate: [_super_admin_guard__WEBPACK_IMPORTED_MODULE_47__["SuperAdminGuard"]], component: _admin_user_management_admin_user_management_component__WEBPACK_IMPORTED_MODULE_34__["AdminUserManagementComponent"] },
-    { path: 'approve_content', canActivate: [_admin_guard__WEBPACK_IMPORTED_MODULE_48__["AdminGuard"]], component: _admin_approve_content_admin_approve_content_component__WEBPACK_IMPORTED_MODULE_35__["AdminApproveContentComponent"] },
-    { path: 'unauthorized', component: _unauthorized_unauthorized_component__WEBPACK_IMPORTED_MODULE_49__["UnauthorizedComponent"] },
+    { path: 'forgotpassword', component: _forgot_password_richa_forgot_password_richa_component__WEBPACK_IMPORTED_MODULE_38__["ForgotPasswordRichaComponent"] },
+    { path: 'blogs', component: _blog_stories_richa_blog_stories_richa_component__WEBPACK_IMPORTED_MODULE_39__["BlogStoriesRichaComponent"] },
+    { path: 'home-richa', component: _home_richa_home_richa_component__WEBPACK_IMPORTED_MODULE_37__["HomeRichaComponent"] },
+    { path: 'change-password', component: _sravan_changepassword_sravan_changepassword_component__WEBPACK_IMPORTED_MODULE_47__["SravanChangepasswordComponent"] },
+    { path: 'home-sraven', component: _homepage_sravan_homepage_sravan_component__WEBPACK_IMPORTED_MODULE_41__["HomepageSravanComponent"] },
+    { path: 'forums', component: _sravan_forum_sravan_forum_component__WEBPACK_IMPORTED_MODULE_42__["SravanForumComponent"] },
+    { path: 'faq', component: _faq_sravan_faq_sravan_component__WEBPACK_IMPORTED_MODULE_43__["FaqSravanComponent"] },
+    { path: 'donate', component: _donate_shehzeen_donate_shehzeen_component__WEBPACK_IMPORTED_MODULE_44__["DonateShehzeenComponent"] },
+    { path: 'product-detail/:id', component: _product_review_shehzeen_product_review_shehzeen_component__WEBPACK_IMPORTED_MODULE_45__["ProductReviewShehzeenComponent"] },
+    { path: 'cart', component: _shoppingcart_ajith_shoppingcart_ajith_component__WEBPACK_IMPORTED_MODULE_46__["ShoppingcartAjithComponent"] },
+    { path: 'user_management', canActivate: [_super_admin_guard__WEBPACK_IMPORTED_MODULE_48__["SuperAdminGuard"]], component: _admin_user_management_admin_user_management_component__WEBPACK_IMPORTED_MODULE_35__["AdminUserManagementComponent"] },
+    { path: 'approve_content', canActivate: [_admin_guard__WEBPACK_IMPORTED_MODULE_49__["AdminGuard"]], component: _admin_approve_content_admin_approve_content_component__WEBPACK_IMPORTED_MODULE_36__["AdminApproveContentComponent"] },
+    { path: 'unauthorized', component: _unauthorized_unauthorized_component__WEBPACK_IMPORTED_MODULE_50__["UnauthorizedComponent"] },
     { path: 'feedback', component: _sravan_feedback_sravan_feedback_component__WEBPACK_IMPORTED_MODULE_16__["SravanFeedbackComponent"] },
-    { path: 'payment_gateway', component: _payment_gateway_payment_gateway_component__WEBPACK_IMPORTED_MODULE_33__["PaymentGatewayComponent"] },
+    { path: 'payment_gateway', component: _payment_gateway_payment_gateway_component__WEBPACK_IMPORTED_MODULE_34__["PaymentGatewayComponent"] },
     // Implemented nested routes https://angular-2-training-book.rangle.io/handout/routing/child_routes.html
     { path: 'profile',
         component: _profile_nav_profile_nav_component__WEBPACK_IMPORTED_MODULE_13__["ProfileNavComponent"],
-        canActivate: [_auth_guard__WEBPACK_IMPORTED_MODULE_22__["AuthGuard"]],
+        canActivate: [_auth_guard__WEBPACK_IMPORTED_MODULE_23__["AuthGuard"]],
         children: [
             { path: '', component: _profile_home_profile_home_component__WEBPACK_IMPORTED_MODULE_11__["ProfileHomeComponent"] },
             { path: 'inventory', component: _profile_inventory_profile_inventory_component__WEBPACK_IMPORTED_MODULE_12__["ProfileInventoryComponent"] },
-            { path: 'my-pet-ads', component: _profile_pet_ads_profile_pet_ads_component__WEBPACK_IMPORTED_MODULE_23__["ProfilePetAdsComponent"] },
-            { path: 'my-events', component: _profile_event_profile_event_component__WEBPACK_IMPORTED_MODULE_25__["ProfileEventComponent"] },
-            { path: 'edit-pet/:id', component: _edit_pets_edit_pets_component__WEBPACK_IMPORTED_MODULE_26__["EditPetsComponent"] },
-            { path: 'edit-inventory/:id', component: _edit_inventory_edit_inventory_component__WEBPACK_IMPORTED_MODULE_30__["EditInventoryComponent"] },
-            { path: 'my-adoptions', component: _my_adoptions_my_adoptions_component__WEBPACK_IMPORTED_MODULE_29__["MyAdoptionsComponent"] },
-            { path: 'adoption-request/:id', component: _adoption_request_adoption_request_component__WEBPACK_IMPORTED_MODULE_31__["AdoptionRequestComponent"] },
-            { path: 'addstory', component: _add_story_richa_add_story_richa_component__WEBPACK_IMPORTED_MODULE_39__["AddStoryRichaComponent"] },
-            { path: 'addblog', component: _add_blog_richa_add_blog_richa_component__WEBPACK_IMPORTED_MODULE_51__["AddBlogRichaComponent"] },
-            { path: 'approve_content', component: _admin_approve_content_admin_approve_content_component__WEBPACK_IMPORTED_MODULE_35__["AdminApproveContentComponent"] },
+            { path: 'my-pet-ads', component: _profile_pet_ads_profile_pet_ads_component__WEBPACK_IMPORTED_MODULE_24__["ProfilePetAdsComponent"] },
+            { path: 'my-events', component: _profile_event_profile_event_component__WEBPACK_IMPORTED_MODULE_26__["ProfileEventComponent"] },
+            { path: 'edit-pet/:id', component: _edit_pets_edit_pets_component__WEBPACK_IMPORTED_MODULE_27__["EditPetsComponent"] },
+            { path: 'edit-inventory/:id', component: _edit_inventory_edit_inventory_component__WEBPACK_IMPORTED_MODULE_31__["EditInventoryComponent"] },
+            { path: 'my-adoptions', component: _my_adoptions_my_adoptions_component__WEBPACK_IMPORTED_MODULE_30__["MyAdoptionsComponent"] },
+            { path: 'adoption-request/:id', component: _adoption_request_adoption_request_component__WEBPACK_IMPORTED_MODULE_32__["AdoptionRequestComponent"] },
+            { path: 'addstory', component: _add_story_richa_add_story_richa_component__WEBPACK_IMPORTED_MODULE_40__["AddStoryRichaComponent"] },
+            { path: 'addblog', component: _add_blog_richa_add_blog_richa_component__WEBPACK_IMPORTED_MODULE_52__["AddBlogRichaComponent"] },
+            { path: 'approve_content', component: _admin_approve_content_admin_approve_content_component__WEBPACK_IMPORTED_MODULE_36__["AdminApproveContentComponent"] },
+            { path: 'recommended', component: _petrec_sravan_petrec_sravan_component__WEBPACK_IMPORTED_MODULE_17__["PetrecSravanComponent"] },
         ]
     },
-    { path: 'product/:id', component: _product_review_shehzeen_product_review_shehzeen_component__WEBPACK_IMPORTED_MODULE_44__["ProductReviewShehzeenComponent"] },
+    { path: 'product/:id', component: _product_review_shehzeen_product_review_shehzeen_component__WEBPACK_IMPORTED_MODULE_45__["ProductReviewShehzeenComponent"] },
     { path: '**', component: _notfound_notfound_component__WEBPACK_IMPORTED_MODULE_5__["NotfoundComponent"] }
 ];
 var AppRoutingModule = /** @class */ (function () {
@@ -1733,7 +1736,7 @@ var AppRoutingModule = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
             imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forRoot(routes)],
             exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]],
-            providers: [_auth_guard__WEBPACK_IMPORTED_MODULE_22__["AuthGuard"]]
+            providers: [_auth_guard__WEBPACK_IMPORTED_MODULE_23__["AuthGuard"]]
         })
     ], AppRoutingModule);
     return AppRoutingModule;
@@ -1926,6 +1929,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _particular_order_manage_particular_order_manage_component__WEBPACK_IMPORTED_MODULE_84__ = __webpack_require__(/*! ./particular-order-manage/particular-order-manage.component */ "./src/app/particular-order-manage/particular-order-manage.component.ts");
 /* harmony import */ var _add_blog_richa_add_blog_richa_component__WEBPACK_IMPORTED_MODULE_85__ = __webpack_require__(/*! ./add-blog-richa/add-blog-richa.component */ "./src/app/add-blog-richa/add-blog-richa.component.ts");
 /* harmony import */ var _payment_gateway_payment_gateway_component__WEBPACK_IMPORTED_MODULE_86__ = __webpack_require__(/*! ./payment-gateway/payment-gateway.component */ "./src/app/payment-gateway/payment-gateway.component.ts");
+/* harmony import */ var _petrec_sravan_petrec_sravan_component__WEBPACK_IMPORTED_MODULE_87__ = __webpack_require__(/*! ./petrec-sravan/petrec-sravan.component */ "./src/app/petrec-sravan/petrec-sravan.component.ts");
 
 
 
@@ -2015,6 +2019,7 @@ __webpack_require__.r(__webpack_exports__);
  // Added for date picker in blog module by Richa Khatri
 
 
+
 // import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap'
 var AppModule = /** @class */ (function () {
     function AppModule() {
@@ -2083,7 +2088,8 @@ var AppModule = /** @class */ (function () {
                 _order_managment_shehzeen_order_managment_shehzeen_component__WEBPACK_IMPORTED_MODULE_83__["OrderManagmentShehzeenComponent"],
                 _particular_order_manage_particular_order_manage_component__WEBPACK_IMPORTED_MODULE_84__["ParticularOrderManageComponent"],
                 _add_blog_richa_add_blog_richa_component__WEBPACK_IMPORTED_MODULE_85__["AddBlogRichaComponent"],
-                _payment_gateway_payment_gateway_component__WEBPACK_IMPORTED_MODULE_86__["PaymentGatewayComponent"]
+                _payment_gateway_payment_gateway_component__WEBPACK_IMPORTED_MODULE_86__["PaymentGatewayComponent"],
+                _petrec_sravan_petrec_sravan_component__WEBPACK_IMPORTED_MODULE_87__["PetrecSravanComponent"]
             ],
             imports: [
                 _angular_material_progress_bar__WEBPACK_IMPORTED_MODULE_68__["MatProgressBarModule"],
@@ -6269,6 +6275,62 @@ var PetmanagementService = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/petrec-sravan/petrec-sravan.component.html":
+/*!************************************************************!*\
+  !*** ./src/app/petrec-sravan/petrec-sravan.component.html ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<!-- <mat-card class=\"example-card\">\n  <mat-card-header>\n    <div mat-card-avatar class=\"example-header-image\"></div>\n    <mat-card-title>Shiba Inu</mat-card-title>\n    <mat-card-subtitle>Dog Breed</mat-card-subtitle>\n  </mat-card-header>\n  <div class=\"card_img_wrapper\">\n    <img mat-card-image src=\"https://material.angular.io/assets/img/examples/shiba2.jpg\" alt=\"Photo of a Shiba Inu\">\n  </div>\n  <mat-card-content>\n    <p>\n      The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.\n      A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally\n      bred for hunting.\n    </p>\n  </mat-card-content>\n  <mat-card-actions>\n    <button mat-button>LIKE</button>\n    <button mat-button>SHARE</button>\n  </mat-card-actions>\n</mat-card> -->\n\n<div *ngFor=\"let event of sampleEvents\" class=\"d-inline-block card\">\n  <img class=\"card-img-top\" src=\"https://catcafestudio.b-cdn.net/wp-content/uploads/2018/08/851316f8-ef16-4580-813f-42b7793732e8.jpg\" alt=\"Dog\">\n  <div class=\"card-body\">\n    <h5 class=\"card-title\">{{event}}</h5>\n    <p class=\"card-text\">\n      Headbutt owner's knee white cat sleeps on a black shirt behind the couch freak human out make funny noise mow\n      mow mow mow mow mow success now attack human. Have a lot of grump in yourself because you can't forget to be\n      grumpy and not be like king grumpy cat cereal boxes make for five star accommodation yet mouse so try to hold\n      own back foot to clean it but foot reflexively kicks you in face, go into a rage and bite own foot, hard scream\n      at teh bath, dismember a mouse and then regurgitate parts of it on the family room floor or stare out the window.</p>\n    <!--TODO: Temporary link. Will redirect to the corresponding pet's profile page once we have real data-->\n    <div class=\"link-container\">\n      <a routerLink=\"/pets\">Details</a>\n    </div>\n  </div>\n</div>\n\n"
+
+/***/ }),
+
+/***/ "./src/app/petrec-sravan/petrec-sravan.component.scss":
+/*!************************************************************!*\
+  !*** ./src/app/petrec-sravan/petrec-sravan.component.scss ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".pets_card {\n  position: relative; }\n\n.card_img_wrapper {\n  height: 200px;\n  max-height: 200px;\n  overflow: hidden;\n  cursor: pointer;\n  display: block; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9zcmF2YW5zL0RvY3VtZW50cy9UZXJtIDIvd2ViL3N0cmF5c3Bpcml0LWZpbmFsL3N0cmF5c3Bpcml0L2Zyb250ZW5kL3NyYy9hcHAvcGV0cmVjLXNyYXZhbi9wZXRyZWMtc3JhdmFuLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksbUJBQWtCLEVBQ3JCOztBQUVEO0VBQ0ksY0FBYTtFQUNiLGtCQUFpQjtFQUNqQixpQkFBZ0I7RUFDaEIsZ0JBQWU7RUFDZixlQUFjLEVBQ2pCIiwiZmlsZSI6InNyYy9hcHAvcGV0cmVjLXNyYXZhbi9wZXRyZWMtc3JhdmFuLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnBldHNfY2FyZHtcbiAgICBwb3NpdGlvbjogcmVsYXRpdmU7XG59XG5cbi5jYXJkX2ltZ193cmFwcGVye1xuICAgIGhlaWdodDogMjAwcHg7XG4gICAgbWF4LWhlaWdodDogMjAwcHg7XG4gICAgb3ZlcmZsb3c6IGhpZGRlbjtcbiAgICBjdXJzb3I6IHBvaW50ZXI7XG4gICAgZGlzcGxheTogYmxvY2s7XG59Il19 */"
+
+/***/ }),
+
+/***/ "./src/app/petrec-sravan/petrec-sravan.component.ts":
+/*!**********************************************************!*\
+  !*** ./src/app/petrec-sravan/petrec-sravan.component.ts ***!
+  \**********************************************************/
+/*! exports provided: PetrecSravanComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PetrecSravanComponent", function() { return PetrecSravanComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var PetrecSravanComponent = /** @class */ (function () {
+    function PetrecSravanComponent() {
+    }
+    PetrecSravanComponent.prototype.ngOnInit = function () {
+    };
+    PetrecSravanComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-petrec-sravan',
+            template: __webpack_require__(/*! ./petrec-sravan.component.html */ "./src/app/petrec-sravan/petrec-sravan.component.html"),
+            styles: [__webpack_require__(/*! ./petrec-sravan.component.scss */ "./src/app/petrec-sravan/petrec-sravan.component.scss")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], PetrecSravanComponent);
+    return PetrecSravanComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/product-detail-page/product-detail-page.component.html":
 /*!************************************************************************!*\
   !*** ./src/app/product-detail-page/product-detail-page.component.html ***!
@@ -7351,7 +7413,7 @@ var ProfileInventoryComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- Developed by Aadesh Shah (B00802629) - aadeshshah@dal.ca -->\n<div class=\"height-adjust\"></div>\n\n<!-- Sidenav Generated by using this angular command ng g @angular/material:material-nav --name=profile-nav : https://material.angular.io/guide/schematics -->\n<mat-sidenav-container class=\"sidenav-container\">\n  <mat-sidenav #drawer class=\"sidenav\" fixedInViewport=\"true\" [attr.role]=\"(isHandset$ | async) ? 'dialog' : 'navigation'\"\n    [mode]=\"(isHandset$ | async) ? 'over' : 'side'\" [opened]=\"!(isHandset$ | async)\" style=\"top:71px;\">\n\n    <div class=\"profile-image\" (click)=\"updateProfilePic.show()\">\n      <!-- https://freerangestock.com/photos/79158/halloween-cat-icon-means-trick-or-treat-and-autumn.html -->\n      <img src=\"../assets/images/user-cat.png\" alt=\"User_avatar\">\n      <div class=\"overlay\">\n        <div class=\"image_overlay_text\">Update Profile Picture</div>\n      </div>\n    </div>\n\n    <div class=\"height-adjust\"></div>\n    <mat-nav-list>\n      <a mat-list-item routerLink=\"/profile/\">My Profile</a>\n      <a mat-list-item routerLink=\"/profile/inventory\">My Inventory</a>\n      <a mat-list-item routerLink=\"/profile/my-pet-ads\">My Ads</a>\n      <a mat-list-item routerLink=\"/profile/my-adoptions\">My Adoptions</a>\n     <!-- <a mat-list-item routerLink=\"\">My Orders</a> -->\n      <a *ngIf=\"isOrgLoggedIn\" mat-list-item routerLink=\"/profile/my-events\">My Events</a>\n      <a *ngIf=\"!isOrgLoggedIn\" mat-list-item routerLink=\"/profile/addstory\">Add Story</a>\n      <a *ngIf=\"isOrgLoggedIn\" mat-list-item routerLink=\"/profile/addblog\">Add Blog</a>\n      <a *ngIf=\"isOrgLoggedIn\" mat-list-item routerLink=\"/profile/approve_content\">Approve Content</a>\n\n      \n\n    </mat-nav-list>\n  </mat-sidenav>\n  <mat-sidenav-content>\n\n    <mat-toolbar>\n      <button type=\"button\" aria-label=\"Toggle sidenav\" mat-icon-button (click)=\"drawer.toggle()\" *ngIf=\"isHandset$ | async\">\n        <mat-icon aria-label=\"Side nav toggle icon\">menu</mat-icon>\n      </button>\n      Welcome <span *ngIf=\"isOrgLoggedIn\">&nbsp; {{userDetail?.organizationtName}}</span>\n      <span *ngIf=\"!isOrgLoggedIn\"> &nbsp;{{userDetail?.firstName}}</span>\n    </mat-toolbar>\n    <!-- Add Content Here -->\n    <router-outlet></router-outlet>\n    <app-footer></app-footer>\n  </mat-sidenav-content>\n</mat-sidenav-container>\n<div mdbModal #updateProfilePic=\"mdbModal\" class=\"modal fade\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myupdateProfilePicLabel\"\n  aria-hidden=\"true\">\n  <div class=\"modal-dialog\" role=\"document\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close pull-right\" aria-label=\"Close\" (click)=\"updateProfilePic.hide()\">\n          <span aria-hidden=\"true\">×</span>\n        </button>\n        <img src=\"../assets/images/user-cat.png\" alt=\"User_Avatar\">\n      </div>\n      <div class=\"modal-body\">\n        <h3 class=\"text-center\">Change your Profile Picture</h3>\n        <form method=\"POST\" action=\"\" name=\"updateProfilePicForm\">\n          <div class=\"md-form\">\n            <input type=\"file\" required name=\"uploadPic\" value=\"Select Picture\">\n          </div>\n          <button type=\"submit\" mdbBtn color=\"primary\" class=\"relative waves-light\" mdbWavesEffect><i class=\"fas fa-cloud-upload-alt\"></i><span\n              class=\"button_text\">Save changes</span></button>\n        </form>\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" mdbBtn color=\"secondary\" class=\"waves-light\" aria-label=\"Close\" (click)=\"updateProfilePic.hide()\"\n          mdbWavesEffect>Close</button>\n      </div>\n    </div>\n  </div>\n</div>"
+module.exports = "<!-- Developed by Aadesh Shah (B00802629) - aadeshshah@dal.ca -->\n<div class=\"height-adjust\"></div>\n\n<!-- Sidenav Generated by using this angular command ng g @angular/material:material-nav --name=profile-nav : https://material.angular.io/guide/schematics -->\n<mat-sidenav-container class=\"sidenav-container\">\n  <mat-sidenav #drawer class=\"sidenav\" fixedInViewport=\"true\" [attr.role]=\"(isHandset$ | async) ? 'dialog' : 'navigation'\"\n    [mode]=\"(isHandset$ | async) ? 'over' : 'side'\" [opened]=\"!(isHandset$ | async)\" style=\"top:71px;\">\n\n    <div class=\"profile-image\" (click)=\"updateProfilePic.show()\">\n      <!-- https://freerangestock.com/photos/79158/halloween-cat-icon-means-trick-or-treat-and-autumn.html -->\n      <img src=\"../assets/images/user-cat.png\" alt=\"User_avatar\">\n      <div class=\"overlay\">\n        <div class=\"image_overlay_text\">Update Profile Picture</div>\n      </div>\n    </div>\n\n    <div class=\"height-adjust\"></div>\n    <mat-nav-list>\n      <a mat-list-item routerLink=\"/profile/\">My Profile</a>\n      <a mat-list-item routerLink=\"/profile/inventory\">My Inventory</a>\n      <a mat-list-item routerLink=\"/profile/my-pet-ads\">My Ads</a>\n      <a mat-list-item routerLink=\"/profile/my-adoptions\">My Adoptions</a>\n      <a mat-list-item routerLink=\"/profile/recommended\">Pet recommendation</a>\n     <!-- <a mat-list-item routerLink=\"\">My Orders</a> -->\n      <a *ngIf=\"isOrgLoggedIn\" mat-list-item routerLink=\"/profile/my-events\">My Events</a>\n      <a *ngIf=\"!isOrgLoggedIn\" mat-list-item routerLink=\"/profile/addstory\">Add Story</a>\n      <a *ngIf=\"isOrgLoggedIn\" mat-list-item routerLink=\"/profile/addblog\">Add Blog</a>\n      <a *ngIf=\"isOrgLoggedIn\" mat-list-item routerLink=\"/profile/approve_content\">Approve Content</a>\n\n      \n\n    </mat-nav-list>\n  </mat-sidenav>\n  <mat-sidenav-content>\n\n    <mat-toolbar>\n      <button type=\"button\" aria-label=\"Toggle sidenav\" mat-icon-button (click)=\"drawer.toggle()\" *ngIf=\"isHandset$ | async\">\n        <mat-icon aria-label=\"Side nav toggle icon\">menu</mat-icon>\n      </button>\n      Welcome <span *ngIf=\"isOrgLoggedIn\">&nbsp; {{userDetail?.organizationtName}}</span>\n      <span *ngIf=\"!isOrgLoggedIn\"> &nbsp;{{userDetail?.firstName}}</span>\n    </mat-toolbar>\n    <!-- Add Content Here -->\n    <router-outlet></router-outlet>\n    <app-footer></app-footer>\n  </mat-sidenav-content>\n</mat-sidenav-container>\n<div mdbModal #updateProfilePic=\"mdbModal\" class=\"modal fade\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myupdateProfilePicLabel\"\n  aria-hidden=\"true\">\n  <div class=\"modal-dialog\" role=\"document\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close pull-right\" aria-label=\"Close\" (click)=\"updateProfilePic.hide()\">\n          <span aria-hidden=\"true\">×</span>\n        </button>\n        <img src=\"../assets/images/user-cat.png\" alt=\"User_Avatar\">\n      </div>\n      <div class=\"modal-body\">\n        <h3 class=\"text-center\">Change your Profile Picture</h3>\n        <form method=\"POST\" action=\"\" name=\"updateProfilePicForm\">\n          <div class=\"md-form\">\n            <input type=\"file\" required name=\"uploadPic\" value=\"Select Picture\">\n          </div>\n          <button type=\"submit\" mdbBtn color=\"primary\" class=\"relative waves-light\" mdbWavesEffect><i class=\"fas fa-cloud-upload-alt\"></i><span\n              class=\"button_text\">Save changes</span></button>\n        </form>\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" mdbBtn color=\"secondary\" class=\"waves-light\" aria-label=\"Close\" (click)=\"updateProfilePic.hide()\"\n          mdbWavesEffect>Close</button>\n      </div>\n    </div>\n  </div>\n</div>"
 
 /***/ }),
 
