@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RecommendService } from '../recommend.service';
 
 @Component({
   selector: 'app-petrec-sravan',
@@ -6,10 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./petrec-sravan.component.scss']
 })
 export class PetrecSravanComponent implements OnInit {
-
-  constructor() { }
+  pets : any;
+  constructor(public R_service: RecommendService) { }
 
   ngOnInit() {
+
+    this.R_service.getRecPets().subscribe(result =>
+      {
+    this.pets = result// assigning to variable to result (JSON object)
+    console.log(this.pets);
+     })
+    }
+
   }
 
-}
+

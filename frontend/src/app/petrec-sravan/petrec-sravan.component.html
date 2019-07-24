@@ -1,24 +1,43 @@
-<!-- <mat-card class="example-card">
-  <mat-card-header>
-    <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title>Shiba Inu</mat-card-title>
-    <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-  </mat-card-header>
-  <div class="card_img_wrapper">
-    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-  </div>
-  <mat-card-content>
-    <p>
-      The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-      A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-      bred for hunting.
-    </p>
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-button>LIKE</button>
-    <button mat-button>SHARE</button>
-  </mat-card-actions>
-</mat-card> -->
 
 
+  <div class="pet-lists">
+    <div class="container">
+      <div *ngIf="pets">
+        <div class="row">
+          <div class="col-lg-3 col-sm-4"
+            *ngFor="let pet of pets">
+            <div class="pets_list">
+              <a routerLink="/pet-profile/{{pet._id}}">
+                <mdb-card>
+                  <div class="pets_card">
+                    <!--Card image-->
+                    <div class="card_img_wrapper">
+                      <img [src]="pet.petPic" alt="{{pet.petName}}" class="img-fluid">
+                    </div>
+                    <!--Card content-->
+                    <mdb-card-body>
+                      <!--Title-->
+                      <mdb-card-title>
+                        <h4>
+                          <span>{{pet.petName}}</span>
+                        </h4>
+                      </mdb-card-title>
+                    </mdb-card-body>
+                    <div class="pet_card_overlay">
+                      <div class="pet_card_overlay_image">
+                        <img [src]="pet.petPic" alt="{{pet.petName}}" class="img-fluid">
+                      </div>
+                      <div class="pet_card_overlay_detail">
+                        <h4>{{pet.petName}}</h4>
+                        <p>{{pet.petAge}} | {{pet.petGender}}</p>
+                      </div>
+                    </div>
+                  </div>
+                </mdb-card>
+              </a>
+            </div>
+          </div>
+        </div>
 
+
+  
