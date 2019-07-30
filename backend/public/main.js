@@ -6282,7 +6282,7 @@ var PetmanagementService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- \n  <div *ngFor=\"let pet of pets\" class=\"col- 6 card-row card-img-wrapper\">\n  <div  class=\"d-inline-block card\">\n    <img class=\"card-img-top\" [src]=\"pet.petPic\" alt=\"Dog\">\n    <div class=\"card-body\">\n      <h5 class=\"card-title\">{{pet.petName}}</h5>\n      <p class=\"card-text\">\n         {{pet.petDescription}}</p>\n      <div class=\"link-container\">\n        <a href=\"/pets\">Details</a>\n      </div>\n    </div>\n  </div> -->\n\n  <div class=\"pet-lists\">\n    <div class=\"container\">\n      <div *ngIf=\"pets\">\n        <div class=\"row\">\n          <div class=\"col-lg-3 col-sm-4\"\n            *ngFor=\"let pet of pets\">\n            <div class=\"pets_list\">\n              <a routerLink=\"/pet-profile/{{pet._id}}\">\n                <mdb-card>\n                  <div class=\"pets_card\">\n                    <!--Card image-->\n                    <div class=\"card_img_wrapper\">\n                      <img [src]=\"pet.petPic\" alt=\"{{pet.petName}}\" class=\"img-fluid\">\n                    </div>\n                    <!--Card content-->\n                    <mdb-card-body>\n                      <!--Title-->\n                      <mdb-card-title>\n                        <h4>\n                          <span>{{pet.petName}}</span>\n                        </h4>\n                      </mdb-card-title>\n                    </mdb-card-body>\n                    <div class=\"pet_card_overlay\">\n                      <div class=\"pet_card_overlay_image\">\n                        <img [src]=\"pet.petPic\" alt=\"{{pet.petName}}\" class=\"img-fluid\">\n                      </div>\n                      <div class=\"pet_card_overlay_detail\">\n                        <h4>{{pet.petName}}</h4>\n                        <p>{{pet.petAge}} | {{pet.petGender}}</p>\n                      </div>\n                    </div>\n                  </div>\n                </mdb-card>\n              </a>\n            </div>\n          </div>\n        </div>\n\n\n  "
+module.exports = "\n\n  <div class=\"pet-lists\">\n    <div class=\"container\">\n      <div *ngIf=\"pets\">\n        <div class=\"row\">\n          <div class=\"col-lg-3 col-sm-4\"\n            *ngFor=\"let pet of pets\">\n            <div class=\"pets_list\">\n              <a routerLink=\"/pet-profile/{{pet._id}}\">\n                <mdb-card>\n                  <div class=\"pets_card\">\n                    <!--Card image-->\n                    <div class=\"card_img_wrapper\">\n                      <img [src]=\"pet.petPic\" alt=\"{{pet.petName}}\" class=\"img-fluid\">\n                    </div>\n                    <!--Card content-->\n                    <mdb-card-body>\n                      <!--Title-->\n                      <mdb-card-title>\n                        <h4>\n                          <span>{{pet.petName}}</span>\n                        </h4>\n                      </mdb-card-title>\n                    </mdb-card-body>\n                    <div class=\"pet_card_overlay\">\n                      <div class=\"pet_card_overlay_image\">\n                        <img [src]=\"pet.petPic\" alt=\"{{pet.petName}}\" class=\"img-fluid\">\n                      </div>\n                      <div class=\"pet_card_overlay_detail\">\n                        <h4>{{pet.petName}}</h4>\n                        <p>{{pet.petAge}} | {{pet.petGender}}</p>\n                      </div>\n                    </div>\n                  </div>\n                </mdb-card>\n              </a>\n            </div>\n          </div>\n        </div>\n\n\n  "
 
 /***/ }),
 
@@ -6310,16 +6310,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _recommend_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../recommend.service */ "./src/app/recommend.service.ts");
+/* harmony import */ var _auth_sevice__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../auth.sevice */ "./src/app/auth.sevice.ts");
+
 
 
 
 var PetrecSravanComponent = /** @class */ (function () {
-    function PetrecSravanComponent(R_service) {
+    function PetrecSravanComponent(R_service, auth) {
         this.R_service = R_service;
+        this.auth = auth;
     }
     PetrecSravanComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.R_service.getRecPets().subscribe(function (result) {
+        console.log();
+        this.R_service.getRecPets(this.auth.getUserId()).subscribe(function (result) {
             _this.pets = result; // assigning to variable to result (JSON object)
             console.log(_this.pets);
         });
@@ -6330,7 +6334,7 @@ var PetrecSravanComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./petrec-sravan.component.html */ "./src/app/petrec-sravan/petrec-sravan.component.html"),
             styles: [__webpack_require__(/*! ./petrec-sravan.component.scss */ "./src/app/petrec-sravan/petrec-sravan.component.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_recommend_service__WEBPACK_IMPORTED_MODULE_2__["RecommendService"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_recommend_service__WEBPACK_IMPORTED_MODULE_2__["RecommendService"], _auth_sevice__WEBPACK_IMPORTED_MODULE_3__["AuthService"]])
     ], PetrecSravanComponent);
     return PetrecSravanComponent;
 }());
@@ -7742,8 +7746,8 @@ var RecommendService = /** @class */ (function () {
         this.router = router;
     }
     // Method for passing feedback entered by a user
-    RecommendService.prototype.getRecPets = function () {
-        return this.http.get("api/recommendation");
+    RecommendService.prototype.getRecPets = function (userID) {
+        return this.http.get('api/recommendation/' + userID);
     };
     RecommendService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({

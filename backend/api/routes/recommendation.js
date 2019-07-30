@@ -9,6 +9,7 @@ result.petGender_count = 0;
 result.petAge_count = 0;
 result.petCategory_count =0; 
 
+//Encoding categorical values
 var binary = {}
 binary.Canine = 1;
 binary.Feline = 0;
@@ -20,18 +21,11 @@ binary.Vaccinated = 1;
 binary.Not_Vaccinated = 0;
 
 
-router.get('/', (req, res, next) => {
-
-    user = '5d2bee361c9d44000064bca9';
-
+router.get('/:ID', (req, res, next) => {
+    var user = req.params.ID;
     Adoption.find({'petAdopter.userId': user} )
     .exec()
     .then(docs =>{
-        // console.log(docs);
-        // result = featureExtractor(docs);
-
-        // console.log("result",result);
-        //res.status(200).json(docs);
         secondFunction(docs);
     })
     .catch(err =>{
@@ -41,24 +35,14 @@ router.get('/', (req, res, next) => {
         });
     });
 
-
-
-   
-
-
-    console.log("here");
     const status = "Not Adopted";
     Pet.find({
         'adoptionStatus': status
     })
     .exec()
     .then(doc =>{
-        console.log("here 2 ");
-        //returns most similar 5 pets 
+        //Returns 5 pets which are similar to a pet adopted by user
         res.status(200).json(Similarity(doc));
-
-
-      
     })
     .catch(err => {
         console.log(err);
@@ -68,50 +52,40 @@ router.get('/', (req, res, next) => {
 
 function Similarity(doc) {
      var similarity_score = [];
-    // console.log(doc);
     for ( i = 0; i< doc.length; i++) {
+
         if(doc[i].petHealth == "Not Vaccinated"){
             doc[i].petHealth = "Not_Vaccinated";
         }
-        console.log(doc[i].petHealth );
         res = 0;
         res = Math.pow(binary[doc[i].petAge]-result.petAge_count,2)+Math.pow(binary[doc[i].petGender]-result.petGender_count,2)+Math.pow(binary[doc[i].petCategory]-result.petCategory_count,2)+Math.pow(binary[doc[i].petHealth]-result.petHealth_count,2);
         res = Math.sqrt(res);
         doc[i].distance = res;
         similarity_score.push(doc[i]);
-
-        
-    
     };
 
     //sorting similarity scores 
     similarity_score.sort(function(a,b){
         return a['distance'] - b['distance']; 
     });
-
-   
-    
     similarity_score = similarity_score.splice(0,5);
     console.log("result", similarity_score[0].distance);
     return(similarity_score);
     
    
   }
-
- 
-
-module.exports = router;
-
-
-
-
-
 const firstFunction = (docs) => {
 return new Promise(function(resolve, reject) {
 
-   
+        if(docs.length == 0){
 
-    // for ( i = 0; i< docs.length; i++) {
+            // Replace this with user preferences laster. 
+            result.petCategory_count =1;
+            result.petAge_count =1;
+            result.petGender_count = 1;
+            result.petHealth_count  =1;
+
+        }
 
         console.log(docs[0].petDetail.petId);
         Pet.find({
@@ -146,23 +120,18 @@ return new Promise(function(resolve, reject) {
                 resolve(result);
                 
 
-            })
-
-    
-    // }
-
-    
+            })    
        
     });
 
 };
-
-
-    
-
+  
 async function secondFunction(docs){
     let result = await firstFunction(docs)
-    // console.log(result)
+
     
 }; 
+
+module.exports = router;
+
 

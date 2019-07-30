@@ -11,7 +11,7 @@ export class RecommendService {
   constructor(private http:HttpClient,private router: Router) { }
 
    // Method for passing feedback entered by a user
-   getRecPets (){
-    return this.http.get("api/recommendation");
+   getRecPets (userID :any){
+    return this.http.get('api/recommendation/' + userID);
   }
 }
